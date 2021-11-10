@@ -13,8 +13,76 @@ SourceList["NodHB"] = {
 	date : "2021/07/15"
 };
 
+// Add Races
+RaceList["aven"] = {  // originally from Plane Shift
+	regExpSearch : /aven/i,
+	name : "Aven",
+	source : [["NodHB"]],
+	plural : "Avens",
+	size : 3,
+	speed : {
+		walk : { spd : 25, enc : 15 },
+		fly : { spd : 30, enc : 0 }
+		},
+	languageProfs : ["Common", "Aven"],
+	age : " age like humans and can live into their 80s",
+	height : " stand between 5 and 6 feet tall",
+	weight : " are very slender and their bones are partially hollow to facilitate their flight",
+	scores : [0, 2, 0, 0, 2, 0],
+	skills : ["Perception"],
+	trait : "Aven (+2 Dexterity, +2 Wisdom)\n\nHawkeyed: I have proficiency in the Perception skill.\n\nAttacking at long range doesn't impose disadvantage on my ranged weapon attack rolls.",
+	calcChanges : {
+		atkAdd : [
+			function (fields, v) {
+				if (v.isRangedWeapon || (!v.isSpell && (/thrown/i).test(fields.Description))) {
+					fields.Description += (fields.Description ? '; ' : '') + "No disadv. at long range; ";
+				}
+			},
+			"My ranged weapon attacks suffer no disadvantage for long range."
+		]
+	},
+};
+RaceList["avariel-ua"] = { // originally from UA
+	regExpSearch : /^(?!.*half)((?=.*avariel)|((?=.*\b(elfs?|elves|elvish|elven)\b)(?=.*\b(winged?|wings?|flying|air)\b))).*$/i,
+	name : "Avariel",
+	sortname : "Elf, Winged (Avariel)",
+	source : [["NodHB"]],
+	plural : "Avariel",
+	size : 3,
+	speed : {
+		walk : { spd : 30, enc : 20 },
+		fly : { spd : 30, enc : 0 }
+	},
+	languageProfs : ["Common", "Elvish", "Auran"],
+	vision : [["Darkvision", 60]],
+	savetxt : {
+		text : ["Magic can't put me to sleep"],
+		adv_vs : ["charmed"]
+	},
+	skills : ["Perception"],
+	age : " typically claim adulthood around age 100 and can live to be 750 years old",
+	height : " range from 5 to over 6 feet tall (4'8\" + 2d10\")",
+	weight : " weigh around 115 lb (90 + 2d10 \xD7 1d4 lb)",
+	heightMetric : " range from 1,5 to over 1,8 metres tall (145 + 5d10 cm)",
+	weightMetric : " weigh around 55 kg (40 + 5d10 \xD7 2d4 / 10 kg)",
+	scores : [0, 2, 0, 0, 0, 0],
+	trait : "Avariel (+2 Dexterity)\nTrance: Elves don't need to sleep, but meditate semiconsciously, for 4 hours a day. While meditating, I can dream after a fashion; such dreams are actually mental exercises that have become reflexive through years of practice. After resting in this way, I gain the same benefit that a human does from 8 hours of sleep, thus needing only 4 hours for a long rest.\nFlight: I have a flying speed of 30 feet. To use this speed, I can't be wearing medium or heavy armor."
+};
+AddRacialVariant("half-elf", "winged", {
+	regExpSearch : /winged/i,
+	name : "Half-sky elf",
+	source : ["NodHB"],
+	plural : "Half-sky elves",
+	speed : {
+		walk : { spd : 30, enc : 20 },
+		fly : { spd : 30, enc : 0 }
+	},
+	skillstxt : "",
+	trait : "Half-Sky Elf (+2 Charisma and +1 to two other ability scores of my choice)\n\nFlying Speed:\n   My avariel heritage gives me a flying speed of 30 feet. To use this speed, I can't be wearing medium or heavy armor."
+});
+
 // Add Backgrounds
-BackgroundList["angelfire brigade"] = {
+BackgroundList["angelfire brigade"] = { // angelfire brigade
 	regExpSearch : /^(?=.*angelfire)(?=.*brigade).*$/i,
 	name : "Angel Brigade",
 	source : ["NodHB"],
@@ -83,7 +151,77 @@ BackgroundList["angelfire brigade"] = {
 };
 BackgroundFeatureList["brigade station"] = {
 	description : "I am established in the hierarchy of the Angelfire Brigade. I can requisition simple equipment for temporary use. I have access to any Angelfire garrison in my homeland where I can rest in safety and have access to medics. I'm paid 1 gp per week, allowing me (together with the free brigade lodging) to have a poor lifestyle between adventures.",
-	source : ["Mist"]
+	source : ["NodHB"]
+};
+BackgroundList["folk healer"] = { // folk healer
+	regExpSearch : /^(?=.*folk)(?=.*healer).*$/i,
+	name : "Folk Healer",
+	source : [["NodHB"]],
+	skills : ["Medicine"],
+	skillstxt : "Medicine and choose one from Nature or Investigation",
+	gold : 15,
+	equipleft : [
+		["Herbalism Kit", "", 3],
+		["Poisoner’s Kit", "", 2]
+	],
+	equipright : [
+		["Traveler's clothes", "", 4],
+		["Badge or emblem of profession", "", ""],
+		["Belt pouch (with coins)", "", 1],
+	],
+	feature : "The Doctor Is In",
+	trait : [
+		"I judge people by their actions, not their words.",
+		"If someone is in trouble, I'm always ready to lend help.",
+		"When I set my mind to something, I follow through no matter what gets in my way.",
+		"I have a strong sense of fair play and always try to find the most equitable solution to arguments.",
+		"I'm confident in my own abilities and do what I can to instill confidence in others.",
+		"I wear a badge that marks me as a healer a little too proudly.",
+		"You don’t get into this trade unless you like people. I've never met someone I couldn’t relate to in some way.",
+		"Sometimes you have to break the rules a little if it is in the name of helping others or advancing knowledge."
+	],
+	ideal : [
+		["Charity",
+			"Charity. All creatures have a right to proper medical care. (Good)"
+		],
+		["Control",
+			"Control. Death is an implacable foe, but with my skills I can change the world. (Lawful)"
+		],
+		["Prestige",
+			"Prestige. Healers are held in high esteem; I like the job perks. (Chaotic)"
+		],
+		["Power",
+			"Power. The power to heal gives me power over people. (Evil)"
+		],
+		["Sincerity",
+			"Sincerity: There's no good in pretending to be something I'm not. (Neutral)"
+		],
+		["Excitement",
+			"Excitement. People see me when there is a problem, and I love solving problems. (Any)"
+		]
+	],
+	bond : [
+		"I have a family, but I have no idea where they are. One day, I hope to see them again.",
+		"I learned the healing arts after someone I loved died and there was nothing I could do to help them.",
+		"I have a fascination with a particularly specialized field of medicine, such as leeching or amputation.",
+		"There are many charlatans who call themselves healers but are dangerous quacks. They must be exposed.",
+		"I have a precious research diary which contains all my medical observations and thoughts.",
+		"There is a particular plague that has struck my people - my life’s work is to find a cure."
+	],
+	flaw : [
+		"I care so much about the people who come to me that when I can’t help it is a devastating blow.",
+		"I treat my patients as problems to be solved rather than real people.",
+		"I have a habit of self-medicating with tinctures of my own creation.",
+		"I treated a high-ranking person who died - their kin blamed me and have sworn vengeance.",
+		"I see sickness everywhere whether real or imagined, even in myself.",
+		"I do not have a sense of humor, especially when it comes to jokes at my expense."
+	],
+	toolProfs : [["Herbalism Kit"], ["Poisoner’s Kit"]],
+	lifestyle : "modest"
+};
+BackgroundFeatureList["the doctor is in"] = {
+	description : "Healers are almost universally seen positively. I can gain the trust of almost any intelligent creature that is sick or hurt if I seem willing to help. I can find a place to hide, rest, or recuperate among other commoners, unless I have shown yourself to be a danger to them. They will shield me from the law or anyone else searching for me, though they will not risk their lives for me.",
+	source : [["NodHB"]]
 };
 /* Inquisitor Background
 Historically, inquisitors were church detectives who investigated crimes both mundane and supernatural. They
@@ -161,7 +299,7 @@ BackgroundFeatureList["legal authority"] = {
 };
 /* Monastic Traveller
 At a young age a travelling monk requested from your parents that you travel with him, during this time you and your master's tasks were to gather information from the outside world and bring supplies back to support your local monastery.  During these trips your master would instruct you on the local customs and history of the surrounding lands near your monastery.  You trained with your brothers and sisters in the temple whenever given the opportunity but mostly accompanied your master and almost all of your training came directly from his or her teachings. */
-BackgroundList["monastic traveller"] = {
+BackgroundList["monastic traveller"] = { // monastic traveller
 	regExpSearch : /^(?=.*monastic)(?=.*traveller).*$/i,
 	name : "Monastic Traveller",
 	source : ["NodHB"],
@@ -229,7 +367,7 @@ BackgroundFeatureList["monastic influence"] = {
     description : "While within the lands where the local monastery has influence, people will tend to be helpful and friendly to the monk and his party. Additionally merchants and locals tend to be more likely to share information.  Gain advantage on persuasion or investigation checks to gather local information as long you maintain good standing with the local monastery.",
     source : ["NodHB"],
 };
-AddBackgroundVariant("outlander", "native tribe member", {
+AddBackgroundVariant("outlander", "native tribe member", { // native tribe member
 	regExpSearch: /^(?=.*(barbarian|native|nomad|clan))(?=.*tribe)(?=.*member).*$/i,
 	name: "Native Tribe Member",
 	source : ["NodHB"],
@@ -246,7 +384,7 @@ BackgroundFeatureList["native tribe heritage"] = {
 	description: "I have an excellent knowledge of my tribe's territory, and surrounding terrain and natural resources. I am familiar enough with any wilderness area that I can find twice as much food and water as one normally would. I can call upon the hospitality of my people, and those allied, often including members of druid circles, nomadic elves, and priesthoods.",
 	source : ["NodHB"],
 };
-BackgroundList["refugee athlete"] = {
+BackgroundList["refugee athlete"] = { // refugee athlete
 	regExpSearch : /^(?=.*refugee)(?=.*athlete).*$/i,
     name: "Refugee Athlete",
     source: ["NodHB"],
@@ -302,91 +440,85 @@ BackgroundFeatureList["long way from home"] = {
     description: "I can move twice the normal amount of time each day before being subject to the effects of a forced march. Additionally, stories of my past athletic victories have attracted admiration among spectators, fellow athletes, and trainers. I can always find a place to perform (arena/pit fight/inn/tavern), where I receive free lodging and food of a modest or comfortable standard, as long as I perform each night.",
     source: ["NodHB"]
 };
-BackgroundList["survivor"] = {
-	regExpSearch: /\survivor\b.*$/i,
-	name: "Survivor",
-	source: ["NodHB"],
-	skills: ["Medicine", "Survival"],
-	gold: 5,
-
-	equipleft: [
-		["Knife hidden in boot", "1", ""]
+BackgroundList["scrivener"] = { // scrivener [Izzet Engineer (GGtR) as a Sage]
+	regExpSearch : /scrivener/i,
+	name : "Scrivener",
+	source : [["EYE"]],
+	skills : ["Arcana", "Investigation"],
+	calcChanges : {
+		spellList : [
+			function(spList, spName, spType) {
+				// don't add if this is not a class or a list of spells is already given
+				if (!ClassList[spName] || spList.spells || spList.psionic) return;
+				// if this is an 'extra spell', also test if it uses the class' spell list or not
+				if (spType.indexOf("bonus") !== -1 && (spList.school || !spList["class"] || (spList["class"].indexOf(spName) === -1 && spName !== "fighter"))) return;
+				spList.extraspells = spList.extraspells.concat(["produce flame", "shocking grasp", "chaos bolt", "create or destroy water", "unseen servant", "heat metal", "rope trick", "call lightning", "elemental weapon", "glyph of warding", "conjure minor elementals", "divination", "otiluke's resilient sphere", "animate objects", "conjure elemental"]);
+			},
+			"My background adds extra spells to the spell list(s) of my spellcasting class(es): Produce Flame, Shocking Grasp, Chaos Bolt, Create or Destroy Water, Unseen Servant, Heat Metal, Rope Trick, Call Lightning, Elemental Weapon, Glyph of Warding, Conjure Minor Elementals, Divination, Otiluke's Resilient Sphere, Animate Objects, and Conjure Elemental."
+		]
+	},
+	gold : 10,
+	equipleft : [
+		["Ink, 1 ounce bottle of", 1, ""],
+		["Ink pen (quill)", "", ""],
+		["Small knife", "", 0.5],
+		["Letter from dead colleague", "", ""]
 	],
-
-	equipright: [
-		["Used furs and blankets", "", ""],
-		["Cold weather clothing", "", ""],
-		["Hemp Rope", "50", ""]
+	equipright : [
+		["Common clothes", "", 3],
+		["Belt pouch (with coins)", "", 1]
 	],
-
-	feature: "Dark Reputation",
-	tragedy: [
-		"I am missing some fingers or toes from frostbite",
-		"My face is scarred from a beast's claws.",
-		"My skin is blemished by evil magic.",
-		"My hair has been burned off and my scalp is scarred.",
-		"I walk with a noticeable limp.",
-		"I wear an eyepatch to cover a missing eye."
+	languageProfs : [1],
+	toolProfs : [["Artisan's tools", 1]],
+	feature : "Researcher",
+	trait : [
+		"I use polysyllabic words that convey the impression of great erudition.",
+		"I've read every book in the world's greatest libraries\u2015 or I like to boast that I have.",
+		"I'm used to helping out those who aren't as smart as I am, and I patiently explain anything and everything to others.",
+		"There's nothing I like more than a good mystery.",
+		"I'm willing to listen to every side of an argument before I make my own judgment.",
+		"I . . . speak . . . slowly . . . when talking . . . to idiots, . . . which . . . almost. . . everyone . . . is . . . compared . . . to me.",
+		"I am horribly, horribly awkward in social situations.",
+		"I'm convinced that people are always trying to steal my secrets."
 	],
-
-	trait: [
-		"I am haunted by my past and have trouble speaking about it.",
-		"After living through tragedy, I run towards danger.",
-		"I celebrate life with great enthusiasm.",
-		"The gods may be real but they are uncaring.",
-		"Some food reminds me of my torment and I can’t stomach it",
-		"I put faith in rituals, symbols, and hedge magic to protect me from evil.",
-		"My inner pain makes me gruff when I deal with others.",
-		"I always expect the worst and jump at loud noises and sudden movements."
-	],
-
-	ideal: [
-		["Intimidation",
-			"Intimidation: I have seen evil and make certain that others fear me before they can hurt me or mine. (Evil)"
+	ideal : [
+		["Knowledge",
+			"Knowledge: The path to power and self-improvement is through knowledge. (Neutral)"
 		],
-		["Nihilism",
-			"Nihilism: Nothing matters anymore and the world will burn. (Chaotic)"
+		["Beauty",
+			"Beauty: What is beautiful points us beyond itself toward what is true. (Good)"
 		],
-		["Bulwark",
-			"Bulwark: I stand against chaos to prevent these things from happening again. (Lawful)"
+		["Logic",
+			"Logic: Emotions must not cloud our logical thinking. (Lawful)"
 		],
-		["Runner",
-			"Runner: I am running from my past and can’t stay in any place for long. (Any)"
+		["No Limits",
+			"No Limits: Nothing should fetter the infinite possibility inherent in all existence. (Chaotic)"
 		],
-		["Compassion",
-			"Compassion: I don’t want anyone else to suffer as I have. (Good)"
+		["Power",
+			"Power: Knowledge is the path to power and domination. (Evil)"
 		],
-		["Order",
-			"Order: I try to gain strength by controlling my environment with rules and rituals. (Lawful)"
-		],
+		["Self-Improvement",
+			"Self-Improvement: The goal of a life of study is the betterment of oneself. (Any)"
+		]
 	],
-
-	bond: [
-		"I have family or friends to protect.",
-		"I am hunting for the creature that wronged me.",
-		"I have a token that I believe protects me.",
-		"With evil in the land, I have to appreciate beauty when I find it.",
-		"I am drawn to lucky people, hoping their luck will rub off on me.",
-		"I will sacrifice myself for others."
+	bond : [
+		"It is my duty to protect my students.",
+		"I have an ancient text that holds terrible secrets that must not fall into the wrong hands.",
+		"I work to preserve a library, university, scriptorium, or monastery.",
+		"My life's work is a series of tomes related to a specific field of lore.",
+		"I've been searching my whole life for the answer to a certain question.",
+		"I sold my soul for knowledge. I hope to do great deeds and win it back."
 	],
-
-	flaw: [
-		"My tragedy has made me a secret coward.",
-		"Evil surrounds the world and has won. I have trouble caring what happens to others.",
-		"I try to forget my past through excessive drink.",
-		"I covet safety and gather wealth and magic items to protect myself.",
-		"I pretend to know what’s going on at all times so others don’t think I am weak.",
-		"Trust is a lie."
+	flaw : [
+		"I am easily distracted by the promise of information.",
+		"Most people scream and run when they see a demon. I stop and take notes on its anatomy.",
+		"Unlocking an ancient mystery is worth the price of a civilization.",
+		"I overlook obvious solutions in favor of complicated ones.",
+		"I speak without really thinking through my words, invariably insulting others.",
+		"I can't keep a secret to save my life, or anyone else's."
 	],
-
-	toolProfs: [["Herbalist's kit", 3]],
-	languageProfs: [1],
 };
-BackgroundFeatureList["dark reputation"] = {
-	description: "People whisper behind my back about the trials I have suffered. Some fear me. Others offer pity. But all avoid getting to close to me, worried that they will be the next loss I suffer. People are happy to see me move on so I get away with minor offenses such as rude behavior or leaving the tavern before paying my tab.",
-	source: ["NodHB"],
-};
-BackgroundList["tribal nomad"] = {
+BackgroundList["tribal nomad"] = { // tribal nomad
 	regExpSearch: /^(?=.*tribal)(?=.*nomad).*$/i,
 	name: "Tribal Nomad",
 	source : ["NodHB"],
@@ -480,6 +612,82 @@ BackgroundFeatureList["voice in the wild"] = {
 	description: "I can always recall the general layout of natural terrain features around me. I can find a hidden place to rest that is secure enough to conceal me from most natural threats, but not supernatural or magical threats (scrying, mental probing, etc.). Each day I can find food and water for myself and up to five other creatures, provided that the land offers berries, small game, water, and so forth.",
 	source : ["NodHB"]
 };
+BackgroundList["wild survivor"] = { // wild survivor
+	regExpSearch : /^(?=.*wild)(?=.*survivor).*$/i,
+	name: "Wild Survivor",
+	source: ["NodHB"],
+	skills: ["Medicine", "Survival"],
+	gold: 5,
+	equipleft: [
+		["Knife hidden in boot", "1", ""]
+	],
+	equipright: [
+		["Used furs and blankets", "", ""],
+		["Cold weather clothing", "", ""],
+		["Hemp Rope", "50", ""]
+	],
+	feature: "Wild Reputation",
+	tragedy: [
+		"I am missing some fingers or toes from frostbite",
+		"My face is scarred from a beast's claws.",
+		"My skin is blemished by evil magic.",
+		"My hair has been burned off and my scalp is scarred.",
+		"I walk with a noticeable limp.",
+		"I wear an eyepatch to cover a missing eye."
+	],
+	trait: [
+		"I am haunted by my past and have trouble speaking about it.",
+		"After living through tragedy, I run towards danger.",
+		"I celebrate life with great enthusiasm.",
+		"The gods may be real but they are uncaring.",
+		"Some food reminds me of my torment and I can’t stomach it",
+		"I put faith in rituals, symbols, and hedge magic to protect me from evil.",
+		"My inner pain makes me gruff when I deal with others.",
+		"I always expect the worst and jump at loud noises and sudden movements."
+	],
+	ideal: [
+		["Intimidation",
+			"Intimidation: I have seen evil and make certain that others fear me before they can hurt me or mine. (Evil)"
+		],
+		["Nihilism",
+			"Nihilism: Nothing matters anymore and the world will burn. (Chaotic)"
+		],
+		["Bulwark",
+			"Bulwark: I stand against chaos to prevent these things from happening again. (Lawful)"
+		],
+		["Runner",
+			"Runner: I am running from my past and can’t stay in any place for long. (Any)"
+		],
+		["Compassion",
+			"Compassion: I don’t want anyone else to suffer as I have. (Good)"
+		],
+		["Order",
+			"Order: I try to gain strength by controlling my environment with rules and rituals. (Lawful)"
+		],
+	],
+	bond: [
+		"I have family or friends to protect.",
+		"I am hunting for the creature that wronged me.",
+		"I have a token that I believe protects me.",
+		"With evil in the land, I have to appreciate beauty when I find it.",
+		"I am drawn to lucky people, hoping their luck will rub off on me.",
+		"I will sacrifice myself for others."
+	],
+	flaw: [
+		"My tragedy has made me a secret coward.",
+		"Evil surrounds the world and has won. I have trouble caring what happens to others.",
+		"I try to forget my past through excessive drink.",
+		"I covet safety and gather wealth and magic items to protect myself.",
+		"I pretend to know what’s going on at all times so others don’t think I am weak.",
+		"Trust is a lie."
+	],
+	toolProfs: [["Herbalism kit"]],
+	languageProfs: [1],
+};
+BackgroundFeatureList["wild reputation"] = {
+	description: "People whisper behind my back about the trials I have suffered. Some fear me. Others offer pity. But all avoid getting to close to me, worried that they will be the next loss I suffer. People are happy to see me move on so I get away with minor offenses such as rude behavior or leaving the tavern before paying my tab.",
+	source: ["NodHB"],
+};
 
 // Add Subclasses
 AddSubClass("druid", "circle of the tundra", {
@@ -564,14 +772,98 @@ AddSubClass("druid", "circle of the tundra", {
 		}
 	}
 });
+SourceList["XLNtEE2"] = {
+	name : "Xanathar's Lost Notes to Everything Else v2.0",
+	abbreviation : "XLNtEE",
+	group : "Dungeon Masters Guild",
+	url : "https://www.dmsguild.com/product/228484/",
+	date : "2018/08/30"
+};
+AddSubClass( "paladin", "oath of providence", {
+	regExpSearch : /^(((?=.*(providence|fated|fate|destined|destiny))((?=.*paladin)|((?=.*(exalted|sacred|holy|divine))(?=.*(knight|fighter|warrior|warlord|trooper)))))|((?=.*(providence|fated|destined|chosen))(?=.*(knight|fighter|warrior|warlord|trooper)))).*$/i,
+	subname : "Oath of Providence",
+	source : ["XLNtEE", 26],
+	spellcastingExtra : ["bless", "divine favor", "aid", "augury", "bestow curse", "clairvoyance", "death ward", "divination", "commune", "legend lore"],
+	features : {
+		"subclassfeature3" : {
+			name : "Channel Divinity: Predestination",
+			source : ["XLNtEE", 26],
+			minlevel : 3,
+			description : desc([
+				"As a reaction, a creature I can see within 60 ft can make a saving throw with advantage",
+				"If it would take half-damage on a success, it takes none, and half-damage on a failure.",
+			]),
+			action : ["reaction", ""]
+		},
+		"subclassfeature3.1" : {
+			name : "Channel Divinity: Kiss of Calamity",
+			source : ["XLNtEE", 26],
+			minlevel : 3,
+			description : desc([
+				"As an action, all unfriendly creatures within 30 ft that can see or hear me must make a",
+				"Charisma saving throw, gaining disadvantage on all saving throws for 1 min on a failure.",
+			]),
+			action : ["action", ""]
+		},
+		"subclassfeature7" : {
+			name : "Favor the Bold",
+			source : ["XLNtEE", 26],
+			minlevel : 7,
+			description : desc([
+				"I can turn a miss with a weapon attack into a hit. When I use this feature, my target takes",
+				"extra radiant damage equal to my Charisma modifier (minimum of 1)",
+			]),
+			recovery : "long rest",
+			usages : "Charisma modifier per ",
+			usagescalc : "event.value = Math.max(1, tDoc.getField('Cha Mod').value);",
+		},
+		"subclassfeature15" : {
+			name : "Gift of Foresight",
+			source : ["XLNtEE", 26],
+			minlevel : 15,
+			description : desc([
+				"When I finish a short or long rest, I roll a d20 and record the prophetic roll number.",
+				"I can replace any attack roll, saving throw, or ability check made by me or a creature I can see",
+				"with my prophetic roll. I must choose to do so before the roll, and I can use the roll in this",
+				"way only once. When I finish a short or long rest, I lose any unused prophetic roll",
+			]),
+			recovery : "short rest",
+			usages : 1
+		},
+		"subclassfeature20" : {
+			name : "Hand of Fate",
+			source : ["XLNtEE", 26],
+			minlevel : 20,
+			description : desc([
+				"For 1 min, I project an aura of dim, silver light in a 10-foot radius.",
+				"Whenever an enemy creature starts its turn in my aura, it has disadvantage on attacks and",
+				"saving throws, while I and friendly creatures have advantage on attack rolls and saving",
+				"throws. When the aura fades away, I regain all expended uses of my Favor the Bold feature.",
+			]),
+			recovery : "long rest",
+			usages : 1,
+			action : ["action", ""]
+		}
+	}
+});
 
 // Add Feats
-/* Fellowship
-Most adventurers believe that the members of a group have a responsibility to look out for each other. You gain the following benefits:
-• You can use the Help action as a bonus action.
-• When you use the Help action to aid an ally in attacking a creature, increase the range of the Help action by 10 feet. Additionally, you can help two allies targeting the same creature within range when you use the Help action this way.
-• When you take the Help action to aid another creature's ability check, you can make a DC 15 Intelligence (History) check. On a success, that creature's check gains a bonus equal to your proficiency bonus, as you share pertinent advice and historical examples. To receive this bonus, the creature must be able to understand what you're saying.
-*/
+FeatsList["explorer"] = {
+	name : "Explorer",
+	source : [["NodHB"]],
+	description : "I gain +5 ft walking speed and climbing and swimming speed equal to my walking speed. While traveling, I am alert to danger even when doing something else. [+1 Strength, Dexterity, Intelligence, or Wisdom]",
+	scorestxt : "+1 Strength, Dexterity, Intelligence or Wisdom",
+	speed : {
+			walk : { spd : "+5", enc : "+5" },
+			climb : { spd : "walk", enc : "walk" },
+			swim : { spd : "walk", enc : "walk" }
+			}
+};		
+/* Explorer
+You are an unsurpassed explorer. You gain the following benefits:
+• Increase your Strength, Dexterity, Intelligence or Wisdom by 1, to a maximum of 20.
+• Your walking speed increases by 5, and you gain a climbing speed and a swimming speed equal to your walking speed.
+• Even when you are engaged in another activity while traveling (such as foraging, navigating, or tracking), you remain alert to danger. */
 FeatsList["fellowship"] = {
 	name: "Fellowship",
 	source: [["NodHB"]],
@@ -582,6 +874,12 @@ FeatsList["fellowship"] = {
 		["action", "Fellowship (Help Ability Check)"]
 		]
 };
+/* Fellowship
+Most adventurers believe that the members of a group have a responsibility to look out for each other. You gain the following benefits:
+• You can use the Help action as a bonus action.
+• When you use the Help action to aid an ally in attacking a creature, increase the range of the Help action by 10 feet. Additionally, you can help two allies targeting the same creature within range when you use the Help action this way.
+• When you take the Help action to aid another creature's ability check, you can make a DC 15 Intelligence (History) check. On a success, that creature's check gains a bonus equal to your proficiency bonus, as you share pertinent advice and historical examples. To receive this bonus, the creature must be able to understand what you're saying.
+*/
 FeatsList["firearm expert"] = {
 	name : "Firearm Expert",
 	source : ["NodHB"],
@@ -592,6 +890,72 @@ FeatsList["firearm expert"] = {
 		["reaction", "Prevent Misfire"],
 		],
 };
+FeatsList["mud sorcerer heritage"] = { // originally from Iabet-Noferet
+    name : "Mud Sorcerer Heritage",
+    source : ["NodHB"],
+    description : "My pre Kithgarther heritage carries magic left over from Ellid Nak Sune. I learn the spells Magic Missile and ‌‌‌‌‌‌‌‌‌​​​​​Maximilian's Earthen Grasp, and am able to cast each of them them once per long rest without using a spell slot. [+1 Intelligence]",
+    descriptionFull : "Your pre Kithgarther heritage carries magic left over from Ellid Nak Sune. You gain the following benefits: Increase your Intelligence score by 1, up to a maximum of 20. You learn the Magic Missile and ‌‌‌‌‌‌‌‌‌​​​​​Maximilian's Earthen Grasp spells, each of which you can cast once without expending a spell slot. You regain the ability to cast those two spells in this way when you finish a long rest. Your spell casting ability is Intelligence is your spellcasting ability for these spells.",
+    prerequisite : "Vepontii",
+    scorestxt : "+1 Intelligence",
+	scores : [0, 0, 0, 1, 0, 0],
+	spellcastingBonus : [{
+		name : "Once per long rest",
+		spellcastingAbility : 4,
+		spells : ["magic missile"],
+		selection : ["magic missile"],
+		firstCol : 'oncelr'
+	}, {
+		name : "Once per long rest",
+		spells : ["maximilian's earthen grasp"],
+		selection : ["maximilian's earthen grasp"],
+		firstCol : 'oncelr'
+	}]
+};
+FeatsList["retiarius weapons training"] = {  
+	name : "Retiarius Weapons Training",
+	source : ["NodHB"],
+	descriptionFull : "You have received extensive training with equipment styled on that of a fisherman. You gain the following benefits:\n \u2022 Increase your Dexterity or Strength score by 1, to a maximum of 20.\n \u2022 \n \u2022 When you use a net, it becomes a melee weapon with the thrown property instead of a ranged weapon and being within 5 feet of a hostile creature doesn't impose disadvantage on your ranged attack rolls with it.\n \u2022 When you use tridents and/or nets, they have the finesse property and you can use two-weapon fighting with them even though they do not have the light property.",
+	description : "I can use two-weapon fighting with tridents and nets. Tridents have the finesse property and do d8 damage (versatile d10). Nets have the finesse property, count as a melee weapon, and no disadvantage if hostile within 5 ft. [+1 Strength or Dexterity]",
+	scorestxt : "+1 Strength or Dexterity",
+    calcChanges : {
+        atkAdd : [
+            function (fields, v) {
+                if (v.baseWeaponName == 'trident') {
+                    fields.Damage_Die = fields.Damage_Die === '1d6' ? '1d8' : fields.Damage_Die;
+                    fields.Description = fields.Description.replace('Thrown, versatile (1d8)', 'Finesse, thrown, versatile (1d10)');
+                    fields.Mod = v.StrDex;
+                } else if (v.baseWeaponName == 'net') {
+                    fields.Description = fields.Description.replace('Thrown, only 1 attack, up to large creature hit is restrained (PHB 148)', 'Finesse, thrown, no disadvantage if hostile within 5 ft, restrain up to large creature (DC 10)'); 
+					fields.Range = 'Melee, 5/15' + ' ft';
+                    fields.Mod = v.StrDex;
+                };
+            },
+            "With a trident, I get the following benefits:\n - Finesse and two-weapon fighting;\n - The trident damage die increases to d8 (versatile d10).\n \u2022 With a net, I get the following benefits:\n - Finesse and two-weapon fighting;\n - Becomes melee weapon and no disadvantage if hostile within 5 ft."
+        ]
+    }
+};
+/*Retiarius Weapons Training
+You have received extensive training with equipment styled on that of a fisherman. You gain the following benefits:
+• Increase your Strength or Dexterity by 1, to a maximum of 20.
+• When you use a trident, its damage die changes from a d6 to a d8, and from a d8 to a d10 when wielded with two hands.
+• When you use a net, it becomes a melee weapon instead of a ranged weapon, and being within 5 feet of a hostile creature doesn't impose disadvantage on your ranged attack rolls with it.
+• When you use tridents and/or nets, they have the finesse property and you can use two-weapon fighting with them even though they do not have the light property. 
+*/
+FeatsList["rough-and-tumble"] = {
+	name : "Rough-and-Tumble",
+	source : [["NodHB"]],
+	descriptionFull : "Accustomed to rough-and-tumble fighting, you've developed the skills necessary to hold your own in close-quarters combat. You gain the following benefits:\n \u2022 Increase your Dexterity or Strength score by 1, to a maximum of 20.\n \u2022 You gain proficiency in the Acrobatics or Athletics skill (your choice. If you are already proficient, you gain expertise, which means your proficiency bonus is doubled for any ability check you make with it.\n \u2022 You have advantage on attack rolls against a creature you are grappling.\n \u2022 When you shove a creature you are grappling, you can double the distance you push that creature.",
+	description : "I gain expertise with Athletics or Acrobatics, or proficiency if not so already. I have advantage on attack rolls against a creature I am grappling. I can double the distance I shove a creature I am grappling. [+1 Strength or Dexterity]",
+	scorestxt : "+1 Strength or Dexterity",
+	skills : [["Athletics", "increment"]],
+	skillstxt : "Proficiency with Acrobatics or Athletics, or\n   Expertise if already proficient",
+};
+/* Rough-and-Tumble
+Accustomed to rough-and-tumble fighting, you've developed the skills necessary to hold your own in close-quarters combat. You gain the following benefits:
+• Increase your Strength or Dexterity by 1, to a maximum of 20.
+• You gain proficiency in the Athletics or Acrobatics skill. If you are already proficient, you gain expertise, which means your proficiency bonus is doubled for any ability check you make with it.
+• You have advantage on attack rolls against a creature you are grappling.
+• When you shove a creature you are grappling, you can double the distance you push that creature. */
 FeatsList["sailor's sea legs"] = {
 	name : "Sailor's Sea Legs",
 	source : ["NodHB"],
@@ -612,26 +976,17 @@ FeatsList["sailor's sea legs"] = {
 	},
 	scores : [0, 1, 0, 0, 0, 0],
 };
-FeatsList["shield training"] = {
-	name: "Shield Training",
-	source: ["NodHB"],
-	descriptionFull : "You’ve trained in the effective use of shields. You gain the following benefits:\n \u2022Increase your Strength, Dexterity, or Constitution score by 1, to a maximum of 20.\n \u2022You gain proficiency with shields.\n \u2022In combat, you can don or doff a shield as the free object interaction on your turn.\n \u2022If you have the Spellcasting or Pact Magic feature, you can use a shield as a spellcasting focus.",
-	description: "I gain proficiency with shields. I can don or doff a shield as the free object interaction on my turn. If I have the Spellcasting or Pact Magic feature, I can use my shield as a spellcasting focus. [+1 Strength, Dexterity, or Constitution]",
-	improvements: "Shield Training (feat): +1 Strength, Dexterity, or Constitution;",
-	armorProfs: [false, false, false, true]
-};
-/* Sidestepper
-Prerequisites: Dexterity 13 or higher
-Thanks to extensive footwork practice, you are adept at moving in combat. You gain the following benefits:
-• Increase your Dexterity score by 1, to a maximum of 20.
-• Whenever an opponent misses you with a melee attack, you may move 5 feet as a reaction. This movement does not provoke opportunity attacks and does not count against your total movement.
-• As a bonus action, you can make a DC 15 Dexterity (Acrobatics) check. If you succeed, difficult terrain doesn't cost you extra movement until the end of the current turn. 
-*/
+/* Sailor's Sea Legs
+Prerequisites: An appropriate background related to being around the water.
+Your childhood fascination with the water and the many vessels that travel on it led to you to becoming a crew member of a vessel, whether sailing into battle on a navy warship, swashbuckling across the oceans as a pirate, or working on a fishing boat striving to feed a nearby village. Even on land, you walk with a particular gait from having your sea legs. You gain the following benefits:
+•    Increase your Dexterity by 1, to a maximum of 20.
+•    Whenever you have advantage on an attack roll that uses Dexterity, you can reroll one of the dice once.
+•    You gain proficiency with Vehicles (water). If you are already proficient with them, you add double your proficiency bonus to checks you make with them. */
 FeatsList["sidestepper"] = {
 	name : "Sidestepper",
 	source : ["NodHB"],
-	descriptionFull : "Thanks to extensive footwork practice, you are adept at moving in combat. You gain the following benefits:\n \u2022 Whenever an opponent misses you with a melee attack, you may move 5 feet as a reaction. This movement does not provoke opportunity attacks and does not count against your total movement.\n \u2022 As a bonus action, you can make a DC 15 Dexterity (Acrobatics) check. If you succeed, difficult terrain doesn't cost you extra movement until the end of the current turn.\n \u2022 When you use the Attack action and attack with a one-handed weapon, you can use a bonus action to attack with a one-handed firearm you are holding.",
-	description : "As a reaction, when an opponent misses me I can move 5 feet without provoking an opportunity attack. As a bonus action, I can make a DC 15 Dexterity (Acrobatics) check to have difficult terrain not cost me extra movement for this turn. [+1 Dexterity]",
+	descriptionFull : "Thanks to extensive footwork practice, you are adept at moving in combat. You gain the following benefits:\n \u2022 Whenever an opponent misses you with a melee attack, you may move 5 feet as a reaction. This movement does not provoke opportunity attacks and does not count against your total movement.\n \u2022 As a bonus action, you can make a DC 15 Dexterity (Acrobatics) check. If you succeed, difficult terrain doesn't cost you extra movement until the end of your next turn.",
+	description : "As a reaction, when an opponent misses me I can move 5 feet without provoking an opportunity attack. As a bonus action, I can make a DC 15 Dexterity (Acrobatics) check to have difficult terrain not cost me extra movement until end of my next turn. [+1 Dexterity]",
 	improvements: "Sidestepper (feat): +1 Dexterity;",
 	scores : [0, 1, 0, 0, 0, 0],
 	prereqeval : function(v) { return What('Dex') >= 13; },
@@ -640,13 +995,13 @@ FeatsList["sidestepper"] = {
 	["bonus action", " (terrain)"],
 	],
 };
-FeatsList["silverblood vision"] = {
-	name : "Silverblood Vision",
-	source : ["NodHB"],
-	description : "When you finish a long rest, roll a d20 and record the number. You can replace any attack roll, saving throw, or ability check made by you or a creature that you can see with this foretelling roll. You must choose to do so before the roll, and you can replace a roll in this way only once per turn.",
-	usages : 1,
-	recovery : "long rest",
-};
+/* Sidestepper
+Prerequisites: Dexterity 13 or higher
+Thanks to extensive footwork practice, you are adept at moving in combat. You gain the following benefits:
+• Increase your Dexterity score by 1, to a maximum of 20.
+• Whenever an opponent misses you with a melee attack, you may move 5 feet as a reaction. This movement does not provoke opportunity attacks and does not count against your total movement.
+• As a bonus action, you can make a DC 15 Dexterity (Acrobatics) check. If you succeed, difficult terrain doesn't cost you extra movement until the end of your next turn. 
+*/
 FeatsList["spear expertise"] = {
 	name : "Spear Expertise",
 	source : ["NodHB"],
@@ -670,6 +1025,71 @@ FeatsList["spear expertise"] = {
 			}, ""]
 	},
 	action : ['bonus action', ' (increase reach)']
+};
+FeatsList["trident expertise"] = {
+	name : "Trident Expertise",
+	source : ["NodHB"],
+	descriptionFull : "Though the trident is a simple weapon to learn, it rewards you for the time you have taken to master it. You gain the following benefits:\n \u2022 Increase your Dexterity or Strength score by 1, to a maximum of 20.\n \u2022 You gain a +1 bonus to attack rolls you make with a trident.\n \u2022 When you use a trident, its damage die changes from a d6 to a d8, and from a d8 to a d10 when wielded with two hands. (This benefit has no effect if another feature has already improved the weapon's die.)\n \u2022 A trident has the finesse property when you wield it.\n \u2022 As a bonus action on your turn, you can increase your reach with a trident by 5 feet for the rest of your turn.",
+	description : "With a trident, I get +1 to hit and it does d8 damage (versatile d10). My expertise with the trident allows me to treat it as having the finesse trait. As a bonus action, I can increase the trident's reach by 5 ft. [+1 Strength or Dexterity]",
+	scorestxt : "+1 Strength or Dexterity",
+	calcChanges : {
+		atkAdd : [
+			function (fields, v) {
+				if (v.baseWeaponName == 'trident') {
+					fields.Damage_Die = fields.Damage_Die === '1d6' ? '1d8' : fields.Damage_Die;
+					fields.Description = fields.Description.replace('versatile (1d8)', 'Finesse, versatile (1d10)');
+					fields.Mod = v.StrDex;
+				};
+			},
+			"With a trident, I get the following benefits:\n \u2022 +1 to hit;\n \u2022 The trident damage die increases to d8 (versatile d10)."
+		],
+		atkCalc : [
+			function (fields, v, output) {
+				if (v.baseWeaponName == 'trident') output.extraHit += 1;
+			}, ""]
+	},
+	action : ['bonus action', ' (increase reach)']
+};
+FeatsList["wrestler"] = {
+	name : "Wrestler",
+	source : [["NodHB"]],
+	descriptionFull : "Accustomed to rough-and-tumble fighting, you've developed the skills necessary to hold your own in close-quarters combat. You gain the following benefits:\n \u2022 You gain proficiency in the Athletics skill. If you are already proficient, you gain expertise, which means your proficiency bonus is doubled for any ability check you make with it.\n \u2022 When you hit a creature with an unarmed strike on your turn, you can use a bonus action to attempt to grapple the target.\n \u2022 You have advantage on attack rolls against a creature you are grappling.",
+	description : "I gain expertise with Athletics, or proficiency if not so already. When I hit a creature with an unarmed strike on my turn, I can attempt to grapple the target as a bonus action. I have advantage on attack rolls against a creature I am grappling.",
+	prerequisite : "Strength 13 or higher",
+	prereqeval : function(v) { return What('Str') >= 13; },
+	action : ['bonus action', 'Grapple (on hit with unarmed)'],
+	skills : [["Athletics", "increment"]],
+	calcChanges : {
+		atkAdd : [
+			function (fields, v) {
+				if (v.baseWeaponName == "unarmed strike" || (/improvised/i).test(v.WeaponName + v.baseWeaponName) || (/improvised weapon/i).test(v.theWea.type)) {
+					fields.Proficiency = true;
+					if (v.isMeleeWeapon) fields.Description += (fields.Description ? '; ' : '') + 'After hit, can grapple as a bonus action';
+				};
+			},
+			"After hitting a creature with an unarmed strike in melee, I can attempt to start a grapple as a bonus action."
+		]
+	}
+};
+/* Wrestler
+Prerequisite: Strength 13 or higher
+Accustomed to rough-and-tumble fighting, you've developed the skills necessary to hold your own in close-quarters combat. You gain the following benefits:
+• You gain proficiency in the Athletics skill. If you are already proficient, you gain expertise, which means your proficiency bonus is doubled for any ability check you make with it.
+• When you hit a creature with an unarmed strike on your turn, you can use a bonus action to attempt to grapple the target.
+• You have advantage on attack rolls against a creature you are grappling. */
+
+// Campaign Feats
+FeatsList["blessing of the wolf queen"] = {
+	name : "Blessing of the Wolf Queen",
+	source : ["NodHB"],
+	description : "Ainu the Wolf Queen considers me worthy and has granted her blessing upon me. I can attune to a maximum of four magical items, rather than three; other attunement limitations still apply."
+};
+FeatsList["silverblood vision"] = {
+	name : "Silverblood Vision",
+	source : ["NodHB"],
+	description : "When you finish a long rest, roll a d20 and record the number. You can replace any attack roll, saving throw, or ability check made by you or a creature that you can see with this foretelling roll. You must choose to do so before the roll, and you can replace a roll in this way only once per turn.",
+	usages : 1,
+	recovery : "long rest",
 };
 FeatsList["witness gift"] = {
 	name : "Witness Gift",
@@ -696,11 +1116,30 @@ FeatsList["mighty small"] = {
 	source : ["NodHB"],
 	prerequisite : "Being a small race",
 	prereqeval : function(v) { return tDoc.getField('Size Category').currentValueIndices === 4; },
-	descriptionFull : "You are uncommonly hardy for your race. You gain the following benefits:\n \u2022 Increase your Strength or Constitution score by 1, to a maximum of 20.\n \u2022 Increase your walking speed by 5 feet.\n \u2022 You do not have disadvantage on attack rolls with weapons with the heavy property.\n \u2022 Increase running long/high jump distance by 10 feet if weilding heavy property weapon with both hands.",
-	description : "My walking speed increases by 5 ft. I do not have disadvantage on attack rolls with heavy weapons. I increase running jumps by 10 ft while weilding a heavy weapon. [+1 Strength or Constitution]",
+	descriptionFull : "You are uncommonly hardy for your race. You gain the following benefits:\n \u2022 Increase your Strength or Constitution score by 1, to a maximum of 20.\n \u2022 Increase your walking speed by 5 feet.\n \u2022 You do not have disadvantage on attack rolls with weapons with the heavy property.\n \u2022 Increase running long/high jump distance by 10 feet if wielding heavy property weapon with both hands.",
+	description : "My walking speed increases by 5 ft. I do not have disadvantage on attack rolls with heavy weapons. I increase running jumps by 10 ft while wielding a heavy weapon. [+1 Strength or Constitution]",
 	scorestxt : "+1 Strength or Constitution",
 	speed : { walk : {spd : "+5", enc : "+5" } }
 };
+
+// bird races
+FeatsList["hawkeyed accuracy"] = { // aarakocra|aven|kenku|owlfolk
+	name : "Hawkeyed Accuracy",
+	source : ["NodHB"],
+	prerequisite : "Being a bird race",
+	prereqeval : function(v) { return (/aarakocra|aven|kenku|owlfolk/i).test(CurrentRace.known); },
+	descriptionFull : "You have uncanny aim with ranged attacks that rely on precision and pinpoint targeting. You gain the following benefits:\n \u2022 Increase your Dexterity or Wisdom score by 1, to a maximum of 20.\n \u2022 You have advantage on Perception checks based on sight.\n \u2022 Whenever you have advantage on a ranged attack roll using Dexterity or Wisdom, you can reroll one of the dice once.",
+	description : "I have advantage on Perception checks based on sight. Whenever I have advantage on a ranged attack roll that uses Dexterity or Wisdom, I can reroll one of the dice once. [+1 Dexterity or Wisdom]",
+	vision: [["Adv. on Perception checks based on sight", 0]],
+	scorestxt : "+1 Dexterity or Wisdom"
+};
+/* Hawkeyed Accuracy
+Prerequisite: Being a bird race
+You have uncanny aim with ranged attacks that rely on precision and pinpoint targeting. You gain the following benefits:
+•    Increase your Dexterity or Wisdom score by 1, to a maximum of 20.
+•    You have advantage on Wisdom (Perception) checks that rely on sight.
+•    Whenever you have advantage on a ranged attack roll using Dexterity or Wisdom, you can reroll one of the dice once.
+*/
 
 // Aasimar
 FeatsList["sacred soul of the storm"] = { 
@@ -712,28 +1151,70 @@ FeatsList["sacred soul of the storm"] = {
 	improvements : "Sacred Soul of the Storm (feat): +1 Intelligence or Charisma;"	
 };
 
-// Dhampir
-/* Touched by the Mists
-Prerequisite: Dhampir
-Through fell magic, you are touched by the corruptive power of Strahd. You gain the following benefits:
+// Centaur
+FeatsList["centaur orcish heritage"] = { 
+	name : "Centaur Orcish Heritage",
+	source : ["NodHB"],
+	prerequisite : "Being a Centaur",
+	prereqeval : "CurrentRace.known.indexOf('centaur') !== -1",
+	description : "I have darkvision out to a range of 60 feet. My melee weapon attacks roll 1 additional dice on a critical hit. [+1 Str or Con]",
+	vision : [["Darkvision", 60]],
+	improvements : "Centaur Orcish Heritage (feat): +1 Strength or Constitution;",
+	calcChanges : {
+		atkAdd : [
+			function (fields, v) {
+			if (v.isMeleeWeapon && (/d\d+/).test(fields.Damage_Die)) {
+			if (v.extraCritM) {
+				v.extraCritM += 1;
+			var extraCritRegex = /\d+(d\d+ extra on a crit(ical)?( hit)? in melee)/i;
+			fields.Description = fields.Description.replace(extraCritRegex, v.extraCritM + '$1');
+			} else {
+			v.extraCritM = 1;
+			fields.Description += (fields.Description ? '; ' : '') + v.extraCritM + fields.Damage_Die.replace(/.*(d\d+).*/, '$1') + ' extra on a crit in melee';
+					}
+					}
+				},
+				"My melee weapon attacks roll 1 additional dice on a critical hit."
+				]
+		},	
+};
+/* Centaur Orcish Heritage
+Through a twist of fate, an ancestor's legacy, or by some other means, you might not look like other centaurs. Your orcish heritage is plain for all to see. Rather than having the physical characteristics described in the usual centaur description, you may choose any of the following features: grayish pigmentation, sloping forehead, jutting jaws, or prominent teeth. You gain the following benefits:
 • Increase your Strength or Constitution by 1, to a maximum of 20.
-• You have resistance to necrotic damage.
-• Whenever you spend one or more hit dice during a short rest, you can regain an extra 1d6 hit points.
-• Your Vampiric Bite damage die increases to a d6.
+• Darkvision. Thanks to your orc blood, you have superior vision in dark and dim conditions. You can see in dim light within 60 feet of you as if it were bright light, and in darkness as if it were dim light. You can't discern color in darkness, only shades of gray.
+• Savage Attacks. When you score a critical hit with a melee weapon attack, you can roll one of the weapon's damage dice one additional time and add it to the extra damage of the critical hit.
 */
+
+// Changeling
+FeatsList["changeling instinctive adjustment"] = {
+	name : "Changeling Instinctive Adjustment",
+	source : ["NodHB"],
+	prerequisite : "Being a Changeling",
+	prereqeval : function(v) { return CurrentRace.known.indexOf('changeling') !== -1; },
+	descriptionFull : "The instinctive ability of changelings to adjust their body on the spur of the moment gives them uncanny aim with attacks that rely on precision rather than brute force. You gain the following benefits:\n \u2022 Increase your Dexterity, Intelligence, Wisdom, or Charisma score by 1, to a maximum of 20.\n \u2022 Whenever you have advantage on an attack roll using Dexterity, Intelligence, Wisdom, or Charisma, you can reroll one of the dice once.",
+	description : "Whenever I have advantage on an attack roll that uses Dexterity, Intelligence, Wisdom, or Charisma, I can reroll one of the dice once. [+1 Dexterity, Intelligence, Wisdom, or Charisma]",
+	scorestxt : "+1 Dexterity, Intelligence, Wisdom, or Charisma"
+};
+/* Changeling Instinctive Adjustment
+Prerequisite: Changeling
+The instinctive ability of changelings to adjust their body on the spur of the moment gives them uncanny aim with attacks that rely on precision rather than brute force. You gain the following benefits:
+• Increase your Dexterity, Intelligence, Wisdom, or Charisma by 1, to a maximum of 20.
+• Whenever you have advantage on an attack roll using Dexterity, Intelligence, Wisdom, or Charisma, you can reroll one of the dice once. */
+
+// Dhampir
 FeatsList["touched by the mists"] = {  
 	name : "Touched by the Mists",
 	source : ["NodHB"],
 	prerequisite : "Being a Dhampir",
 	prereqeval : function(v) { return CurrentRace.known.indexOf('dhampir') !== -1; },
-	descriptionFull : "Through fell magic, you are touched by the corruptive power of Strahd. You gain the following benefits:\n \u2022 Increase your Strength or Constitution score by 1, to a maximum of 20.\n \u2022 You have resistance to necrotic damage.\n \u2022 Whenever you spend one or more hit dice during a short rest, you can regain an extra 1d6 hit points.\n \u2022 Your Vampiric Bite damage die increases to a d6.",
+	descriptionFull : "Through fell magic, you are touched by the corruptive power of a Dread Domain. You gain the following benefits:\n \u2022 Increase your Strength or Constitution score by 1, to a maximum of 20.\n \u2022 You have resistance to necrotic damage.\n \u2022 Whenever you spend one or more hit dice during a short rest, you can regain an extra 1d6 hit points.\n \u2022 Your Vampiric Bite damage die increases to a d6.",
 	description : "I am resistant to necrotic damage. When I spend 1 or more hit dice during a short rest, I can regain an extra 1d6 hit points. My Vampiric Bite damage die increases to a d6.[+1 Strength or Constitution]",
 	scorestxt : "+1 Strength or Constitution",
 	dmgres : ["Necrotic"],
     calcChanges : {
         atkAdd : [
             function (fields, v) {
-                if (v.baseWeaponName == 'dhampir bite') {
+                if (v.theWea.name == 'Vampiric Bite') {
                     fields.Damage_Die = fields.Damage_Die === '1d4' ? '1d6' : fields.Damage_Die;
                 };
             },
@@ -741,6 +1222,14 @@ FeatsList["touched by the mists"] = {
         ]
     }
 };
+/* Touched by the Mists
+Prerequisite: Dhampir
+Through fell magic, you are touched by the corruptive power of a Dread Domain. You gain the following benefits:
+• Increase your Strength or Constitution by 1, to a maximum of 20.
+• You have resistance to necrotic damage.
+• Whenever you spend one or more hit dice during a short rest, you can regain an extra 1d6 hit points.
+• Your Vampiric Bite damage die increases to a d6.
+*/
 
 // Genasi (Water)
 FeatsList["shahzada heritage"] = { 
@@ -793,7 +1282,7 @@ FeatsList["stone's fury"] = {
 	source : ["NodHB"],
 	prerequisite : "Being a Goliath",
 	prereqeval : "CurrentRace.known.indexOf('goliath') !== -1",
-	descriptionFull : "Your fury burns tirelessly. You gain the following benefits:\n \u2022 Increase your Strength or Constitution score by 1, to a maximum of 20.\n \u2022 When you hit with an attack using a simple or martial weapon, you can roll one of the weapon's damage dice an additional time and add it as extra damage of the weapon's damage type. Once you use this ability, you can't use it again until you finish a short or long rest.\n \u2022 Immediately after you use your Stone's Endurance trait, you can make one weapon attack as part of that reaction.",
+	descriptionFull : "Your competitive fury burns tirelessly. You gain the following benefits:\n \u2022 Increase your Strength or Constitution score by 1, to a maximum of 20.\n \u2022 When you hit with an attack using a simple or martial weapon, you can roll one of the weapon's damage dice an additional time and add it as extra damage of the weapon's damage type. Once you use this ability, you can't use it again until you finish a short or long rest.\n \u2022 Immediately after you use your Stone's Endurance trait, you can make one weapon attack as part of that reaction.",
 	description : "Once per short rest, I can roll an extra damage die for an attack with a simple or martial weapon. In addition, Immediately after I use my Stone's Endurance trait, I can use my reaction to make one weapon attack. [+1 Strength or Constitution]",
 	scorestxt : "+1 Strength or Constitution",
 	action : ["reaction", " (after Stone's Endurance)"],
@@ -801,6 +1290,32 @@ FeatsList["stone's fury"] = {
 	recovery : "short rest",
 	additional : "extra damage"
 };
+
+// Half-Orc
+FeatsList["orcish centaur heritage"] = {
+	name : "Orcish Centaur Heritage",
+	source : ["BurnSky"],
+	prerequisite : "Being a Half-Orc",
+	prereqeval : function(v) { return (/^(?=.*half)(?=.*orc).*$/i).test(CurrentRace.known); },
+	description : "My walking speed increases by 10 ft. I can use my hooves for unarmed strikes that deal 1d4 bludgeoning damage. I count as one size larger for my carrying capacity and the weight I can push, drag, or lift. Because of my hooves, 1 ft of movement while climbing costs me 4 ft. [+1 Strength or Constitution]",
+	improvements : "Orcish Centaur Heritage (feat): +1 Strength or Constitution;",
+	speed : { walk : {spd : "+10", enc : "+10" } },
+	carryingCapacity : 2,
+	weaponOptions : {
+		baseWeapon : "unarmed strike",
+		regExpSearch : /\b(hoofs?|hooves)\b/i,
+		name : "Hooves",
+		source : ["BurnSky"],
+		damage : [1, 4, "bludgeoning"],
+		description : ""
+	},
+	weaponsAdd : ["Hooves"],
+};
+/* Orcish Centaur Heritage
+The upper bodies of centaurs are comparable to human torsos in size, and below the waist, they have the bodies of small horses, averaging about 4 feet tall at the withers. Similar range of coloration as horses—from various shades of chestnut or bay to dappled or even zebra-like striped patterns. You gain the following benefits:
+• Increase your Strength or Constitution by 1, to a maximum of 20.
+• Hooves. Your hooves are natural melee weapons, which you can use to make unarmed strikes. If you hit with them, you deal bludgeoning damage equal to 1d4 + your Strength modifier, instead of the bludgeoning damage normal for an unarmed strike.
+• Equine Build. Your walking speed increases by 10 feet. You count as one size larger when determining your carrying capacity and the weight you can push or drag. In addition, any climb that requires hands and feet is especially difficult for you because of your equine legs. When you make such a climb, each foot of movement costs you 4 extra feet, instead of the normal 1 extra foot. */
 
 // Human
 FeatsList["angelfire blessing"] = {  
@@ -841,6 +1356,33 @@ WeaponsList["ancestral roar"] = {
 		dc : true,
 		dbBreathWeapon : true
 };
+FeatsList["kobold ancestral scales"] = {
+	name : "Kobold Ancestral Scales",
+	source : [["NodHB"]],
+	descriptionFull : "You manifest scales reminiscent of your draconic ancestors. You gain the following benefits:\n \u2022 Increase your Dexterity or Constitution score by 1, to a maximum of 20.\n \u2022 Your scales harden. While you aren't wearing armor, you can calculate your AC as 13 + your Dexterity modifier. You can use a shield and still gain this benefit.\n \u2022 When you take acid, cold, fire, lightning, or poison damage, you can use your reaction to give yourself resistance to that instance of damage. You can use this reaction a number of times equal to your proficiency bonus, and you regain all expended uses when you finish a long rest.",
+	description : "My scales harden, giving me an AC of 13 + Dexterity modifier + shield when I'm not wearing armor. As a reaction when I take acid, cold, fire, lightning, or poison damage, I can gain resistance to that damage instance. I can do this my Prof. Bonus per long rest. [+1 Dexterity or Constitution]",
+	scorestxt : "+1 Dexterity or Constitution",
+	action : ["reaction", "Ancestral Scales (Resistance)"],
+	extraLimitedFeatures : [{
+		name : "Ancestral Scales (Resistance)",
+		usages : "Proficiency Bonus per ",
+		usagescalc : "event.value = How('Proficiency Bonus');",
+		recovery : "long rest"
+	}],
+	armorOptions : {
+		regExpSearch : /^(?=.*(ancestral|dragon|draconic|scaly))(?=.*(hide|skin|scales|resilience)).*$/i,
+		name : "Ancestral Scales",
+		source : ["NodHB"],
+		ac : 13
+	},
+	armorAdd : "Ancestral Scales"
+};
+/* Kobold Ancestral Scales
+Prerequisite: Kobold
+Whatever their relationship to dragons, kobold scales tend to be rust colored, although the occasional kobold sports scale color more akin to that of a draconic ancestor. You gain the following benefits:
+• Increase your Dexterity or Constitution by 1, to a maximum of 20.
+• Your scales harden. While you aren't wearing armor, you can calculate your AC as 13 + your Dexterity modifier. You can use a shield and still gain this benefit.
+• When you take acid, cold, fire, lightning, or poison damage, you can use your reaction to give yourself resistance to that instance of damage. You can use this reaction a number of times equal to your proficiency bonus, and you regain all expended uses when you finish a long rest. */
 
 // Leonin
 FeatsList["fierce pride"] = { 
@@ -858,6 +1400,29 @@ FeatsList["fierce pride"] = {
 };
 
 // Lizardfolk
+FeatsList["subterranean lizardfolk"] = { 
+	name : "Subterranean Lizardfolk",
+	source : ["NodHB"],
+	prerequisite : "Being a Lizardfolk",
+	prereqeval : "CurrentRace.known.indexOf('lizardfolk') !== -1",
+	description : "I have darkvision out to a range of 60 feet. Climbing doesn't cost me extra movement. I count as one size larger when determining my carrying capacity and push/drag/lift weight. [+1 Str, Dex, Con or Wis]",
+	vision : [["Darkvision", 60]],
+	improvements : "Subterranean Lizard (feat): +1 Strength, Dexterity, Constitution or Wisdom;",
+	extraLimitedFeatures : {
+		name : "Hungry Jaws",
+		usages : 2,
+		recovery : "short rest"
+	},
+	carryingCapacity : 2
+};
+/* Subterranean Lizardfolk
+Prerequisites: Lizardfolk
+Your heritage is more akin to the great lizards of the underdark. You gain the following benefits:
+	• Increase your Strength, Dexterity, Constitution or Wisdom by 1, to a maximum of 20.
+	• Darkvision. You have superior vision in dark and dim conditions. You can see in dim light within 60 feet of you as if it were bright light, and in darkness as if it were dim light. You can't discern color in darkness, only shades of gray.
+	• Reptilian Build. You gain a climbing speed equal to your walking speed. You count as one size larger when determining your carrying capacity and the weight you can push, drag, or lift.
+	• Deep Hunger. You can use your Hungry Jaws trait twice before you must finish a short or long rest.
+*/
 FeatsList["swamp blood"] = { 
 	name : "Swamp Blood",
 	source : ["NodHB"],
@@ -966,6 +1531,30 @@ FeatsList["an elephant never forgets"] = {
 		description : "I can accurately recall anything I have seen or heard within the past month. My hatred for undead gives me benefits: Adv. on attacks in the first round of combat. Their opportunity attacks have disadv. against me. I add twice my prof. bonus on related knowledge checks. [+1 Con, Int, or Wis]"
 	}
 };
+FeatsList["blessing of ivory"] = {
+	name : "Blessing of Ivory",
+	source : ["NodHB"],
+	prerequisite : "Being a Loxodon",
+	prereqeval : "CurrentRace.known.indexOf('loxodon') !== -1",
+	description : "I gain a tusk attack that uses Strength and deals 1d6 piercing damage. As a bonus action, when I use the Attack action, I can shove someone within 5 ft with my tusks. [+1 Strength or Constitution]",
+	descriptionFull : "Your Proboscidean heritage shows true. You gain the following benefits:" + "\n " + "\u2022 Increase your Strength or Constitution score by 1, to a maximum of 20.\n \u2022 You gain a tusk attack as a natural weapon, which you can use to make unarmed strikes. If you hit with it, you deal piercing damage equal to 1d6 + your Strength modifier, instead of the bludgeoning damage normal for an unarmed strike.\n \u2022 If you take the Attack action on your turn, you can use a bonus action to try to shove a creature within 5 feet of you with your tusks.",
+	improvements : "Blessing of Ivory (feat): +1 Strength or Constitution;",
+	weaponOptions : {
+		baseWeapon : "unarmed strike",
+		regExpSearch : /tusk/i,
+		name : "Tusks",
+		source : ["NodHB"],
+		damage : [1, 6, "piercing"],
+	},
+	weaponsAdd : ["Tusks"],
+	action : ["bonus action", "Tusk Shove (with Attack action)"]
+};
+/* Blessing of Ivory
+Prerequisite: Loxodon
+Your Proboscidean heritage shows true. You gain the following benefits:
+• Increase your Strength or Constitution by 1, to a maximum of 20.
+• You gain a tusk attack as a natural weapon, which you can use to make unarmed strikes. If you hit with it, you deal piercing damage equal to 1d6 + your Strength modifier, instead of the bludgeoning damage normal for an unarmed strike.
+• If you take the Attack action on your turn, you can use a bonus action to try to shove a creature within 5 feet of you with your tusks. */
 FeatsList["loxodon gracefulness"] = {
 	name : "Loxodon Gracefulness",
 	source : ["NodHB"],
@@ -1010,9 +1599,9 @@ Prerequisite: Being an Owlfolk
 FeatsList["colony defender"] = { 
 	name : "Colony Defender",
 	source : ["NodHB"],
-	prerequisite : "Being a Rabbitfolk",
-	prereqeval : "CurrentRace.known.indexOf('rabbitfolk') !== -1",
-	description : "My walking speed increases by 5 ft. My Rabbit Hop distance does not provoke opportunity attacks. As a bonus action with the Attack action, I can make a double-tipped weapon attack for 2d4 piercing damage. +1 AC while wielding a double-tipped weapon with two hands. [+1 Strength or Dexterity]",
+	prerequisite : "Being a Harengon",
+	prereqeval : "CurrentRace.known.indexOf('harengon') !== -1",
+	description : "My walking speed increases by 5 ft. As a bonus action with the Attack action, I can make a double-tipped weapon attack for 2d4 piercing damage. +1 AC while wielding a double-tipped weapon with two hands. [+1 Strength or Dexterity]",
 	improvements : "Colony Defender (feat): +1 Strength or Dexterity;",
 	action : ["bonus action", " (with Attack action)"],
 	calcChanges : {
@@ -1024,21 +1613,40 @@ FeatsList["colony defender"] = {
 FeatsList["jumping flash"] = { 
 	name : "Jumping Flash",
 	source : ["NodHB"],
-	prerequisite : "Being a Rabbitfolk",
-	prereqeval : "CurrentRace.known.indexOf('rabbitfolk') !== -1",
-	description : "My walking speed increases by 5 ft. I gain proficiency in either the Acrobatics or the Athletics skill. The distance I jump with my Rabbit Hop feature does not provoke opportunity attacks",
+	prerequisite : "Being a Harengon",
+	prereqeval : "CurrentRace.known.indexOf('harengon') !== -1",
+	description : "My walking speed increases by 5 ft. I gain proficiency in either the Acrobatics or the Athletics skill. I regain all expended uses of my Rabbit Hop feature when I finish a short rest.",
 	improvements : "Jumping Flash (feat): +1 Strength or Dexterity;",
 	skills : "\n\n" + toUni("Jumping Flash (feat)") + ": Acrobatics or Athletics.",
 	speed : { walk : {spd : "+5", enc : "+5" } },
+	extraLimitedFeatures : {
+		name : "Rabbit Hop",
+		usages : "Proficiency bonus per ",
+		usagescalc : "event.value = How('Proficiency Bonus');",
+		recovery : "short rest"
+	},
 };
+/* Jumping Flash
+Prerequisite: Harengon
+You are uncommonly nimble for your race. You gain the following benefits:
+• Increase your Strength or Dexterity by 1, to a maximum of 20.
+• Increase your walking speed by 5 feet.
+• You gain proficiency in the Acrobatics or Athletics skill (your choice).
+• You regain all expended uses of your Rabbit Hop feature when you finish a short rest. */
 FeatsList["powerhouse hopper"] = { // (small sized)
 	name : "Powerhouse Hopper",
 	source : ["NodHB"],
-	prerequisite : "Being a Small sized Rabbitfolk",
-	prereqeval : "CurrentRace.known.indexOf('rabbitfolk') !== -1",
-	descriptionFull : "You are uncommonly hardy for your race. You gain the following benefits:\n \u2022 Increase your Strength or Constitution score by 1, to a maximum of 20.\n \u2022 Increase your walking speed by 5 feet.\n \u2022 The distance you jump with your Rabbit Hop does not provoke opportunity attacks.\n \u2022 You do not have disadvantage on attack rolls with weapons with the heavy property.",
-	description : "My walking speed increases by 5 ft. The distance I jump with my Rabbit Hop feature does not provoke opportunity attacks. I do not have disadvantage on attack rolls with heavy weapons.  [+1 Strength or Constitution]",
+	prerequisite : "Being a Small sized Harengon",
+	prereqeval : "CurrentRace.known.indexOf('harengon') !== -1",
+	descriptionFull : "You are uncommonly hardy for your race. You gain the following benefits:\n \u2022 Increase your Strength or Constitution score by 1, to a maximum of 20.\n \u2022 Increase your walking speed by 5 feet.\n \u2022 You regain all expended uses of your Rabbit Hop feature when you finish a short rest.\n \u2022 You do not have disadvantage on attack rolls with weapons with the heavy property.",
+	description : "My walking speed increases by 5 ft. I regain all expended uses of my Rabbit Hop feature when I finish a short rest. I do not have disadvantage on attack rolls with heavy weapons.  [+1 Strength or Constitution]",
 	scorestxt : "+1 Strength or Constitution",
+	extraLimitedFeatures : {
+		name : "Rabbit Hop",
+		usages : "Proficiency bonus per ",
+		usagescalc : "event.value = How('Proficiency Bonus');",
+		recovery : "short rest"
+	},
 	speed : { walk : {spd : "+5", enc : "+5" } }
 };
 /* Powerhouse Hopper
@@ -1132,7 +1740,7 @@ The ocean has imbued you with additional strength, granting you unparalleled mig
 • You count as one size larger when determining your carrying capacity and the weight you can push, drag, or lift.
 • As an a bonus action, you imbue yourself with power, transforming into a champion of the ocean. For the next minute, you have resistance to acid and poison damage, and your weapon attacks deal additional damage equal to your proficiency modifier. Once you use this feature, you can't use it again until you finish a long rest.
 */
-FeatsList["champion of the ocean"] = { // Triton
+FeatsList["champion of the ocean"] = {
 	name : "Champion of the Ocean",
 	source : ["NodHB"],
 	prerequisite : "Being a Triton",
@@ -1227,11 +1835,19 @@ FeatsList["thrown arms master"] = {
 };
 
 // Add Fighting Styles
-AddFightingStyle(["fighter", "ranger", "rangerua", "paladin"], "Tight Quarters Shooter", {
+AddFightingStyle(["fighter", "ranger", "paladin"], "Tight Quarters Shooter", { // originally UA
 	name : "Tight Quarters Shooting Fighting Style",
 	source : ["NodHB"],
 	description : "\n   " + "+1 bonus to attack rolls I make with ranged attacks" + "\n   " + "I don't have disadvantage when making a ranged attack while within 5 ft of a hostile" + "\n   " + "My ranged attacks ignore half and three-quarters cover against targets within 30 ft",
 	calcChanges : {
+		atkAdd : [
+			function (fields, v) {
+				if (v.isRangedWeapon || (!v.isSpell && (/thrown/i).test(fields.Description))) {
+					fields.Description += (fields.Description ? '; ' : '') + "Ignore \u00BD and \u00BE cover within 30 ft; ";
+				};
+			},
+			"My ranged attacks ignore half cover and three-quarters cover within 30 feet."
+		],
 		atkCalc : [
 			function (fields, v, output) {
 				if (v.isRangedWeapon) output.extraHit += 1;
@@ -1240,7 +1856,7 @@ AddFightingStyle(["fighter", "ranger", "rangerua", "paladin"], "Tight Quarters S
 		]
 	}
 });
-AddFightingStyle(["fighter", "ranger", "rangerua", "paladin"], "Tight Quarters Fighter", {
+AddFightingStyle(["fighter", "ranger", "rangerua", "paladin"], "Tight Quarters Fighter", { // originally UA
 	name : "Tight Quarters Fighting Style",
 	source : ["NodHB"],
 	description : "\n   " + "As a bonus action, I enter a defensive stance that lasts until the start of my next turn" + "\n   " + "While I'm in this defensive stance I gain the following two benefits:" + "\n    - " + "I can make opportunity attacks without using my reaction" + "\n    - " + "I can make a melee attack as a reaction if a hostile moves >5 ft while in my reach",
@@ -1272,6 +1888,24 @@ AddFightingStyle(["fighter"], "Hoplite", {
 });
 
 // Add Magic Items
+MagicItemsList["accurate ring of mettle"] = { // originally from Iabet-Noferet
+    name : "Accurate Ring of Mettle",
+    source : ["NodHB"],
+    type : "wonderous item",
+	rarity: "legendary",
+    description : "While wearing this ring, I gain a +1 bonus to AC and saving throws, and my hit point maximum increases by 5. Whenever I have advantage on an attack roll with the chosen score, I can re-roll one of the dice once. [+1 Dexterity, Intelligence, Wisdom, or Charisma]",
+    descriptionFull : "You gain a +1 bonus to AC and saving throws while wearing this ring. Your hit point maximum increases by 5. Increase your Dexterity, Intelligence, Wisdom, or Charisma score by 1, to a maximum of 20. Whenever you have advantage on an attack roll using the chosen score, you can re-roll one of the dice once.",
+    attunement : true,
+    weight : 1,
+    scorestxt : "+1 Dexterity, Intelligence, Wisdom or Charisma",
+	addMod : [{ type : "save", field : "all", mod : 1, text : "While wearing the Accurate Ring of Mettle, I gain a +1 bonus to all my saving throws." }],
+	extraAC : [{name : "Accurate Ring of Mettle", mod : 1, magic : true, text : "I gain a +1 bonus to AC while attuned."}],
+	calcChanges : {
+	hp : function () {
+        return [5, 'Accurate Ring of Mettle', true];
+        },
+    },
+};
 MagicItemsList["bandoleer vest"] = {
 	name : "Bandoleer Vest",
 	source : ["NodHB"],
@@ -1282,6 +1916,28 @@ MagicItemsList["bandoleer vest"] = {
 	attunement : false,
 	weight : 3,
 };
+MagicItemsList["belt of many pouches"] = {	
+		name : "Belt of Many Pouches",
+		nameAlt : "Belt of Pouches",
+		source : [["NodHB"]],
+		type : "wondrous item",
+		rarity : "rare",
+		magicItemTable : "C",
+		description : "This belt weighs 10 lbs, regardless of its contents. It has sixty-four pouches that hold 10 lb (1 cu ft) each. Retrieving an item from it requires an action. If it's overloaded, pierced, or torn, it and its content are destroyed. If turned inside out, all its contents spill forth.",
+		descriptionLong : "This belt weighs 10 lbs, regardless of its contents. It has sixty-four pouches that hold 10 lb (1 cu ft) each. Retrieving an item from it requires an action. If it's overloaded, pierced, or torn, it and its content are destroyed. If turned inside out, all its contents spill forth. A creature placed inside a pouch can survive for 10 minutes before starting to suffocate. Placing the belt in another extradimensional space instantly destroys both and opens a gate to the Astral Plane.",
+		descriptionFull : "This broad waist-belt appears to have eight pouches built into it, but in fact, there are seven more magically compressed behind each (for a total of 64 pouches). Each of these pouches can contain up to one cubic foot of material weighing up to 10 lbs; however, no matter how much you put into the belt's pouches, it always weighs 10 lbs.\n   Placing an object in a pouch follows the normal rules for interacting with Objects. Retrieving an item from a pouch requires you to use an action. The belt magically assists you in finding what you need within its contents, so you always know which pouch a given item is in. When you reach into a pouch for a specific item, the item is always magically on top.\n   The belt has a few limitations. If it is overloaded, or if a sharp object pierces it or tears it, the belt ruptures and is destroyed. If the belt is destroyed, its contents are lost forever, although an artifact always turns up again somewhere. If a pouch is turned inside out, its contents spill forth, unharmed, and the pouch must be put right before it can be used again. If a breathing creature is placed within a pouch, the creature can survive for up to 10 minutes, after which time it begins to suffocate.\n   Placing the belt inside an extradimensional space created by a Bag of Holding, Portable Hole, or similar item instantly destroys both items and opens a gate to the Astral Plane. The gate originates where the one item was placed inside the other. Any creature within 10 feet of the gate is sucked through it and deposited in a random Location on the Astral Plane. The gate then closes. The gate is one-way only and can't be reopened.",
+		weight : 10,
+		action : [["action", " (retrieve item)"]]
+};
+/* Belt of Many Pouches
+Wondrous item, rare
+This broad waist-belt appears to have eight pouches built into it, but in fact, there are seven more magically compressed behind each (for a total of 64 pouches). Each of these pouches can contain up to one cubic foot of material weighing up to 10 lbs; however, no matter how much you put into the belt's pouches, it always weighs 10 lbs. 
+
+Placing an object in a pouch follows the normal rules for interacting with Objects. Retrieving an item from a pouch requires you to use an action. The belt magically assists you in finding what you need within its contents, so you always know which pouch a given item is in. When you reach into a pouch for a specific item, the item is always magically on top.
+
+The belt has a few limitations. If it is overloaded, or if a sharp object pierces it or tears it, the belt ruptures and is destroyed. If the belt is destroyed, its contents are lost forever, although an artifact always turns up again somewhere. If a pouch is turned inside out, its contents spill forth, unharmed, and the pouch must be put right before it can be used again. If a breathing creature is placed within a pouch, the creature can survive for up to 10 minutes, after which time it begins to suffocate.
+
+Placing the belt inside an extradimensional space created by a Bag of Holding, Portable Hole, or similar item instantly destroys both items and opens a gate to the Astral Plane. The gate originates where the one item was placed inside the other. Any creature within 10 feet of the gate is sucked through it and deposited in a random Location on the Astral Plane. The gate then closes. The gate is one-way only and can't be reopened. */
 MagicItemsList["bonedusk quiver"] = {
     name: "Bonedusk Quiver",
     source: ["NodHB"],
@@ -1294,6 +1950,9 @@ MagicItemsList["bonedusk quiver"] = {
 	additional : "Regenerate 13 Arrows",
 	weight : 2,
 };
+/* Bonedusk Quiver
+Wondrous item, uncommon
+This quiver holds 13 magic arrows made from bone and an odd membrane for fletching. No other ammunition can be placed in the quiver. Any pieces of ammunition created by this quiver disintegrates when the attack is completed. The quiver regenerates any used arrows at each dusk. */
 MagicItemsList["bracer of knife throwing"] = {
 	name : "Bracer of Knife Throwing",
 	source : ["NodHB"],
@@ -1549,12 +2208,6 @@ MagicItemsList["knight's spear"] = {
 		}
 	}
 };
-/* Moonlit Bow
-Simple weapon (shortbow), ranged weapon, rare (requires attunement)
-2 lb. 	1d8 radiant - (80/320 ft.), two-handed
-
-Simply drawing your fingers in the air near this finely crafted bow causes it to be strung with an arrow of lunar energy that deals 1d8 radiant damage. When drawn using both hands, the bow sheds moonlight, creating bright light in a 15-foot radius and dim light for an additional 15 feet.
-*/
 MagicItemsList["moonlit bow"] = {
 	name : "Moonlit Bow",
 	source : ["NodHB"],
@@ -1573,21 +2226,36 @@ MagicItemsList["moonlit bow"] = {
 		description : "Two-handed; creates magical ammunition"
 		}
 };
+/* Moonlit Bow
+Simple weapon (shortbow), ranged weapon, rare (requires attunement)
+2 lb. 	1d8 radiant - (80/320 ft.), two-handed
+
+Simply drawing your fingers in the air near this finely crafted bow causes it to be strung with an arrow of lunar energy that deals 1d8 radiant damage. When drawn using both hands, the bow sheds moonlight, creating bright light in a 15-foot radius and dim light for an additional 15 feet.
+*/
+MagicItemsList["moonwater cup"] = {	
+	name : "Moonwater Cup",
+	source : ["NodHB"],
+	type : "wondrous",
+	rarity : "uncommon",
+	description : "As an action, I can speak the command word and pour a half-gallon of fresh water out of the cup. Once this special action is used, it can't be used again until the next dawn.",
+	usages : 1,
+	recovery : "dawn",
+	additional: " Summon Water",
+	action : [["action", "Summon Water (Half-gallon)"]],
+};
 /* Moonwater Cup
 Wondrous item, common
 As an action, I can speak the command word and pour a half-gallon of fresh water out of the cup. Once this special action is used, it can't be used again until the next dawn.
 */
-MagicItemsList["moonwater cup"] = {	
-		name : "Moonwater Cup",
-		source : ["NodHB"],
-		type : "wondrous",
+MagicItemsList["equestrian wraps"] = {
+		name : "Equestrian Wraps",
+		source : [["NodHB"]],
+		type : "wondrous item",
 		rarity : "uncommon",
-		description : "As an action, I can speak the command word and pour a half-gallon of fresh water out of the cup. Once this special action is used, it can't be used again until the next dawn.",
-		usages : 1,
-		recovery : "dawn",
-		additional: " Summon Water",
-		action : [["action", "Summon Water (Half-gallon)"]],
-	};
+		attunement : true,
+		description : "While a horse or similar quadruped creature wears these leg wraps, their walking speed becomes 30 feet, unless their walking speed is higher, and their speed isn't reduced if they are encumbered or wearing heavy armor. In addition, they can jump three times the normal distance, though they can't jump farther than their remaining movement would allow.",
+		speed : { walk : { spd : "fixed 30", enc : "fixed 30" } }
+};
 MagicItemsList["quickdraw longbow"] = {
 	name : "Quickdraw Longbow",
 	source : ["NodHB"],
@@ -1673,6 +2341,15 @@ MagicItemsList["ring of cloud jumping"] = {
 		speed : { fly : { spd : "walk", enc : "walk" } },
 		attunement : true,
 			};
+MagicItemsList["ring of water breathing"] = {
+		name : "Ring of Water Breathing",
+		source : [["NodHB"]],
+		type : "ring",
+		rarity : "uncommon",
+		magicItemTable : "F",
+		description : "While wearing this ring, I am able to breathe normally underwater.",
+		descriptionFull : "While wearing this ring, you are able to breathe normally underwater."
+};
 MagicItemsList["robe of alacrity"] = {
     name: "Robe of Alacrity",
     source: ["NodHB"],
@@ -1731,12 +2408,25 @@ MagicItemsList["runic top"] = {
 		times : 1
 	}],
 };
-/* Shield of Forceful Offense
-Armor (shield), Weapon (improvised), rare
-6 lb. 	AC +2	1d4 bludgeoning - thrown (20/60 ft.)
-
-This shield is magically enchanted to also be used as an improvised weapon. You gain a +1 bonus to attack and damage rolls made with it. In addition, this shield deals an extra 1d4 force damage to any target it hits.
-*/
+MagicItemsList["sharkbane trident"] = {
+	name : "Sharkbane Trident",
+	source : [["NodHB"]],
+	type : "weapon (trident)",
+	rarity : "rare",
+	attunement : true,
+	description : "As a bonus action, I can speak the command word of this magic trident, causing electrical current to arc from it. This current adds +2d6 lightning damage and shines bright light in a 40-ft radius and dim light for an additional 40 ft. The current lasts until I speak the command word again or drop or sheathe it",
+	descriptionFull : "You can use a bonus action to speak this magic trident's command word, causing electrical current to arc between the tines. This electrical current sheds bright light in a 40-foot radius and dim light for an additional 40 feet. While the trident is energized, it deals an extra 2d6 lightning damage to any target it hits. The electrical current lasts until you use a bonus action to speak the command word again or until you drop or sheathe the trident.",
+	action : [["bonus action", " (activate/end)"]],
+	weight : 4,
+	weaponsAdd : ["Sharkbane Trident"],
+	weaponOptions : {
+		baseWeapon : "trident",
+		regExpSearch : /^(?=.*sharkbane)(?=.*trident).*$/i,
+		name : "Sharkbane Trident",
+		source : [["NodHB"]],
+		description : "Finesse, thrown, versatile (1d10); While active, +2d6 lightning damage",
+		}
+};
 MagicItemsList["shield of forceful offense"] = {
 	name : "Shield of Forceful Offense",
 	source : ["NodHB"],
@@ -1759,6 +2449,49 @@ MagicItemsList["shield of forceful offense"] = {
 			modifiers : [1, 1],
 		}
 };
+/* Shield of Forceful Offense
+Armor (shield), Weapon (improvised), rare
+6 lb. 	AC +2	1d4 bludgeoning - thrown (20/60 ft.)
+
+This shield is magically enchanted to also be used as an improvised weapon. You gain a +1 bonus to attack and damage rolls made with it. In addition, this shield deals an extra 1d4 force damage to any target it hits.
+*/
+MagicItemsList["shockbeast bow"] = {
+    name : "Shockbeast Bow",
+    source : ["NodHB"],
+    type : "weapon (shortbow)",
+    rarity : "rare",
+    description : "This magical bow made from Zinogre parts deals an extra 1d4 lightning damage to any target it hits.",
+    descriptionFull : "This magical bow, created from parts harvested from the frightful mountain shockbeast, Zinogre, deals an extra 1d4 lightning damage to any target it hits.",
+    attunement : false,
+    weight : 2,
+    weaponsAdd : ["Shockbeast Bow"],
+    weaponOptions : {
+        baseWeapon : "shortbow",
+        regExpSearch : /^(?=.*shockbeast).*$/i,
+        name : "Shockbeast Bow",
+        source : ["NodHB"],
+        damage : [1, 6, "piercing"],
+        description : "Ammunition, two-handed; +1d4 lightning; "
+        },
+};
+/* Shockbeast Bow
+weapon (shortbow), rare
+This magical bow, created from parts harvested from the frightful mountain shockbeast, Zinogre, deals an extra 1d4 lightning damage to any target it hits. */
+MagicItemsList["silver band of projection"] = {
+	name : "Silver Band of Projection",
+	source : ["NodHB"],
+	type : "ring",
+	rarity : "common",
+	description : "While wearing this ring, I can use an action to cause my voice to carry clearly for up to 300 feet until the end of my next turn.",
+	descriptionFull : "While wearing this ring, you can use an action to cause your voice to carry clearly for up to 300 feet until the end of your next turn.",
+}
+MagicItemsList["silver sentinel ring"] = {
+	name : "Silver Sentinel Ring",
+	source : ["NodHB"],
+	type : "ring",
+	rarity : "common",
+	description : "This ring glows faintly when undead are within 120 feet of it.",
+};
 MagicItemsList["spiked gauntlets"] = {
 	name : "Spiked Gauntlets",
 	source : ["NodHB"],
@@ -1780,6 +2513,18 @@ MagicItemsList["spiked gauntlets"] = {
 		abilitytodamage : true,
 		monkweapon : true,
 		},
+};
+/* Temperate Bootstrap Armband
+Wondrous item, common
+This simple leather armband is made from toughened bootstrap leather. It grants you environmental protection. While you wear it, you suffer no harm in temperatures as cold as -20 degrees Fahrenheit or as warm as 120 degrees Fahrenheit. */
+MagicItemsList["temperate bootstrap armband"] = {
+	name : "Temperate Bootstrap Armband",
+	source : ["NodHB"],
+	type : "wondrous item",
+	rarity : "common",
+	savetxt : { text : ["[Armband] comfortable in -20/120 degree temperatures"] },
+	description : "This toughened bootstrap leather armband grants me environmental protection. While I wear it, I suffer no harm in temperatures as cold as -20 degrees Fahrenheit or as warm as 120 degrees Fahrenheit.",
+	descriptionFull : "This simple leather armband is made from toughened bootstrap leather. It grants you environmental protection. While you wear it, you suffer no harm in temperatures as cold as -20 degrees Fahrenheit or as warm as 120 degrees Fahrenheit."
 };
 MagicItemsList["tigersong blade"] = {
 	name : "Tigersong Blade",
@@ -1832,6 +2577,19 @@ MagicItemsList["tiger stripe catana"] = {
 			modifiers : [1, 1]
 		},
 	};
+MagicItemsList["traveler's coin pouch"] = {	
+		name : "Traveler's Coin Pouch",
+		nameAlt : "Coin Pouch",
+		source : [["NodHB"]],
+		type : "wondrous item",
+		rarity : "uncommon",
+		description : "This magical belt pouch can hold up to 30 lbs. of coins (1500 average sized coins) yet only weighs 5 lbs. When you use an action to press it against your belly, it affixes itself to you and turns invisible. You cannot access the pouch’s contents while it is affixed.",
+		weight : 5,
+		action : [["action", " (affix)"]]
+};
+/*  Traveler's Coin Pouch
+Wondrous item, uncommon
+This magical belt pouch can hold up to 30 lbs. of coins (1500 average sized coins) yet only weighs 5 lbs. When you use an action to press it against your belly, it affixes itself to you and turns invisible. You cannot access the pouch’s contents while it is affixed. */
 MagicItemsList["unicorn queen's bow"] = {
 		name : "Unicorn Queen's Bow",
 		source : ["NodHB"],
@@ -1880,6 +2638,18 @@ MagicItemsList["unicorn queen's horn"] = {
 		description : "Finesse, Light ",
 		modifiers : [0, 0]
 	}
+};
+/* Wayfarer's Iron Ring
+Ring, uncommon
+While you wear this ring, moving through nonmagical difficult terrain costs you no extra movement. */
+MagicItemsList["wayfarer's iron ring"] = {
+	name : "Wayfarer's Iron Ring",
+	source : [["NodHB"]],
+	type : "ring",
+	rarity : "uncommon",
+	description : "While I wear this ring, moving through nonmagical difficult terrain doesn't cost me extra movement.",
+	descriptionFull : "While you wear this ring, moving through nonmagical difficult terrain doesn't cost you extra movement.",
+	attunement : false,
 };
 MagicItemsList["weapon of echoes"] = {
 		name : "Weapon of Echoes",
@@ -1943,6 +2713,33 @@ MagicItemsList["wristwatch compass"] = {
 	rarity: "common",
 	description : "While wearing this wristwatch on the Material Plane, you can use an action to determine what time of day it is or to determine which way is north.",
 	action : [["action", "Time/Find North (Wristwatch)"]]
+};
+MagicItemsList["duelist's armor of dual weilding"] = {  // Heward's Hireling Armor from LLoK
+	name : "Duelist's Armor of Dual Weilding",
+	nameAlt : "Hireling Armor",
+	source : [["NodHB"]],
+	type : "armor (leather)",
+	rarity : "very rare",
+	description : "This leather armor gives me a +1 bonus to AC and allows me to draw or stow two one-handed weapons when I would normally be able to draw or stow only one. It has 6 pockets that hold 20 lb (2 cu ft) each as they are extradimensional spaces. Retrieving an item from a pocket requires an action.",
+	descriptionFull : "A number of magical experiments were attempts to research the works of legendary mages. While wearing this armor, you gain a +1 bonus to AC. In addition, the armor's animated straps can assist with the drawing and sheathing of weapons, such that you can draw or stow two one-handed weapons when you would normally be able to draw or stow only one.\n   This armor also has six pockets, each of which is an extradimensional space. Each pocket can hold up to 20 pounds of material, not exceeding a volume of 2 cubic feet. The armor always weighs 10 pounds, regardless of its pockets' contents. Placing an object into one of the armor's pockets follows the normal rules for interacting with objects. Retrieving an item from a pocket of the armor requires you to use an action. When you reach into a pocket for a specific item, the item is always magically on top.\n   Placing the armor inside an extradimensional space created by a bag of holding, a Heward's handy haversack, or a similar item instantly destroys both items and opens a gate to the Astral Plane. The gate originates where the one item was placed inside the other. Any creature within 10 feet of the gate is sucked through it and deposited in a random location on the Astral Plane. The gate then closes. The gate is one-way only and can't be reopened.",
+	weight : 13,
+	action : [["action", " (retrieve item)"]],
+	armorAdd : "Duelist's Armor of Dual Weilding",
+	armorOptions : {
+		regExpSearch : /^(?=.*duel)(?=.*dual)(?=.*armor).*$/i,
+		name : "Duelist's Armor of Dual Weilding",
+		source : [["NodHB"]],
+		type : "light",
+		ac : 12,
+		weight : 13
+	}
+};
+MagicItemsList["bedsheets of comfort"] = {	
+	name : "Bedsheets of Comfort",
+	source : [["NodHB"]],
+	type : "wondrous",
+	rarity : "common",
+	description : "While you are covered with or wrapped in these bedsheets, you suffer no harm in temperatures as cold as -20 degrees Fahrenheit or as warm as 120 degrees Fahrenheit.",
 };
 
 // Add Spells
@@ -2070,6 +2867,21 @@ SpellsList["servant swarm"] = {
     description : "Summon 3+1/SL familiars as Find Familiar; can see through their eyes and deliver touch spells; see B",
     descriptionFull: "You temporarily summon three familiars\u2014spirits that take animal forms of your choice. Each familiar uses the same rules and options for a familiar conjured by the find familiar spell. All the familiars conjured by this spell must be the same type of creature (celestials, fey, or fiends; your choice). If you already have a familiar conjured by the find familiar spell or similar means, then one fewer familiars are conjured by this spell.\n   Familiars summoned by this spell can telepathically communicate with you and share their visual or auditory senses while they are within 1 mile of you.\n   When you cast a spell with a range of touch, one of the familiars conjured by this spell can deliver the spell, as normal. However, you can cast a touch spell through only one familiar per turn." + AtHigherLevels + "When you cast this spell using a spell slot of 3rd level or higher, you conjure an additional familiar for each slot level above 2nd."
 };
+SpellsList["timely transport"] = { // Galder's Speedy Courier from LLoK
+    name: "Timely Transport",
+    classes: ["artificer", "warlock", "wizard"],
+    source: ["NodHB"],
+    level: 4,
+    school: "Conj",
+    time: "1 a",
+    range: "10 ft",
+    components: "V,S,M\u2020",
+    compMaterial: "25 gp, or mineral goods of equivalent value, which the spell consumes",
+    duration: "10 min",
+	description: "Send 3\xD73\xD73 ft chest of items I put in it to named crea on same plane; SL8: other plane (25gp cons.)",
+	descriptionMetric : "Send 1\xD71\xD71 m chest of items I put in it to named crea on same plane; SL8: other plane (25gp cons.)",
+    descriptionFull: "You summon a Small air elemental to a spot within range. The air elemental is formless, nearly transparent, immune to all damage, and cannot interact with other creatures or objects. It carries an open, empty chest whose interior dimensions are 3 feet on each side. While the spell lasts, you can deposit as many items inside the chest as will fit. You can then name a living creature you have met and seen at least once before, or any creature for which you possess a body part, lock of hair, clipping from a nail, or similar portion of the creature's body.\n   As soon as the lid of the chest is closed, the elemental and the chest disappear, then reappear adjacent to the target creature. If the target creature is on another plane, or if it is proofed against magical detection or location, the contents of the chest reappear on the ground at your feet.\n   The target creature is made aware of the chest's contents before it chooses whether or not to open it, and knows how much of the spell's duration remains in which it can retrieve them. No other creature can open the chest and retrieve its contents. When the spell expires or when all the contents of the chest have been removed, the elemental and the chest disappear. The elemental also disappears if the target creature orders it to return the items to you. When the elemental disappears, any items not taken from the chest reappear on the ground at your feet." + AtHigherLevels + "When you cast this spell using an 8th-level spell slot, you can send the chest to a creature on a different plane of existence from you."
+};
 SpellsList["torporous tonic"] = {
 	name : "Torporous Tonic",
 	source : ["NodHB"],
@@ -2151,6 +2963,44 @@ SpellsList["shift shape"] = {
 	description : "1 creature save or transformed into beast of my choice of CR 1 or lower without flight; charmed if not immune",
 	descriptionFull : "This spell transforms a creature you can see within range into a new beast form. An unwilling creature must make a Wisdom saving throw to avoid the effect. A shapechanger automatically succeeds on this saving throw." + "\n   " + "The transformation lasts for the duration, or until the target drops to 0 hit points or dies. The new form can be any beast of CR 1 or less that does not have a fly speed. While in this new form, the target is charmed by you and views you as a trusted ally. The target can understand simple commands such as “attack” or “stay.” The charm affects creatures that are immune to charm in their normal form. The charm ends immediately when the target reverts to its normal form." + "\n   " + "The target’s game statistics, including mental ability scores, are replaced by the statistics of the chosen beast. It retains its alignment and personality. The creature is limited in the actions it can perform by the nature of its new form, and it can’t speak, cast spells, or take any other action that requires hands or speech. The creature's gear melds into its new form. The creature can’t activate, use, wield, or otherwise benefit from any of its equipment." + "\n   " + "The target assumes the hit points of its new form. When it reverts to its normal form, the creature returns to the number of hit points it had before it transformed. If it reverts as a result of dropping to 0 hit points, any excess damage carries over to its normal form."
 };
+SpellsList["shinescale's claw"] = {
+	name : "Shinescale's Claw",
+	nameAlt : "Dragon's Claw",
+	classes : ["artificer", "sorcerer", "wizard"],
+	source : [["NodHB"]],
+	level : 5,
+	school : "Evoc",
+	time : "1 a",
+	range : "120 ft",
+	components : "V,S,M",
+	compMaterial : "a draconic scale and a leather glove",
+	duration : "Conc, 1 min",
+	description : "Large claw attacks, pushes, grapples or shields, see descrip; AC 20, my max HP; bns a move 60 ft",
+	descriptionFull : "You create a Large claw of shimmering, translucent force in an unoccupied space that you can see within range. The claw lasts for the spell's duration, and it moves at your command, mimicking the movements of your own hand." + "\n   " + "The claw is an object that has AC 20 and hit points equal to your hit point maximum. If it drops to 0 hit points, the spell ends. It has a Strength of 26 (+8) and a Dexterity of 10 (+0). The claw doesn't fill its space." + "\n   " + "When you cast the spell and as a bonus action on your subsequent turns, you can move the claw up to 60 feet and then cause one of the following effects with it." + "\n   " + "Slashing Claw. The claw strikes one creature or object within 5 feet of it. Make a melee spell attack for the claw using your game statistics. On a hit, the target takes 4d8 force damage." + "\n   " + "Forceful Claw. The claw attempts to push a creature within 5 feet of it in a direction you choose. Make a check with the claw's Strength contested by the Strength (Athletics) check of the target. If the target is Medium or smaller, you have advantage on the check. If you succeed, the claw pushes the target up to 5 feet plus a number of feet equal to five times your spellcasting ability modifier. The claw moves with the target to remain within 5 feet of it." + "\n   " + "Grasping Claw. The claw attempts to grapple a Huge or smaller creature within 5 feet of it. You use the claw's Strength score to resolve the grapple. If the target is Medium or smaller, you have advantage on the check. While the claw is grappling the target, you can use a bonus action to have the claw crush it. When you do so, the target takes bludgeoning damage equal to 2d6 + your spellcasting ability modifier." + "\n   " + "Interposing Claw. The claw interposes itself between you and a creature you choose until you give the claw a different command. The claw moves to stay between you and the target, providing you with half cover against the target. The target can't move through the claw's space if its Strength score is less than or equal to the claw's Strength score. If its Strength score is higher than the claw's Strength score, the target can move toward you through the claw's space, but that space is difficult terrain for the target." + AtHigherLevels + "When you cast this spell using a spell slot of 6th level or higher, the damage from the Slashing Claw option increases by 2d8 and the damage from the Grasping Claw increases by 2d6 for each slot level above 5th."
+};
+/* Shinescale's Claw
+5th-level evocation
+Casting Time: 1 action
+Range: 120 feet
+Components: V, S, M (a draconic scale and a leather glove)
+Duration: Concentration, up to 1 minute
+
+You create a Large claw of shimmering, translucent force in an unoccupied space that you can see within range. The claw lasts for the spell's duration, and it moves at your command, mimicking the movements of your own hand.
+The claw is an object that has AC 20 and hit points equal to your hit point maximum. If it drops to 0 hit points, the spell ends. It has a Strength of 26 (+8) and a Dexterity of 10 (+0). The claw doesn't fill its space.
+When you cast the spell and as a bonus action on your subsequent turns, you can move the claw up to 60 feet and then cause one of the following effects with it.
+Slashing Claw.
+The claw strikes one creature or object within 5 feet of it. Make a melee spell attack for the claw using your game statistics. On a hit, the target takes 4d8 force damage.
+Forceful Claw.
+The claw attempts to push a creature within 5 feet of it in a direction you choose. Make a check with the claw's Strength contested by the Strength (Athletics) check of the target. If the target is Medium or smaller, you have advantage on the check. If you succeed, the claw pushes the target up to 5 feet plus a number of feet equal to five times your spellcasting ability modifier. The claw moves with the target to remain within 5 feet of it.
+Grasping Claw.
+The claw attempts to grapple a Huge or smaller creature within 5 feet of it. You use the claw's Strength score to resolve the grapple. If the target is Medium or smaller, you have advantage on the check. While the claw is grappling the target, you can use a bonus action to have the claw crush it. When you do so, the target takes bludgeoning damage equal to 2d6 + your spellcasting ability modifier.
+Interposing Claw.
+The claw interposes itself between you and a creature you choose until you give the claw a different command. The claw moves to stay between you and the target, providing you with half cover against the target. The target can't move through the claw's space if its Strength score is less than or equal to the claw's Strength score. If its Strength score is higher than the claw's Strength score, the target can move toward you through the claw's space, but that space is difficult terrain for the target.
+
+At Higher Levels. 
+When you cast this spell using a spell slot of 6th level or higher, the damage from the slashing claw option increases by 2d8 and the damage from the grasping claw increases by 2d6 for each slot level above 5th. */
+
+
 // Acid damage
 SpellsList["acidic bolt"] = {
 		name : "Acidic Bolt",
@@ -2204,6 +3054,109 @@ WeaponsList["create acidspout"] = {
 	abilitytodamage: false,
 	dc: true
 };
+// Bludgeoning damage
+SpellsList["hailstone barrage"] = {
+	name: "Hailstone Barrage",
+	classes: ["cleric","druid","sorcerer","warlock","wizard"],
+	source: ["NodHB"],
+	level: 0,
+	school: "Evoc",
+	time: "1 a",
+	range: "90",
+	components: "V,S",
+	description: "Fling frozen water 2d4 Bludgeoning dmg; cubes at same or different targets; CL5:2, CL11:3, CL17:4 cubes",
+	descriptionCantripDie: "`CD`x additional cubes",
+	descriptionFull: "I conjure cubes of frigid ice and fling it at a creature within range. Make a ranged spell attack against the target. On a hit, the target takes 2d4 bludgeoning damage." + "\n   " + AtHigherLevels + "The spell creates more than one cube when I reach higher levels: two cubes at 5th level, three cubes at 11th level, and four cubes at 17th level. I can direct the cubes at the same target or at different ones. Make a separate attack roll for each cube."
+};
+/* Hailstone Barrage
+Evocation cantrip
+Casting Time: 1 action
+Range: 90 feet
+Components: V, S
+Duration: Instantaneous
+You conjure a cube of frigid ice and fling it at a creature within range. Make a ranged spell attack against the target. On a hit, the target takes 2d4 bludgeoning damage.
+
+The spell creates more than one cube when you reach higher levels: two cubes at 5th level, three cubes at 11th level, and four cubes at 17th level. You can direct the cubes at the same target or at different ones. Make a separate attack roll for each cube. */
+WeaponsList["hailstone barrage"] = {
+	regExpSearch: /^hailstone(?=.*barrage).*$/i,
+	name: "Hailstone Barrage",
+	source: ["NodHB"],
+	list: "spell",
+	ability: 6,
+	type: "Cantrip",
+	damage : ["C\u00D7" + 2, 4, "bludgeoning"],
+	range: "90 ft",
+	description: "Each 2d4 is a separate cube requiring separate rolls; ",
+	abilitytodamage: false,
+	SpellsList: "hailstone barrage",
+};
+// Cold damage
+SpellsList["freezing blade"] = {
+		name : "Freezing Blade",
+		classes : ["artificer", "sorcerer", "warlock", "wizard"],
+		source : ["NodHB"],
+		level : 0,
+		school : "Evoc",
+		time : "1 a",
+		range : "5 ft",
+		components : "V,M",
+		compMaterial : "A weapon",
+		duration : "Instantaneous",
+		description : "Melee weap atk with cast; if hit: 0d8 Cold dmg., if it moves next rnd +1d8; +1d8 at CL5, 11, \u0026 17",
+		descriptionCantripDie : "Melee wea atk with cast; if hit: `CD-1`d8 Cold dmg and if it moves next round +`CD`d8 Cold dmg",
+		descriptionFull : "As part of the action used to cast this spell, you must make a melee attack with a weapon against one creature within the spell's range, otherwise the spell fails. On a hit, the target suffers the attack's normal effects, and it becomes sheathed in cold energy until the start of your next turn. If the target willingly moves before then, it immediately takes 1d8 cold damage, and the spell ends." + AtHigherLevels + "This spell's damage increases when you reach higher levels. At 5th level, the melee attack deals an extra 1d8 cold damage to the target, and the damage the target takes for moving increases to 2d8. Both damage rolls increase by 1d8 at 11th level and 17th level."
+	};
+WeaponsList["freezing blade"] = {
+	regExpSearch : /^(?=.*freezing)(?=.*blade).*$/i,
+	name : "Freezing Blade",
+	source : ["NodHB"],
+	list : "spell",
+	ability : 6,
+	type : "Cantrip",
+	damage : ["Bd8/Cd8", "", "cold"],
+	range : "With melee wea",
+	description : "First damage added to the attack; second to the target if it moves next round; ",
+	abilitytodamage : false
+};
+/*Toll of the Tides
+Evocation cantrip
+Casting Time: 1 action
+Range: 60 feet
+Components: V, S
+Duration: Instantaneous
+You point at one creature you can see within range, and the sound of a ship's bell fills the air around it for a moment. The target must succeed on a Wisdom saving throw or take 1d8 cold damage. If the target is missing any of its hit points, it instead takes 1d12 cold damage.
+
+The spell's damage increases by one die when you reach 5th level (2d8 or 2d12), 11th level (3d8 or 3d12), and 17th level (4d8 or 4d12).
+
+Classes: Cleric, Warlock, Wizard */
+SpellsList["toll of the tides"] = {
+	name : "Toll of the Tides",
+	classes : ["cleric", "warlock", "wizard"],
+	source : ["NodHB"],
+	level : 0,
+	school : "Evoc",
+	time : "1 a",
+	range : "60 ft",
+	components : "V,S",
+	duration : "Instantaneous",
+	save : "Wis",
+	description : "1 crea save or 1d12 Cold dmg (d8 instead of d12 if at full HP); +1d12/1d8 at CL 5, 11, \u0026 17",
+	descriptionCantripDie : "1 crea save or `CD`d12 Cold damage (d8 instead of d12 if at full HP)",
+	descriptionFull : "You point at one creature you can see within range, and the sound of a ship's bell fills the air around it for a moment. The target must succeed on a Wisdom saving throw or take 1d8 cold damage. If the target is missing any of its hit points, it instead takes 1d12 cold damage." + "\n   " + "The spell's damage increases by one die when you reach 5th level (2d8 or 2d12), 11th level (3d8 or 3d12), and 17th level (4d8 or 4d12)."
+};
+WeaponsList["toll of the tides"] = {
+	regExpSearch : /^(?=.*toll)(?=.*the)(?=.*tides).*$/i,
+	name : "Toll of the Tides",
+	source : ["NodHB"],
+	list : "spell",
+	ability : 5,
+	type : "Cantrip",
+	damage : ["C", 12, "cold"],
+	range : "60 ft",
+	description : "Wis save, success - no damage; If target is at full HP, d8 instead of d12 damage",
+	abilitytodamage : false,
+	dc : true
+};
 // Lightning damage
 SpellsList["shocking bolt"] = {
 		name : "Shocking Bolt",
@@ -2230,7 +3183,6 @@ WeaponsList["shocking bolt"] = {
 		description : "Unattended flammable objects ignite (PHB 241)",
 		abilitytodamage : false
 	}
-UpdateDropdown("weapon");
 SpellsList["shocking blade"] = {
 		name : "Shocking Blade",
 		classes : ["artificer", "sorcerer", "warlock", "wizard"],
@@ -2381,6 +3333,32 @@ WeaponsList["radiant bolt"] = {
 		description : "Unattended flammable objects ignite; ",
 		abilitytodamage : false
 	}
+SpellsList["starflame"] = {
+	name : "Starflame",
+	classes : ["cleric", "druid"],
+	source : ["NodHB"],
+	level : 0,
+	school : "Conj",
+	time : "1 a",
+	range : "Self",
+	components : "V,S",
+	duration : "10 min (D)",
+	description : "Starlight 10 ft bright light; once 30 ft ranged spell attack for 1d8 Radiant dmg; +1d8 at CL 5, 11, and 17",
+	descriptionCantripDie : "Starlight 10 ft bright light; once 30 ft ranged spell attack for `CD`d8 Radiant dmg",
+	descriptionFull : "A flickering starflame appears in your hand. The starflame remains there for the duration and harms neither you nor your equipment. The starflame sheds bright light in a 10-foot radius and dim light for an additional 10 feet. The spell ends if you dismiss it as an action or if you cast it again." + "\n   " + "You can also attack with the starflame, although doing so ends the spell. When you cast this spell, or as an action on a later turn, you can hurl the starflame at a creature within 30 feet of you. Make a ranged spell attack. On a hit, the target takes 1d8 radiant damage." + "\n   " + "This spell's damage increases by 1d8 when you reach 5th level (2d8), 11th level (3d8), and 17th level (4d8)."
+	};
+WeaponsList["starflame"] = {
+		regExpSearch : /starflame/i,
+		name : "Starflame",
+		source : ["NodHB"],
+		list : "spell",
+		ability : 6,
+		type : "Cantrip",
+		damage : ["C", 8, "radiant"],
+		range : "30 ft",
+		description : "10-ft radius bright light and 10-ft radius dim light until thrown; ",
+		abilitytodamage : false
+	};
 
 // Spells from Knuckleheads (Druid)
 SpellsList["auroral winds"] = {
@@ -2563,7 +3541,6 @@ WeaponsList["ice barrage"] = {
 	description: "Each 2d4 is a separate shard requiring separate rolls (KaSC 34)",
 	SpellsList: "ice barrage",
 };
-UpdateDropdown("weapon");
 SpellsList["icicle trap"] = {
 	name: "Icicle Trap",
 	classes: ["druid","ranger","wizard"],
@@ -2691,6 +3668,19 @@ WeaponsList["catana"] = {
 	range : "Melee",
 	weight : 3,
 	description : "Finesse, versatile (1d10)",
+	abilitytodamage : true
+};
+WeaponsList["chained spike"] = {
+	regExpSearch : /^(?=.*(chained))(?=.*spike).*$/i,
+	name : "Chained Spike",
+	source : [["NodHB"]],
+	list : "melee",
+	ability : 1,
+	type : "Martial",
+	damage : [1, 4, "piercing"],
+	range : "Melee",
+	weight : 3,
+	description : "Finesse, reach",
 	abilitytodamage : true
 };
 WeaponsList["chakram"] = {
@@ -2833,176 +3823,13 @@ WeaponsList["two-section staff"] = {
 	damage : [1, 4, "bludgeoning"],
 	range : "Melee",
 	weight : 4,
-	description : "Reach, versatile (1d8)",
+	description : "Reach, versatile (2d4); ",
 	monkweapon : true,
 	abilitytodamage : true
 };
 UpdateDropdown("weapon");
 
-// Add Creatures
-/* Arctic Stink Squirrel
-This cuddly little brute makes a playful (if alarming) companion. 
-It can be summoned using find familiar and has the statistics of a weasel. 
-It can cast stinking cloud once per day, save DC 11. */
-CreatureList["arctic stink squirrel"] = {
-	name : "Arctic Stink Squirrel",
-	source : ["NodHB"],
-	size : 5, //Tiny
-	type : "Beast",
-	subtype : "",
-	companion : "familiar",
-	alignment : "Unaligned",
-	ac : 13,
-	hp : 1,
-	hd : [1, 4],
-	speed : "30 ft",
-	scores : [3, 16, 8, 2, 12, 3],
-	saves : ["", "", "", "", "", ""],
-	skills : {
-		"perception" : 3,
-		"stealth" : 5
-		},
-	senses : "Adv. on Wis (Perception) checks using hearing/smell",
-	passivePerception : 13,
-	languages : "",
-	challengeRating : "0",
-	proficiencyBonus : 2,
-	attacksAction : 1,
-	attacks : [{
-		name : "Bite",
-		ability : 2,
-		damage : [1, "", "piercing"],
-		range : "Melee (5 ft)",
-		description : "",
-		modifiers : ["", "", false]
-		}],
-	traits : [{
-		name : "Keen Hearing and Smell",
-		description : "The arctic stink squirrel has advantage on Wisdom (Perception) checks that rely on hearing or smell."
-		}, {
-			name : "Innate Spellcasting (1/day)",
-			description : "The arctic stink squirrel can innately cast Stinking Cloud, requiring no material components. Its innate spellcasting ability is Wisdom (DC 11)."
-		}
-		]
-};
-CreatureList["cave badger"] = {
-	name : "Cave Badger",
-	source : ["OotA", 96],
-		size : 3, //Medium
-		type : "Beast",
-		subtype : "",
-		companion : "companion",
-		alignment : "Unaligned",
-		ac : 12,
-		hp : 13,
-		hd : [2, 8],
-		speed : "30 ft, burrow 10 ft",
-		scores : [13, 10, 15, 2, 12, 5],
-		saves : ["", "", "", "", "", ""],
-		senses : "Darkvision 30 ft, Tremorsense 60 ft; Adv. on Wis (Perception) checks using smell",
-		passivePerception : 11,
-		languages : "",
-		challengeRating : "1/4",
-		proficiencyBonus : 2,
-		attacksAction : 2,
-		attacks : [{
-			name : "Bite",
-			ability : 1,
-			damage : [1, 6, "piercing"],
-			range : "Melee (5 ft)",
-			description : "One bite and one claws attack as an Attack action"
-		}, {
-			name : "Claws",
-			ability : 1,
-			damage : [2, 4, "slashing"],
-			range : "Melee (5 ft)",
-			description : "One claws and one bite attack as an Attack action"
-		}],
-		traits : [{
-			name : "Keen Smell",
-			description : "The badger has advantage on Wisdom (Perception) checks that rely on smell."
-		}]
-	};
-/* Chwinga Squidling
-This bizarre mutation is both devoted and dangerous. 
-You can summon the chwinga squidling using find familiar.
-It has the statistics of a stirge with no fly speed. */
-CreatureList["chwinga squidling"] = {
-	name : "Chwinga Squidling",
-	source : ["NodHB"],
-	size : 5, //Tiny
-	type : "Beast",
-	companion : "familiar",
-	subtype : "",
-	alignment : "Unaligned",
-	ac : 14,
-	hp : 2,
-	hd : [1, 4],
-	speed : "10 ft",
-	scores : [4, 16, 11, 2, 8, 6],
-	saves : ["", "", "", "", "", ""],
-	senses : "Darkvision 60 ft",
-	passivePerception : 9,
-	languages : "",
-	challengeRating : "1/8",
-	proficiencyBonus : 2,
-	attacksAction : 1,
-	attacks : [{
-		name : "Blood Drain",
-		ability : 2,
-		damage : [1, 4, "piercing"],
-		range : "Melee (5 ft)",
-		description : "The chwinga squidling attaches itself to the target, see Blood Drain trait"
-		}],
-	traits : [{
-		name : "Blood Drain",
-		description : "While attached, the chwinga squidling doesn't attack. Instead, at the start of each of the it's turns, the target loses 5 (1d4 + 3) HP due to blood loss. The squidling can detach itself by spending 5 feet of its movement. It does so after it drains 10 HP of blood from the target or the target dies. A creature, including the target, can use its action to detach the chwinga squidling."
-		}],
-};
-/* Gelatinous Ice Cube
-You have a friendly psychic link with this tiny cube of death. 
-You can summon the gelatinous ice cube using find familiar.
-It has the statistics of an oblex spawn. */
-CreatureList["gelatinous ice cube"] = {
-	name : "Gelatinous Ice Cube",
-	source : ["NodHB"],
-	size : 5, //Tiny
-	type : "Ooze",
-	subtype : "",
-	companion : "familiar",
-	alignment : "Lawful Evil",
-	ac : 13,
-	hp : 18,
-	hd : [4, 4],
-	speed : "20 ft",
-	scores : [8, 16, 15, 14, 11, 10],
-	saves : ["", "", "", "4", "", "2"],
-	condition_immunities : "blinded, charmed, deafened, exhaustion, prone",
-	skills : {
-		"perception" : 3,
-		"stealth" : 4
-		},
-	senses : "Blindsight 60 ft (blind beyond this distance)",
-	passivePerception : 12,
-	languages : "",
-	challengeRating : "1/4",
-	proficiencyBonus : 2,
-	attacksAction : 1,
-	attacks : [{
-		name : "Pseudopod",
-		ability : 2,
-		damage : [1, 4, "bludgeoning"],
-		range : "Melee (5 ft)",
-		description : "+1d4 psychic damage on a hit"
-		}],
-		traits : [{
-			name : "Amorphous",
-			description : "The cube can move through a space as narrow as 1 inch wide without squeezing."
-		}, {
-			name : "Aversion to Fire",
-			description : "If the cube takes fire damage, it has disadvantage on attack rolls and ability checks until the end of its next turn."
-		}]
-};
+// Add Creatures - Homebrew
 CreatureList["hippopotamus"] = {
 	name : "Hippopotamus",
 	source : ["NodHB"],
@@ -3091,7 +3918,134 @@ CreatureList["hummingbird"] = {
 	],
 	wildshapeString : "\u25C6 Senses: Darkvision 60 ft; Advantage on Wisdom (Perception) checks that rely on hearing/sight.\n\u25c6 Swiftness: Don't provoke opportunity attacks when you fly out of an enemy's reach, advantage on saving throws made against effects that would knock you prone.\n\u25C6 Immune to: exhaustion.\n\u25C6 Torpor: Lose the benefits of Keen Senses and Swiftness traits when sleeping."
 };
-CreatureList["ice spider"] = {
+CreatureList["sky whale"] = { // Includes contributions by SoilentBrad
+	name : "Sky Whale",
+	source : ["NodHB"],
+	size : 1,
+	type : "Beast",
+	subtype : "",
+	alignment : "Unaligned",
+	ac : 14,
+	hp : 85,
+	hd : [9, 12],
+	speed : "fly 50 ft (hover)",
+	scores : [21, 9, 17, 2, 10, 7],
+	saves : ["", "", "", "", "", ""],
+	skills : {
+		"stealth" : 5
+	},
+	senses : "",
+	passivePerception : 10,
+	languages : "",
+	challengeRating : "5",
+	proficiencyBonus : 3,
+	attacksAction : 2,
+	attacks : [{
+			name : "Flipper",
+			ability : 1,
+			damage : [2, 8, "bludgeoning"],
+			range : "Melee (10 ft)",
+			description : "Target must succeed on a DC 16 Strength saving throw or be knocked prone"
+		}, {
+			name : "Tail",
+			ability : 1,
+			damage : [2, 8, "bludgeoning"],
+			range : "Melee (10 ft)",
+			description : "Target must succeed on a DC 16 Strength saving throw or be knocked prone"
+		}
+	],
+	traits : [{
+			name : "Hold Breath",
+			description : "The whale can hold its breath for 30 minutes."
+		}, {
+			name : "Multiattack",
+			description : "The whale makes two attacks: one with its flipper and one with its tail."
+		}
+	]
+};
+CreatureList["timbermaw"] = {
+	name : "Timbermaw",
+	source : ["NodHB"],
+	size : 3,
+	type : "Beast",
+	subtype : "",
+	alignment : "Unaligned",
+	ac : 14,
+	hp : 27,
+	hd : [6, 8],
+	speed : "30 ft, climb 30 ft",
+	scores : [14, 14, 11, 3, 14, 5],
+	saves : ["", "", "", "", "", ""],
+	damage_resistances : "bludgeoning, piercing, and slashing from nonmagical weapons",
+	senses : "Darkvision 60 ft",
+	passivePerception : 12,
+	languages : "",
+	challengeRating : "2",
+	proficiencyBonus : 2,
+	attacksAction : 2,
+	attacks : [{
+			name : "Tentacles",
+			ability : 1,
+			damage : [2, 6, "slashing"],
+			range : "Melee",
+			description : "On hit, can make beak attack",
+			modifiers : [0, "", ""],
+		}, {
+			name : "Beak",
+			ability : 1,
+			damage : [1, 6, "piercing"],
+			range : "Melee",
+			description : "Only on hit with a tentacle attack",
+			modifiers : [0, "", ""]
+		}
+	],
+	traits : [{
+			name : "Forest Camouflage",
+			description : "The timbermaw has advantage on Dexterity (Stealth) checks made to hide in woodland terrain."
+		}
+	]
+};
+
+// Add Creatures - Missed from Other Books
+CreatureList["cave badger"] = { // OoTA
+	name : "Cave Badger",
+	source : ["OotA", 96],
+		size : 3, //Medium
+		type : "Beast",
+		subtype : "",
+		companion : "companion",
+		alignment : "Unaligned",
+		ac : 12,
+		hp : 13,
+		hd : [2, 8],
+		speed : "30 ft, burrow 10 ft",
+		scores : [13, 10, 15, 2, 12, 5],
+		saves : ["", "", "", "", "", ""],
+		senses : "Darkvision 30 ft, Tremorsense 60 ft; Adv. on Wis (Perception) checks using smell",
+		passivePerception : 11,
+		languages : "",
+		challengeRating : "1/4",
+		proficiencyBonus : 2,
+		attacksAction : 2,
+		attacks : [{
+			name : "Bite",
+			ability : 1,
+			damage : [1, 6, "piercing"],
+			range : "Melee (5 ft)",
+			description : "One bite and one claws attack as an Attack action"
+		}, {
+			name : "Claws",
+			ability : 1,
+			damage : [2, 4, "slashing"],
+			range : "Melee (5 ft)",
+			description : "One claws and one bite attack as an Attack action"
+		}],
+		traits : [{
+			name : "Keen Smell",
+			description : "The badger has advantage on Wisdom (Perception) checks that rely on smell."
+		}]
+	};
+CreatureList["ice spider"] = { // SKT
 	name : "Ice Spider",
 	source : ["SKT", 127],
 	size : 2, //Large
@@ -3147,52 +4101,7 @@ CreatureList["ice spider"] = {
 		}],
 		wildshapeString : "Blindsight 10 ft; Darkvision 60 ft| If the bite's poison damage reduces the target to 0 HP, the target is stable but poisoned and paralyzed for 1 hour, even after regaining HP| Spider Climb: climb difficult surfaces, including upside down, without an ability check| Web Sense: knows the exact location of any other creature in contact with the same web| Web Walker: ignores movement restrictions from webbing"
 };
-CreatureList["sky whale"] = { // Includes contributions by SoilentBrad
-	name : "Sky Whale",
-	source : ["NodHB"],
-	size : 1,
-	type : "Beast",
-	subtype : "",
-	alignment : "Unaligned",
-	ac : 14,
-	hp : 85,
-	hd : [9, 12],
-	speed : "fly 50 ft (hover)",
-	scores : [21, 9, 17, 2, 10, 7],
-	saves : ["", "", "", "", "", ""],
-	skills : {
-		"stealth" : 5
-	},
-	senses : "",
-	passivePerception : 10,
-	languages : "",
-	challengeRating : "5",
-	proficiencyBonus : 3,
-	attacksAction : 2,
-	attacks : [{
-			name : "Flipper",
-			ability : 1,
-			damage : [2, 8, "bludgeoning"],
-			range : "Melee (10 ft)",
-			description : "Target must succeed on a DC 16 Strength saving throw or be knocked prone"
-		}, {
-			name : "Tail",
-			ability : 1,
-			damage : [2, 8, "bludgeoning"],
-			range : "Melee (10 ft)",
-			description : "Target must succeed on a DC 16 Strength saving throw or be knocked prone"
-		}
-	],
-	traits : [{
-			name : "Hold Breath",
-			description : "The whale can hold its breath for 30 minutes."
-		}, {
-			name : "Multiattack",
-			description : "The whale makes two attacks: one with its flipper and one with its tail."
-		}
-	]
-};
-CreatureList["snow leopard"] = {
+CreatureList["snow leopard"] = { // TftYP
 	name : "Snow Leopard",
 	source : ["TftYP", 183],
 	size : 2, //Large
@@ -3236,90 +4145,7 @@ CreatureList["snow leopard"] = {
 		description : "If the leopard moves at least 20 ft straight toward a creature and hits it with a claw attack, that target must succeed on a DC 13 Strength saving throw or be knocked prone. If the target is prone, the tiger can make one bite attack against it as a bonus action."
 		}]
 };
-/* Snowy Owlbear Cub
-The cub of this rare breed of tiny owlbear forms a loving bond with a single adventurer. 
-You can summon the owlbear cub using find familiar.
-It has the statistics of a cat. */
-CreatureList["snowy owlbear cub"] = {
-	name : "Snowy Owlbear Cub",
-	source : ["NodHB"],
-	size : 5, //Tiny
-	type : "Beast",
-	subtype : "",
-	companion : "familiar",
-	alignment : "Unaligned",
-	ac : 12,
-	hp : 2,
-	hd : [1, 4],
-	speed : "40 ft, climb 30 ft",
-	scores : [3, 15, 10, 3, 12, 7],
-	saves : ["", "", "", "", "", ""],
-	skills : {
-		"perception" : 3,
-		"stealth" : 4
-		},
-	senses : "Adv. on Wis (Perception) checks using smell",
-	passivePerception : 13,
-	languages : "",
-	challengeRating : "0",
-	proficiencyBonus : 2,
-	attacksAction : 1,
-	attacks : [{
-		name : "Claws",
-		ability : 2,
-		damage : [1, "", "slashing"],
-		range : "Melee (5 ft)",
-		description : "",
-		modifiers : ["Str", "", false]
-		}],
-	traits : [{
-		name : "Keen Smell",
-		description : "The snowy owlbear cub has advantage on Wisdom (Perception) checks that rely on smell."
-		}]
-};
-CreatureList["timbermaw"] = {
-	name : "Timbermaw",
-	source : ["NodHB"],
-	size : 3,
-	type : "Beast",
-	subtype : "",
-	alignment : "Unaligned",
-	ac : 14,
-	hp : 27,
-	hd : [6, 8],
-	speed : "30 ft, climb 30 ft",
-	scores : [14, 14, 11, 3, 14, 5],
-	saves : ["", "", "", "", "", ""],
-	damage_resistances : "bludgeoning, piercing, and slashing from nonmagical weapons",
-	senses : "Darkvision 60 ft",
-	passivePerception : 12,
-	languages : "",
-	challengeRating : "2",
-	proficiencyBonus : 2,
-	attacksAction : 2,
-	attacks : [{
-			name : "Tentacles",
-			ability : 1,
-			damage : [2, 6, "slashing"],
-			range : "Melee",
-			description : "On hit, can make beak attack",
-			modifiers : [0, "", ""],
-		}, {
-			name : "Beak",
-			ability : 1,
-			damage : [1, 6, "piercing"],
-			range : "Melee",
-			description : "Only on hit with a tentacle attack",
-			modifiers : [0, "", ""]
-		}
-	],
-	traits : [{
-			name : "Forest Camouflage",
-			description : "The timbermaw has advantage on Dexterity (Stealth) checks made to hide in woodland terrain."
-		}
-	]
-};
-CreatureList["wyvern"] = { // Includes contributions by kingspooker
+CreatureList["wyvern"] = { // SRD & MM (Includes contributions by kingspooker)
 		name : "Wyvern",
 		source : [["SRD", 319], ["M", 303]],
 		size : 2, //Large
@@ -3358,4 +4184,353 @@ CreatureList["wyvern"] = { // Includes contributions by kingspooker
 			description : "Target also takes 7d6 poison damage, half on a DC 15 Constitution saving throw"
 		}
 	]
+};
+CreatureList["valenar hawk"] = { // ERLW
+	name : "Valenar Hawk",
+	source : [["E:RLW", 312]],
+	size : 5, //Tiny
+	type : "Fey",
+	subtype : "",
+	alignment : "Neutral",
+	ac : 14,
+	hp : 10,
+	hd : [4, 4],
+	speed : "10 ft, fly 60 ft",
+	scores : [8, 18, 10, 9, 16, 11],
+	saves : ["", "", "", "", "", ""],
+	skills : {
+		"perception" : 5
+		},
+	senses : "Adv. on Wis (Perception) checks using sight",
+	passivePerception : 15,
+	languages : "understands Common, Elvish, and Sylvan but can't speak",
+	challengeRating : "1/8",
+	proficiencyBonus : 2,
+	attacksAction : 1,
+	attacks : [{
+		name : "Talons",
+		ability : 2,
+		damage : [1, 4, "slashing"],
+		range : "Melee (5 ft)",
+		description : ""
+		}],
+	traits : [{
+		name : "Keen Sight",
+		description : "The hawk has advantage on Wisdom (Perception) checks that rely on sight."
+		}, {
+		name : "Bonding",
+		description : "The hawk can magically bond with one creature it can see, immediately after spending at least 1 hour observing that creature while within 30 feet of it. The bond lasts until the hawk bonds with a different creature or until the bonded creature dies. While bonded, the hawk and the bonded creature can communicate telepathically with each other at a distance of up to 100 feet."
+		}]
+};
+CreatureList["valenar hound"] = { // ERLW
+	name : "Valenar Hound",
+	source : [["E:RLW", 312]],
+	size : 3, //Medium
+	type : "Fey",
+	subtype : "",
+	companion : "mount",
+	alignment : "Neutral",
+	ac : 14,
+	hp : 19,
+	hd : [3, 8],
+	speed : "40 ft",
+	scores : [17, 15, 14, 10, 15, 11],
+	saves : ["", "", "", "", "", ""],
+	skills : {
+		"perception" : 4
+		},
+	senses : "Adv. on Wis (Perception) checks using hearing/smell",
+	passivePerception : 14,
+	languages : "understands Common, Elvish, and Sylvan but can't speak",
+	challengeRating : "1/2",
+	proficiencyBonus : 2,
+	attacksAction : 1,
+	attacks : [{
+		name : "Bite",
+		ability : 1,
+		damage : [1, 6, "piercing"],
+		range : "Melee (5 ft)",
+		description : "Target must succeed on a DC 13 Strength saving throw or be knocked prone"
+		}],
+	traits : [{
+		name : "Keen Hearing and Smell",
+		description : "The hound has advantage on Wisdom (Perception) checks that rely on hearing or smell."
+		}, {
+		name : "Bonding",
+		description : "The hound can magically bond with one creature it can see, immediately after spending at least 1 hour observing that creature while within 30 feet of it. The bond lasts until the hound bonds with a different creature or until the bonded creature dies. While bonded, the hound and the bonded creature can communicate telepathically with each other at a distance of up to 100 feet."
+		}]
+};
+CreatureList["valenar steed"] = { // ERLW
+	name : "Valenar Steed",
+	source : [["E:RLW", 313]],
+	size : 2, //Large
+	type : "Fey",
+	subtype : "",
+	companion : "mount",
+	alignment : "Neutral",
+	ac : 13,
+	hp : 22,
+	hd : [3, 10],
+	speed : "60 ft",
+	scores : [14, 16, 14, 10, 15, 11],
+	saves : ["", "", "", "", "", ""],
+	skills : {
+		"perception" : 4
+		},
+	passivePerception : 14,
+	languages : "understands Common, Elvish, and Sylvan but can't speak",
+	challengeRating : "1/2",
+	proficiencyBonus : 2,
+	attacksAction : 1,
+	attacks : [{
+		name : "Hooves",
+		ability : 2,
+		damage : [2, 6, "bludgeoning"],
+		range : "Melee (5 ft)",
+		description : ""
+		}],
+	traits : [{
+		name : "Bonding",
+		description : "The steed can magically bond with one creature it can see, immediately after spending at least 1 hour observing that creature while within 30 feet of it. The bond lasts until the steed bonds with a different creature or until the bonded creature dies. While bonded, the steed and the bonded creature can communicate telepathically with each other at a distance of up to 100 feet."
+		}]
+};
+CreatureList["sled dog"] = { // RoT
+	name : "Sled Dog",
+	source : [["RoT", 27]],
+	size : 3, //Medium
+	type : "Beast",
+	subtype : "",
+	companion : "companion",
+	alignment : "Unaligned",
+	ac : 13,
+	hp : 11,
+	hd : [2, 8],
+	speed : "40 ft",
+	scores : [12, 15, 12, 3, 12, 6],
+	saves : ["", "", "", "", "", ""],
+	skills : {
+		"perception" : 3,
+		"stealth" : 4
+		},
+	senses : "Adv. on Wis (Perception) checks using hearing/smell",
+	passivePerception : 13,
+	languages : "",
+	challengeRating : "1/4",
+	proficiencyBonus : 2,
+	attacksAction : 1,
+	attacks : [{
+		name : "Bite",
+		ability : 2,
+		damage : [2, 4, "piercing"],
+		range : "Melee (5 ft)",
+		description : "Target creature must succeed on a DC 11 Strength saving throw or be knocked prone"
+		}],
+	traits : [{
+		name : "Keen Hearing and Smell",
+		description : "The sled dog has advantage on Wisdom (Perception) checks that rely on hearing or smell."
+		}, {
+		name : "Pack Tactics",
+		description : "The sled dog has advantage on an attack roll against a creature if at least one of the sled dog's allies is within 5 ft of the creature and the ally isn't incapacitated."
+		}]
+};
+CreatureList["riding horse skeleton"] = { // Icespire
+		name : "Riding Horse Skeleton",
+		nameAlt : ["Horse"],
+		source : [[" NodHB"]],
+		size : 2, //Large
+		type : "Undead",
+		alignment : "Unaligned",
+		ac : 10,
+		hp : 13,
+		hd : [2, 10],
+		speed : "60 ft",
+		scores : [16, 10, 12, 2, 11, 7],
+		damage_vulnerabilities : "bludgeoning",
+		damage_immunities : "poison",
+		condition_immunities : "exhaustion, poisoned",
+		senses : "Darkvision 60 ft",
+		passivePerception : 10,
+		challengeRating : "1/4",
+		proficiencyBonus : 2,
+		attacksAction : 1,
+		attacks : [{
+			name : "Hooves",
+			ability : 1,
+			damage : [2, 4, "bludgeoning"],
+			range : "Melee (5 ft)",
+			description : ""
+		}]
+};
+
+SourceList.DDCE = {
+    name : "D&D Celebration Event 2020",
+    abbreviation : "DDCE",
+    group : "Adventurers League",
+    date : "2020/09/19"
+};
+/* Arctic Stink Squirrel
+This cuddly little brute makes a playful (if alarming) companion. 
+It can be summoned using find familiar and has the statistics of a weasel. 
+It can cast stinking cloud once per day, save DC 11. */
+CreatureList["arctic stink squirrel"] = {
+	name : "Arctic Stink Squirrel",
+	source : ["DDCE"],
+	size : 5, //Tiny
+	type : "Beast",
+	subtype : "",
+	companion : "familiar",
+	alignment : "Unaligned",
+	ac : 13,
+	hp : 1,
+	hd : [1, 4],
+	speed : "30 ft",
+	scores : [3, 16, 8, 2, 12, 3],
+	saves : ["", "", "", "", "", ""],
+	skills : {
+		"perception" : 3,
+		"stealth" : 5
+		},
+	senses : "Adv. on Wis (Perception) checks using hearing/smell",
+	passivePerception : 13,
+	languages : "",
+	challengeRating : "0",
+	proficiencyBonus : 2,
+	attacksAction : 1,
+	attacks : [{
+		name : "Bite",
+		ability : 2,
+		damage : [1, "", "piercing"],
+		range : "Melee (5 ft)",
+		description : "",
+		modifiers : ["", "", false]
+		}],
+	traits : [{
+		name : "Keen Hearing and Smell",
+		description : "The arctic stink squirrel has advantage on Wisdom (Perception) checks that rely on hearing or smell."
+		}, {
+			name : "Innate Spellcasting (1/day)",
+			description : "The arctic stink squirrel can innately cast Stinking Cloud, requiring no material components. Its innate spellcasting ability is Wisdom (DC 11)."
+		}
+		]
+};
+/* Chwinga Squidling
+This bizarre mutation is both devoted and dangerous. 
+You can summon the chwinga squidling using find familiar.
+It has the statistics of a stirge with no fly speed. */
+CreatureList["chwinga squidling"] = {
+	name : "Chwinga Squidling",
+	source : ["DDCE"],
+	size : 5, //Tiny
+	type : "Beast",
+	companion : "familiar",
+	subtype : "",
+	alignment : "Unaligned",
+	ac : 14,
+	hp : 2,
+	hd : [1, 4],
+	speed : "10 ft",
+	scores : [4, 16, 11, 2, 8, 6],
+	saves : ["", "", "", "", "", ""],
+	senses : "Darkvision 60 ft",
+	passivePerception : 9,
+	languages : "",
+	challengeRating : "1/8",
+	proficiencyBonus : 2,
+	attacksAction : 1,
+	attacks : [{
+		name : "Blood Drain",
+		ability : 2,
+		damage : [1, 4, "piercing"],
+		range : "Melee (5 ft)",
+		description : "The chwinga squidling attaches itself to the target, see Blood Drain trait"
+		}],
+	traits : [{
+		name : "Blood Drain",
+		description : "While attached, the chwinga squidling doesn't attack. Instead, at the start of each of the it's turns, the target loses 5 (1d4 + 3) HP due to blood loss. The squidling can detach itself by spending 5 feet of its movement. It does so after it drains 10 HP of blood from the target or the target dies. A creature, including the target, can use its action to detach the chwinga squidling."
+		}],
+};
+/* Gelatinous Ice Cube
+You have a friendly psychic link with this tiny cube of death. 
+You can summon the gelatinous ice cube using find familiar.
+It has the statistics of an oblex spawn. */
+CreatureList["gelatinous ice cube"] = {
+	name : "Gelatinous Ice Cube",
+	source : ["DDCE"],
+	size : 5, //Tiny
+	type : "Ooze",
+	subtype : "",
+	companion : "familiar",
+	alignment : "Lawful Evil",
+	ac : 13,
+	hp : 18,
+	hd : [4, 4],
+	speed : "20 ft",
+	scores : [8, 16, 15, 14, 11, 10],
+	saves : ["", "", "", "4", "", "2"],
+	condition_immunities : "blinded, charmed, deafened, exhaustion, prone",
+	skills : {
+		"perception" : 3,
+		"stealth" : 4
+		},
+	senses : "Blindsight 60 ft (blind beyond this distance)",
+	passivePerception : 12,
+	languages : "",
+	challengeRating : "1/4",
+	proficiencyBonus : 2,
+	attacksAction : 1,
+	attacks : [{
+		name : "Pseudopod",
+		ability : 2,
+		damage : [1, 4, "bludgeoning"],
+		range : "Melee (5 ft)",
+		description : "+1d4 psychic damage on a hit"
+		}],
+		traits : [{
+			name : "Amorphous",
+			description : "The cube can move through a space as narrow as 1 inch wide without squeezing."
+		}, {
+			name : "Aversion to Fire",
+			description : "If the cube takes fire damage, it has disadvantage on attack rolls and ability checks until the end of its next turn."
+		}]
+};
+/* Snowy Owlbear Cub
+The cub of this rare breed of tiny owlbear forms a loving bond with a single adventurer. 
+You can summon the owlbear cub using find familiar.
+It has the statistics of a cat. */
+CreatureList["snowy owlbear cub"] = {
+	name : "Snowy Owlbear Cub",
+	source : ["DDCE"],
+	size : 5, //Tiny
+	type : "Beast",
+	subtype : "",
+	companion : "familiar",
+	alignment : "Unaligned",
+	ac : 12,
+	hp : 2,
+	hd : [1, 4],
+	speed : "40 ft, climb 30 ft",
+	scores : [3, 15, 10, 3, 12, 7],
+	saves : ["", "", "", "", "", ""],
+	skills : {
+		"perception" : 3,
+		"stealth" : 4
+		},
+	senses : "Adv. on Wis (Perception) checks using smell",
+	passivePerception : 13,
+	languages : "",
+	challengeRating : "0",
+	proficiencyBonus : 2,
+	attacksAction : 1,
+	attacks : [{
+		name : "Claws",
+		ability : 2,
+		damage : [1, "", "slashing"],
+		range : "Melee (5 ft)",
+		description : "",
+		modifiers : ["Str", "", false]
+		}],
+	traits : [{
+		name : "Keen Smell",
+		description : "The snowy owlbear cub has advantage on Wisdom (Perception) checks that rely on smell."
+		}]
 };
