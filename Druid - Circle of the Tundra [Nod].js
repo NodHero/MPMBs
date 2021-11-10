@@ -90,7 +90,7 @@ AddSubClass("druid", "circle of the tundra", {
 	}
 });
 
-// Add New Spells
+// Add New Spells (originally from Knuckleheads)
 SpellsList["auroral winds"] = {
 	name: "Auroral Winds",
 	classes: ["druid", "warlock", "wizard"],
