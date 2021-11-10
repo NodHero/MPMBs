@@ -1,4 +1,4 @@
-var iFileName = "Fighter - Memory Knight (Nod's Homebrew).js"; 
+var iFileName = "Fighter - Memory Knight [Nod, original by Matthew Mercer].js"; 
 RequiredSheetVersion(13);
 
 SourceList["NodHB-MK"] = {
