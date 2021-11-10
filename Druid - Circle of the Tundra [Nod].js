@@ -1,4 +1,4 @@
-var iFileName = "Nod's Homebrew - Druid - Circle of the Tundra.js"; 
+var iFileName = "Druid - Circle of the Tundra [Nod].js"; 
 RequiredSheetVersion(13);
 
 SourceList["NodHB-CotT"] = {
