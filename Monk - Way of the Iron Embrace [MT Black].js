@@ -12,7 +12,8 @@
 			This subclass is made by M.T. Black
 	Code by:	NodHero
 	Date:		2019-05-11 (sheet v13.0.8)
-	Please support the creator of this content (M.T. Black) and download their materials from the DMs Guild website: https://www.dmsguild.com/browse.php?author=M.T.%20Black
+			Please support the creator of this content (M.T. Black) and download their materials 
+			from the DMs Guild website: https://www.dmsguild.com/browse.php?author=M.T.%20Black
 */
 
 var iFileName = "Monk - Way of the Iron Embrace [MT Black].js";
