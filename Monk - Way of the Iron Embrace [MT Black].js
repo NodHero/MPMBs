@@ -8,8 +8,8 @@
 /*	-INFORMATION-
 	Subject:	Subclass and Magic Items
 	Effect:		This script adds a subclass for the Monk, called "Way of the Iron Embrace"
-				This is taken from the DMs Guild website (https://www.dmsguild.com/product/275382/)
-				This subclass is made by M.T. Black
+			This is taken from the DMs Guild website (https://www.dmsguild.com/product/275382/)
+			This subclass is made by M.T. Black
 	Code by:	NodHero
 	Date:		2019-05-11 (sheet v13.0.8)
 	Please support the creator of this content (M.T. Black) and download their materials from the DMs Guild website: https://www.dmsguild.com/browse.php?author=M.T.%20Black
