@@ -1,6 +1,6 @@
 var iFileName = "pub_20201117_TCoE-Shove.js";
 RequiredSheetVersion("13.1");
-// This file adds "Telekinetic Shove" as a weapon line for the "Telekinetic" feat from Tasha's Cauldron of Everything to MPMB's Character Record Sheet
+// This file adds "Telekinetic Shove" from the "Telekinetic" feat from Tasha's Cauldron of Everything as a weapon selection to MPMB's Character Record Sheet
 
 
 // Define the source
