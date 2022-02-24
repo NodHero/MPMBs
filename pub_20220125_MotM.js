@@ -119,7 +119,7 @@ RaceList["multiverse changeling"] = {
 	"\n \u2022 Changeling Instincts: I gain proficiency with 2 of the following skills: Deception, Insight, Intimidation, Performance, or Persuasion.",
 	action : [["action", "Shapechanger"]]
 };
-// Deep Gnome
+// Deep Gnome (Svirfneblin)
 RaceList["multiverse deep gnome"] = {
 	regExpSearch : /^((?=.*multiverse)((?=.*deep)(?=.*gnome))).*$/i,
 	name : "Multiverse Deep Gnome",
@@ -189,7 +189,7 @@ RaceList["multiverse deep gnome"] = {
 		},
 	},
 };
-// Duergar
+// Duergar (Gray Dwarf)
 RaceList["multiverse duergar"] = {
 	regExpSearch : /^(?=.*multiverse)(?=.*duergar).*$/i,
 	name : "Multiverse Duergar",
