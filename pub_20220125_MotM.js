@@ -1,12 +1,11 @@
 var iFileName = "pub_20220125_MotM.js";
 RequiredSheetVersion("13.1.0");
-// This file adds some of the player-material from Mordenkainen Presents: Monsters of the Multiverse to MotMB's Character Record Sheet
+// This file adds the Fantastical Races from Mordenkainen Presents: Monsters of the Multiverse to MotMB's Character Record Sheet
 
 // Define the source
 SourceList.MotM = {
 	name: "Mordenkainen Presents: Monsters of the Multiverse",
 	abbreviation: "MotM",
-	abbreviationSpellsheet: "MO",
 	group: "Primary Sources",
 	url: "https://dnd.wizards.com/products/monsters-of-the-multiverse",
 	date: "2022/01/25"
@@ -65,7 +64,134 @@ RaceList["multiverse aarakocra"] = {
 		"\n \u2022 Wind Caller: At 3rd level, I can cast Gust of Wind. I can cast it without using a spell slot once per long rest, as well as by using spell slots as normal. Intelligence, Wisdom, or Charisma is my spellcasting ability for this, chosen when I select the race.",
 };
 // Aasimar
-
+RaceList["multiverse aasimar"] = {
+	regExpSearch : /^(?=.*multiverse)(?=.*aasimar).*$/i,
+	name : "Multiverse Aasimar",
+	sortname : "Aasimar, Multiverse",
+	source : [["MotM", 7]],
+	plural : "Aasimar",
+	size : [3, 4],
+	speed : {
+		walk : { spd : 30, enc : 20 }
+	},
+	dmgres : ["Necrotic", "Radiant"],
+	languageProfs : ["Common", 1],
+	vision : [["Darkvision", 60]],
+	age : " typically live to be around 100 years old",
+	height : " vary in size. If you'd like to determine your character's height or weight randomly, consult the Randome Height and Weight table in the PHB, and choose the row in the table that best represents the build you imagine for your character.",
+	weight : " vary in size. If you'd like to determine your character's height or weight randomly, consult the Randome Height and Weight table in the PHB, and choose the row in the table that best represents the build you imagine for your character.",
+	scorestxt : "+2 to one ability score and +1 to a different score of my choice, -or- +1 to three different scores of my choice",
+	trait : "Multiverse Aasimar (+2/+1 or +1/+1/+1)"+
+		"\n \u2022 Celestial Resistance. I have resistance to necrotic/radiant damage."+
+		"\n \u2022 Healing Hands: Once per long rest, as an action, I can touch a creature to heal for d4 x twice my proficiency bonus worth of HP."+
+		"\n \u2022 Light Bearer: I know the Light cantrip. Cha is spellcasting ability."+
+		"\n \u2022 Celestial Revelation: At 3rd level, I choose one option from Necrotic Shroud, Radiant Consumption, or Radiant Soul. Once per long rest, I can use a Bonus action to transform and gain the benefits of my chosen Revelation. The transformation lasts for 1 minute or until I end it as a Bonus action.",
+	abilitySave : 6,
+	spellcastingAbility : 6,
+	spellcastingBonus : {
+		name : "Light Bearer",
+		spells : ["light"],
+		selection : ["light"],
+		firstCol : 'atwill'
+	},
+	features : {
+		"healing hands" : {
+			name : "Healing Hands",
+			usages : 1,
+			minlevel : 1,
+			recovery : "long rest",
+			additional : ProficiencyBonusList.map(function(n) { return 2 * n + "d4 healing"; }),
+			action : ["action", ""]
+		},
+	},
+};
+AddRacialVariant("multiverse aasimar", "necrotic shroud", {
+	regExpSearch : /shroud/i,
+	name : "Necrotic Shroud Aasimar",
+	source : [["MotM", 7]],
+	plural : "Aasimar",
+	vision : [["Darkvision", 60]],
+	trait : "\u2022 Celestial Resistance. I have resistance to necrotic/radiant damage."+
+		"\n \u2022 Healing Hands: Once per long rest, as an action, I can touch a creature to heal for d4 x twice my proficiency bonus worth of HP."+
+		"\n \u2022 Light Bearer: I know the Light cantrip. Cha is spellcasting ability."+
+		"\n \u2022 Necrotic Shroud (3rd level): Once per long rest, as a Bonus action, I transform and all non-ally creatures within 10 ft of me pass a (DC 8 + Cha mod + Prof bonus) saving throw or be frightened of me until the end of my next turn. The Shroud lasts for 1 minute or until I end it as a Bonus action. While Shrouded, once on my turn, one target of my attacks or spells takes my prof bonus in extra necrotic damage.",
+	features : {
+		"healing hands" : {
+			name : "Healing Hands",
+			usages : 1,
+			minlevel : 1,
+			recovery : "long rest",
+			additional : ProficiencyBonusList.map(function(n) { return 2 * n + "d4 healing"; }),
+			action : ["action", ""]
+		},
+		"necrotic shroud" : {
+			name : "Necrotic Shroud",
+			usages : 1,
+			minlevel : 3,
+			recovery : "long rest",
+			additional : ProficiencyBonusList.map(function(n) { return "+" + n + " necrotic damage"; }),
+			action : [["bonus action", " (start/end)"]],
+		},	
+	},
+});
+AddRacialVariant("multiverse aasimar", "radiant consumption", {
+	regExpSearch : /consumption/i,
+	name : "Radiant Consumption Aasimar",
+	source : [["MotM", 7]],
+	plural : "Aasimar",
+	vision : [["Darkvision", 60]],
+	trait : "\u2022 Celestial Resistance. I have resistance to necrotic/radiant damage."+
+		"\n \u2022 Healing Hands: Once per long rest, as an action, I can touch a creature to heal for d4 x twice my proficiency bonus worth of HP."+
+		"\n \u2022 Light Bearer: I know the Light cantrip. Cha is spellcasting ability."+
+		"\n \u2022 Radiant Consumption (3rd level): Once per long rest, as a Bonus action, I transform and shed 10-ft radius bright light and 10-ft dim light. The Light lasts for 1 minute or until I end it as a Bonus action. Until the Light ends, at the end of my turns, each creature within 10 ft takes my prof bonus radiant damage. Once on my turn, one target of my attacks or spells takes my prof bonus in extra radiant damage.",
+	features : {
+		"healing hands" : {
+			name : "Healing Hands",
+			usages : 1,
+			minlevel : 1,
+			recovery : "long rest",
+			additional : ProficiencyBonusList.map(function(n) { return 2 * n + "d4 healing"; }),
+			action : ["action", ""]
+		},
+		"necrotic shroud" : {
+			name : "Radiant Consumption",
+			usages : 1,
+			minlevel : 3,
+			recovery : "long rest",
+			additional : ProficiencyBonusList.map(function(n) { return "+" + n + " radiant damage"; }),
+			action : [["bonus action", " (start/end)"]],
+		},	
+	},
+});
+AddRacialVariant("multiverse aasimar", "radiant soul", {
+	regExpSearch : /soul/i,
+	name : "Radiant Soul Aasimar",
+	source : [["MotM", 7]],
+	plural : "Aasimar",
+	vision : [["Darkvision", 60]],
+	trait : "\u2022 Celestial Resistance. I have resistance to necrotic/radiant damage."+
+		"\n \u2022 Healing Hands: Once per long rest, as an action, I can touch a creature to heal for d4 x twice my proficiency bonus worth of HP."+
+		"\n \u2022 Light Bearer: I know the Light cantrip. Cha is spellcasting ability."+
+		"\n \u2022 Radiant Soul (3rd level): Once per long rest, as a Bonus action, I transform and two luminous, spectral wings sprout from my back. The Wings last for 1 minute or until I dismiss them as a Bonus action. Until the Wings end, I have a flying speed equal to my walking speed and once on my turn, one target of my attacks or spells takes my proficiency bonus in extra radiant damage.",
+	features : {
+		"healing hands" : {
+			name : "Healing Hands",
+			usages : 1,
+			minlevel : 1,
+			recovery : "long rest",
+			additional : ProficiencyBonusList.map(function(n) { return 2 * n + "d4 healing"; }),
+			action : ["action", ""]
+		},
+		"necrotic shroud" : {
+			name : "Radiant Soul",
+			usages : 1,
+			minlevel : 3,
+			recovery : "long rest",
+			additional : ProficiencyBonusList.map(function(n) { return "Fly Speed, +" + n + " radiant damage"; }),
+			action : [["bonus action", " (start/end)"]],
+		},	
+	},
+});
 // Bugbear
 RaceList["multiverse bugbear"] = {
 	regExpSearch : /^(?=.*multiverse)(?=.*bugbear).*$/i,
