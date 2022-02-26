@@ -1433,7 +1433,100 @@ RaceList["multiverse shadar-kai"] = {
 	}
 };
 // Shifter
-
+RaceList["multiverse shifter"] = {
+	regExpSearch : /^(?=.*multiverse)(?=.*shifter).*$/i,
+	name : "Multiverse Shifter",
+	sortname : "Shifter, Multiverse",
+	source : [["MotM", 32]],
+	plural : "Shifters",
+	size : 3,
+	speed : {
+		walk : { spd : 30, enc : 20 }
+	},
+	languageProfs : ["Common", 1],
+	vision : [["Darkvision", 60]],
+	skillstxt : "Choose one skill from Acrobatics, Athletics, Intimidation, or Survival",
+	age : " typically live to be around 100 years old",
+	height : " vary in size. If you'd like to determine your character's height or weight randomly, consult the Randome Height and Weight table in the PHB, and choose the row in the table that best represents the build you imagine for your character.",
+	weight : " vary in size. If you'd like to determine your character's height or weight randomly, consult the Randome Height and Weight table in the PHB, and choose the row in the table that best represents the build you imagine for your character.",
+	scorestxt : "+2 to one ability score and +1 to a different score of my choice, -or- +1 to three different scores of my choice",
+	trait : "Multiverse Shifter: (+2/+1 or +1/+1/+1)"+
+		"\n \u2022 Bestial Instincts. I have proficiency in one of the following skills: Acrobatics, Athletics, Intimidation, or Survival."+
+		"\n \u2022 Shifting: Prof bonus per long rest, as a bonus action, I can assume a more bestial appearance. This transformation lasts for 1 minute, until I die, or until I revert back as a bonus action. Whenever I Shift, I gain twice my proficiency bonus in temporary hit points and an additional benefit based on one of the following options (choose when I select this race): Beasthide, Longtooth, Swiftstride, Wildhunt.",
+	features : {
+		"shift" : {
+			name : "Shift",
+			minlevel : 1,
+			usages : "Proficiency Bonus per ",
+			usagescalc : "event.value = How('Proficiency Bonus');",
+			recovery : "long rest",
+			additional : ProficiencyBonusList.map(function(n) { return 2 * n + " THP"; }),
+		}
+	},
+};
+AddRacialVariant("multiverse shifter", "beasthide", {
+	regExpSearch : /beasthide/i,
+	name : "Multiverse Beasthide Shifter",
+	source : [["MotM", 32]],
+	plural : "Beasthide Shifters",
+	vision : [["Darkvision", 60]],
+	trait : "Multiverse Beasthide Shifter: (+2/+1 or +1/+1/+1)"+
+		"\n \u2022 Bestial Instincts. I have proficiency in one of the following skills: Acrobatics, Athletics, Intimidation, or Survival."+
+		"\n \u2022 Shifting (Beasthide): Prof bonus per long rest, as a bonus action, I can assume a more bestial appearance. This transformation lasts for 1 minute, until I die, or until I revert back as a bonus action. Whenever I Shift, I gain 1d6 + twice my proficiency bonus in temporary hit points and a +1 bonus to my AC.",
+	features : {
+		"shift" : {
+			name : "Shift",
+			minlevel : 1,
+			usages : "Proficiency Bonus per ",
+			usagescalc : "event.value = How('Proficiency Bonus');",
+			recovery : "long rest",
+			additional : ProficiencyBonusList.map(function(n) { return "1d6 + " + 2 * n + " THP"; }),
+		}
+	},
+});
+AddRacialVariant("multiverse shifter", "longtooth", {
+	regExpSearch : /longtooth/i,
+	name : "Multiverse Longtooth Shifter",
+	source : [["MotM", 32]],
+	plural : "Longtooth Shifters",
+	vision : [["Darkvision", 60]],
+	trait : "Multiverse Longtooth Shifter: (+2/+1 or +1/+1/+1)"+
+		"\n \u2022 Bestial Instincts. I have proficiency in one of the following skills: Acrobatics, Athletics, Intimidation, or Survival."+
+		"\n \u2022 Shifting (Longtooth): Prof bonus per long rest, as a bonus action, I can assume a more bestial appearance. This transformation lasts for 1 minute, until I die, or until I revert back as a bonus action. Whenever I Shift, I gain twice my proficiency bonus in temporary hit points and my fangs elongate. When I Shift and while I am Shifted, as a Bonus action, I can make a single unarmed strike with my elongated fangs that deals 1d6 piercing damage.",
+	action : ["bonus action", "Longtooth Fangs (while Shifted)"],
+	weaponOptions : {
+		baseWeapon : "unarmed strike",
+		regExpSearch : /^(?=.*fangs?)(?=.*long)(?=.*(tooth|teeth)).*$/i,
+		name : "Longtooth Fangs",
+		source : [["E:RLW", 34]],
+		damage : [1, 6, "piercing"],
+		description : "Only while shifted; One attack as bonus action",
+	},
+	weaponsAdd : ["Longtooth Fangs"],
+});
+AddRacialVariant("multiverse shifter", "swiftstride", {
+	regExpSearch : /swiftstride/i,
+	name : "Multiverse Swiftstride Shifter",
+	source : [["MotM", 32]],
+	plural : "Swiftstride Shifters",
+	vision : [["Darkvision", 60]],
+	trait : "Multiverse Swiftstride Shifter: (+2/+1 or +1/+1/+1)"+
+		"\n \u2022 Bestial Instincts. I have proficiency in one of the following skills: Acrobatics, Athletics, Intimidation, or Survival."+
+		"\n \u2022 Shifting (Swiftstride): Prof bonus per long rest, as a bonus action, I can assume a more bestial appearance. This transformation lasts for 1 minute, until I die, or until I revert back as a bonus action. Whenever I Shift, I gain twice my proficiency bonus in temporary hit points and +10 ft to my walking speed. Additionally, as a Reaction when a creature ends its turn within 5 ft of me, I can move up to 10 ft. This reactive movement doesn't provoke opportunity attacks.",
+	action : [['reaction', 'Reactive Stride (while Shifted)']],
+});
+AddRacialVariant("multiverse shifter", "wildhunt", {
+	regExpSearch : /wildhunt/i,
+	name : "Multiverse Wildhunt Shifter",
+	source : [["MotM", 32]],
+	plural : "Wildhunt Shifters",
+	vision : [["Darkvision", 60]],
+	trait : "Multiverse Wildhunt Shifter: (+2/+1 or +1/+1/+1)"+
+		"\n \u2022 Bestial Instincts. I have proficiency in one of the following skills: Acrobatics, Athletics, Intimidation, or Survival."+
+		"\n \u2022 Shifting (Wildhunt): Prof bonus per long rest, as a bonus action, I can assume a more bestial appearance. This transformation lasts for 1 minute, until I die, or until I revert back as a bonus action. Whenever I Shift, I gain twice my proficiency bonus in temporary hit points, I have advantage on Wisdom checks, and no creature within 30 feet of me can make an attack roll with advantage against me unless I'm incapacitated.",
+	vision : [["Darkvision", 60], ["While Shifted, no creature within 30 feet of me can make an attack roll with advantage against me", 0]],
+	savetxt : { text : ["While Shifted, Adv. on Wis checks"] },
+});
 // Tabaxi
 RaceList["multiverse tabaxi"] = {
 	regExpSearch : /^(?=.*multiverse)(?=.*tabaxi).*$/i,
