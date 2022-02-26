@@ -1500,7 +1500,7 @@ AddRacialVariant("multiverse shifter", "longtooth", {
 		baseWeapon : "unarmed strike",
 		regExpSearch : /^(?=.*fangs?)(?=.*long)(?=.*(tooth|teeth)).*$/i,
 		name : "Longtooth Fangs",
-		source : [["E:RLW", 34]],
+		source : [["MotM", 32]],
 		damage : [1, 6, "piercing"],
 		description : "Only while shifted; One attack as bonus action",
 	},
