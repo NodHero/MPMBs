@@ -1163,7 +1163,7 @@ RaceList["multiverse kobold"] = {
 };
 AddRacialVariant("multiverse kobold", "defiance", {
 	regExpSearch : /defiance/i,
-	name : "Kobold-Defiance",
+	name : "Defiance Multiverse Kobold",
 	source : [["MotM", 25]],
 	plural : "Kobolds",
 	savetxt : { adv_vs : ["frightened"] },
@@ -1173,6 +1173,7 @@ AddRacialVariant("multiverse kobold", "defiance", {
 });
 AddRacialVariant("multiverse kobold", "sorcery", {
 	regExpSearch : /sorcery/i,
+	name : "Sorcery Multiverse Kobold",
 	source : [["MotM", 25]],
 	spellcastingAbility : [4, 5, 6],
 	allowUpCasting : true,
@@ -1188,6 +1189,7 @@ AddRacialVariant("multiverse kobold", "sorcery", {
 });
 AddRacialVariant("multiverse kobold", "craftiness", {
 	regExpSearch : /craftiness/i,
+	name : "Craftiness Multiverse Kobold",
 	source : [["MotM", 25]],
 	skillstxt : "Choose one from: Arcana, Investigation, Medicine, Sleight of Hand, or Survival",
 	trait : "Multiverse Kobold (+2/+1 or +1/+1/+1)"+
