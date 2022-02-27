@@ -1,6 +1,12 @@
+/*	-WHAT IS THIS?-
+	This file adds all of the Unearthed Arcana feats that haven't been carried over to an official source to "MPMB's Character Record Sheet" found at https://flapkan.com/mpmb/charsheets
+	Import this file using the "Add Extra Materials" bookmark.
+	-KEEP IN MIND-
+	It is recommended to enter the code in a fresh sheet before adding any other information (i.e. before making your character with it).
+*/
+
 var iFileName = "ua_Combined-Feats.js";
 RequiredSheetVersion(13);
-// This file adds all of the Unearthed Arcana feats that haven't been carried over to an official source.
 
 // Define the source
 SourceList["CUAF"] = {
