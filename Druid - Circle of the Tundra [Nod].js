@@ -1,9 +1,10 @@
-var iFileName = "Druid - Circle of the Tundra [Nod].js"; 
+var iFileName = "Druid - Circle of the Tundra.js"; 
 RequiredSheetVersion(13);
 
-SourceList["NodHB-CotT"] = {
-	name : "Circle of the Tundra",
-	abbreviation : "NodHB-Tundra",
+SourceList["NHB-CT"] = {
+	name : "Druid - Circle of the Tundra",
+	abbreviation : "CoT",
+	abbreviationSpellsheet: "CT",
 	group : "Nod's Homebrew",
 	date : "2021/03/20"
 };
@@ -11,11 +12,11 @@ SourceList["NodHB-CotT"] = {
 AddSubClass("druid", "circle of the tundra", {
 	regExpSearch : /^(?=.*(druid|shaman))(?=.*circle)(?=.*tundra).*$/i,
 	subname: "Circle of the Tundra",
-	source: ["NodHB-CotT"],
+	source: ["NHB-CT", 1],
 	features: {
 		"subclassfeature2": {
 			name: "Circle Spells",
-			source: ["NodHB-CotT"],
+			source: ["NHB-CT", 1],
 			minlevel: 2,
 			description: desc ([
 				"My link to the tundra infuses me with the ability to cast Ice Barrage and choose certain",
@@ -42,7 +43,7 @@ AddSubClass("druid", "circle of the tundra", {
 		},
 		"subclassfeature2.1" : {
 			name : "Arctic Recovery",
-			source: ["NodHB-CotT"],
+			source: ["NHB-CT", 1],
 			minlevel : 2,
 			description : "\n   " + "After a short rest, I can recover a number of 5th-level or lower spell slots",
 			additional : ["1 level spell slots", "1 level spell slots", "2 levels spell slots", "2 levels spell slots", "3 levels spell slots", "3 levels spell slots", "4 levels spell slots", "4 levels spell slots", "5 levels spell slots", "5 levels spell slots", "6 levels spell slots", "6 levels spell slots", "7 levels spell slots", "7 levels spell slots", "8 levels spell slots", "8 levels spell slots", "9 levels spell slots", "9 levels spell slots", "10 levels spell slots", "10 levels spell slots"],
@@ -51,7 +52,7 @@ AddSubClass("druid", "circle of the tundra", {
 			},
 		"subclassfeature6" : {
 			name : "Tundral Respite",
-			source: ["NodHB-CotT"],
+			source: ["NHB-CT", 1],
 			minlevel : 6,
 			description: desc([
 			"I can travel through nonmagical, difficult terrain without penalty and through nonmagical",
@@ -63,7 +64,7 @@ AddSubClass("druid", "circle of the tundra", {
 			},
 		"subclassfeature10": {
 			name: "Boreal Safeguard",
-			source: ["NodHB-CotT"],
+			source: ["NHB-CT", 1],
 			minlevel: 10,
 			description: desc([
 				"As a bonus action, I can create a 30-ft radius aura of cool air that moves with me",
@@ -77,7 +78,7 @@ AddSubClass("druid", "circle of the tundra", {
 		},
 		"subclassfeature14": {
 			name: "Polar Succor",
-			source: ["NodHB-CotT"],
+			source: ["NHB-CT", 1],
 			minlevel: 14,
 			description: desc([
 				"If I drop to 0 hp and don't die outright, I drop to 1 hp instead. I also gain a fly|swim|burrow",
@@ -90,11 +91,11 @@ AddSubClass("druid", "circle of the tundra", {
 	}
 });
 
-// Add New Spells (originally from Knuckleheads)
+// Add New Spells (from Knuckleheads)
 SpellsList["auroral winds"] = {
 	name: "Auroral Winds",
 	classes: ["druid", "warlock", "wizard"],
-	source: ["NodHB-CotT"],
+	source: ["NHB-CT", 3],
 	level: 4,
 	school: "Conj",
 	time: "1 a",
@@ -110,7 +111,7 @@ SpellsList["auroral winds"] = {
 SpellsList["brittle"] = {
 	name: "Brittle",
 	classes: ["cleric", "druid", "paladin", "wizard"],
-	source: ["NodHB-CotT"],
+	source: ["NHB-CT", 2],
 	level: 1,
 	school: "Trans",
 	time: "1 a",
@@ -124,7 +125,7 @@ SpellsList["brittle"] = {
 SpellsList["buffeting eddies"] = {
 	name: "Buffeting Eddies",
 	classes: ["bard","cleric","druid","paladin","ranger","sorcerer","warlock","wizard"],
-	source: ["NodHB-CotT"],
+	source: ["NHB-CT", 2],
 	level: 2,
 	school: "Trans",
 	time: "1 bns",
@@ -139,7 +140,7 @@ SpellsList["buffeting eddies"] = {
 SpellsList["chardalyn hide"] = {
 	name: "Chardalyn Hide",
 	classes: ["cleric", "druid", "sorcerer", "wizard"],
-	source: ["NodHB-CotT"],
+	source: ["NHB-CT", 4],
 	level: 7,
 	school: "Abjur",
 	time: "1 a",
@@ -153,7 +154,7 @@ SpellsList["chardalyn hide"] = {
 SpellsList["charm elemental"] = {
 	name: "Charm Elemental",
 	classes: ["bard","druid","ranger","sorcerer","warlock","wizard"],
-	source: ["NodHB-CotT"],
+	source: ["NHB-CT", 3],
 	level: 3,
 	school: "Ench",
 	time: "1 a",
@@ -167,7 +168,7 @@ SpellsList["charm elemental"] = {
 SpellsList["climbing spikes"] = {
 	name: "Climbing Spikes",
 	classes: ["druid","ranger","wizard"],
-	source: ["NodHB-CotT"],
+	source: ["NHB-CT", 2],
 	level: 1,
 	school: "Trans",
 	time: "1 a",
@@ -181,7 +182,7 @@ SpellsList["climbing spikes"] = {
 SpellsList["conjure compass"] = {
 	name: "Conjure Compass",
 	classes: ["druid", "ranger","wizard"],
-	source: ["NodHB-CotT"],
+	source: ["NHB-CT", 2],
 	level: 1,
 	school: "Conj",
 	time: "1 min",
@@ -195,7 +196,7 @@ SpellsList["conjure compass"] = {
 SpellsList["freezing blast"] = {
 	name: "Freezing Blast",
 	classes: ["druid","sorcerer","warlock","wizard"],
-	source: ["NodHB-CotT"],
+	source: ["NHB-CT", 3],
 	level: 2,
 	school: "Evoc",
 	time: "1 a",
@@ -209,7 +210,7 @@ SpellsList["freezing blast"] = {
 SpellsList["frozen flame"] = {
 	name: "Frozen Flame (R)",
 	classes: ["druid","ranger","wizard"],
-	source: ["NodHB-CotT"],
+	source: ["NHB-CT", 3],
 	level: 2,
 	school: "Trans",
 	time: "1 min",
@@ -223,7 +224,7 @@ SpellsList["frozen flame"] = {
 SpellsList["heart of ice"] = {
 	name: "Heart of Ice",
 	classes: ["druid","ranger","sorcerer","wizard"],
-	source: ["NodHB-CotT"],
+	source: ["NHB-CT", 4],
 	level: 4,
 	school: "Abjur",
 	time: "1 rea",
@@ -236,7 +237,7 @@ SpellsList["heart of ice"] = {
 SpellsList["hibernate"] = {
 	name: "Hibernate",
 	classes: ["bard","cleric","druid","wizard"],
-	source: ["NodHB-CotT"],
+	source: ["NHB-CT", 4],
 	level: 6,
 	school: "Ench",
 	time: "1 min",
@@ -250,20 +251,20 @@ SpellsList["hibernate"] = {
 SpellsList["ice barrage"] = {
 	name: "Ice Barrage",
 	classes: ["druid","sorcerer","warlock","wizard"],
-	source: ["NodHB-CotT"],
+	source: ["NHB-CT", 2],
 	level: 0,
 	school: "Evoc",
 	time: "1 a",
 	range: "90",
 	components: "V,S",
 	description: "Fling razor ice 2d4 Piercing dmg; shards at same or different targets; CL5:2, CL11:3, CL17:4 shards",
-	descriptionCantripDie: "`CD`x additional shards",
+	descriptionCantripDie: "Fling `CD` razor ice shards 2d4 Piercing dmg; shards at same or different targets;",
 	descriptionFull: "I conjure razor-sharp shards of frigid ice and fling it at a creature within range.Make a ranged spell attack against the target.On a hit, the target takes 2d4 piercing damage." + "\n   " + AtHigherLevels + "The spell creates more than one shard when I reach higher levels: two shards at 5th level, three shards at 11th level, and four shards at 17th level.I can direct the shards at the same target or at different ones.Make a separate attack roll for each shard."
 };
 SpellsList["icicle trap"] = {
 	name: "Icicle Trap",
 	classes: ["druid","ranger","wizard"],
-	source: ["NodHB-CotT"],
+	source: ["NHB-CT", 3],
 	level: 2,
 	school: "Abjur",
 	time: "10 min",
@@ -277,7 +278,7 @@ SpellsList["icicle trap"] = {
 SpellsList["invigorate"] = {
 	name: "Invigorate",
 	classes: ["bard","cleric","druid","paladin"],
-	source: ["NodHB-CotT"],
+	source: ["NHB-CT", 4],
 	level: 4,
 	school: "Abjur",
 	time: "1 a",
@@ -291,7 +292,7 @@ SpellsList["invigorate"] = {
 SpellsList["leomunds tinier tent"] = {
 	name: "Leomund's Tinier Tent (R)",
 	classes: ["druid","ranger","wizard"],
-	source: ["NodHB-CotT"],
+	source: ["NHB-CT", 2],
 	level: 1,
 	school: "Evoc",
 	time: "1 min",
@@ -305,7 +306,7 @@ SpellsList["leomunds tinier tent"] = {
 SpellsList["snow shoes"] = {
 	name: "Snow Shoes",
 	classes: ["bard","druid","ranger"],
-	source: ["NodHB-CotT"],
+	source: ["NHB-CT", 3],
 	level: 2,
 	school: "Trans",
 	time: "1 a",
@@ -318,7 +319,7 @@ SpellsList["snow shoes"] = {
 SpellsList["thaw"] = {
 	name: "Thaw",
 	classes: ["cleric", "druid", "sorcerer", "wizard"],
-	source: ["NodHB-CotT"],
+	source: ["NHB-CT", 2],
 	level: 1,
 	school: "Evoc",
 	time: "1 a",
@@ -332,13 +333,12 @@ SpellsList["thaw"] = {
 WeaponsList["ice barrage"] = {
 	regExpSearch: /^ice(?=.*barrage).*$/i,
 	name: "Ice Barrage",
-	source: ["NodHB-CotT"],
-	list: "spell", // lists of weapons in the sheet are: "melee", "ranged", "spell", and "improvised"
-	ability: 6, // Required; the ability score used to calculate the to hit modifier (and the damage if applicable, see below). [Str=1, Dex=2, Con=3, Int=4, Wis=5, Cha=6]
-	type: "Cantrip", // Required; the type of the weapon. Alternatives are "Cantrip", "Martial", "Natural" (= always proficient), "Other", "Spell", or "Improvised Weapons" // Alternatively, I can define a type yourself. If this type matches a word in the 'Other Weapon Proficiencies' field, the character will be considered proficient with the weapon
-	damage : ["C\u00D7" + 2, 4, "piercing"], // Required; the damage it does. First entry is the amount of dice, second is the type of dice, and third is the damage type. This example is 2d4 worth of piercing damage. //if I want the amount of dice to be an amount determined by the Character Level, then put "C" as the first value. Alternatively, I can use "B" for the value minus 1 (such as with Green-Flame Blade)
-	range: "90 ft", // Required; the range of the weapon
-	description: "Each 2d4 is a separate shard requiring separate rolls (KaSC 34)", // Required; the description of the attack. If I have nothing to put here, just put two quotation marks ("").
-	abilitytodamage: false, // Required; whether or not the ability score modifier is added to the damage (true or false)
-	SpellsList: "ice barrage", // Optional; if the attack I am making is a spell/cantrip that is listed in the SpellsList variable under another name that I am using for this weapon (in this example it would be "leattack"), write the name used in the SpellsList variable here
+	source: ["NHB-CT", 2],
+	list: "spell",
+	ability: 6,
+	type: "Cantrip",
+	damage : ["C\u00D7" + 2, 4, "piercing"],
+	description: "Each 2d4 is a separate shard requiring separate rolls",
+	abilitytodamage: false,
+	SpellsList: "ice barrage",
 };
