@@ -1,6 +1,6 @@
 var iFileName = "pub_20220125_MotM.js";
 RequiredSheetVersion("13.1.0");
-// This file adds the Fantastical Races from Mordenkainen Presents: Monsters of the Multiverse to MotMB's Character Record Sheet
+// This file adds the Fantastical Races from 'Mordenkainen Presents: Monsters of the Multiverse' to MPMB's Character Record Sheet
 
 // Define the source
 SourceList.MotM = {
