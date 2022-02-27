@@ -1,6 +1,12 @@
+/*	-WHAT IS THIS?-
+	This file adds the Chwinga Charms from 'Icewind Dale: Rime of the Frostmaiden" to "MPMB's Character Record Sheet" found at https://flapkan.com/mpmb/charsheets
+	Import this file using the "Add Extra Materials" bookmark.
+	-KEEP IN MIND-
+	It is recommended to enter the code in a fresh sheet before adding any other information (i.e. before making your character with it).
+*/
+
 var iFileName = "pub_20200915_IDRotF-Chwinga Charms.js";
 RequiredSheetVersion(13);
-// this file adds the Chwinga Charms from 'Icewind Dale: Rime of the Frostmaiden" to MPMB's character record sheet
 
 // Define the source
 SourceList.I={
