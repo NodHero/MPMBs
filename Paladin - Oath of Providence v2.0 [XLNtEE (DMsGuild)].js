@@ -13,12 +13,13 @@
 	Date:		2020-04-07 (sheet v13)
 */
 
-var iFileName = "Paladin - Oath of Providence [XLNtEE, transcribed by Nodhero].js"; 
+var iFileName = "Paladin - Oath of Providence [XLNtEE].js"; 
 RequiredSheetVersion(13);
 
-SourceList["XLNtEE2"] = {
-	name : "Xanathar's Lost Notes to Everything Else v2.0",
-	abbreviation : "XLNtEE",
+SourceList["XLN"] = {
+	name : "Xanathars Lost Notes to Everything Else: Paladin - Oath of Providence",
+	abbreviation : "XLN",
+	abbreviationSpellsheet: "LN",
 	group : "Dungeon Masters Guild",
 	url : "https://www.dmsguild.com/product/228484/",
 	date : "2018/08/30"
@@ -27,12 +28,12 @@ SourceList["XLNtEE2"] = {
 AddSubClass( "paladin", "oath of providence", {
 	regExpSearch : /^(((?=.*(providence|fated|fate|destined|destiny))((?=.*paladin)|((?=.*(exalted|sacred|holy|divine))(?=.*(knight|fighter|warrior|warlord|trooper)))))|((?=.*(providence|fated|destined|chosen))(?=.*(knight|fighter|warrior|warlord|trooper)))).*$/i,
 	subname : "Oath of Providence",
-	source : ["XLNtEE", 26],
+	source : ["XLN", 26],
 	spellcastingExtra : ["bless", "divine favor", "aid", "augury", "bestow curse", "clairvoyance", "death ward", "divination", "commune", "legend lore"],
 	features : {
 		"subclassfeature3" : {
 			name : "Channel Divinity: Predestination",
-			source : ["XLNtEE", 26],
+			source : ["XLN", 26],
 			minlevel : 3,
 			description : desc([
 				"As a reaction, a creature I can see within 60 ft can make a saving throw with advantage",
@@ -42,7 +43,7 @@ AddSubClass( "paladin", "oath of providence", {
 		},
 		"subclassfeature3.1" : {
 			name : "Channel Divinity: Kiss of Calamity",
-			source : ["XLNtEE", 26],
+			source : ["XLN", 26],
 			minlevel : 3,
 			description : desc([
 				"As an action, all unfriendly creatures within 30 ft that can see or hear me must make a",
@@ -51,8 +52,8 @@ AddSubClass( "paladin", "oath of providence", {
 			action : ["action", ""]
 		},
 		"subclassfeature7" : {
-			name : "Favor the Bold",
-			source : ["XLNtEE", 26],
+			name : "Favor the Brave",
+			source : ["XLN", 26],
 			minlevel : 7,
 			description : desc([
 				"I can turn a miss with a weapon attack into a hit. When I use this feature, my target takes",
@@ -64,7 +65,7 @@ AddSubClass( "paladin", "oath of providence", {
 		},
 		"subclassfeature15" : {
 			name : "Gift of Foresight",
-			source : ["XLNtEE", 26],
+			source : ["XLN", 26],
 			minlevel : 15,
 			description : desc([
 				"When I finish a short or long rest, I roll a d20 and record the prophetic roll number.",
@@ -77,7 +78,7 @@ AddSubClass( "paladin", "oath of providence", {
 		},
 		"subclassfeature20" : {
 			name : "Hand of Fate",
-			source : ["XLNtEE", 26],
+			source : ["XLN", 26],
 			minlevel : 20,
 			description : desc([
 				"For 1 min, I project an aura of dim, silver light in a 10-foot radius.",
