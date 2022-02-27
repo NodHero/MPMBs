@@ -83,7 +83,7 @@ RaceList["multiverse aasimar"] = {
 	scorestxt : "+2 to one ability score and +1 to a different score of my choice, -or- +1 to three different scores of my choice",
 	trait : "Multiverse Aasimar (+2/+1 or +1/+1/+1)"+
 		"\n \u2022 Celestial Resistance. I have resistance to necrotic/radiant damage."+
-		"\n \u2022 Healing Hands: Once per long rest, as an action, I can touch a creature to heal for d4 x twice my proficiency bonus worth of HP."+
+		"\n \u2022 Healing Hands: Once per long rest, as an action, I can touch a creature to heal for d4 x my proficiency bonus worth of HP."+
 		"\n \u2022 Light Bearer: I know the Light cantrip. Cha is spellcasting ability."+
 		"\n \u2022 Celestial Revelation: At 3rd level, I choose one option from Necrotic Shroud, Radiant Consumption, or Radiant Soul. Once per long rest, I can use a Bonus action to transform and gain the benefits of my chosen Revelation. The transformation lasts for 1 minute or until I end it as a Bonus action.",
 	abilitySave : 6,
@@ -100,7 +100,7 @@ RaceList["multiverse aasimar"] = {
 			usages : 1,
 			minlevel : 1,
 			recovery : "long rest",
-			additional : ProficiencyBonusList.map(function(n) { return 2 * n + "d4 healing"; }),
+			additional : ProficiencyBonusList.map(function(n) { return n + "d4 healing"; }),
 			action : ["action", ""]
 		},
 	},
@@ -112,7 +112,7 @@ AddRacialVariant("multiverse aasimar", "necrotic shroud", {
 	plural : "Aasimar",
 	vision : [["Darkvision", 60]],
 	trait : "\u2022 Celestial Resistance. I have resistance to necrotic/radiant damage."+
-		"\n \u2022 Healing Hands: Once per long rest, as an action, I can touch a creature to heal for d4 x twice my proficiency bonus worth of HP."+
+		"\n \u2022 Healing Hands: Once per long rest, as an action, I can touch a creature to heal for d4 x my proficiency bonus worth of HP."+
 		"\n \u2022 Light Bearer: I know the Light cantrip. Cha is spellcasting ability."+
 		"\n \u2022 Necrotic Shroud (3rd level): Once per long rest, as a Bonus action, I transform and all non-ally creatures within 10 ft of me pass a (DC 8 + Cha mod + Prof bonus) saving throw or be frightened of me until the end of my next turn. The Shroud lasts for 1 minute or until I end it as a Bonus action. While Shrouded, once on my turn, one target of my attacks or spells takes my prof bonus in extra necrotic damage.",
 	features : {
@@ -121,7 +121,7 @@ AddRacialVariant("multiverse aasimar", "necrotic shroud", {
 			usages : 1,
 			minlevel : 1,
 			recovery : "long rest",
-			additional : ProficiencyBonusList.map(function(n) { return 2 * n + "d4 healing"; }),
+			additional : ProficiencyBonusList.map(function(n) { return n + "d4 healing"; }),
 			action : ["action", ""]
 		},
 		"necrotic shroud" : {
@@ -141,7 +141,7 @@ AddRacialVariant("multiverse aasimar", "radiant consumption", {
 	plural : "Aasimar",
 	vision : [["Darkvision", 60]],
 	trait : "\u2022 Celestial Resistance. I have resistance to necrotic/radiant damage."+
-		"\n \u2022 Healing Hands: Once per long rest, as an action, I can touch a creature to heal for d4 x twice my proficiency bonus worth of HP."+
+		"\n \u2022 Healing Hands: Once per long rest, as an action, I can touch a creature to heal for d4 x my proficiency bonus worth of HP."+
 		"\n \u2022 Light Bearer: I know the Light cantrip. Cha is spellcasting ability."+
 		"\n \u2022 Radiant Consumption (3rd level): Once per long rest, as a Bonus action, I transform and shed 10-ft radius bright light and 10-ft dim light. The Light lasts for 1 minute or until I end it as a Bonus action. Until the Light ends, at the end of my turns, each creature within 10 ft takes my prof bonus radiant damage. Once on my turn, one target of my attacks or spells takes my prof bonus in extra radiant damage.",
 	features : {
@@ -150,7 +150,7 @@ AddRacialVariant("multiverse aasimar", "radiant consumption", {
 			usages : 1,
 			minlevel : 1,
 			recovery : "long rest",
-			additional : ProficiencyBonusList.map(function(n) { return 2 * n + "d4 healing"; }),
+			additional : ProficiencyBonusList.map(function(n) { return n + "d4 healing"; }),
 			action : ["action", ""]
 		},
 		"necrotic shroud" : {
@@ -170,7 +170,7 @@ AddRacialVariant("multiverse aasimar", "radiant soul", {
 	plural : "Aasimar",
 	vision : [["Darkvision", 60]],
 	trait : "\u2022 Celestial Resistance. I have resistance to necrotic/radiant damage."+
-		"\n \u2022 Healing Hands: Once per long rest, as an action, I can touch a creature to heal for d4 x twice my proficiency bonus worth of HP."+
+		"\n \u2022 Healing Hands: Once per long rest, as an action, I can touch a creature to heal for d4 x my proficiency bonus worth of HP."+
 		"\n \u2022 Light Bearer: I know the Light cantrip. Cha is spellcasting ability."+
 		"\n \u2022 Radiant Soul (3rd level): Once per long rest, as a Bonus action, I transform and two luminous, spectral wings sprout from my back. The Wings last for 1 minute or until I dismiss them as a Bonus action. Until the Wings end, I have a flying speed equal to my walking speed and once on my turn, one target of my attacks or spells takes my proficiency bonus in extra radiant damage.",
 	features : {
@@ -179,7 +179,7 @@ AddRacialVariant("multiverse aasimar", "radiant soul", {
 			usages : 1,
 			minlevel : 1,
 			recovery : "long rest",
-			additional : ProficiencyBonusList.map(function(n) { return 2 * n + "d4 healing"; }),
+			additional : ProficiencyBonusList.map(function(n) { return n + "d4 healing"; }),
 			action : ["action", ""]
 		},
 		"necrotic shroud" : {
