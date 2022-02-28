@@ -1560,6 +1560,23 @@ RaceList["multiverse shadar-kai"] = {
 		}
 	}
 };
+
+if (RaceList["beasthide shifter"]) {
+	RaceList["beasthide shifter"].regExpSearch = /^(?!.*multiverse)(?=.*shifter)(?=.*beast)(?=.*hide).*$/i;
+}
+
+if (RaceList["longtooth shifter"]) {
+	RaceList["longtooth shifter"].regExpSearch = /^(?!.*multiverse)(?=.*shifter)(?=.*long)(?=.*(tooth|teeth)).*$/i;
+}
+
+if (RaceList["swiftstride shifter"]) {
+	RaceList["swiftstride shifter"].regExpSearch = /^(?!.*multiverse)(?=.*shifter)(?=.*swift)(?=.*stride).*$/i;
+}
+
+if (RaceList["wildhunt shifter"]) {
+	RaceList["wildhunt shifter"].regExpSearch = /^(?!.*multiverse)(?=.*shifter)(?=.*wild)(?=.*hunt).*$/i;
+}
+
 // Shifter
 RaceList["multiverse shifter"] = {
 	regExpSearch : /^(?=.*multiverse)(?=.*shifter).*$/i,
