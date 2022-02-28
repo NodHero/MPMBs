@@ -1561,6 +1561,7 @@ RaceList["multiverse shadar-kai"] = {
 	}
 };
 
+// Shifter (with contributions from BraabHimself
 if (RaceList["beasthide shifter"]) {
 	RaceList["beasthide shifter"].regExpSearch = /^(?!.*multiverse)(?=.*shifter)(?=.*beast)(?=.*hide).*$/i;
 }
@@ -1577,7 +1578,6 @@ if (RaceList["wildhunt shifter"]) {
 	RaceList["wildhunt shifter"].regExpSearch = /^(?!.*multiverse)(?=.*shifter)(?=.*wild)(?=.*hunt).*$/i;
 }
 
-// Shifter
 RaceList["multiverse shifter"] = {
 	regExpSearch : /^(?=.*multiverse)(?=.*shifter).*$/i,
 	name : "Multiverse Shifter",
