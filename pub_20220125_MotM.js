@@ -6,6 +6,7 @@ RequiredSheetVersion("13.1.0");
 SourceList.MotM = {
 	name: "Mordenkainen Presents: Monsters of the Multiverse",
 	abbreviation: "MotM",
+	abbreviationSpellsheet: "MO",
 	group: "Primary Sources",
 	url: "https://dnd.wizards.com/products/monsters-of-the-multiverse",
 	date: "2022/01/25"
@@ -211,7 +212,7 @@ RaceList["multiverse bugbear"] = {
 	height : " vary in size. If you'd like to determine your character's height or weight randomly, consult the Randome Height and Weight table in the PHB, and choose the row in the table that best represents the build you imagine for your character.",
 	weight : " vary in size. If you'd like to determine your character's height or weight randomly, consult the Randome Height and Weight table in the PHB, and choose the row in the table that best represents the build you imagine for your character.",
 	scorestxt : "+2 to one ability score and +1 to a different score of my choice, -or- +1 to three different scores of my choice",
-	trait : "\n \u2022 Goblinoid: My creature type is humanoid, and I am considered a Goblinoid for any prerequisite or effect."+
+	trait : "\u2022 Goblinoid: My creature type is humanoid, and I am considered a Goblinoid for any prerequisite or effect."+
 		"\n \u2022 Fey Ancestry: I have advantage on saving throws to avoid or end the charmed condition on myself."+
 		"\n \u2022 Powerful Build: I count as one size larger when determining my carrying capacity and the weight I can push, drag, or lift."+
 		"\n \u2022 Long-Limbed: I add 5 feet of reach with melee attacks on my turn."+
@@ -859,7 +860,7 @@ RaceList["multiverse water genasi"] = {
 	height : " vary in size. If you'd like to determine your character's height or weight randomly, consult the Randome Height and Weight table in the PHB, and choose the row in the table that best represents the build you imagine for your character.",
 	weight : " vary in size. If you'd like to determine your character's height or weight randomly, consult the Randome Height and Weight table in the PHB, and choose the row in the table that best represents the build you imagine for your character.",
 	scorestxt : "+2 to one ability score and +1 to a different score of my choice, -or- +1 to three different scores of my choice",
-	trait : "Water Genasi (+2/+1 or +1/+1/+1)"+
+	trait : "Multiverse Water Genasi (+2/+1 or +1/+1/+1)"+
 	"\n \u2022 Amphibious: I can breathe air and water."+
 	"\n \u2022 Swim: I have a swimming speed equal to my walking speed."+
 	"\n \u2022 Call to the Wave: I can cast the Acid Splash cantrip. At 3rd level, Create or Destroy Water. At 5th level, Water Walk without material components. I can cast each without using a spell slot once per long rest, and by using spell slots as normal. Int, Wis, or Cha is my spellcasting ability for these (chosen with race).",
@@ -1284,7 +1285,7 @@ RaceList["multiverse kobold"] = {
 		}
 	},
 	trait : "Multiverse Kobold (+2/+1 or +1/+1/+1)"+
-		'\n \u2022 Kobold Legacy: Choose one of the following with the "Racial Options" button: (1) Defiance: advantage on saves vs. being frightened, (2) Draconic Sorcery: I know one sorcerer cantrip of my choice, or (3) Craftiness: I  gain proficiency in one of the following: Arcana, Investigation, Medicine, Sleight of Hand, or Survival.'+
+		'\n \u2022 Kobold Legacy: Choose one of the following with the "Racial Options" button: (1) Defiance: I have advantage on saves vs. being frightened, (2) Draconic Sorcery: I know one sorcerer cantrip of my choice, or (3) Craftiness: I  gain proficiency in one of the following: Arcana, Investigation, Medicine, Sleight of Hand, or Survival.'+
 		"\n \u2022 Draconic Cry: As a bonus action, I can let out a draconic cry at enemies within 10 ft. Until the end of my next turn, my allies and I have advantage on attack rolls against any enemies who could hear the cry. I can do this my Proficiency Bonus per long rest."
 };
 AddRacialVariant("multiverse kobold", "defiance", {
@@ -1560,24 +1561,19 @@ RaceList["multiverse shadar-kai"] = {
 		}
 	}
 };
-
 // Shifter (with contributions from BraabHimself
 if (RaceList["beasthide shifter"]) {
 	RaceList["beasthide shifter"].regExpSearch = /^(?!.*multiverse)(?=.*shifter)(?=.*beast)(?=.*hide).*$/i;
 }
-
 if (RaceList["longtooth shifter"]) {
 	RaceList["longtooth shifter"].regExpSearch = /^(?!.*multiverse)(?=.*shifter)(?=.*long)(?=.*(tooth|teeth)).*$/i;
 }
-
 if (RaceList["swiftstride shifter"]) {
 	RaceList["swiftstride shifter"].regExpSearch = /^(?!.*multiverse)(?=.*shifter)(?=.*swift)(?=.*stride).*$/i;
 }
-
 if (RaceList["wildhunt shifter"]) {
 	RaceList["wildhunt shifter"].regExpSearch = /^(?!.*multiverse)(?=.*shifter)(?=.*wild)(?=.*hunt).*$/i;
 }
-
 RaceList["multiverse shifter"] = {
 	regExpSearch : /^(?=.*multiverse)(?=.*shifter).*$/i,
 	name : "Multiverse Shifter",
@@ -1615,7 +1611,7 @@ AddRacialVariant("multiverse shifter", "beasthide", {
 	source : [["MotM", 32]],
 	plural : "Beasthide Shifters",
 	vision : [["Darkvision", 60]],
-	trait : "Multiverse Beasthide Shifter: (+2/+1 or +1/+1/+1)"+
+	trait : "Multiverse Shifter: (+2/+1 or +1/+1/+1)"+
 		"\n \u2022 Bestial Instincts. I have proficiency in one of the following skills: Acrobatics, Athletics, Intimidation, or Survival."+
 		"\n \u2022 Shifting (Beasthide): Prof bonus per long rest, as a bonus action, I can assume a more bestial appearance. This transformation lasts for 1 minute, until I die, or until I revert back as a bonus action. Whenever I Shift, I gain 1d6 + twice my proficiency bonus in temporary hit points and a +1 bonus to my AC.",
 	features : {
@@ -1635,7 +1631,7 @@ AddRacialVariant("multiverse shifter", "longtooth", {
 	source : [["MotM", 32]],
 	plural : "Longtooth Shifters",
 	vision : [["Darkvision", 60]],
-	trait : "Multiverse Longtooth Shifter: (+2/+1 or +1/+1/+1)"+
+	trait : "Multiverse Shifter: (+2/+1 or +1/+1/+1)"+
 		"\n \u2022 Bestial Instincts. I have proficiency in one of the following skills: Acrobatics, Athletics, Intimidation, or Survival."+
 		"\n \u2022 Shifting (Longtooth): Prof bonus per long rest, as a bonus action, I can assume a more bestial appearance. This transformation lasts for 1 minute, until I die, or until I revert back as a bonus action. Whenever I Shift, I gain twice my proficiency bonus in temporary hit points and my fangs elongate. When I Shift and while I am Shifted, as a Bonus action, I can make a single unarmed strike with my elongated fangs that deals 1d6 piercing damage.",
 	action : ["bonus action", "Longtooth Fangs (while Shifted)"],
@@ -1655,7 +1651,7 @@ AddRacialVariant("multiverse shifter", "swiftstride", {
 	source : [["MotM", 32]],
 	plural : "Swiftstride Shifters",
 	vision : [["Darkvision", 60]],
-	trait : "Multiverse Swiftstride Shifter: (+2/+1 or +1/+1/+1)"+
+	trait : "Multiverse Shifter: (+2/+1 or +1/+1/+1)"+
 		"\n \u2022 Bestial Instincts. I have proficiency in one of the following skills: Acrobatics, Athletics, Intimidation, or Survival."+
 		"\n \u2022 Shifting (Swiftstride): Prof bonus per long rest, as a bonus action, I can assume a more bestial appearance. This transformation lasts for 1 minute, until I die, or until I revert back as a bonus action. Whenever I Shift, I gain twice my proficiency bonus in temporary hit points and +10 ft to my walking speed. Additionally, as a Reaction when a creature ends its turn within 5 ft of me, I can move up to 10 ft. This reactive movement doesn't provoke opportunity attacks.",
 	action : [['reaction', 'Reactive Stride (while Shifted)']],
@@ -1666,10 +1662,10 @@ AddRacialVariant("multiverse shifter", "wildhunt", {
 	source : [["MotM", 32]],
 	plural : "Wildhunt Shifters",
 	vision : [["Darkvision", 60]],
-	trait : "Multiverse Wildhunt Shifter: (+2/+1 or +1/+1/+1)"+
+	trait : "Multiverse Shifter: (+2/+1 or +1/+1/+1)"+
 		"\n \u2022 Bestial Instincts. I have proficiency in one of the following skills: Acrobatics, Athletics, Intimidation, or Survival."+
 		"\n \u2022 Shifting (Wildhunt): Prof bonus per long rest, as a bonus action, I can assume a more bestial appearance. This transformation lasts for 1 minute, until I die, or until I revert back as a bonus action. Whenever I Shift, I gain twice my proficiency bonus in temporary hit points, I have advantage on Wisdom checks, and no creature within 30 feet of me can make an attack roll with advantage against me unless I'm incapacitated.",
-	vision : [["Darkvision", 60], ["While Shifted, no creature within 30 feet of me can make an attack roll with advantage against me", 0]],
+	vision : [["Darkvision", 60],["While Shifted, no creature within 30 feet of me can make an attack roll with advantage against me", 0]],
 	savetxt : { text : ["While Shifted, Adv. on Wis checks"] },
 });
 // Tabaxi
@@ -1709,7 +1705,7 @@ RaceList["multiverse tabaxi"] = {
 			tooltip : " (can be replenished by not moving for one whole turn)"
 		}
 	},
-	trait : "Tabaxi (+2/+1 or +1/+1/+1)"+
+	trait : "Multiverse Tabaxi (+2/+1 or +1/+1/+1)"+
 		"\n \u2022 Cat's Talent: I have proficiency in the Perception and Stealth skills."+
 		"\n \u2022 Cat's Claws: I can use my retractable claws to make unarmed strikes dealing 1d6 slashing damage. They also give me a climbing speed equal to my walking speed."+
 		"\n \u2022 Feline Agility: When moving on my turn in combat, I can move double my speed. Once I do this, I can't do it again until I don't move at all on one of my turns.",
@@ -1754,7 +1750,7 @@ RaceList["multiverse tortle"] = {
 			action : ["action", ""]
 		}
 	},
-	trait : "Tortle (+2/+1 or +1/+1/+1)"+
+	trait : "Multiverse Tortle (+2/+1 or +1/+1/+1)"+
 		"\n \u2022 Claws: My unarmed strikes with claws deal 1d6 slashing damage."+
 		"\n \u2022 Hold Breath: I can hold my breath for up to 1 hour at a time."+
 		"\n \u2022 Natural Armor: I can't wear armor. My shell provides me a base AC of 17, but I can't add my Dexterity modifier. I can still use a shield."+
@@ -1879,7 +1875,7 @@ RaceList["multiverse yuan-ti"] = {
 	spellChanges : {
 		"animal friendship" : {
 			description : "One snake with Intelligence 3 or less save or charmed for the duration",
-			changes : "I can cast this spell at-will on snakes."
+			changes : "I can cast Animal Friendship at-will, but only to target snakes."
 		}
 	},
 	features : {
