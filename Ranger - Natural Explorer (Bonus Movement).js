@@ -22,10 +22,20 @@ var TCoE_Natural_Explorer_Bonus_Movement = {
 	source : [["NEBM"], ["SRD", 36], ["P", 91]],
 	minlevel : 1,
 	description : desc([
-		"I gain +5 ft walking speed and climbing and swimming speed equal to my walking speed",
 		"I am not slowed by difficult terrain, I have benefits in travel, see page 3",
 		'Use the "Choose Feature" button above to add a favored terrain to the third page',
 	]),
+	"bonus movement" : {
+		name : "Natural Explorer (Bonus Movement)",
+		extraname : "Ranger 6",
+		source : [["NEBM"]],
+		description : "\n   I gain +5 ft walking speed and climbing and swimming speed equal to my walking speed",
+		speed : {
+			walk : { spd : "+5", enc : "+5" },
+			climb : { spd : "walk", enc : "walk" },
+			swim : { spd : "walk", enc : "walk" }
+		}
+	},
 	additional :  levels.map(function (n) {
 		return n < 6 ? "1 favored terrain" : (n < 10 ? 2 : 3) + " favored terrains";
 	}),
@@ -87,18 +97,16 @@ var TCoE_Natural_Explorer_Bonus_Movement = {
 	},
 	autoSelectExtrachoices : [{
 		extrachoice : "travel benefits"
+		}, {
+		extrachoice : "bonus movement",
+		minlevel : 6
 	}],
-	speed : {
-		walk : { spd : "+5", enc : "+5" },
-		climb : { spd : "walk", enc : "walk" },
-		swim : { spd : "walk", enc : "walk" }
-	},
 };
 CreateClassFeatureVariant("ranger", "natural explorer", "Natural Explorer (Bonus Movement)", TCoE_Natural_Explorer_Bonus_Movement);
 
+
 /*  Natural Explorer (Bonus Movement)
 You are a master of navigating the natural world. This grants you the following benefits:
-• Your walking speed increases by 5, and you gain a climbing speed and a swimming speed equal to your walking speed.
 • You are not slowed by difficult terrain.
 • You are particularly familiar with one type of natural environment and are adept at traveling and surviving in such regions. Choose one type of favored terrain: arctic, coast, desert, forest, grassland, mountain, swamp, or the Underdark. When you make an Intelligence or Wisdom check related to your favored terrain, your proficiency bonus is doubled if you are using a skill that you're proficient in. While traveling for an hour or more in your favored terrain, you gain the following benefits:
 	• Difficult terrain doesn't slow your group's travel.
@@ -108,5 +116,5 @@ You are a master of navigating the natural world. This grants you the following 
     • When you forage, you find twice as much food as you normally would.
     • While tracking other creatures, you also learn their exact number, their sizes, and how long ago they passed through the area.
 	
-You choose additional favored terrain types at 6th and 10th level.
+You choose additional favored terrain types at 6th and 10th level. Additionally at 6th level, your walking speed increases by 5, and you gain a climbing speed and a swimming speed equal to your walking speed.
 */
