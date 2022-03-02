@@ -113,9 +113,9 @@ You are a master of navigating the natural world. This grants you the following 
 	• Difficult terrain doesn't slow your group's travel.
    	• Your group can't become lost except by magical means.
    	• Even when you are engaged in another activity while traveling (such as foraging, navigating, or tracking), you remain alert to danger.
-    • If you are traveling alone, you can move stealthily at a normal pace.
-    • When you forage, you find twice as much food as you normally would.
-    • While tracking other creatures, you also learn their exact number, their sizes, and how long ago they passed through the area.
+	• If you are traveling alone, you can move stealthily at a normal pace.
+	• When you forage, you find twice as much food as you normally would.
+	• While tracking other creatures, you also learn their exact number, their sizes, and how long ago they passed through the area.
 	
 You choose additional favored terrain types at 6th and 10th level. Additionally at 6th level, your walking speed increases by 5, and you gain a climbing speed and a swimming speed equal to your walking speed.
 */
@@ -233,9 +233,12 @@ var TCoE_Favored_Enemy_Bonus_Damage = {
 CreateClassFeatureVariant("ranger", "favored enemy", "Favored Enemy (Bonus Damage)", TCoE_Favored_Enemy_Bonus_Damage);
 
 /* Favored Enemy (Bonus Damage)
-Beginning at 1st level, you have significant experience studying, tracking, hunting, and even talking to a certain type of enemy commonly encountered in the wilds. Choose a type of favored enemy: aberrations, beasts, celestials, constructs, dragons, elementals, fey, fiends, giants, monstrosities, oozes, plants, or undead. Alternatively, you can select two races of humanoid (such as gnolls and orcs) as favored enemies. You gain a +2 bonus to damage rolls with weapon attacks against creatures of the chosen type. Additionally, you have advantage on Wisdom (Survival) checks to track your favored enemies, as well as on Intelligence checks to recall information about them.
+Beginning at 1st level, you have significant experience studying, tracking, hunting, and even talking to a certain type of enemy commonly encountered in the wilds. 
+Choose a type of favored enemy: aberrations, beasts, celestials, constructs, dragons, elementals, fey, fiends, giants, monstrosities, oozes, plants, or undead. Alternatively, you can select two races of humanoid (such as gnolls and orcs) as favored enemies. 
+You gain a +2 bonus to damage rolls with weapon attacks against creatures of the chosen type. You have advantage on Wisdom (Survival) checks to track your favored enemies, as well as on Intelligence checks to recall information about them.
 When you gain this feature, you also learn one language of your choice, typically one spoken by your favored enemy or creatures associated with it. However, you are free to pick any language you wish to learn.
-You choose one additional favored enemy, as well as an associated language, at 6th and 14th level. As you gain levels, your choices should reflect the types of monsters you have encountered on your adventures. Additionally at 6th level, your bonus to damage rolls against all your favored enemies increases to +4.
+You choose one additional favored enemy, as well as an associated language, at 6th and 14th level. As you gain levels, your choices should reflect the types of monsters you have encountered on your adventures. 
+Additionally at 6th level, your bonus to damage rolls against all your favored enemies increases to +4.
 */
 
 var TCoE_Primeval_Awareness_Bonus_Spells = {
@@ -274,16 +277,16 @@ var TCoE_Primeval_Awareness_Bonus_Spells = {
 CreateClassFeatureVariant("ranger", "primeval awareness", "Primeval Awareness (Bonus Spells)", TCoE_Primeval_Awareness_Bonus_Spells);
 
 /* Primeval Awareness (Bonus Spells)
-Beginning at 3rd level, you can use your action and expend one ranger spell slot to focus your awareness on the region around you. For 1 minute per level of the spell slot you expend, you can sense whether the following types of creatures are present within 1 mile of you (or within up to 6 miles if you are in your favored terrain): 
+Beginning at 3rd level, you can use your action and expend one ranger spell slot to focus your awareness on the region around you. 
+For 1 minute per level of the spell slot you expend, you can sense whether the following types of creatures are present within 1 mile of you (or within up to 6 miles if you are in your favored terrain): 
 aberrations, celestials, dragons, elementals, fey, fiends, and undead. 
 This feature doesn't reveal the creatures' location or number, unless it is one of your favored enemies, in which case you learn their numbers, and the creatures’ general direction and distance (in miles) from you. If there are multiple groups of your favored enemies within range, you learn this information for each group.
-
 Your interconnections with nature also enable you to learn additional spells when you reach certain levels in this class if you don't already know them, as shown in the Bonus Spells table. These spells don't count against the number of ranger spells you know.
 Bonus Spells
-[Ranger Level]	[Spell]
-	3rd			speak with animals
-	5th			locate animals or plants
-	9th			speak with plants
+[Ranger Level]		[Spell]
+	3rd		speak with animals
+	5th		locate animals or plants
+	9th		speak with plants
 	13th		guardian of nature
 	17th		commune with nature
 
@@ -304,7 +307,8 @@ CreateClassFeatureVariant("ranger", "land's stride", "Land's Stride (Fleet of Fo
 
 /* Land's Stride (Fleet of Foot)
 Beginning at 8th level, you can use the Dash action as a bonus action on your turn. 
-Additionally, you can pass through nonmagical plants without being slowed by them and without taking damage from them if they have thorns, spines, or a similar hazard. You also have advantage on saving throws against plants that are magically created or manipulated to impede movement, such those created by the entangle spell. */
+Additionally, you can pass through nonmagical plants without being slowed by them and without taking damage from them if they have thorns, spines, or a similar hazard. 
+You also have advantage on saving throws against plants that are magically created or manipulated to impede movement, such those created by the entangle spell. */
 
 var TCoE_Hide_in_Plain_Sight_Tireless = {
 	name : "Hide in Plain Sight (Tireless)",
@@ -325,11 +329,10 @@ CreateClassFeatureVariant("ranger", "hide in plain sight", "Hide in Plain Sight 
 
 /* Hide in Plain Sight (Tireless)
 Starting at 10th level, you can spend 1 minute creating camouflage for yourself. You must have access to fresh mud, dirt, plants, soot, and other naturally occurring materials with which to create your camouflage.
-
-Once you are camouflaged in this way, you can try to hide by pressing yourself up against a solid surface, such as a tree or wall, that is at least as tall and wide as you are. You gain a +10 bonus to Dexterity (Stealth) checks as long as you remain there without moving or taking actions. Once you move or take an action or a reaction, you must camouflage yourself again to gain this benefit.
-
-Also, as an action, you can give yourself a number of temporary hit points equal to 1d8 + your Wisdom modifier (minimum of 1 temporary hit point). You can use this action a number of times equal to your proficiency bonus, and you regain all expended uses when you finish a long rest.
-
+Once you are camouflaged in this way, you can try to hide by pressing yourself up against a solid surface, such as a tree or wall, that is at least as tall and wide as you are. 
+You gain a +10 bonus to Dexterity (Stealth) checks as long as you remain there without moving or taking actions. Once you move or take an action or a reaction, you must camouflage yourself again to gain this benefit.
+Also, as an action, you can give yourself a number of temporary hit points equal to 1d8 + your Wisdom modifier (minimum of 1 temporary hit point). 
+You can use this action a number of times equal to your proficiency bonus, and you regain all expended uses when you finish a long rest.
 In addition, whenever you finish a short rest, your exhaustion level, if any, is decreased by 1. */
 
 // Add Spells
@@ -356,12 +359,12 @@ Duration: Instantaneous
 
 You call out to the spirits of nature to aid you. 
 When you cast this spell, choose up to three of the following effects:
-•    If there are any tracks on the ground within range, you know where they are, and you make Wisdom (Survival) checks to follow these tracks with advantage for 1 hour or until you cast this spell again.
-•    If there is edible forage within range, you know it and where to find it.
-•    If there is clean drinking water within range, you know it and where to find it.
-•    If there is suitable shelter for you and your companions with range, you know it and where to find.
-•    Send the spirits to bring back wood for a fire and to set up a campsite in the area using your supplies. The spirits build the fire in a circle of stones, put up tents, unroll bedrolls, and put out any rations and water for consumption.
-•    Have the spirits instantly break down a campsite, which includes putting out a fire, taking down tents, packing up bags, and burying any rubbish.
+• If there are any tracks on the ground within range, you know where they are, and you make Wisdom (Survival) checks to follow these tracks with advantage for 1 hour or until you cast this spell again.
+• If there is edible forage within range, you know it and where to find it.
+• If there is clean drinking water within range, you know it and where to find it.
+• If there is suitable shelter for you and your companions with range, you know it and where to find.
+• Send the spirits to bring back wood for a fire and to set up a campsite in the area using your supplies. The spirits build the fire in a circle of stones, put up tents, unroll bedrolls, and put out any rations and water for consumption.
+• Have the spirits instantly break down a campsite, which includes putting out a fire, taking down tents, packing up bags, and burying any rubbish.
 
 Classes: Druid, Ranger */
 
@@ -385,8 +388,7 @@ Range: 10 feet
 Components: V
 Duration: Instantaneous
 
-Each sleeping creature you choose within range 
-awakens, and then each prone creature within range can stand up without expending any movement.
+Each sleeping creature you choose within range awakens, and then each prone creature within range can stand up without expending any movement.
 
 Classes: Artificer, Bard, Ranger, Sorcerer, Wizard */
 
@@ -410,10 +412,16 @@ Range: 60 feet
 Components: V, S
 Duration: Concentration, up to 10 minutes
 
-This spell transforms a creature you can see within range into a new beast form. An unwilling creature must make a Wisdom saving throw to avoid the effect. A shapechanger automatically succeeds on this saving throw.
-The transformation lasts for the duration, or until the target drops to 0 hit points or dies. The new form can be any beast of CR 1 or less without a fly speed. The target’s game statistics, including mental ability scores, are replaced by the statistics of the chosen beast. It retains its alignment and personality. The creature is limited in the actions it can perform by the nature of its new form, and it can’t speak, cast spells, or take any other action that requires hands or speech. The creature's gear melds into its new form. The creature can’t activate, use, wield, or otherwise benefit from any of its equipment.
+This spell transforms a creature you can see within range into a new beast form. An unwilling creature must make a Wisdom saving throw to avoid the effect. 
+A shapechanger automatically succeeds on this saving throw.
+The transformation lasts for the duration, or until the target drops to 0 hit points or dies. 
+The new form can be any beast of CR 1 or less without a fly speed. The target’s game statistics, including mental ability scores, are replaced by the statistics of the chosen beast. 
+It retains its alignment and personality. The creature is limited in the actions it can perform by the nature of its new form, and it can’t speak, cast spells, or take any other action that requires hands or speech. 
+The creature's gear melds into its new form. The creature can’t activate, use, wield, or otherwise benefit from any of its equipment.
 
-The target assumes the hit points of its new form. When it reverts to its normal form, the creature returns to the number of hit points it had before it transformed. If it reverts as a result of dropping to 0 hit points, any excess damage carries over to its normal form.
-While in this new form, the target is charmed by you and views you as a trusted ally. The target can understand simple commands such as “attack” or “stay.” The charm affects creatures that are immune to charm in their normal form. The charm ends immediately when the target reverts to its normal form.
+The target assumes the hit points of its new form. When it reverts to its normal form, the creature returns to the number of hit points it had before it transformed. 
+If it reverts as a result of dropping to 0 hit points, any excess damage carries over to its normal form.
+While in this new form, the target is charmed by you and views you as a trusted ally. The target can understand simple commands such as “attack” or “stay.” 
+The charm affects creatures that are immune to charm in their normal form. The charm ends immediately when the target reverts to its normal form.
 
 Classes: Druid, Ranger, Sorcerer */
