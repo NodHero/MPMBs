@@ -1673,7 +1673,7 @@ RaceList["multiverse tabaxi"] = {
 	regExpSearch : /^(?=.*multiverse)(?=.*tabaxi).*$/i,
 	name : "Multiverse Tabaxi",
 	sortname : "Tabaxi, Multiverse",
-	source : [["MBM", 33]],
+	source : [["MotM", 33]],
 	plural : "Tabaxi",
 	size : [3, 4],
 	speed : {
