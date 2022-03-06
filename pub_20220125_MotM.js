@@ -1721,7 +1721,7 @@ RaceList["multiverse tortle"] = {
 	speed : {
 		walk : { spd : 30, enc : 20 }
 	},
-	languageProfs : ["Common", "Aquan"],
+	languageProfs : ["Common", 1],
 	skillstxt : "Choose one from Animal Handling, Medicine, Nature, Perception, Stealth, and Survival",
 	armorOptions : {
 		regExpSearch : /^(?=.*tortle)(?=.*shell).*$/i,
@@ -1768,7 +1768,7 @@ RaceList["multiverse triton"] = {
 		walk : { spd : 30, enc : 20 },
 		swim : { spd : "walk", enc : 0 }
 	},
-	languageProfs : ["Common", "Primordial"],
+	languageProfs : ["Common", 1],
 	dmgres : ["Cold"],
 	vision : [["Darkvision", 60]],
 	age : " typically live to be around 100 years old",
