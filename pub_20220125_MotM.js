@@ -212,8 +212,8 @@ RaceList["multiverse bugbear"] = {
 	height : " vary in size. If you'd like to determine your character's height or weight randomly, consult the Random Height and Weight table in the PHB, and choose the row in the table that best represents the build you imagine for your character.",
 	weight : " vary in size. If you'd like to determine your character's height or weight randomly, consult the Random Height and Weight table in the PHB, and choose the row in the table that best represents the build you imagine for your character.",
 	scorestxt : "+2 to one ability score and +1 to a different score of my choice, -or- +1 to three different scores of my choice",
-	trait : "\u2022 Goblinoid: My creature type is humanoid, and I am considered a Goblinoid for any prerequisite or effect."+
-		"\n \u2022 Fey Ancestry: I have advantage on saving throws to avoid or end the charmed condition on myself."+
+	trait : "\u2022 Goblinoid: Creature type = 'Humanoid', considered a 'Goblinoid'"+
+		"\n \u2022 Fey Ancestry: Adv on saves to avoid/end charmed on myself."+
 		"\n \u2022 Powerful Build: I count as one size larger when determining my carrying capacity and the weight I can push, drag, or lift."+
 		"\n \u2022 Long-Limbed: I add 5 feet of reach with melee attacks on my turn."+
 		"\n \u2022 Sneaky: I am proficient in Stealth and can move through and stop in a space large enough for a Small creature without squeezing."+
@@ -247,7 +247,7 @@ RaceList["multiverse centaur"] = {
 	weight : " vary in size. If you'd like to determine your character's height or weight randomly, consult the Random Height and Weight table in the PHB, and choose the row in the table that best represents the build you imagine for your character.",
 	scorestxt : "+2 to one ability score and +1 to a different score of my choice, -or- +1 to three different scores of my choice",
 	trait : "Multiverse Centaur (+2/+1 or +1/+1/+1)"+
-		"\n \u2022 Fey: My creature type is Fey, rather than humanoid."+
+		"\n \u2022 Fey: My creature type is 'Fey', rather than 'Humanoid'."+
 		"\n \u2022 Hooves: I can use my hooves for unarmed strikes that deal 1d6 bludgeoning damage."+
 		"\n \u2022 Charge: If I move 30 ft straight toward a creature and then hit it with a melee weapon attack on the same turn, I can make a hooves attack against it as a bonus action."+
 		"\n \u2022 Equine Build: I count as one size larger for my carrying capacity and the weight I can push, drag, or lift. Because of my hooves, 1 ft of movement while climbing costs me 4 ft.",
@@ -272,7 +272,7 @@ RaceList["multiverse changeling"] = {
 	weight : " vary in size. If you'd like to determine your character's height or weight randomly, consult the Random Height and Weight table in the PHB, and choose the row in the table that best represents the build you imagine for your character.",
 	scorestxt : "+2 to one ability score and +1 to a different score of my choice, -or- +1 to three different scores of my choice",
 	trait : "Multiverse Changeling (+2/+1 or +1/+1/+1)"+
-		"\n \u2022 Fey: My creature type is Fey, rather than humanoid."+
+		"\n \u2022 Fey: My creature type is 'Fey', rather than 'Humanoid'."+
 		"\n \u2022 Shapechanger: As an action, I can change my appearance and voice to or from a humanoid-shaped form I have seen, not changing my equipment. I determine the specifics of the form like hair length, eye color, and sex. I can adjust my height and weight between Medium and Small and can appear as a member of another race, though none of my game statistics change. I revert back when I die."+
 		"\n \u2022 Changeling Instincts: I gain proficiency with 2 of the following skills: Deception, Insight, Intimidation, Performance, or Persuasion.",
 	action : [["action", "Shapechanger"]]
@@ -295,7 +295,7 @@ RaceList["multiverse deep gnome"] = {
 	height : " vary in size. If you'd like to determine your character's height or weight randomly, consult the Random Height and Weight table in the PHB, and choose the row in the table that best represents the build you imagine for your character.",
 	weight : " vary in size. If you'd like to determine your character's height or weight randomly, consult the Random Height and Weight table in the PHB, and choose the row in the table that best represents the build you imagine for your character.",
 	scorestxt : "+2 to one ability score and +1 to a different score of my choice, -or- +1 to three different scores of my choice",
-	trait : "\u2022 Gnome: My creature type is humanoid, and I am considered a Gnome for any prerequisite or effect."+
+	trait : "\u2022 Gnome: My creature type = 'Humanoid', considered a 'Gnome'."+
 		"\n \u2022 Svirfneblin Camouflage: Prof bonus per long rest, I can gain advantage on Dexterity (stealth) checks."+
 		"\n \u2022 Gnomish Magic Resistance: Adv on Int/Wis/Cha saves vs spells."+
 		"\n \u2022 Gift of the Svirfneblin: At 3rd level, I can cast Disguise Self. At 5th level, Nondetection without requiring a material component. I can cast each without using a spell slot once per long rest, and by using spell slots as normal. Int, Wis, or Cha is my spellcasting ability for these (chosen with race).",
@@ -371,7 +371,7 @@ RaceList["multiverse duergar"] = {
 	height : " vary in size. If you'd like to determine your character's height or weight randomly, consult the Random Height and Weight table in the PHB, and choose the row in the table that best represents the build you imagine for your character.",
 	weight : " vary in size. If you'd like to determine your character's height or weight randomly, consult the Random Height and Weight table in the PHB, and choose the row in the table that best represents the build you imagine for your character.",
 	scorestxt : "+2 to one ability score and +1 to a different score of my choice, -or- +1 to three different scores of my choice",
-	trait : "\u2022 Dwarf: My creature type is humanoid, and I am considered a Dwarf for any prerequisite or effect."+
+	trait : "\u2022 Dwarf: My creature type = 'Humanoid', considered a 'Dwarf'."+
 		"\n \u2022 Dwarven Resilience: I have advantage on saving throws to avoid or end the poisoned condition on myself and resistance to poison damage."+
 		"\n \u2022 Psionic Fortitude: I have advantage on saving throws to avoid or end the charmed or stunned conditions on myself."+
 		"\n \u2022 Duergar Magic: 3rd: Enlarge/Reduce; 5th: Invisibility. I can cast both spells on myself once per long rest without material components, and by using spell slots as normal. Intelligence, Wisdom, or Charisma is my spellcasting ability for these (chosen with race).",
@@ -456,7 +456,7 @@ RaceList["multiverse eladrin"] = {
 	weight : " vary in size. If you'd like to determine your character's height or weight randomly, consult the Random Height and Weight table in the PHB, and choose the row in the table that best represents the build you imagine for your character.",
 	scorestxt : "+2 to one ability score and +1 to a different score of my choice, -or- +1 to three different scores of my choice",
 	abilitySave : [4, 5, 6],
-	trait : "\u2022 Elf: My creature type is humanoid, and considered 'Elf' for prereqs."+
+	trait : "\u2022 Elf: My creature type = 'Humanoid', considered an 'Elf'."+
 		"\n \u2022 Trance: I don't need to sleep, and magic can't put me to sleep. I can finish a long rest in 4 hours while  meditating consciously. At the end of the trance, I gain 2 proficiencies with a weapon/tool from the PHB until the end of my next long rest."+
 		"\n \u2022 Shifting Seasons: After finish a long rest, I can align with a season."+
 		"\n \u2022 Fey Step: Prof bonus per long rest, as a bonus action, I can magically teleport up to 30 ft to an unoccupied space I can see. At 3rd level, additional effects based on my aligned season. Save DC equals DC 8 + prof bonus + Int/Wis/Cha mod (chosen with race)",
@@ -552,7 +552,7 @@ RaceList["fairy"] = {
 		}
 	},
 	trait : "Fairy (+2/+1 or +1/+1/+1)"+
-		"\n \u2022 Fey: My creature type is Fey, rather than humanoid"+
+		"\n \u2022 Fey: My creature type is 'Fey', rather than 'Humanoid'."+
 		"\n \u2022 Flight: I have flying speed equal to my walking speed, but can't use it when wearing medium or heavy armor."+
 		"\n \u2022 Fairy Magic: I know the Druidcraft cantrip. At 3rd level, I can cast Faerie Fire and at 5th level I can cast Enlarge/Reduce. I can cast both spells without using a spell slot once per long rest each, as well as by using spell slots as normal. Intelligence, Wisdom, or Charisma is my spellcasting ability for these, chosen when I select the race.",
 	};
@@ -1090,7 +1090,7 @@ RaceList["multiverse goblin"] = {
 	},
 	action : [["bonus action", "Nimble Escape (disengage/hide)"]],
 	trait : "Multiverse Goblin (+2/+1 or +1/+1/+1)"+
-		"\n \u2022 Goblinoid: My creature type is humanoid, and I am considered a Goblinoid for any prerequisite or effect."+
+		"\n \u2022 Goblinoid: Creature type = 'Humanoid', considered a 'Goblinoid'"+
 		"\n \u2022 Fey Ancestry: I have advantage on saving throws to avoid or end the charmed condition on myself."+
 		"\n \u2022 Fury of the Small: Prof bonus per long rest, when I hit a creature of a size category larger than mine, I deal extra damage equal to my prof bonus."+
 		"\n \u2022 Nimble Escape: As a bonus action, I can take the Disengage or Hide action.",
@@ -1221,6 +1221,7 @@ RaceList["multiverse hobgoblin"] = {
 		}
 	},
 	trait : "Multiverse Hobgoblin (+2/+1 or +1/+1/+1)"+
+		"\n \u2022 Goblinoid: Creature type = 'Humanoid', considered a 'Goblinoid'"+
 		"\n \u2022 Fey Ancestry: I have advantage on saving throws to avoid or end the charmed condition on myself."+
 		'\n \u2022 Fey Gift: Prof bonus per long rest, I can take the Help action as a Bonus action. Starting at 3rd-level, I can produce an additional effect with this trait: Hospitality, Passage, or Spite. See 3rd page "Notes."'+
 		"\n \u2022 Fortune from the Many: Prof bonus per long rest, when I miss an attack or fail an ability check or a save, I can gain a bonus to the roll equal to the number of allies I can see within 30 ft of me (max +3).",
@@ -1488,7 +1489,7 @@ RaceList["multiverse satyr"] = {
 	skills : ["Performance", "Persuasion"],
 	toolProfs : [["Musical instrument", 1]],
 	trait : "Multiverse Satyr (+2/+1 or +1/+1/+1)"+
-		"\n \u2022 Fey: My creature type is Fey, rather than humanoid."+
+		"\n \u2022 Fey: My creature type is 'Fey', rather than 'Humanoid'."+
 		"\n \u2022 Ram: I can use my head and horns for unarmed strikes that deal 1d6 bludgeoning damage."+
 		"\n \u2022 Magic Resistance: I have advantage on saves against spells."+
 		"\n \u2022 Mirthful Leaps: Whenever I make a long or high jump, I can roll a d8 and add the number rolled to the number of feet I cover, even when making a standing jump. This extra distance costs movement as normal.",
@@ -1518,7 +1519,7 @@ RaceList["multiverse sea elf"] = {
 	height : " vary in size. If you'd like to determine your character's height or weight randomly, consult the Random Height and Weight table in the PHB, and choose the row in the table that best represents the build you imagine for your character.",
 	weight : " vary in size. If you'd like to determine your character's height or weight randomly, consult the Random Height and Weight table in the PHB, and choose the row in the table that best represents the build you imagine for your character.",
 	scorestxt : "+2 to one ability score and +1 to a different score of my choice, -or- +1 to three different scores of my choice",
-	trait : "\u2022 Elf: My creature type is humanoid, and considered 'Elf' for prereqs."+
+	trait : "\u2022 Elf: My creature type = 'Humanoid', considered an 'Elf'."+
 		"\n \u2022 Trance: I don't need to sleep, and magic can't put me to sleep. I can finish a long rest in 4 hours while  meditating consciously. At the end of the trance, I gain 2 proficiencies with a weapon/tool from the PHB until the end of my next long rest."+
 		"\n \u2022 Child of the Sea. I  can breathe air and water and have resistance to cold damage."+
 		"\n \u2022 Friend of the Sea: I can communicate simple ideas with any beast that has a swimming speed. It can understand my words, though I have no special ability to understand it in return.",
@@ -1547,7 +1548,7 @@ RaceList["multiverse shadar-kai"] = {
 	height : " vary in size. If you'd like to determine your character's height or weight randomly, consult the Random Height and Weight table in the PHB, and choose the row in the table that best represents the build you imagine for your character.",
 	weight : " vary in size. If you'd like to determine your character's height or weight randomly, consult the Random Height and Weight table in the PHB, and choose the row in the table that best represents the build you imagine for your character.",
 	scorestxt : "+2 to one ability score and +1 to a different score of my choice, -or- +1 to three different scores of my choice",
-	trait : "\u2022 Elf: My creature type is humanoid, and considered 'Elf' for prereqs."+
+	trait : "\u2022 Elf: My creature type = 'Humanoid', considered an 'Elf'."+
 		"\n \u2022 Trance: I don't need to sleep, and magic can't put me to sleep. I can finish a long rest in 4 hours while  meditating consciously. At the end of the trance, I gain 2 proficiencies with a weapon/tool from the PHB until the end of my next long rest."+
 		"\n \u2022 Blessing of the Raven Queen: Prof bonus per long rest, as a bonus action, I can magically teleport up to 30 ft to an unoccupied space I can see. Once I reach 3rd level, after I use the Blessing of the Raven Queen, I appear translucent and have resistance to all damage until the start of my next turn.",
 	features : {
