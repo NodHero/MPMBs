@@ -333,12 +333,12 @@ WeaponsList["ice barrage"] = {
 	regExpSearch: /^ice(?=.*barrage).*$/i,
 	name: "Ice Barrage",
 	source: ["KaSC", 34],
-	list: "spell", // lists of weapons in the sheet are: "melee", "ranged", "spell", and "improvised"
-	ability: 6, // Required; the ability score used to calculate the to hit modifier (and the damage if applicable, see below). [Str=1, Dex=2, Con=3, Int=4, Wis=5, Cha=6]
-	type: "Cantrip", // Required; the type of the weapon. Alternatives are "Cantrip", "Martial", "Natural" (= always proficient), "Other", "Spell", or "Improvised Weapons" // Alternatively, I can define a type yourself. If this type matches a word in the 'Other Weapon Proficiencies' field, the character will be considered proficient with the weapon
-	damage : ["C\u00D7" + 2, 4, "piercing"], // Required; the damage it does. First entry is the amount of dice, second is the type of dice, and third is the damage type. This example is 2d4 worth of piercing damage. //if I want the amount of dice to be an amount determined by the Character Level, then put "C" as the first value. Alternatively, I can use "B" for the value minus 1 (such as with Green-Flame Blade)
-	range: "90 ft", // Required; the range of the weapon
-	description: "Each 2d4 is a separate shard requiring separate rolls (KaSC 34)", // Required; the description of the attack. If I have nothing to put here, just put two quotation marks ("").
-	abilitytodamage: false, // Required; whether or not the ability score modifier is added to the damage (true or false)
-	SpellsList: "ice barrage", // Optional; if the attack I am making is a spell/cantrip that is listed in the SpellsList variable under another name that I am using for this weapon (in this example it would be "leattack"), write the name used in the SpellsList variable here
+	list: "spell", 
+	ability: 6, 
+	type: "Cantrip",
+	damage : ["C\u00D7" + 2, 4, "piercing"],
+	range: "90 ft",
+	description: "Each 2d4 is a separate shard requiring separate rolls (KaSC 34)",
+	abilitytodamage: false,
+	SpellsList: "ice barrage",
 };
