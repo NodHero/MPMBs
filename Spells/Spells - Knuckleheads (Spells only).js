@@ -199,7 +199,7 @@ SpellsList["ice barrage"] = {
 	level: 0,
 	school: "Evoc",
 	time: "1 a",
-	range: "90",
+	range: "90 ft",
 	components: "V,S",
 	description: "Fling razor ice 2d4 Piercing dmg; shards at same or different targets; CL5:2, CL11:3, CL17:4 shards",
 	descriptionCantripDie: "Fling `CD` razor ice shards 2d4 Piercing dmg; shards at same or different targets;",
