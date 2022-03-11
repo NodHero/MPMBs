@@ -1688,7 +1688,7 @@ RaceList["multiverse tabaxi"] = {
 		baseWeapon : "unarmed strike",
 		regExpSearch : /^(?=.*(tabaxi|\bcat\b))(?=.*claw).*$/i,
 		name : "Tabaxi Claws",
-		source : ["MBM", 33],
+		source : ["MotM", 33],
 		damage : [1, 6, "slashing"]
 	},
 	weaponsAdd : ["Tabaxi Claws"],
