@@ -1,10 +1,10 @@
-var iFileName = "pub_20220125_MotM.js";
+var iFileName = "pub_20220125_MotM (Fantastical Races).js";
 RequiredSheetVersion("13.1.0");
 // This file adds the Fantastical Races from 'Mordenkainen Presents: Monsters of the Multiverse' to MPMB's Character Record Sheet
 
 // Define the source
 SourceList.MotM = {
-	name: "Mordenkainen Presents: Monsters of the Multiverse",
+	name: "Mordenkainen Presents: Monsters of the Multiverse (Fantastical Races)",
 	abbreviation: "MotM",
 	abbreviationSpellsheet: "MO",
 	group: "Primary Sources",
@@ -14,7 +14,7 @@ SourceList.MotM = {
 
 //Add Races
 // Aarakocra
-RaceList["multiverse aarakocra"] = {
+RaceList["multiverse aarakocra"] = { 
 	regExpSearch : /^(?=.*multiverse)(?=.*aarakocra).*$/i,
 	name : "Multiverse Aarakocra",
 	sortname : "Aarakocra, Multiverse",
@@ -61,7 +61,7 @@ RaceList["multiverse aarakocra"] = {
 	scorestxt : "+2 to one ability score and +1 to a different score of my choice, -or- +1 to three different scores of my choice",
 	trait : "Multiverse Aarakocra (+2/+1 or +1/+1/+1)"+
 		"\n \u2022 Flight: I have a flying speed equal to my walking speed. To use this speed, I can't be wearing medium or heavy armor."+
-		"\n \u2022 Talons: My unarmed strikes deal 1d6 slashing damage on a hit."+
+		"\n \u2022 Talons: My unarmed strikes with talons deal 1d6 slashing damage."+
 		"\n \u2022 Wind Caller: At 3rd level, I can cast Gust of Wind. I can cast it without using a spell slot once per long rest, as well as by using spell slots as normal. Intelligence, Wisdom, or Charisma is my spellcasting ability for this, chosen when I select the race.",
 };
 // Aasimar
@@ -115,7 +115,7 @@ AddRacialVariant("multiverse aasimar", "necrotic shroud", {
 	trait : "\u2022 Celestial Resistance. I have resistance to necrotic/radiant damage."+
 		"\n \u2022 Healing Hands: Once per long rest, as an action, I can touch a creature to heal for d4 x my proficiency bonus worth of HP."+
 		"\n \u2022 Light Bearer: I know the Light cantrip. Cha is spellcasting ability."+
-		"\n \u2022 Necrotic Shroud (3rd level): Once per long rest, as a Bonus action, I transform and all non-ally creatures within 10 ft of me pass a (DC 8 + Cha mod + Prof bonus) saving throw or be frightened of me until the end of my next turn. The Shroud lasts for 1 minute or until I end it as a Bonus action. While Shrouded, once on my turn, one target of my attacks or spells takes my prof bonus in extra necrotic damage.",
+		"\n \u2022 Necrotic Shroud (3rd level): Once per long rest, as a Bonus action, I transform and all non-ally creatures within 10 ft of me pass a (DC 8 + Cha mod + Prof Bonus) saving throw or be frightened of me until the end of my next turn. The Shroud lasts for 1 minute or until I end it as a Bonus action. While Shrouded, once on my turn, one target of my attacks or spells takes my Prof Bonus in extra necrotic damage.",
 	features : {
 		"healing hands" : {
 			name : "Healing Hands",
@@ -144,7 +144,7 @@ AddRacialVariant("multiverse aasimar", "radiant consumption", {
 	trait : "\u2022 Celestial Resistance. I have resistance to necrotic/radiant damage."+
 		"\n \u2022 Healing Hands: Once per long rest, as an action, I can touch a creature to heal for d4 x my proficiency bonus worth of HP."+
 		"\n \u2022 Light Bearer: I know the Light cantrip. Cha is spellcasting ability."+
-		"\n \u2022 Radiant Consumption (3rd level): Once per long rest, as a Bonus action, I transform and shed 10-ft radius bright light and 10-ft dim light. The Light lasts for 1 minute or until I end it as a Bonus action. Until the Light ends, at the end of my turns, each creature within 10 ft takes my prof bonus radiant damage. Once on my turn, one target of my attacks or spells takes my prof bonus in extra radiant damage.",
+		"\n \u2022 Radiant Consumption (3rd level): Once per long rest, as a Bonus action, I transform and shed 10-ft radius bright light and 10-ft dim light. The Light lasts for 1 minute or until I end it as a Bonus action. Until the Light ends, at the end of my turns, each creature within 10 ft takes my Prof Bonus radiant damage. Once on my turn, one target of my attacks or spells takes my Prof Bonus in extra radiant damage.",
 	features : {
 		"healing hands" : {
 			name : "Healing Hands",
@@ -238,7 +238,7 @@ RaceList["multiverse centaur"] = {
 		name : "Hooves",
 		source : [["MotM", 9]],
 		damage : [1, 6, "bludgeoning"],
-		description : "Use as bonus action after charge 30 ft"
+		description : "Use as Bonus action after charge 30 ft"
 	},
 	weaponsAdd : ["Hooves"],
 	skillstxt : "Choose one from Animal Handling, Medicine, Nature, or Survival",
@@ -248,8 +248,8 @@ RaceList["multiverse centaur"] = {
 	scorestxt : "+2 to one ability score and +1 to a different score of my choice, -or- +1 to three different scores of my choice",
 	trait : "Multiverse Centaur (+2/+1 or +1/+1/+1)"+
 		"\n \u2022 Fey: My creature type is 'Fey', rather than 'Humanoid'."+
-		"\n \u2022 Hooves: I can use my hooves for unarmed strikes that deal 1d6 bludgeoning damage."+
-		"\n \u2022 Charge: If I move 30 ft straight toward a creature and then hit it with a melee weapon attack on the same turn, I can make a hooves attack against it as a bonus action."+
+		"\n \u2022 Hooves: My unarmed strikes with hooves deal 1d6 damage."+
+		"\n \u2022 Charge: If I move 30 ft straight toward a creature and then hit it with a melee weapon attack on the same turn, I can make a hooves attack against it as a Bonus action."+
 		"\n \u2022 Equine Build: I count as one size larger for my carrying capacity and the weight I can push, drag, or lift. Because of my hooves, 1 ft of movement while climbing costs me 4 ft.",
 	action : [["bonus action", "Hooves (after charge)"]],
 	carryingCapacity : 2
@@ -296,7 +296,7 @@ RaceList["multiverse deep gnome"] = {
 	weight : " vary in size. If you'd like to determine your character's height or weight randomly, consult the Random Height and Weight table in the PHB, and choose the row in the table that best represents the build you imagine for your character.",
 	scorestxt : "+2 to one ability score and +1 to a different score of my choice, -or- +1 to three different scores of my choice",
 	trait : "\u2022 Gnome: My creature type = 'Humanoid', considered a 'Gnome'."+
-		"\n \u2022 Svirfneblin Camouflage: Prof bonus per long rest, I can gain advantage on Dexterity (stealth) checks."+
+		"\n \u2022 Svirfneblin Camouflage: Prof Bonus per long rest, I can gain advantage on Dexterity (Stealth) checks."+
 		"\n \u2022 Gnomish Magic Resistance: Adv on Int/Wis/Cha saves vs spells."+
 		"\n \u2022 Gift of the Svirfneblin: At 3rd level, I can cast Disguise Self. At 5th level, Nondetection without requiring a material component. I can cast each without using a spell slot once per long rest, and by using spell slots as normal. Int, Wis, or Cha is my spellcasting ability for these (chosen with race).",
 	spellcastingAbility : [4, 5, 6],
@@ -361,7 +361,7 @@ RaceList["multiverse duergar"] = {
 	plural : "Duergar",
 	size : 3,
 	speed : {
-		walk : { spd : 30, enc : 30 }
+		walk : { spd : 30, enc : 20 }
 	},
 	languageProfs : ["Common", 1],
 	vision : [["Darkvision", 120]],
@@ -371,10 +371,10 @@ RaceList["multiverse duergar"] = {
 	height : " vary in size. If you'd like to determine your character's height or weight randomly, consult the Random Height and Weight table in the PHB, and choose the row in the table that best represents the build you imagine for your character.",
 	weight : " vary in size. If you'd like to determine your character's height or weight randomly, consult the Random Height and Weight table in the PHB, and choose the row in the table that best represents the build you imagine for your character.",
 	scorestxt : "+2 to one ability score and +1 to a different score of my choice, -or- +1 to three different scores of my choice",
-	trait : "\u2022 Dwarf: My creature type = 'Humanoid', considered a 'Dwarf'."+
-		"\n \u2022 Dwarven Resilience: I have advantage on saving throws to avoid or end the poisoned condition on myself and resistance to poison damage."+
-		"\n \u2022 Psionic Fortitude: I have advantage on saving throws to avoid or end the charmed or stunned conditions on myself."+
-		"\n \u2022 Duergar Magic: 3rd: Enlarge/Reduce; 5th: Invisibility. I can cast both spells on myself once per long rest without material components, and by using spell slots as normal. Intelligence, Wisdom, or Charisma is my spellcasting ability for these (chosen with race).",
+	trait : " \u2022 Dwarf: My creature type = 'Humanoid', considered a 'Dwarf'."+
+		"\n \u2022 Dwarven Resilience: I have advantage on saves to avoid or end the poisoned condition on myself and resistance to poison damage."+
+		"\n \u2022 Psionic Fortitude: I have advantage on saving throws to avoid or end the charmed and stunned conditions on myself."+
+		"\n \u2022 Duergar Magic: At 3rd level, I learn the Enlarge/Reduce spell. At 5th level, Invisibility. I can cast both spells on myself once per long rest without material components, and by using spell slots as normal. Intelligence, Wisdom, or Charisma is my spellcasting ability for these (chosen with race).",
 	spellcastingAbility : [4, 5, 6],
 	features : {
 		"duergar magic (level 3)" : {
@@ -459,7 +459,7 @@ RaceList["multiverse eladrin"] = {
 	trait : "\u2022 Elf: My creature type = 'Humanoid', considered an 'Elf'."+
 		"\n \u2022 Trance: I don't need to sleep, and magic can't put me to sleep. I can finish a long rest in 4 hours while  meditating consciously. At the end of the trance, I gain 2 proficiencies with a weapon/tool from the PHB until the end of my next long rest."+
 		"\n \u2022 Shifting Seasons: After finish a long rest, I can align with a season."+
-		"\n \u2022 Fey Step: Prof bonus per long rest, as a bonus action, I can magically teleport up to 30 ft to an unoccupied space I can see. At 3rd level, additional effects based on my aligned season. Save DC equals DC 8 + prof bonus + Int/Wis/Cha mod (chosen with race)",
+		"\n \u2022 Fey Step: Prof Bonus per long rest, as a Bonus action, I can magically teleport up to 30 ft to an unoccupied space I can see. At 3rd level, additional effects based on my aligned season. Save DC equals [DC 8 + Prof Bonus + Int/Wis/Cha mod] (chosen with race)",
 	features : {
 		"fey step" : {
 			name : "Fey Step",
@@ -471,25 +471,24 @@ RaceList["multiverse eladrin"] = {
 		}
 	},
 	toNotesPage : [{
-		name : "Eladrin Season Features",
+		name : "Shifting Seasons",
 		source : ["MotM", 13],
 		popupName : "Eladrin Shifting Season Features",
-		additional : "save DC 8 + prof bonus + Int/Wis/Cha mod",
+		additional : "save DC 8 + Prof Bonus + Int/Wis/Cha mod",
 		page3notes : true,
-		note : "\n  \u2022 Autumn (Eladrin Season)" + desc([
+		note : ["\u2022 Autumn (Eladrin Season)",
 			" After using Fey Step, up to 2 creatures I can see within 10 ft of me must make a Wis save",
-			" If failed, a target is charmed by me for 1 minute, or until I or my allies damage it"
-		]) + "\n  \u2022 Winter (Eladrin Season)" + desc([
-			" When I use Fey Step, one target in 5 ft of where I teleported from must make a Wis save",
-			" If failed, it is frightened of me until the end of my next turn"
-		]) + "\n  \u2022 Spring (Eladrin Season)" + desc([
+			" If failed, a target is charmed by me for 1 minute, or until I or my allies damage it",
+			"\u2022 Winter (Eladrin Season)",
+			" When I use Fey Step, one target within 5 ft of where I teleported from must make a Wis save",
+			" If failed, it is frightened of me until the end of my next turn",
+			"\u2022 Spring (Eladrin Season)",
 			" When I use Fey Step, I can instead teleport one willing creature I touch within 5 ft of me",
-			" It teleports to an unoccupied space of my choice that I can see within 30 ft of me"
-		]) + "\n  \u2022 Summer (Eladrin Season)" + desc([
+			" It teleports to an unoccupied space of my choice that I can see within 30 ft of me",
+			"\u2022 Summer (Eladrin Season) [Prof Bonus fire damage]",
 			" After using Fey Step, each creature of my choice within 5 ft of me takes fire damage",
-			" This fire damage is equal to my proficiency bonus"
-		])
-	}]
+		],
+	}],
 };
 // Fairy
 if (!RaceList["fairy"]) {
@@ -573,7 +572,7 @@ RaceList["multiverse firbolg"] = {
 	height : " vary in size. If you'd like to determine your character's height or weight randomly, consult the Random Height and Weight table in the PHB, and choose the row in the table that best represents the build you imagine for your character.",
 	weight : " vary in size. If you'd like to determine your character's height or weight randomly, consult the Random Height and Weight table in the PHB, and choose the row in the table that best represents the build you imagine for your character.",
 	scorestxt : "+2 to one ability score and +1 to a different score of my choice, -or- +1 to three different scores of my choice",
-	trait : "\u2022 Hidden Step: Prof bonus per long rest, as a bonus action, I turn invisible until the start of my next turn as per the invisibility spell."+
+	trait : "\u2022 Hidden Step: Prof Bonus per long rest, as a Bonus action, I turn invisible until the start of my next turn as per the Invisibility spell."+
 		"\n \u2022 Powerful Build: I count as one size larger for my carrying capacity."+
 		"\n \u2022 Firbolg Magic: Detect Magic and Disguise Self spells once each per long rest, and using spell slots as normal. Intelligence, Wisdom, or Charisma is my spellcasting ability for these (chosen with race)."+
 		"\n \u2022 Speech of Beast and Leaf: I can communicate simple ideas with Beasts, Plants, and vegetation. They can understand my words, though I have no special ability to understand them in return. I have advantage on Charisma checks to influence them.",
@@ -625,7 +624,7 @@ RaceList["multiverse firbolg"] = {
 			usages : "Proficiency Bonus per ",
 			usagescalc : "event.value = How('Proficiency Bonus');",
 			recovery : "long rest",
-			action : ["bonus action", ""]
+			action : ["Bonus action", ""]
 		}
 	},
 	carryingCapacity : 2
@@ -728,7 +727,7 @@ RaceList["multiverse earth genasi"] = {
 	scorestxt : "+2 to one ability score and +1 to a different score of my choice, -or- +1 to three different scores of my choice",
 	trait : "Multiverse Earth Genasi (+2/+1 or +1/+1/+1)"+
 	"\n \u2022 Earth Walk: I can move across difficult terrain without expending extra movement if I am using my walking speed on the ground or a floor."+
-	"\n \u2022 Merge with Stone: I can cast the Blade Ward cantrip as normal and as a bonus action prof bonus times per long rest. At 5th level, Pass Without Trace without material components and without using a spell slot once per long rest, and by using spell slots as normal. Int, Wis, or Cha is my spellcasting ability for these (chosen with race).",
+	"\n \u2022 Merge with Stone: I can cast the Blade Ward cantrip as normal and as a Bonus action Prof Bonus times per long rest. At 5th level, Pass Without Trace without material components and without using a spell slot once per long rest, and by using spell slots as normal. Int, Wis, or Cha is my spellcasting ability for these (chosen with race).",
 	spellcastingAbility : [4, 5, 6],
 	spellcastingBonus : {
 		name : "Merge with Stone",
@@ -737,7 +736,7 @@ RaceList["multiverse earth genasi"] = {
 		firstCol : "atwill"
 	},
 	features : {
-		"blade ward (bonus action)" : {
+		"blade ward (Bonus action)" : {
 			name : "Blade Ward (Bonus Action)",
 			minlevel : 1,
 			usages : "Proficiency Bonus per ",
@@ -1092,8 +1091,8 @@ RaceList["multiverse goblin"] = {
 	trait : "Multiverse Goblin (+2/+1 or +1/+1/+1)"+
 		"\n \u2022 Goblinoid: Creature type = 'Humanoid', considered a 'Goblinoid'"+
 		"\n \u2022 Fey Ancestry: I have advantage on saving throws to avoid or end the charmed condition on myself."+
-		"\n \u2022 Fury of the Small: Prof bonus per long rest, when I hit a creature of a size category larger than mine, I deal extra damage equal to my prof bonus."+
-		"\n \u2022 Nimble Escape: As a bonus action, I can take the Disengage or Hide action.",
+		"\n \u2022 Fury of the Small: Prof Bonus per long rest, when I hit a creature of a size category larger than mine, I deal extra damage equal to my Prof Bonus."+
+		"\n \u2022 Nimble Escape: As a Bonus action, I can take the Disengage or Hide action.",
 };
 // Goliath
 RaceList["multiverse goliath"] = {
@@ -1124,7 +1123,7 @@ RaceList["multiverse goliath"] = {
 		},
 	},
 	trait : "Multiverse Goliath (+2/+1 or +1/+1/+1)"+
-		"\n \u2022 Stone's Endurance: Prof bonus per long rest, when I take damage, I can use my reaction to reduce the damage by 1d12 + my Con modifier."+ 
+		"\n \u2022 Stone's Endurance: Prof Bonus per long rest, when I take damage, I can use my reaction to reduce the damage by 1d12 + my Con modifier."+ 
 		"\n \u2022 Little Giant: I have proficiency in the Athletics skill and count as one size larger when determining my carrying capacity and the weight I can push, drag, or lift."+ 
 		"\n \u2022 Mountain Born: I have resistance to cold damage and I'm acclimated to high altitude, including elevations above 20,000 feet.",
 	carryingCapacity : 2
@@ -1165,7 +1164,7 @@ RaceList["harengon"] = {
 		"\n \u2022 Hare-Trigger: I can add my proficiency bonus to my initiative rolls."+
 		"\n \u2022 Leporine Senses: I have proficiency in the Perception skill."+
 		"\n \u2022 Lucky Footwork: As a reaction when I fail a Dexterity saving throw, I can add +1d4 to the result, potentially making it a success. I can't do this if I'm prone or my speed is 0."+
-		"\n \u2022 Rabbit Hop: As a bonus action if my speed isn't 0, I can jump 5 ft times my Prof. Bonus without provoking opportunity attacks. I can do this my Prof. Bonus times per long rest.",
+		"\n \u2022 Rabbit Hop: As a Bonus action if my speed isn't 0, I can jump 5 ft times my Prof. Bonus without provoking opportunity attacks. I can do this my Prof. Bonus times per long rest.",
 	};
 };
 // Hobgoblin
@@ -1223,8 +1222,8 @@ RaceList["multiverse hobgoblin"] = {
 	trait : "Multiverse Hobgoblin (+2/+1 or +1/+1/+1)"+
 		"\n \u2022 Goblinoid: Creature type = 'Humanoid', considered a 'Goblinoid'"+
 		"\n \u2022 Fey Ancestry: I have advantage on saving throws to avoid or end the charmed condition on myself."+
-		'\n \u2022 Fey Gift: Prof bonus per long rest, I can take the Help action as a Bonus action. Starting at 3rd-level, I can produce an additional effect with this trait: Hospitality, Passage, or Spite. See 3rd page "Notes."'+
-		"\n \u2022 Fortune from the Many: Prof bonus per long rest, when I miss an attack or fail an ability check or a save, I can gain a bonus to the roll equal to the number of allies I can see within 30 ft of me (max +3).",
+		'\n \u2022 Fey Gift: Prof Bonus per long rest, I can take the Help action as a Bonus action. Starting at 3rd-level, I can produce an additional effect with this trait: Hospitality, Passage, or Spite. See 3rd page "Notes."'+
+		"\n \u2022 Fortune from the Many: Prof Bonus per long rest, when I miss an attack or fail an ability check or a save, I can gain a bonus to the roll equal to the number of allies I can see within 30 ft of me (max +3).",
 };
 // Kenku
 RaceList["multiverse kenku"] = {
@@ -1255,8 +1254,8 @@ RaceList["multiverse kenku"] = {
 	},
 	trait : "Multiverse Kenku (+2/+1 or +1/+1/+1)"+
 		"\n \u2022 Expert Duplication: I have advantage on all checks made to copy writing or to produce an exact duplicate of craftwork."+
-		"\n \u2022 Kenku Recall: I have proficiency in two skills of my choice. My prof bonus per long rest, I can give myself advantage on an ability check using any skill in which I have proficiency."+
-		"\n \u2022 Mimicry: I can mimic sounds and voices I have heard. Creatures hearing me can determine the imitation with a successful Wisdom (Insight) check against a DC of 8 + my prof bonus + my Cha mod.",
+		"\n \u2022 Kenku Recall: I have proficiency in two skills of my choice. My Prof Bonus per long rest, I can give myself advantage on an ability check using any skill in which I have proficiency."+
+		"\n \u2022 Mimicry: I can mimic sounds and voices I have heard. Creatures hearing me can determine the imitation with a successful Wisdom (Insight) check against a DC of 8 + my Prof Bonus + my Cha mod.",
 };
 // Kobolds
 RaceList["multiverse kobold"] = {
@@ -1287,7 +1286,7 @@ RaceList["multiverse kobold"] = {
 	},
 	trait : "Multiverse Kobold (+2/+1 or +1/+1/+1)"+
 		'\n \u2022 Kobold Legacy: Choose one of the following with the "Racial Options" button: (1) Defiance: I have advantage on saves vs. being frightened, (2) Draconic Sorcery: I know one sorcerer cantrip of my choice, or (3) Craftiness: I  gain proficiency in one of the following: Arcana, Investigation, Medicine, Sleight of Hand, or Survival.'+
-		"\n \u2022 Draconic Cry: As a bonus action, I can let out a draconic cry at enemies within 10 ft. Until the end of my next turn, my allies and I have advantage on attack rolls against any enemies who could hear the cry. I can do this my Proficiency Bonus per long rest."
+		"\n \u2022 Draconic Cry: As a Bonus action, I can let out a draconic cry at enemies within 10 ft. Until the end of my next turn, my allies and I have advantage on attack rolls against any enemies who could hear the cry. I can do this my Proficiency Bonus per long rest."
 };
 AddRacialVariant("multiverse kobold", "defiance", {
 	regExpSearch : /defiance/i,
@@ -1297,7 +1296,7 @@ AddRacialVariant("multiverse kobold", "defiance", {
 	savetxt : { adv_vs : ["frightened"] },
 	trait : "Multiverse Kobold (+2/+1 or +1/+1/+1)"+
 		'\n \u2022 Kobold Legacy (Defiance): I have advantage on saving throws to avoid or end the frightened condition on myself.'+
-		"\n \u2022 Draconic Cry: As a bonus action, I can let out a draconic cry at enemies within 10 ft. Until the end of my next turn, my allies and I have advantage on attack rolls against any enemies who could hear the cry. I can do this my Proficiency Bonus per long rest.",
+		"\n \u2022 Draconic Cry: As a Bonus action, I can let out a draconic cry at enemies within 10 ft. Until the end of my next turn, my allies and I have advantage on attack rolls against any enemies who could hear the cry. I can do this my Proficiency Bonus per long rest.",
 });
 AddRacialVariant("multiverse kobold", "sorcery", {
 	regExpSearch : /sorcery/i,
@@ -1313,7 +1312,7 @@ AddRacialVariant("multiverse kobold", "sorcery", {
 	},
 	trait : "Multiverse Kobold (+2/+1 or +1/+1/+1)"+
 		'\n \u2022 Kobold Legacy (Draconic Sorcery): I know one cantrip from the sorcerer spell list. Intelligence, Wisdom, or Charisma is my spellcasting ability for it (chosen when I select this race).'+
-		"\n \u2022 Draconic Cry: As a bonus action, I can let out a draconic cry at enemies within 10 ft. Until the end of my next turn, my allies and I have advantage on attack rolls against any enemies who could hear the cry. I can do this my Proficiency Bonus per long rest.",
+		"\n \u2022 Draconic Cry: As a Bonus action, I can let out a draconic cry at enemies within 10 ft. Until the end of my next turn, my allies and I have advantage on attack rolls against any enemies who could hear the cry. I can do this my Proficiency Bonus per long rest.",
 });
 AddRacialVariant("multiverse kobold", "craftiness", {
 	regExpSearch : /craftiness/i,
@@ -1322,7 +1321,7 @@ AddRacialVariant("multiverse kobold", "craftiness", {
 	skillstxt : "Choose one from: Arcana, Investigation, Medicine, Sleight of Hand, or Survival",
 	trait : "Multiverse Kobold (+2/+1 or +1/+1/+1)"+
 		"\n \u2022 Kobold Legacy (Craftiness): I  gain proficiency in one of the following: Arcana, Investigation, Medicine, Sleight of Hand, or Survival."+
-		"\n \u2022 Draconic Cry: As a bonus action, I can let out a draconic cry at enemies within 10 ft. Until the end of my next turn, my allies and I have advantage on attack rolls against any enemies who could hear the cry. I can do this my Proficiency Bonus per long rest.",
+		"\n \u2022 Draconic Cry: As a Bonus action, I can let out a draconic cry at enemies within 10 ft. Until the end of my next turn, my allies and I have advantage on attack rolls against any enemies who could hear the cry. I can do this my Proficiency Bonus per long rest.",
 });
 // Lizardfolk
 RaceList["multiverse lizardfolk"] = {
@@ -1372,7 +1371,7 @@ RaceList["multiverse lizardfolk"] = {
 		"\n \u2022 Bite: My unarmed strikes with my fanged maw deals 1d6 slashing damage."+
 		"\n \u2022 Hold Breath: I can hold my breath for up to 15 minutes at a time."+ 
 		"\n \u2022 Natural Armor: I have an AC of 13 + Dexterity modifier + shield."+ 
-		"\n \u2022 Hungry Jaws: Prof bonus per long rest, as a bonus action, I can make a special bite attack and if it hits I gain temporary HP equal to my prof bonus."+
+		"\n \u2022 Hungry Jaws: Prof Bonus per long rest, as a Bonus action, I can make a special bite attack and if it hits I gain temporary HP equal to my Prof Bonus."+
 		"\n \u2022 Nature's Intuition: I gain proficiency with 2 of the following skills: Animal Handling, Medicine, Nature, Perception, Stealth, or Survival.",
 };
 // Minotaur
@@ -1393,7 +1392,7 @@ RaceList["multiverse minotaur"] = {
 		name : "Horns",
 		source : [["MotM", 27]],
 		damage : [1, 6, "piercing"],
-		description : "Attack as a bonus action after moving 20 ft with the Dash action"
+		description : "Attack as a Bonus action after moving 20 ft with the Dash action"
 	},
 	weaponsAdd : ["Horns"],
 	age : " typically live to be around 100 years old",
@@ -1404,8 +1403,8 @@ RaceList["multiverse minotaur"] = {
 	vision : [["Labyrinthine Recall. Always knows north, advantage on Survival to navigate or track.", 0]],
 	trait : "Multiverse Minotaur (+2/+1 or +1/+1/+1)"+
 		"\n \u2022 Horns: My unarmed strikes with horns deal 1d6 piercing damage."+
-		"\n \u2022 Goring Rush: When taking a Dash action and moving at least 20 ft, I can make a horns attack as a bonus action."+
-		"\n \u2022 Hammering Horns: As a bonus action after I hit a melee attack during my Attack action, I can shove that target with my horns, if it is up to than one size larger than me. It must make a Str save (DC 8 + Str mod + Prof bonus) or be pushed up to 10 ft away from me."+
+		"\n \u2022 Goring Rush: When taking a Dash action and moving at least 20 ft, I can make a horns attack as a Bonus action."+
+		"\n \u2022 Hammering Horns: As a Bonus action after I hit a melee attack during my Attack action, I can shove that target with my horns, if it is up to than one size larger than me. It must make a Str save (DC 8 + Str mod + Prof Bonus) or be pushed up to 10 ft away from me."+
 		"\n \u2022 Labyrinthine Recall. I always know which direction is north, and have adv on any Wis (Survival) check I make to navigate or track.",
 	features : {
 		"goring rush" : {
@@ -1438,7 +1437,7 @@ RaceList["multiverse orc"] = {
 	weight : " vary in size. If you'd like to determine your character's height or weight randomly, consult the Random Height and Weight table in the PHB, and choose the row in the table that best represents the build you imagine for your character.",
 	scorestxt : "+2 to one ability score and +1 to a different score of my choice, -or- +1 to three different scores of my choice",
 	trait : "Multiverse Orc (+2/+1 or +1/+1/+1)"+
-		"\n \u2022 Adrenaline Rush: Prof bonus per long rest, I can take the Dash action as a Bonus action and gain my proficiency bonus in temporary hit points."+
+		"\n \u2022 Adrenaline Rush: Prof Bonus per long rest, I can take the Dash action as a Bonus action and gain my proficiency bonus in temporary hit points."+
 		"\n \u2022 Powerful Build: I count as one size larger when determining my carrying capacity and the weight I can push, drag, or lift."+
 		"\n \u2022 Relentless Endurance: Once per long rest, when I am reduced to 0 hit points but not killed outright, I can drop to 1 hit point instead.",
 	features : {
@@ -1550,7 +1549,7 @@ RaceList["multiverse shadar-kai"] = {
 	scorestxt : "+2 to one ability score and +1 to a different score of my choice, -or- +1 to three different scores of my choice",
 	trait : "\u2022 Elf: My creature type = 'Humanoid', considered an 'Elf'."+
 		"\n \u2022 Trance: I don't need to sleep, and magic can't put me to sleep. I can finish a long rest in 4 hours while  meditating consciously. At the end of the trance, I gain 2 proficiencies with a weapon/tool from the PHB until the end of my next long rest."+
-		"\n \u2022 Blessing of the Raven Queen: Prof bonus per long rest, as a bonus action, I can magically teleport up to 30 ft to an unoccupied space I can see. Once I reach 3rd level, after I use the Blessing of the Raven Queen, I appear translucent and have resistance to all damage until the start of my next turn.",
+		"\n \u2022 Blessing of the Raven Queen: Prof Bonus per long rest, as a Bonus action, I can magically teleport up to 30 ft to an unoccupied space I can see. Once I reach 3rd level, after I use the Blessing of the Raven Queen, I appear translucent and have resistance to all damage until the start of my next turn.",
 	features : {
 		"blessing of the raven queen" : {
 			name : "Blessing of the Raven Queen",
@@ -1594,7 +1593,7 @@ RaceList["multiverse shifter"] = {
 	scorestxt : "+2 to one ability score and +1 to a different score of my choice, -or- +1 to three different scores of my choice",
 	trait : "Multiverse Shifter: (+2/+1 or +1/+1/+1)"+
 		"\n \u2022 Bestial Instincts. I have proficiency in one of the following skills: Acrobatics, Athletics, Intimidation, or Survival."+
-		"\n \u2022 Shifting: Prof bonus per long rest, as a bonus action, I can assume a more bestial appearance. This transformation lasts for 1 minute, until I die, or until I revert back as a bonus action. Whenever I Shift, I gain twice my proficiency bonus in temporary hit points and an additional benefit based on one of the following options (choose when I select this race): Beasthide, Longtooth, Swiftstride, Wildhunt.",
+		"\n \u2022 Shifting: Prof Bonus per long rest, as a Bonus action, I can assume a more bestial appearance. This transformation lasts for 1 minute, until I die, or until I revert back as a Bonus action. When I Shift, I gain twice my proficiency bonus in temporary hit points and an additional benefit based on one of the following options (choose when I select this race): Beasthide, Longtooth, Swiftstride, Wildhunt.",
 	features : {
 		"shift" : {
 			name : "Shift",
@@ -1614,7 +1613,7 @@ AddRacialVariant("multiverse shifter", "beasthide", {
 	vision : [["Darkvision", 60]],
 	trait : "Multiverse Shifter: (+2/+1 or +1/+1/+1)"+
 		"\n \u2022 Bestial Instincts. I have proficiency in one of the following skills: Acrobatics, Athletics, Intimidation, or Survival."+
-		"\n \u2022 Shifting (Beasthide): Prof bonus per long rest, as a bonus action, I can assume a more bestial appearance. This transformation lasts for 1 minute, until I die, or until I revert back as a bonus action. Whenever I Shift, I gain 1d6 + twice my proficiency bonus in temporary hit points and a +1 bonus to my AC.",
+		"\n \u2022 Shifting (Beasthide): Prof Bonus per long rest, as a Bonus action, I can assume a more bestial appearance. This transformation lasts for 1 minute, until I die, or until I revert back as a Bonus action. When I Shift, I gain 1d6 + twice my proficiency bonus in temporary hit points and a +1 bonus to my AC.",
 	features : {
 		"shift" : {
 			name : "Shift",
@@ -1634,7 +1633,7 @@ AddRacialVariant("multiverse shifter", "longtooth", {
 	vision : [["Darkvision", 60]],
 	trait : "Multiverse Shifter: (+2/+1 or +1/+1/+1)"+
 		"\n \u2022 Bestial Instincts. I have proficiency in one of the following skills: Acrobatics, Athletics, Intimidation, or Survival."+
-		"\n \u2022 Shifting (Longtooth): Prof bonus per long rest, as a bonus action, I can assume a more bestial appearance. This transformation lasts for 1 minute, until I die, or until I revert back as a bonus action. Whenever I Shift, I gain twice my proficiency bonus in temporary hit points and my fangs elongate. When I Shift and while I am Shifted, as a Bonus action, I can make a single unarmed strike with my elongated fangs that deals 1d6 piercing damage.",
+		"\n \u2022 Shifting (Longtooth): Prof Bonus per long rest, as a Bonus action, I can assume a more bestial appearance. This transformation lasts for 1 minute, until I die, or until I revert back as a Bonus action. When I Shift, I gain twice my proficiency bonus in temporary hit points and my fangs elongate. As part of the Bonus action when I Shift and as a Bonus action while I am Shifted, I can make a single unarmed strike with my elongated fangs that deals 1d6 piercing damage.",
 	action : ["bonus action", "Longtooth Fangs (while Shifted)"],
 	weaponOptions : {
 		baseWeapon : "unarmed strike",
@@ -1642,7 +1641,7 @@ AddRacialVariant("multiverse shifter", "longtooth", {
 		name : "Longtooth Fangs",
 		source : [["MotM", 32]],
 		damage : [1, 6, "piercing"],
-		description : "Only while shifted; One attack as bonus action",
+		description : "Only while shifted; One attack as Bonus action",
 	},
 	weaponsAdd : ["Longtooth Fangs"],
 });
@@ -1654,7 +1653,7 @@ AddRacialVariant("multiverse shifter", "swiftstride", {
 	vision : [["Darkvision", 60]],
 	trait : "Multiverse Shifter: (+2/+1 or +1/+1/+1)"+
 		"\n \u2022 Bestial Instincts. I have proficiency in one of the following skills: Acrobatics, Athletics, Intimidation, or Survival."+
-		"\n \u2022 Shifting (Swiftstride): Prof bonus per long rest, as a bonus action, I can assume a more bestial appearance. This transformation lasts for 1 minute, until I die, or until I revert back as a bonus action. Whenever I Shift, I gain twice my proficiency bonus in temporary hit points and +10 ft to my walking speed. Additionally, as a Reaction when a creature ends its turn within 5 ft of me, I can move up to 10 ft. This reactive movement doesn't provoke opportunity attacks.",
+		"\n \u2022 Shifting (Swiftstride): Prof Bonus per long rest, as a Bonus action, I can assume a more bestial appearance. This transformation lasts for 1 minute, until I die, or until I revert back as a Bonus action. When I Shift, I gain twice my proficiency bonus in temporary hit points and +10 ft to my walking speed. Additionally, as a Reaction when a creature ends its turn within 5 ft of me, I can move up to 10 ft. This reactive movement doesn't provoke opportunity attacks.",
 	action : [['reaction', 'Reactive Stride (while Shifted)']],
 });
 AddRacialVariant("multiverse shifter", "wildhunt", {
@@ -1665,7 +1664,7 @@ AddRacialVariant("multiverse shifter", "wildhunt", {
 	vision : [["Darkvision", 60]],
 	trait : "Multiverse Shifter: (+2/+1 or +1/+1/+1)"+
 		"\n \u2022 Bestial Instincts. I have proficiency in one of the following skills: Acrobatics, Athletics, Intimidation, or Survival."+
-		"\n \u2022 Shifting (Wildhunt): Prof bonus per long rest, as a bonus action, I can assume a more bestial appearance. This transformation lasts for 1 minute, until I die, or until I revert back as a bonus action. Whenever I Shift, I gain twice my proficiency bonus in temporary hit points, I have advantage on Wisdom checks, and no creature within 30 feet of me can make an attack roll with advantage against me unless I'm incapacitated.",
+		"\n \u2022 Shifting (Wildhunt): Prof Bonus per long rest, as a Bonus action, I can assume a more bestial appearance. This transformation lasts for 1 minute, until I die, or until I revert back as a Bonus action. When I Shift, I gain twice my proficiency bonus in temporary hit points, I have advantage on Wisdom checks, and no creature within 30 feet of me can make an attack roll with advantage against me unless I'm incapacitated.",
 	vision : [["Darkvision", 60],["While Shifted, no creature within 30 feet of me can make an attack roll with advantage against me", 0]],
 	savetxt : { text : ["While Shifted, Adv. on Wis checks"] },
 });
@@ -1755,7 +1754,7 @@ RaceList["multiverse tortle"] = {
 		"\n \u2022 Claws: My unarmed strikes with claws deal 1d6 slashing damage."+
 		"\n \u2022 Hold Breath: I can hold my breath for up to 1 hour at a time."+
 		"\n \u2022 Natural Armor: I can't wear armor. My shell provides me a base AC of 17, but I can't add my Dexterity modifier. I can still use a shield."+
-		"\n \u2022 Shell Defense: As an action, I can withdraw into my shell and gain +4 AC and adv. on Str and Con saves, but I count as prone, have speed 0, have disadv. on Dex saves, and can't take reactions. The only action I can take is a bonus action to emerge from the shell.",
+		"\n \u2022 Shell Defense: As an action, I can withdraw into my shell and gain +4 AC and adv. on Str and Con saves, but I count as prone, have speed 0, have disadv. on Dex saves, and can't take reactions. The only action I can take is a Bonus action to emerge from the shell.",
 };
 // Triton
 RaceList["multiverse triton"] = {
@@ -1779,7 +1778,7 @@ RaceList["multiverse triton"] = {
 	trait : "Multiverse Triton (+2/+1 or +1/+1/+1)"+
 		"\n \u2022 Control Air and Water: I can cast the Fog Cloud spell. At 3rd level, Gust of Wind. At 5th level, Water Walk. I can cast each without using a spell slot once per long rest, and by using spell slots as normal. Int, Wis, or Cha is my spellcasting ability for these (chosen with race)."+
 		"\n \u2022 Emissary of the Sea: I can communicate simple ideas to any Beast, Elemental, or Monstrosity with a swimming speed. It can understand my words, though I have no special ability to understand it in return."+
-		"\n \u2022 I have resistance to cold damage."+
+		"\n \u2022 Guardian of the Depths: I have resistance to cold damage."+
 		"\n \u2022 Amphibious: I can breathe air and water.",
 	spellcastingAbility : [4, 5, 6],
 	features : {
