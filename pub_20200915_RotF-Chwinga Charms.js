@@ -1,4 +1,4 @@
-var iFileName = "pub_20200915_IDRotF-Chwinga Charms.js";
+var iFileName = "pub_20200915_RotF-Chwinga Charms.js";
 RequiredSheetVersion(13);
 // This file adds the Chwinga Charms from 'Icewind Dale: Rime of the Frostmaiden' to "MPMB's Character Record Sheet" found at https://flapkan.com/mpmb/charsheets
 
