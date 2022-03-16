@@ -76,8 +76,8 @@ FeatsList["blessing"] = {
 			description : "At the start of its turn, the berserker can gain advantage on all melee weapon attack rolls during that turn, but attack rolls against it have advantage until the start of its next turn.",
 			}],
 		features : [{
-			name : "",
-			description : "The Warrior Spirits are friendly to you and your companions and follow your commands.",
+			name : "Summoned",
+			description : "The Warrior Spirits are friendly to you and your companions and follow your commands. They return to Ysgard after 1 hour or when they drop to 0 hit points.",
 			}],
 		}],
 	},
