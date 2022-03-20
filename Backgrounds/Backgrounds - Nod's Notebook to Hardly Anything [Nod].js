@@ -1,7 +1,7 @@
 var iFileName = "Backgrounds - Nod's Notebook to Hardly Anything [Nod].js"; 
 RequiredSheetVersion(13);
 
-SourceList["NNHA:MM"] = {
+SourceList["NNHA:B"] = {
 	name : "Backgrounds Galore - Nod's Notebook to Hardly Anything [Nod]",
 	abbreviation : "NNHA:B",
 	abbreviationSpellsheet: "HA",
@@ -766,6 +766,33 @@ BackgroundFeatureList["native tribe heritage"] = {
 	description: "I have an excellent knowledge of my tribe's territory, and surrounding terrain and natural resources. I am familiar enough with any wilderness area that I can find twice as much food and water as one normally would. I can call upon the hospitality of my people, and those allied, often including members of druid circles, nomadic elves, and priesthoods.",
 	source : ["NNHA:B"],
 };
+AddBackgroundVariant("outlander", "outlands wanderer", { // Outlander with Selesnya Initiate spell list
+	regExpSearch : /^(?!.*urban)(?=.*(outlander|outlands|guide|exile|outcast|bounty.?hunter|tribal nomad|wanderer|tribal.?marauder)).*$/i,
+	name : "Outlands Wanderer",	
+	source : [["NNHA:B", 136], ["P", 136], ["ALbackground", 0]],
+	skills : ["Athletics", "Survival"],
+	gold : 10,
+	equipright : [
+		["Traveler's clothes", "", 4],
+		["Staff", "", 4],
+		["Healer's kit", "", 3]
+		["Belt pouch (with coins)", "", 1]
+	],
+	feature : "Wanderer",
+	toolProfs : [["Musical instrument", 1]],
+	languageProfs : [1],
+	lifestyle : "poor",
+	calcChanges : {
+		spellList : [
+			function(spList, spName, spType) {
+				if (!ClassList[spName] || spList.spells || spList.psionic) return;
+				if (spType.indexOf("bonus") !== -1 && (spList.school || !spList["class"] || (spList["class"].indexOf(spName) === -1 && spName !== "fighter"))) return;
+				spList.extraspells = spList.extraspells.concat(["druidcraft", "friends", "aid", "animal friendship", "charm person", "animal messenger", "calm emotions", "warding bond", "plant growth", "speak with plants", "aura of life", "conjure minor elementals", "awaken", "commune with nature"]);
+			},
+			"My background adds extra spells to the spell list(s) of my spellcasting class(es): Druidcraft, Friends, Aid, Animal Friendship, Charm Person, Animal Messenger, Calm Emotions, Warding Bond, Plant Growth, Speak with Plants, Aura of Life, Conjure Minor Elementals, Awaken, and Commune with Nature."
+		]
+	},
+});
 BackgroundList["refugee athlete"] = { // refugee athlete
 	regExpSearch : /^(?=.*refugee)(?=.*athlete).*$/i,
     name: "Refugee Athlete",
@@ -922,6 +949,35 @@ BackgroundFeatureList["at home in the wild"] = {
 	description: "In the wilderness, my home, I can find a place to hide, rest, or recuperate that is secure enough to conceal me from most natural threats, but not all supernatural, magical, or threats that actively seek me out. However, this feature doesn't shield or conceal me from scrying, mental probing, nor from threats that don't need the five senses to find me.",
 	source : ["NNHA:B"],
 };
+AddBackgroundVariant("criminal", "urban bounty hawk", { // Urban Bounty Hunter with Dimir Operative spell list
+	regExpSearch : /^(?=.*urban)(?=.*bounty)(?=.*hawk).*$/i,
+	name : "Urban Bounty Hawk",
+	source : [["NHB", 153], ["S", 153], ["ALbackground", 0]],
+	skills : "",
+	skillstxt : "Choose two from Deception, Insight, Persuasion, and Stealth",
+	gold : 20,
+	equipright : [
+		["Appropriate Clothes", "", 3],
+		["Belt pouch (with coins)", "", 1],
+	],
+	equipleft : [
+		["Thieves' tools", "", 1]
+	],
+	feature : "Ear to the Ground",
+	extra : "",
+	toolProfs : [["Gaming set, instrument, or thieves' tools", 2]],
+	lifestyle : "poor",
+	calcChanges : {
+		spellList : [
+			function(spList, spName, spType) {
+				if (!ClassList[spName] || spList.spells || spList.psionic) return;
+				if (spType.indexOf("bonus") !== -1 && (spList.school || !spList["class"] || (spList["class"].indexOf(spName) === -1 && spName !== "fighter"))) return;
+				spList.extraspells = spList.extraspells.concat(["message", "mage hand", "disguise self", "sleep", "detect thoughts", "pass without trace", "gaseous form", "meld into stone", "nondetection", "arcane eye", "freedom of movement", "modify memory"]);
+			},
+			"My background adds extra spells to the spell list(s) of my spellcasting class(es): Message, Mage Hand, Disguise Self, Sleep, Detect Thoughts, Pass Without Trace, Gaseous Form, Meld into Stone, Nondetection, Arcane Eye, Freedom of Movement, and Modify Memory."
+		]
+	},	
+});
 /* Wild Blood
 You grew up in the wilds, far from civilization and the comforts of town and technology. Part of a savage society that clings desperately to the Old Ways, the wilds are in your blood—attuned to nature, full of primal rage, and given short shrift by a world consumed with continuing civilization's march of progress. You found quiet, solitude, and perhaps deeper spiritual communion with the wild world. In your time apart from the clamor of society, you've witnessed the migration of herds larger than forests, survived weather more extreme than any city-dweller could comprehend, and enjoyed the solitude of being the only thinking creature for miles in any direction. */
 BackgroundList["wild blood"] = {
