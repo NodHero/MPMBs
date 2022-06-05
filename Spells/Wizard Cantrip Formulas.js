@@ -40,7 +40,7 @@ AddFeatureChoice(ClassList.wizard.features["arcane recovery"], true, "Wizard Can
 	},
 	eval : function () {
 		CurrentSpells['wizard-wizard cantrip formulas'] = {
-			name : 'Wizard Cantrip Formulas (item)',
+			name : 'Wizard Cantrip Formulas (option)',
 			ability : "wizard",
 			list : { 'class' : 'wizard', level : [0, 0] },
 			known : { cantrips : 0, spells : 'list' },
