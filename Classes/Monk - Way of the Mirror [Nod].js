@@ -1,10 +1,9 @@
-/*	-INFORMATION-
-
+/* -INFORMATION-
 	Subject:	Subclass
 	Effect:		This script adds a subclass for the Monk, called "Way of the Mirror" 
-				to "MPMB's Character Record Sheet" found at https://flapkan.com/mpmb/charsheets
-				Subclass created by NodHero, inspired by and heavily borrowed from the Echo Knight 
-				in Explorer's Guide to Wildemount (https://dnd.wizards.com/products/wildemount)
+			to "MPMB's Character Record Sheet" found at https://flapkan.com/mpmb/charsheets
+			Subclass created by NodHero, inspired by and heavily borrowed from the Echo Knight 
+			in Explorer's Guide to Wildemount (https://dnd.wizards.com/products/wildemount)
 	Code by:	NodHero, with contributions from the orginal Echo Knight coders
 	Date:		2022-06-12 (sheet v13)
 */
