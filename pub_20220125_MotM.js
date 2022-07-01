@@ -309,7 +309,6 @@ RaceList["multiverse deep gnome"] = {
 			name : "Svirfneblin Camouflage",
 			minlevel : 1,
 			usages : "Proficiency bonus per ",
-			action : [["bonus action", ""]],
 			usagescalc : "event.value = How('Proficiency Bonus');",
 			recovery: "long rest"
 		},
