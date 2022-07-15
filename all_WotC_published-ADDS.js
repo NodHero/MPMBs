@@ -1,7 +1,7 @@
 var iFileName = "all_WotC_published-ADDS.js";
 RequiredSheetVersion("13.1.0");
 
-// Horn of Valhalla
+// Add creature stats to Horn of Valhalla
 MagicItemsList["horn of valhalla"] = {
 	name : "Horn of Valhalla",
 	source : [["SRD", 226], ["D", 175]],
@@ -582,14 +582,14 @@ MagicItemsList["chwinga charm"] = {
 };
 
 // Add Magic Items missing from official sources
-MagicItemsList["potion of watchful rest"] = { // Waterdeep: Dungeon of the Mad Mage
+MagicItemsList["potion of watchful rest"] = { // WDotMM
 	name : "Potion of Watchful Rest",
 	source : [["WDotMM", 62]],
 	type : "potion",
 	rarity : "common",
 	description : "When I drink this potion, I gain the following benefits for the next 8 hours: magic can't put me to sleep, and I can remain awake during a long rest and still gain its benefits. This sweet, amber-colored brew has no effect on creatures that don't require sleep, such as elves.",
 };
-MagicItemsList["candle mace"] = { // Baldur's Gate Descent into Avernus
+MagicItemsList["candle mace"] = { // DiA
 	name : "Candle Mace",
 	source : ["DiA", 39],
 	type : "weapon (mace)",
@@ -608,7 +608,7 @@ MagicItemsList["candle mace"] = { // Baldur's Gate Descent into Avernus
 		modifiers : [1, 1]
 	}
 };
-MagicItemsList["sword of zariel"] = { // Baldur's Gate Descent into Avernus
+MagicItemsList["sword of zariel"] = { // DiA
 	name : "Sword of Zariel",
 	source : ["DiA", 225],
 	type : "weapon (longsword)",
@@ -736,7 +736,7 @@ toNotesPage : [{
 	]) + sentientItemConflictTxt
 	}]
 };
-MagicItemsList["bob"] = { // Tomb of Annihilation
+MagicItemsList["bob"] = { // ToA
 	name : "Bob",
 	source : ["ToA", 89],
 	type : "weapon (battleaxe)",
@@ -754,7 +754,7 @@ MagicItemsList["bob"] = { // Tomb of Annihilation
 		modifiers : [1, 1]
 	}
 };
-MagicItemsList["flame tongue shortsword of gem detection"] = {	// 
+MagicItemsList["flame tongue shortsword of gem detection"] = {	// TftYP
 	name : "Flame Tongue Shortsword of Gem Detection",
 	source : [["TftYP", 179]],
 	type : "weapon (shortsword)",
@@ -771,7 +771,7 @@ MagicItemsList["flame tongue shortsword of gem detection"] = {	//
 		description : "Finesse, light; While active, +2d6 fire damage",
 	},
 };
-MagicItemsList["faerie dust"] = { // Storm King's Thunder
+MagicItemsList["faerie dust"] = { // SKT
 	name : "Faerie Dust",
 	source : [["SKT", 35]],
 	type : "wondrous item",
@@ -787,165 +787,7 @@ MagicItemsList["faerie dust"] = { // Storm King's Thunder
 	}],
 };
 
-// Add Telekinetic Shove
-FeatsList["telekinetic"] = { // TCoE
-	name: "Telekinetic",
-	source: [["T", 81]],
-	descriptionFull : "You learn to move things with your mind, granting you the following benefits:\n \u2022 Increase your Intelligence, Wisdom, or Charisma by 1, to a maximum of 20.\n \u2022 You learn the mage hand cantrip. You can cast it without verbal or somatic components, and you can make the spectral hand invisible. If you already know this spell, its range increases by 30 feet when you cast it. Its spellcasting ability is the ability increased by this feat.\n \u2022 As a bonus action, you can try to telekinetically shove one creature you can see within 30 feet of you. When you do so, the target must succeed on a Strength saving throw (DC 8 + your proficiency bonus + the ability modifier of the score increased by this feat) or be moved 5 feet toward you or away from you. A creature can willingly fail this save.",
-	description : "I know the Mage Hand cantrip, can cast it without components, and the spectral hand can be invisible. As a bonus action, I can shove one creature I can see within 30 ft. It must make a Str save vs. this feat's spell save DC or be moved 5 ft from or towards me. My spellcasting ability is the ability I choose to increase when I gain this feat. [+1 Int, Wis, or Cha]",
-	action : [["bonus action", " Shove"]],
-	spellcastingBonus : {
-		name : "Mage Hand",
-		spells : ["mage hand"],
-		selection : ["mage hand"],
-		firstCol : "atwill"
-	},
-	spellcastingAbility : 4,
-	calcChanges : {
-		spellAdd : [
-			function (spellKey, spellObj, spName) {
-				if (spellKey !== "mage hand") return;
-				spellObj.components = "";
-				if (spellObj.description === SpellsList["mage hand"].description) spellObj.description = "Create (in)visible spectral hand for simple tasks or carry up to 10 lb; 1 a to control; can't have multiple";
-				var rangeRx = /(\d+)( ?ft| ?m)/i;
-				if (!/^(?=.*telekinetic)(?=.*feat).*$/i.test(CurrentSpells[spName].name) && rangeRx.test(spellObj.range)) {
-					// add the +30 ft rang only if not the entry for the feat itself
-					var spRangeM = spellObj.range.match(rangeRx);
-					spellObj.range = spellObj.range.replace(rangeRx, Number(spRangeM[1]) + (What("Unit System") === "metric" ? 9 : 30) + spRangeM[2]);
-				}
-				return true;
-			},
-			"My Telekinetic feat allows me to cast the Mage Hand cantrip without verbal or somatic components and I can make the spectral hand invisible. If I already know the cantrip from another source, its range is also increased with 30 ft."
-		]
-	},
-	choices: ["Intelligence", "Wisdom", "Charisma"],
-	"intelligence" : {
-		description : "I know the Mage Hand cantrip, can cast it without components, and the spectral hand can be invisible. As a bonus action, I can shove one creature I can see within 30 ft. It must make a Str" + (typePF ? "" : "ength") + " save vs. this feat's spell save DC or be moved 5 ft" + (typePF ? "" : " away") + " from or towards me. Intelligence is my spellcasting ability for these. [+1 Intelligence]",
-		spellcastingAbility : 4,
-		weaponsAdd : ["Telekinetic Shove"],
-		weaponOptions : {
-		regExpSearch : /^(?=.*telekinetic)(?=.*shove).*$/i,
-		name : "Telekinetic Shove",
-		source: [["T", 81]],
-		list : "spell",
-		ability : 4,
-		type : "AlwaysProf",
-		damage : ["", "", "push/pull"],
-		range : "30 ft",
-		description : "Strength save (can willingly fail) or be moved 5 ft directly away from or towards me",
-		abilitytodamage : false,
-		dc : true
-		},
-		scores : [0, 0, 0, 1, 0, 0]
-	},
-	"wisdom" : {
-		description : "I know the Mage Hand cantrip, can cast it without components, and the spectral hand can be invisible. As a bonus action, I can shove one creature I can see within 30 ft. It must make a Str" + (typePF ? "" : "ength") + " save vs. this feat's spell save DC or be moved 5 ft" + (typePF ? "" : " away") + " from or towards me. Wisdom is my spellcasting ability for these. [+1 Wisdom]",
-		spellcastingAbility : 5,
-		weaponsAdd : ["Telekinetic Shove"],
-		weaponOptions : {
-		regExpSearch : /^(?=.*telekinetic)(?=.*shove).*$/i,
-		name : "Telekinetic Shove",
-		source: [["T", 81]],
-		list : "spell",
-		ability : 5,
-		type : "AlwaysProf",
-		damage : ["", "", "push/pull"],
-		range : "30 ft",
-		description : "Strength save (can willingly fail) or be moved 5 ft directly away from or towards me",
-		abilitytodamage : false,
-		dc : true
-		},
-		scores : [0, 0, 0, 0, 1, 0]
-	},
-	"charisma" : {
-		description : "I know the Mage Hand cantrip, can cast it without components, and the spectral hand can be invisible. As a bonus action, I can shove one creature I can see within 30 ft. It must make a Str" + (typePF ? "" : "ength") + " save vs. this feat's spell save DC or be moved 5 ft" + (typePF ? "" : " away") + " from or towards me. Charisma is my spellcasting ability for these. [+1 Charisma]",
-		spellcastingAbility : 6,
-		weaponsAdd : ["Telekinetic Shove"],
-		weaponOptions : {
-		regExpSearch : /^(?=.*telekinetic)(?=.*shove).*$/i,
-		name : "Telekinetic Shove",
-		source: [["T", 81]],
-		list : "spell",
-		ability : 6,
-		type : "AlwaysProf",
-		damage : ["", "", "push/pull"],
-		range : "30 ft",
-		description : "Strength save (can willingly fail) or be moved 5 ft directly away from or towards me",
-		abilitytodamage : false,
-		dc : true
-		},
-		scores : [0, 0, 0, 0, 0, 1]
-	}
-};
-
-// Add 'Wizard cantrip Formula' full list
-AddFeatureChoice(ClassList.wizard.features["arcane recovery"], true, "Wizard Cantrip Formulas", {
-	name : "Wizard Cantrip Formulas",
-	extraname : "Optional Wizard 3",
-	source : [["T", 76]],
-	description : desc([
-		"I have scribed arcane formulas in my spellbook with which I formulate cantrips in my mind",
-		"Whenever I finish a long rest, I can use this to change a wizard cantrip I know for another"
-	]),
-	prereqeval : function (v) { return classes.known.wizard.level >= 3 ? true : "skip"; },
-	usages : 1,
-	recovery : "long rest",
-	calcChanges : {
-		spellList : [
-			function(spList, spName, spType) {
-				// Remove the already known cantrips, from any source except magic items
-				if (spName === 'wizard cantrip formulas') {
-					var allSpellsKnown = [];
-					for (var sCast in CurrentSpells) {
-						if (sCast.refType === "item") continue;
-						var oCast = CurrentSpells[sCast];
-						if (oCast.selectCa) allSpellsKnown = allSpellsKnown.concat(oCast.selectCa);
-						if (oCast.selectBo) allSpellsKnown = allSpellsKnown.concat(oCast.selectBo);
-					}
-					var knownCantrips = OrderSpells(allSpellsKnown, "single", false, false, 0);
-					if (!spList.notspells) spList.notspells = [];
-					spList.notspells = spList.notspells.concat(knownCantrips);
-				}
-			}
-		],
-		spellAdd : [
-			function (spellKey, spellObj, spName, isDuplicate) {
-				if (spName == 'wizard cantrip formulas') {
-					spellObj.firstCol = "";
-				};
-			}
-		]
-	},
-	eval : function () {
-		CurrentSpells['wizard-wizard cantrip formulas'] = {
-			name : 'Wizard Cantrip Formulas (item)',
-			ability : "wizard",
-			list : { 'class' : 'wizard', level : [0, 0] },
-			known : { cantrips : 0, spells : 'list' },
-			bonus : {
-				bon1 : {
-					name : 'Just select "Full List"',
-					spells : []
-				},
-				bon2 : {
-					name : 'on the bottom left',
-					spells : []
-				}
-			},
-			typeList : 4,
-			refType : "option",
-			allowUpCasting : true,
-			firstCol : ""
-		};
-		SetStringifieds('spells'); CurrentUpdates.types.push('spells');
-	},
-	removeeval : function () {
-		delete CurrentSpells['wizard cantrip formulas'];
-		SetStringifieds('spells'); CurrentUpdates.types.push('spells');
-	}
-}, "Optional 3rd-level wizard features");
-
-// Add Creatures - Missed from Other Books
+// Add Creatures missing from official sources
 CreatureList["armored saber-toothed tiger"] = { //CoS
 	name : "Armored Saber-Toothed Tiger",
 	source : [["CoS", 115]],
@@ -1197,7 +1039,7 @@ CreatureList["wyvern"] = { // SRD & MM (Includes contributions by kingspooker)
 		}
 	]
 };
-CreatureList["valenar hawk"] = { // ERLW
+CreatureList["valenar hawk"] = { // ERftLW
 	name : "Valenar Hawk",
 	source : [["E:RLW", 312]],
 	size : 5, //Tiny
@@ -1234,7 +1076,7 @@ CreatureList["valenar hawk"] = { // ERLW
 		description : "The hawk can magically bond with one creature it can see, immediately after spending at least 1 hour observing that creature while within 30 feet of it. The bond lasts until the hawk bonds with a different creature or until the bonded creature dies. While bonded, the hawk and the bonded creature can communicate telepathically with each other at a distance of up to 100 feet."
 		}]
 };
-CreatureList["valenar hound"] = { // ERLW
+CreatureList["valenar hound"] = { // ERftLW
 	name : "Valenar Hound",
 	source : [["E:RLW", 312]],
 	size : 3, //Medium
@@ -1272,7 +1114,7 @@ CreatureList["valenar hound"] = { // ERLW
 		description : "The hound can magically bond with one creature it can see, immediately after spending at least 1 hour observing that creature while within 30 feet of it. The bond lasts until the hound bonds with a different creature or until the bonded creature dies. While bonded, the hound and the bonded creature can communicate telepathically with each other at a distance of up to 100 feet."
 		}]
 };
-CreatureList["valenar steed"] = { // ERLW
+CreatureList["valenar steed"] = { // ERftLW
 	name : "Valenar Steed",
 	source : [["E:RLW", 313]],
 	size : 2, //Large
@@ -1306,7 +1148,7 @@ CreatureList["valenar steed"] = { // ERLW
 		description : "The steed can magically bond with one creature it can see, immediately after spending at least 1 hour observing that creature while within 30 feet of it. The bond lasts until the steed bonds with a different creature or until the bonded creature dies. While bonded, the steed and the bonded creature can communicate telepathically with each other at a distance of up to 100 feet."
 		}]
 };
-CreatureList["sled dog"] = { // RoT
+CreatureList["sled dog"] = { // RotF
 	name : "Sled Dog",
 	source : [["RoT", 27]],
 	size : 3, //Medium
@@ -1346,6 +1188,164 @@ CreatureList["sled dog"] = { // RoT
 		}]
 };
 
+// Add Telekinetic Shove
+FeatsList["telekinetic"] = { // TCoE
+	name: "Telekinetic",
+	source: [["T", 81]],
+	descriptionFull : "You learn to move things with your mind, granting you the following benefits:\n \u2022 Increase your Intelligence, Wisdom, or Charisma by 1, to a maximum of 20.\n \u2022 You learn the mage hand cantrip. You can cast it without verbal or somatic components, and you can make the spectral hand invisible. If you already know this spell, its range increases by 30 feet when you cast it. Its spellcasting ability is the ability increased by this feat.\n \u2022 As a bonus action, you can try to telekinetically shove one creature you can see within 30 feet of you. When you do so, the target must succeed on a Strength saving throw (DC 8 + your proficiency bonus + the ability modifier of the score increased by this feat) or be moved 5 feet toward you or away from you. A creature can willingly fail this save.",
+	description : "I know the Mage Hand cantrip, can cast it without components, and the spectral hand can be invisible. As a bonus action, I can shove one creature I can see within 30 ft. It must make a Str save vs. this feat's spell save DC or be moved 5 ft from or towards me. My spellcasting ability is the ability I choose to increase when I gain this feat. [+1 Int, Wis, or Cha]",
+	action : [["bonus action", " Shove"]],
+	spellcastingBonus : {
+		name : "Mage Hand",
+		spells : ["mage hand"],
+		selection : ["mage hand"],
+		firstCol : "atwill"
+	},
+	spellcastingAbility : 4,
+	calcChanges : {
+		spellAdd : [
+			function (spellKey, spellObj, spName) {
+				if (spellKey !== "mage hand") return;
+				spellObj.components = "";
+				if (spellObj.description === SpellsList["mage hand"].description) spellObj.description = "Create (in)visible spectral hand for simple tasks or carry up to 10 lb; 1 a to control; can't have multiple";
+				var rangeRx = /(\d+)( ?ft| ?m)/i;
+				if (!/^(?=.*telekinetic)(?=.*feat).*$/i.test(CurrentSpells[spName].name) && rangeRx.test(spellObj.range)) {
+					// add the +30 ft rang only if not the entry for the feat itself
+					var spRangeM = spellObj.range.match(rangeRx);
+					spellObj.range = spellObj.range.replace(rangeRx, Number(spRangeM[1]) + (What("Unit System") === "metric" ? 9 : 30) + spRangeM[2]);
+				}
+				return true;
+			},
+			"My Telekinetic feat allows me to cast the Mage Hand cantrip without verbal or somatic components and I can make the spectral hand invisible. If I already know the cantrip from another source, its range is also increased with 30 ft."
+		]
+	},
+	choices: ["Intelligence", "Wisdom", "Charisma"],
+	"intelligence" : {
+		description : "I know the Mage Hand cantrip, can cast it without components, and the spectral hand can be invisible. As a bonus action, I can shove one creature I can see within 30 ft. It must make a Str" + (typePF ? "" : "ength") + " save vs. this feat's spell save DC or be moved 5 ft" + (typePF ? "" : " away") + " from or towards me. Intelligence is my spellcasting ability for these. [+1 Intelligence]",
+		spellcastingAbility : 4,
+		weaponsAdd : ["Telekinetic Shove"],
+		weaponOptions : {
+		regExpSearch : /^(?=.*telekinetic)(?=.*shove).*$/i,
+		name : "Telekinetic Shove",
+		source: [["T", 81]],
+		list : "spell",
+		ability : 4,
+		type : "AlwaysProf",
+		damage : ["", "", "push/pull"],
+		range : "30 ft",
+		description : "Strength save (can willingly fail) or be moved 5 ft directly away from or towards me",
+		abilitytodamage : false,
+		dc : true
+		},
+		scores : [0, 0, 0, 1, 0, 0]
+	},
+	"wisdom" : {
+		description : "I know the Mage Hand cantrip, can cast it without components, and the spectral hand can be invisible. As a bonus action, I can shove one creature I can see within 30 ft. It must make a Str" + (typePF ? "" : "ength") + " save vs. this feat's spell save DC or be moved 5 ft" + (typePF ? "" : " away") + " from or towards me. Wisdom is my spellcasting ability for these. [+1 Wisdom]",
+		spellcastingAbility : 5,
+		weaponsAdd : ["Telekinetic Shove"],
+		weaponOptions : {
+		regExpSearch : /^(?=.*telekinetic)(?=.*shove).*$/i,
+		name : "Telekinetic Shove",
+		source: [["T", 81]],
+		list : "spell",
+		ability : 5,
+		type : "AlwaysProf",
+		damage : ["", "", "push/pull"],
+		range : "30 ft",
+		description : "Strength save (can willingly fail) or be moved 5 ft directly away from or towards me",
+		abilitytodamage : false,
+		dc : true
+		},
+		scores : [0, 0, 0, 0, 1, 0]
+	},
+	"charisma" : {
+		description : "I know the Mage Hand cantrip, can cast it without components, and the spectral hand can be invisible. As a bonus action, I can shove one creature I can see within 30 ft. It must make a Str" + (typePF ? "" : "ength") + " save vs. this feat's spell save DC or be moved 5 ft" + (typePF ? "" : " away") + " from or towards me. Charisma is my spellcasting ability for these. [+1 Charisma]",
+		spellcastingAbility : 6,
+		weaponsAdd : ["Telekinetic Shove"],
+		weaponOptions : {
+		regExpSearch : /^(?=.*telekinetic)(?=.*shove).*$/i,
+		name : "Telekinetic Shove",
+		source: [["T", 81]],
+		list : "spell",
+		ability : 6,
+		type : "AlwaysProf",
+		damage : ["", "", "push/pull"],
+		range : "30 ft",
+		description : "Strength save (can willingly fail) or be moved 5 ft directly away from or towards me",
+		abilitytodamage : false,
+		dc : true
+		},
+		scores : [0, 0, 0, 0, 0, 1]
+	}
+};
+
+// Add 'Wizard cantrip Formula' full list
+AddFeatureChoice(ClassList.wizard.features["arcane recovery"], true, "Wizard Cantrip Formulas", {
+	name : "Wizard Cantrip Formulas",
+	extraname : "Optional Wizard 3",
+	source : [["T", 76]],
+	description : desc([
+		"I have scribed arcane formulas in my spellbook with which I formulate cantrips in my mind",
+		"Whenever I finish a long rest, I can use this to change a wizard cantrip I know for another"
+	]),
+	prereqeval : function (v) { return classes.known.wizard.level >= 3 ? true : "skip"; },
+	usages : 1,
+	recovery : "long rest",
+	calcChanges : {
+		spellList : [
+			function(spList, spName, spType) {
+				// Remove the already known cantrips, from any source except magic items
+				if (spName === 'wizard cantrip formulas') {
+					var allSpellsKnown = [];
+					for (var sCast in CurrentSpells) {
+						if (sCast.refType === "item") continue;
+						var oCast = CurrentSpells[sCast];
+						if (oCast.selectCa) allSpellsKnown = allSpellsKnown.concat(oCast.selectCa);
+						if (oCast.selectBo) allSpellsKnown = allSpellsKnown.concat(oCast.selectBo);
+					}
+					var knownCantrips = OrderSpells(allSpellsKnown, "single", false, false, 0);
+					if (!spList.notspells) spList.notspells = [];
+					spList.notspells = spList.notspells.concat(knownCantrips);
+				}
+			}
+		],
+		spellAdd : [
+			function (spellKey, spellObj, spName, isDuplicate) {
+				if (spName == 'wizard cantrip formulas') {
+					spellObj.firstCol = "";
+				};
+			}
+		]
+	},
+	eval : function () {
+		CurrentSpells['wizard-wizard cantrip formulas'] = {
+			name : 'Wizard Cantrip Formulas (item)',
+			ability : "wizard",
+			list : { 'class' : 'wizard', level : [0, 0] },
+			known : { cantrips : 0, spells : 'list' },
+			bonus : {
+				bon1 : {
+					name : 'Just select "Full List"',
+					spells : []
+				},
+				bon2 : {
+					name : 'on the bottom left',
+					spells : []
+				}
+			},
+			typeList : 4,
+			refType : "option",
+			allowUpCasting : true,
+			firstCol : ""
+		};
+		SetStringifieds('spells'); CurrentUpdates.types.push('spells');
+	},
+	removeeval : function () {
+		delete CurrentSpells['wizard cantrip formulas'];
+		SetStringifieds('spells'); CurrentUpdates.types.push('spells');
+	}
+}, "Optional 3rd-level wizard features");
+
 // Add option to allow Dunamancy spells for the Artificer
 AddFeatureChoice(ClassList.artificer.features.spellcasting, true, "Access to Dunamancy Spells", {
 	name : "Dunamancy Spells",
@@ -1364,5 +1364,3 @@ AddFeatureChoice(ClassList.artificer.features.spellcasting, true, "Access to Dun
 		]
 	}
 }, "Optional 1st-level artificer features");
-
-
