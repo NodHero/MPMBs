@@ -3985,7 +3985,7 @@ MagicItemsList["knight's spear"] = {
 };
 MagicItemsList["lifecatcher glaive"] = {
 	name : "Lifecatcher Glaive",
-	source : [["NodHB", 1]],
+	source : [["NHB", 1]],
 	type : "weapon (glaive)",
 	rarity : "rare",
 	attunement : true,
@@ -6802,7 +6802,7 @@ CreatureList["timbermaw"] = {
 CreatureList["riding horse skeleton"] = { // Icespire
 		name : "Riding Horse Skeleton",
 		nameAlt : ["Horse"],
-		source : [["NodHB"]],
+		source : [["NHB"]],
 		size : 2, //Large
 		type : "Undead",
 		alignment : "Unaligned",
