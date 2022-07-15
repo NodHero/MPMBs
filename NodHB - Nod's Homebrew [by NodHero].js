@@ -3308,6 +3308,19 @@ AddFightingStyle(["fighter", "ranger", "paladin"], "Tight Quarters Shooter", {
 /* Fighting Style: Tight Quarters Shooter [originally Underdark UA]
 You are trained in making ranged attacks at close quarters. When making a ranged attack while you are within 5 feet of a hostile creature, you do not have disadvantage on the attack roll. Your ranged attacks ignore half cover and three‑quarters cover against targets within 30 feet of you. Finally, you have a +1 bonus to attack rolls on ranged attacks. */  
 
+// Add Magic Items: Consumables
+MagicItemsList["candle elixir"] = {
+	name : "Candle Elixir",
+	source : [["NHB"]],
+	type : "potion",
+	rarity : "common",
+	description : "This thick, stew-like concoction is full of what look to be wet balls of chewed up wood and wax. It smells somewhat like kerosene.\nFor 1 hour after I drink this potion, I glow, giving off bright light in a 20-foot radius and dim light for an additional 20 feet.",
+};
+/* Candle Elixir
+Potion, common
+This thick, stew-like concoction is full of what look to be wet balls of chewed up wood and wax. It smells somewhat like kerosene.
+For 1 hour after you drink this potion, you glow, giving off bright light in a 20-foot radius and dim light for an additional 20 feet. */
+
 // Add Magic Items: Armor
 MagicItemsList["duelist's armor of dual weilding"] = {  // Heward's Hireling Armor from LLoK
 	name : "Duelist's Armor of Dual Weilding",
@@ -3545,6 +3558,20 @@ MagicItemsList["diamond of the ise rune"] = {
 		}
 	}
 };
+MagicItemsList["efficient chest"] = {
+	name : "Efficient Chest",
+	source : ["NHB", 139],
+	type : "wondrous item",
+	rarity : "very rare",
+	description : "Items shrink to 1/4 size and 1/16 weight when put inside this chest. It is 2.5 ft long, 1.5 ft wide, and 1 ft tall with a half-barrel lid. It has 15 AC, 75 hit points, and a 30 damage threshold. The chest's lock can be picked with a successful DC 15 Thieves' tools check. Items inside when destroyed stay shrunk until Enlarged.",
+	descriptionFull : "This chest is 2\xBD feet long, 1\xBD feet wide, and 1 foot tall with a half-barrel lid. It holds 12 cubic feet or 300 pounds of gear. The chest has a lock, which can be picked with a successful DC 15 Thieves' tools check. The Chest is an object with 15 AC, 75 hit points, and a damage threshold of 30. It has immunity to all damage unless it takes an amount of damage equal to or greater than its damage threshold, in which case it takes damage as normal. Any damage that fails to meet or exceed the damage threshold is considered superficial and doesn't reduce the chest's hit points.\n\nThe chest magically reduces any object put inside of it to 1/4th the size and 1/16th the weight, effectively giving the chest a capacity of 48 cubic feet or 4800 pounds of gear. When an object is removed from the chest, it returns to normal size. However, if the chest is destroyed, all objects within it are stuck at the smaller size until an Enlarge/Reduce spell is cast upon them.",
+	weight : 25
+};
+/* Efficient Chest
+Wondrous item, very rare
+This chest is 2.5 feet long, 1.5 foot wide, and 1 foot tall with a half-barrel lid. It holds 12 cubic feet or 300 pounds of gear. The chest has a lock, which can be picked with a successful DC 15 Thieves' tools check. The Chest is an object with 15 AC, 75 hit points, and a damage threshold of 30. It has immunity to all damage unless it takes an amount of damage equal to or greater than its damage threshold, in which case it takes damage as normal. Any damage that fails to meet or exceed the damage threshold is considered superficial and doesn't reduce the chest's hit points.
+The chest magically reduces any object put inside of it to 1/4th the size and 1/16th the weight, effectively giving the chest a capacity of 48 cubic feet or 4800 pounds of gear. When an object is removed from the chest, it returns to normal size. However, if the chest is destroyed, all objects within it are stuck at the smaller size until an Enlarge/Reduce spell is cast upon them.
+*/
 MagicItemsList["equestrian wraps"] = {
 		name : "Equestrian Wraps",
 		source : [["NHB"]],
@@ -3554,6 +3581,16 @@ MagicItemsList["equestrian wraps"] = {
 		description : "While a horse or similar quadruped creature wears these leg wraps, their walking speed becomes 30 feet, unless their walking speed is higher, and their speed isn't reduced if they are encumbered or wearing heavy armor. In addition, they can jump three times the normal distance, though they can't jump farther than their remaining movement would allow.",
 		speed : { walk : { spd : "fixed 30", enc : "fixed 30" } }
 };
+MagicItemsList["everlasting picnic basket"] = {
+	name : "Everlasting Picnic Basket",
+	source : ["NHB", 136],
+	type : "wondrous item",
+	rarity : "common",
+	description : "Each time I complete a long rest, this picnic basket fills with enough food and water to sustain four Tiny, two Small/Medium, or one Large creature(s). The food is bland but nourishing, and spoils if uneaten after 24 hours. The water is clean and doesn't go bad."
+}
+/* Everlasting Picnic Basket
+Wondrous item (basket), uncommon
+Each time you complete a long rest, this picnic basket fills with enough food and water to sustain four Tiny, two Small/Medium, or one Large creature(s). The food is bland but nourishing, and spoils if uneaten after 24 hours. The water is clean and doesn't go bad. */
 MagicItemsList["glass cat's eye"] = {
 	name : "Glass Cat's Eye",
 	source : ["NHB"],
@@ -3655,7 +3692,6 @@ MagicItemsList["oxhorn beehive"] = {
 			]
 		}
 };
-
 GearList["honey bandage"] = {
     infoname : "Honey Bandage []",
     name : "Honey Bandage [heals 1d4+1]",
@@ -4250,6 +4286,41 @@ MagicItemsList["unicorn queen's bow"] = {
 			description : "Ammunition, two-handed; Vs. sworn enemy: adv, +3d6 damage, no cover/range penalties"
 		}
 };
+MagicItemsList["watchful squire's sword"] = {
+	name : "Watchful Squire's Sword",
+	nameTest : "Watchful Squire's",
+	source : ["NHB", 138],
+	type : "weapon (any sword)",
+	rarity : "common",
+	attunement : true,
+	action : [["action", "Watchful Squire (Allies +1 AC)"]],
+	description : "While wielding this sword, I may use my action to give allies of my choice within 5 feet of me a +1 bonus to AC until the start of my next turn.",
+	descriptionFull : "While wielding this sword, you may use your action to give allies of your choice within 5 feet of you a +1 bonus to AC until the start of your next turn.",
+	chooseGear : {
+		type : "weapon",
+		prefixOrSuffix : "suffix",
+		descriptionChange : ["replace", "sword"],
+		excludeCheck : function (inObjKey, inObj) {
+			var testRegex = /sword|scimitar|rapier/i;
+			return !(testRegex).test(inObjKey) && (!inObj.baseWeapon || !(testRegex).test(inObj.baseWeapon));
+		}
+	},
+	calcChanges : {
+		atkAdd : [
+			function (fields, v) {
+				if (!v.theWea.isMagicWeapon && v.isMeleeWeapon && (/sword|scimitar|rapier/i).test(v.baseWeaponName) && (/watchful squire's/i).test(v.WeaponTextName)) {
+					v.theWea.isMagicWeapon = true;
+					fields.Description = fields.Description.replace(/(, |; )?Counts as magical/i, '');
+				}
+			},
+			"If I include the words 'Watchful Squire/'/s' in the name of a sword, it will be treated as the magic weapon 'Watchful Squire/'/s' Sword."
+		]
+	}
+};
+/* Watchful Squire's Sword
+Weapon (any sword), common (requires attunement)
+While wielding this sword, you may use your action to give allies of your choice within 5 feet of you a +1 bonus to AC until the start of your next turn.
+*/
 MagicItemsList["weapon of echoes"] = {
 		name : "Weapon of Echoes",
 		nameTest : "of Echoes",
@@ -4366,6 +4437,20 @@ SpellsList["encourage"] = {
 	description : "1 creature that has at least 1 HP gains (spellcasting ability modifier + proficieny bonus) temp HP start of each of its turns",
 	descriptionFull : "You touch one creature, imbuing it with vitality. If the target has at least 1 hit point, it gains a number of temporary hit points equal to your spellcasting ability modifier plus your proficiency bonus at the start of each of its turns. The temporary hit points are lost when the spell ends."
 };
+SpellsList["touch of vitality"] = {
+	name : "Touch of Vitality",
+	classes : ["bard", "sorcerer", "warlock"],
+	source : ["NHB"],
+	level : 0,
+	school : "Abjur",
+	time : "1 a",
+	range : "Touch",
+	components : "V,S",
+	duration : "Conc, 1 min",
+	description : "1 creature w/ at least 1 HP gains (spellcasting ability modifier + prof bonus) THP start of each its turns",
+	descriptionFull : "You touch one creature, imbuing it with vitality. If the target has at least 1 hit point, it gains a number of temporary hit points equal to your spellcasting ability modifier plus your proficiency bonus at the start of each of its turns. The temporary hit points are lost when the spell ends."
+};
+
 // Level 1
 SpellsList["augmented alacrity"] = {
 	name : "Augmented Alacrity",
