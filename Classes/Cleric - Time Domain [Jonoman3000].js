@@ -1,7 +1,9 @@
 var iFileName = "Cleric - Time Domain [Jonoman3000].js";
 
 RequiredSheetVersion(13);
-// This file adds the Time Domain from reddit (https://www.reddit.com/r/UnearthedArcana/comments/3nb6ee/5e_cleric_subclass_time_domain/) as requested by u/aliensrule528194
+/* This file adds the Time Domain from reddit
+(https://www.reddit.com/r/UnearthedArcana/comments/3nb6ee/5e_cleric_subclass_time_domain/)
+as requested by u/aliensrule528194 */
 
 /* The Time domain focuses on the unending passage of time – one of the most powerful forces 
 in the universe. Gods and Goddesses of time see every passing season, year, and lifetime. 
