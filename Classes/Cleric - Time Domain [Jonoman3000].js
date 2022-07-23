@@ -3,6 +3,13 @@ var iFileName = "Cleric - Time Domain [Jonoman3000].js";
 RequiredSheetVersion(13);
 // This file adds the Time Domain from reddit (https://www.reddit.com/r/UnearthedArcana/comments/3nb6ee/5e_cleric_subclass_time_domain/) as requested by u/aliensrule528194
 
+/* The Time domain focuses on the unending passage of time – one of the most powerful forces 
+in the universe. Gods and Goddesses of time see every passing season, year, and lifetime. 
+They control the cycles of life and death, and ultimately determine the fate of all peoples. 
+Few deities are part of this domain, but there are a few notable ones, such as Savras or Istus. 
+Clerics of a god of time are given godly insight and powerful chronomancy, which they use to 
+protect and bring justice to the people of the world. */
+
 // Define the sources
 SourceList["HB"] = {
 	name : "Cleric - Time Domain",
