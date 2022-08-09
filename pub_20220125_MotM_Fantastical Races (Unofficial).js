@@ -1840,9 +1840,9 @@ RaceList["multiverse triton"] = {
 };
 // Yuan-Ti
 RaceList["multiverse yuan-ti"] = {
-	regExpSearch : /^(?=.*multiverse)(?=.*yaun-ti).*$/i,
+	regExpSearch : /^(?=.*multiverse)(?=.*yuan-ti).*$/i,
 	name : "Multiverse Yuan-Ti",
-	sortname: "Yaun-Ti, Multiverse",
+	sortname: "Yuan-Ti, Multiverse",
 	source : ["MotM", 36],
 	plural : "Yuan-Ti",
 	size : [3, 4],
@@ -1859,7 +1859,7 @@ RaceList["multiverse yuan-ti"] = {
 	height : " vary in size. If you'd like to determine your character's height or weight randomly, consult the Random Height and Weight table in the PHB, and choose the row in the table that best represents the build you imagine for your character.",
 	weight : " vary in size. If you'd like to determine your character's height or weight randomly, consult the Random Height and Weight table in the PHB, and choose the row in the table that best represents the build you imagine for your character.",
 	scorestxt : "+2 to one ability score and +1 to a different score of my choice, -or- +1 to three different scores of my choice",
-	trait : "Multiverse Yaun-Ti (+2/+1 or +1/+1/+1)"+
+	trait : "Multiverse Yuan-Ti (+2/+1 or +1/+1/+1)"+
 		"\n \u2022 Magic Resistance: I have advantage on saving throws vs spells."+
 		"\n \u2022 Poison Resilience. I have advantage on saving throws to avoid or end the poisoned condition on myself. I also have resistance to poison damage."+
 		"\n \u2022 Serpentine Spellcasting: I know the Poison Spray cantrip and I can cast Animal Friendship on snakes at will, and by using spell slots as normal. Once I reach 3rd level, I can cast Suggestion once per long rest, and by using spell slots as normal. Intelligence, Wisdom, or Charisma is my spellcasting ability for these (chosen with race).",
