@@ -227,7 +227,6 @@ BackgroundList["astral drifter"] = {
 	name : "Astral Drifter",
 	source : [["AAG", 7]],
 	skills : ["Insight", "Religion"],
-	toolProfs : ["Herbalism kit", "Vehicles (space)"],
 	languageProfs : [["Celestial or Gith recommended)", 2]],
 	gold : 10,
 	equipleft : [
