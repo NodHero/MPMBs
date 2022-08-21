@@ -18,7 +18,7 @@ SourceList["AAG"] = {
 	group : "Primary Sources",
 	campaignSetting : "Spelljammer",
 	url : "https://dnd.wizards.com/products/spelljammer",
-	date : "2022/16/08"
+	date : "2022/08/16"
 };
 
 // Add Races
@@ -225,7 +225,7 @@ RaceList["thri-kreen"] = {
 BackgroundList["astral drifter"] = {
 	regExpSearch : /^(?=.*astral)(?=.*drifter).*$/i,
 	name : "Astral Drifter",
-	source : [["AAG", 3]],
+	source : [["AAG", 7]],
 	skills : ["Insight", "Religion"],
 	toolProfs : ["Herbalism kit", "Vehicles (space)"],
 	languageProfs : [["Celestial or Gith recommended)", 2]],
@@ -253,15 +253,19 @@ BackgroundList["astral drifter"] = {
 		"Ptah, god of knowledge and secrets (lawful neutral)",
 	]
 };
+/* Astral Drifter
+For longer than you can remember, you have traversed the Astral Sea. There, you experienced firsthand the wonders of the Silver Void: you stopped aging and no longer felt hunger or thirst. Driven by wanderlust, you drifted from one part of the Astral Sea to another, like a mote of dust on the wind. You have lost count of the decades that have passed since you arrived here.
+In your travels, you have camped on the petrified hulks of dead gods and narrowly escaped the psychic winds that sweep across the Astral Sea while also avoiding prolonged contact with the plane's most dangerous denizens. */
 BackgroundFeatureList["divine contact"] = {
     description : "I am 20d6 years older than I look, thanks to time spent in the Astral Sea without aging. While in the Astral Sea, I crossed paths with a wandering deity. The encounter was brief and nonviolent, yet it made a lasting impression on me. This deity saw fit to share one secret or obscure bit of cosmic lore with me. I gain the Magic Initiate feat from the Player's Handbook and must choose cleric for the feat.",
     eval : function() { AddFeat("Magic Initiate [Cleric]"); },
     removeeval : function() { RemoveFeat("Magic Initiate [Cleric]"); }
 };
+
 BackgroundList["wildspacer"] = {
 	regExpSearch : /wildspacer/i,
 	name : "Wildspacer",
-	source : [["AAG", 3]],
+	source : [["AAG", 8]],
 	skills : ["Athletics", "Survival"],
 	toolProfs : ["Navigator's tools", "Vehicles (space)"],
 	gold : 10,
@@ -288,6 +292,9 @@ BackgroundList["wildspacer"] = {
 		"Void scavver",
 	],
 };
+/* Wildspacer
+You were raised in the void of Wildspace—home to asteroid miners, moon farmers, and other hardy folk. Perhaps you grew up in a far-flung settlement such as the Rock of Bral (described in chapter 3), or you spent your early years on the crew of a spelljamming ship, performing helpful chores such as swabbing the deck, loading and offloading cargo, and scraping barnacles off the hull.
+Whatever your history, life in Wildspace has toughened you so well that you are as brave as a miniature giant space hamster when it comes to facing the terrors and other challenges of the airless night.  */
 BackgroundFeatureList["wildspace adaptation"] = {
     description : "I gain the Tough feat from the Player's Handbook. In addition, I've learned how to adapt to zero gravity. Being weightless doesn't give me disadvantage on any of my melee attack rolls",
     eval : function() { AddFeat("Tough"); },
