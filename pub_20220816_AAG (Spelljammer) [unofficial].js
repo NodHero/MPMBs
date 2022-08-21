@@ -1,8 +1,13 @@
 var iFileName = "pub_20220816_AAG (Spelljammer) [unofficial].js";
 RequiredSheetVersion("13.1.1");
-// This file adds the content from the 'Astral Adventurer's Guide' book, part of the 'Spelljammer: Adventures in Space' set, to MPMB's Character Record Sheet
-/*	NOTE: UNOFFICIAL document! This script should be removed once the official script is released to prevent conflict!
-	It is Tested for the [Printer Friendly] version ONLY!
+/* This file adds the Character Options content from the 'Astral Adventurer's Guide' book, part of the 'Spelljammer: Adventures in Space' set, to MPMB's Character Record Sheet	
+• Races
+• Backgrounds
+• Spells
+• Magic Items
+
+NOTE: 	UNOFFICIAL document! This script should be removed once the official script is released to prevent conflict!
+		It is Tested for the [Printer Friendly] version 13.1.1 ONLY!
 */
 
 // Define the source
@@ -88,20 +93,12 @@ RaceList["autognome"] = {
 		immune : ["disease"]
 	},
 	toolProfs : [["Tool of my choice", 2]],
-	trait : typePF ?
-		"Autognome (my type is Construct; Cure Wounds, Healing Word, Mass Cure Wounds/Healing Word, & Spare the Dying work on me)"+
-		"\n \u2022 Armored Casing: My base AC is 13 + my Dexterity modifier."+
-		"\n \u2022 Built for Success: For my Prof. B. per long rest, I can add +1d4 to an attack, check, or save, after I see the roll, but before the effect."+
-		"\n \u2022 Mechanical Nature: I don't need to eat, drink or breathe."+
-		"\n \u2022 Sentry's Rest: I only need 6 hours to finish a long rest if I stay in an inactive and motionless state during which I'm conscious."+
-		"\n \u2022 True Life: If Mending is cast on me, I can regain HP equal to one expended Hit Die + my Constitution modifier."
-		:
-		"Autognome (type is Construct; Cure Wounds, Healing Word, Spare the Dying work on me)"+
-		"\n \u2022 Armored Casing: While I'm not wearing armor, my AC is 13 + my Dexterity modifier."+
-		"\n \u2022 Built for Success: For my Prof. B. per long rest, I can add +1d4 to an attack, check, or save. I can do this after seeing the d20 roll, but before knowing the roll's effects."+
-		"\n \u2022 Mechanical Nature: I have immunities/resistances and don't need to eat, drink or breathe."+
-		"\n \u2022 Sentry's Rest: I only need 6 hours to finish a long rest if I stay inactive and motionless."+
-		"\n \u2022 True Life: If Mending is cast on me, I can regain HP equal to one expended HD + my Con modifier."
+	trait : "Autognome (my type is Construct; Cure Wounds, Healing Word, Mass Cure Wounds/Healing Word, & Spare the Dying work on me)"+
+	"\n \u2022 Armored Casing: My base AC is 13 + my Dexterity modifier."+
+	"\n \u2022 Built for Success: For my Prof. B. per long rest, I can add +1d4 to an attack, check, or save, after I see the roll, but before the effect."+
+	"\n \u2022 Mechanical Nature: I don't need to eat, drink or breathe."+
+	"\n \u2022 Sentry's Rest: I only need 6 hours to finish a long rest if I stay in an inactive and motionless state during which I'm conscious."+
+	"\n \u2022 True Life: If Mending is cast on me, I can regain HP equal to one expended Hit Die + my Constitution modifier."
 };
 RaceList["giff"] = {
 	regExpSearch : /giff|hippofolk/i,
@@ -194,8 +191,8 @@ RaceList["plasmoid"] = {
 	action : [["bonus action", "Extrude/Reabsorb Pseudopod"]],
 	trait : "Plasmoid (my type is Ooze)"+
 	(typePF ? "\n" : "") + " \u2022 Hold Breath: I can hold my breath for 1 hour."+
-	"\n \u2022 Amorphous: I can squeeze through a 1-inch wide space without my equipment or clothes. " + (typePF ? "I have advantage on grapple checks." : "I also have advantage on ability checks I make to initiate or escape a grapple.")+
-	"\n \u2022 Shape Self: While not incapacitated, I can reshape my body to have a head and limbs, or back to a limbless blob (no action). As a bonus action, I can extrude/reabsorb a pseudopod up to 6 inch wide and 10 ft long. It can carry up to 10 lb. I can use it to manipulate objects, open/close doors and containers, or pick up/set down tiny objects." + (typePF ? " It can't attack or use magic items." : "")
+	"\n \u2022 Amorphous: I can squeeze through a 1-inch wide space without my equipment or clothes. I have advantage on grapple checks."+
+	"\n \u2022 Shape Self: While not incapacitated, I can reshape my body to have a head and limbs, or back to a blob (no action). As a Bonus action, I can extrude or reabsorb a pseudopod up to 6 inch wide and 10 ft long. It can carry up to 10 lb., manipulate objects, open or close doors and containers, or pick up or set down tiny objects. It can't attack or use magic items."
 };
 RaceList["thri-kreen"] = {
 	regExpSearch : /thri.?kreen/i,
@@ -218,8 +215,8 @@ RaceList["thri-kreen"] = {
 	},
 	vision : [["Darkvision", 60]],
 	trait : "Thri-kreen (my type is Monstrosity)"+
-	"\n \u2022 Chameleon Carapace: " + (typePF ? "AC 13 + Dex," : "My base AC is 13 + Dex mod. I have") + " adv. on Stealth checks to hide."+
-	"\n \u2022 Secondary Arms: I have two slightly smaller arms below my primary pair of arms." + (typePF ? " " : "\n   ") + "I can use these secondary arms to manipulate tiny objects and wield light weapons."+
+	"\n \u2022 Chameleon Carapace: My base AC is 13 + Dex mod. I have adv. on Stealth checks to hide."+
+	"\n \u2022 Secondary Arms: I have two slightly smaller arms below my primary pair of arms. I can use these secondary arms to manipulate tiny objects and wield light weapons."+
 	"\n \u2022 Sleepless: I don't require sleep. I rest by refraining from strenuous activity."+
 	"\n \u2022 Thri-kreen Telepathy: I can communicate telepathically to any number of willing creatures I can see that understand at least one language, while within 120 ft. Any can break this (no action)."
 };
@@ -270,7 +267,7 @@ BackgroundList["wildspacer"] = {
 	gold : 10,
 	equipleft : [
 		["Belaying pin (club)", "", 2],
-		["Grapplinghook", "", 4],
+		["Grappling hook", "", 4],
 	],
 	equipright : [
 		["Traveler's clothes", "", 4],
@@ -348,8 +345,8 @@ MagicItemsList["spelljamming helm"] = {
 	descriptionFull : "The function of this ornate chair is to propel and maneuver a ship on which it has been installed through space and air. It can also propel and maneuver a ship on water or underwater, provided the ship is built for such travel. The ship in question must weigh 1 ton or more."+
 	"The sensation of being attuned to a spelljamming helm is akin to the pins-and-needles effect one experiences after one's arm or leg falls asleep, but not as painful. While attuned to a spelljamming helm and sitting in it, you gain the following abilities for as long as you maintain concentration (as if concentrating on a spell):"+
 	"\u2022 You can use the spelljamming helm to move the ship through space, air, or water up to the ship's speed. If the ship is in space and no other objects weighing 1 ton or more are within 1 mile of it, you can use the spelljamming helm to move the vessel fast enough to travel 100 million miles in 24 hours."+
-    "\u2022 You can steer the vessel, albeit in a somewhat clumsy fashion, in much the way that a rudder or oars can be used to maneuver a seafaring ship."+
-    "\u2022 At any time, you can see and hear what's happening on and around the vessel as though you were standing in a location of your choice aboard it."+
+	"\u2022 You can steer the vessel, albeit in a somewhat clumsy fashion, in much the way that a rudder or oars can be used to maneuver a seafaring ship."+
+	"\u2022 At any time, you can see and hear what's happening on and around the vessel as though you were standing in a location of your choice aboard it."+
 	"\n Transfer Attunement. You can use an action to touch a willing spellcaster. That creature attunes to the spelljamming helm immediately, and your attunement to it ends.",
 	toNotesPage : [{
 	name : "Features",
