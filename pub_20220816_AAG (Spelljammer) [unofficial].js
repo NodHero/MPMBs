@@ -190,7 +190,7 @@ RaceList["plasmoid"] = {
 	},
 	action : [["bonus action", "Extrude/Reabsorb Pseudopod"]],
 	trait : "Plasmoid (my type is Ooze)"+
-	(typePF ? "\n" : "") + " \u2022 Hold Breath: I can hold my breath for 1 hour."+
+	"\n \u2022 Hold Breath: I can hold my breath for 1 hour."+
 	"\n \u2022 Amorphous: I can squeeze through a 1-inch wide space without my equipment or clothes. I have advantage on grapple checks."+
 	"\n \u2022 Shape Self: While not incapacitated, I can reshape my body to have a head and limbs, or back to a blob (no action). As a Bonus action, I can extrude or reabsorb a pseudopod up to 6 inch wide and 10 ft long. It can carry up to 10 lb., manipulate objects, open or close doors and containers, or pick up or set down tiny objects. It can't attack or use magic items."
 };
