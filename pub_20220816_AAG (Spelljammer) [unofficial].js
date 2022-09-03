@@ -10,6 +10,9 @@ NOTE: 	UNOFFICIAL document! This script should be removed once the official scri
 		It is Tested for the [Printer Friendly] version 13.1.1 ONLY!
 */
 
+// EDIT: This document now includes the Spelljammer Adventures Errata: https://media.wizards.com/2022/dnd/downloads/SJA-Errata.pdf
+
+
 // Define the source
 SourceList["AAG"] = {
 	name : "Astral Adventurer's Guide (Spelljammer)",
@@ -153,7 +156,7 @@ RaceList["hadozee"] = {
 	scoresGeneric : true,
 	action : [
 		["bonus action", "Dexterous Feet"],
-		["reaction", "Glide (negate falling damage)"], 
+		["reaction", "Glide (at least 10 ft above ground)"], 
 		["reaction", "Hadozee Resilience"]
 	],
 	features : {
@@ -168,7 +171,7 @@ RaceList["hadozee"] = {
 	},
 	trait : "Hadozee"+
 	"\n \u2022 Dexterous Feet: As a bonus action, I can manipulate an object, open or close a door or container, or pick up or set down a Tiny object."+
-	"\n \u2022 Glide: If I'm not incapacitated or wearing heavy armor, I can extend my skin membranes and glide. When I do so, I can move up to 5 ft horizontally for every 1 ft I descend in the air, at no movement cost, and as a reaction, I can reduce fall damage to 0."+
+	"\n \u2022 Glide: When I fall at least 10 ft above the ground, as a reaction I can extend my skin membranes to glide horizontally a number of feet equal to my walking speed, and take 0 damage from the fall."+
 	"\n \u2022 Hadozee Resilience: Proficiency Bonus per long rest, when I take damage, I can use my reaction to reduce the damage by 1d6 + my Proficiency Bonus."
 };
 RaceList["plasmoid"] = {
@@ -257,6 +260,7 @@ For longer than you can remember, you have traversed the Astral Sea. There, you 
 In your travels, you have camped on the petrified hulks of dead gods and narrowly escaped the psychic winds that sweep across the Astral Sea while also avoiding prolonged contact with the plane's most dangerous denizens. */
 BackgroundFeatureList["divine contact"] = {
     description : "I am 20d6 years older than I look, thanks to time spent in the Astral Sea without aging. While in the Astral Sea, I crossed paths with a wandering deity. The encounter was brief and nonviolent, yet it made a lasting impression on me. This deity saw fit to share one secret or obscure bit of cosmic lore with me. I gain the Magic Initiate feat from the Player's Handbook and must choose cleric for the feat.",
+	source: ["AAG", 7],
     eval : function() { AddFeat("Magic Initiate [Cleric]"); },
     removeeval : function() { RemoveFeat("Magic Initiate [Cleric]"); }
 };
@@ -296,6 +300,7 @@ You were raised in the void of Wildspace—home to asteroid miners, moon farmers
 Whatever your history, life in Wildspace has toughened you so well that you are as brave as a miniature giant space hamster when it comes to facing the terrors and other challenges of the airless night.  */
 BackgroundFeatureList["wildspace adaptation"] = {
     description : "I gain the Tough feat from the Player's Handbook. In addition, I've learned how to adapt to zero gravity. Being weightless doesn't give me disadvantage on any of my melee attack rolls",
+	source: ["AAG", 8],
     eval : function() { AddFeat("Tough"); },
     removeeval : function() { RemoveFeat("Tough"); }
 };
