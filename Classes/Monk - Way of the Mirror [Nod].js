@@ -2,9 +2,9 @@
 
 	Subject:	Subclass
 	Effect:		This script adds a subclass for the Monk, called "Way of the Mirror"
-				to "MPMB's Character Record Sheet" found at https://flapkan.com/mpmb/charsheets
-				Subclass created by NodHero, inspired by and heavily borrowed from the Echo Knight 
-				in Explorer's Guide to Wildemount (https://dnd.wizards.com/products/wildemount)
+			to "MPMB's Character Record Sheet" found at https://flapkan.com/mpmb/charsheets
+			Subclass created by NodHero, inspired by and heavily borrowed from the Echo Knight 
+			in Explorer's Guide to Wildemount (https://dnd.wizards.com/products/wildemount)
 	Code by:	NodHero, with contributions from the orginal Echo Knight coders
 	Date:		2022-06-12 (sheet v13)
 */
@@ -21,13 +21,13 @@ SourceList["NHB-WM"] = {
 };
 
 /* Monastic Tradition - Way of the Mirror
-“If you’re searching for that one person who will change your life…take a look in the mirror.”
+“If you’re searching for that one person who will change your life… take a look in the mirror.”
 
 While monks of every Tradition strive for mastery over their physical form, honing their bodies 
 into deadly weapons, and mastering ancient martial arts techniques, the Monastic Tradition of the 
 Way of the Mirror see their ki as a way to bring about a Reflection of their true form. This Reflection 
 has the capacity to be a force of order or disorder, with some monasteries training students to use 
-their power to protect the weak and other instructing aspirants in how to manifest their Reflections 
+their power to protect the weak and others instructing aspirants in how to manifest their Reflections 
 in service to the mighty.
 
 Having mastered the art of manipulating these mirrored representations of themselves during combat, 
