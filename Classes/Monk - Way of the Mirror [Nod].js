@@ -1,9 +1,10 @@
-/* -INFORMATION-
+/*	-INFORMATION-
+
 	Subject:	Subclass
-	Effect:		This script adds a subclass for the Monk, called "Way of the Mirror" 
-			to "MPMB's Character Record Sheet" found at https://flapkan.com/mpmb/charsheets
-			Subclass created by NodHero, inspired by and heavily borrowed from the Echo Knight 
-			in Explorer's Guide to Wildemount (https://dnd.wizards.com/products/wildemount)
+	Effect:		This script adds a subclass for the Monk, called "Way of the Mirror"
+				to "MPMB's Character Record Sheet" found at https://flapkan.com/mpmb/charsheets
+				Subclass created by NodHero, inspired by and heavily borrowed from the Echo Knight 
+				in Explorer's Guide to Wildemount (https://dnd.wizards.com/products/wildemount)
 	Code by:	NodHero, with contributions from the orginal Echo Knight coders
 	Date:		2022-06-12 (sheet v13)
 */
@@ -32,7 +33,6 @@ in service to the mighty.
 Having mastered the art of manipulating these mirrored representations of themselves during combat, 
 these monks, often called Mirror Dancers, charge into the fray as a flurry of silver streaks and sudden strikes. 
 */
-
 AddSubClass("monk", "way of the mirror", {
 	regExpSearch : /^(?=.*mirror)((?=.*(monk|monastic|dancer))|(((?=.*martial)(?=.*(artist|arts)))|((?=.*spiritual)(?=.*warrior)))).*$/i,
 	subname : "Way of the Mirror",
@@ -104,6 +104,7 @@ AddSubClass("monk", "way of the mirror", {
 			autoSelectExtrachoices : [{
 				extrachoice : "cast reflection",
 			}],
+		},
 		"subclassfeature3.1" : {
 			name : "Mirror Incantations",
 			source : ["NHB-WM", 1],
@@ -131,7 +132,6 @@ AddSubClass("monk", "way of the mirror", {
 				}
 			},
 			autoSelectExtrachoices : [{ extrachoice : "mirror spells" }],
-		},
 		},
 		"subclassfeature6" : {
 			name : "Glass Looking",
@@ -180,4 +180,4 @@ AddSubClass("monk", "way of the mirror", {
 			additional : "gain temp HP"
 		}
 	}
-});	
+});
