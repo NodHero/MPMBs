@@ -8,10 +8,9 @@ RequiredSheetVersion("13.1.1");
 
 NOTE: 	UNOFFICIAL document! This script should be removed once the official script is released to prevent conflict!
 		It is Tested for the [Printer Friendly] version 13.1.1 ONLY!
+
+EDIT: This document now includes the Spelljammer Adventures Errata: https://media.wizards.com/2022/dnd/downloads/SJA-Errata.pdf
 */
-
-// EDIT: This document now includes the Spelljammer Adventures Errata: https://media.wizards.com/2022/dnd/downloads/SJA-Errata.pdf
-
 
 // Define the source
 SourceList["AAG"] = {
@@ -191,11 +190,11 @@ RaceList["plasmoid"] = {
 		adv_vs : ["poison"],
 		text : ["Adv. on grapple checks"]
 	},
-	action : [["bonus action", "Extrude/Reabsorb Pseudopod"]],
+	action : [["action", "Shape Self"],["bonus action", "Extrude/Reabsorb Pseudopod"]],
 	trait : "Plasmoid (my type is Ooze)"+
 	"\n \u2022 Hold Breath: I can hold my breath for 1 hour."+
 	"\n \u2022 Amorphous: I can squeeze through a 1-inch wide space without my equipment or clothes. I have advantage on grapple checks."+
-	"\n \u2022 Shape Self: While not incapacitated, I can reshape my body to have a head and limbs, or back to a blob (no action). As a Bonus action, I can extrude or reabsorb a pseudopod up to 6 inch wide and 10 ft long. It can carry up to 10 lb., manipulate objects, open or close doors and containers, or pick up or set down tiny objects. It can't attack or use magic items."
+	"\n \u2022 Shape Self: While not incapacitated, as an Action, I can reshape my body to have a head and limbs, or back to a blob. As a Bonus action, I can extrude or reabsorb a pseudopod up to 6 inch wide and 10 ft long. It can carry up to 10 lb., manipulate objects, open or close doors and containers, or pick up or set down tiny objects. It can't attack or use magic items."
 };
 RaceList["thri-kreen"] = {
 	regExpSearch : /thri.?kreen/i,
