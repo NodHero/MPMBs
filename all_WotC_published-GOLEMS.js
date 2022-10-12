@@ -298,7 +298,7 @@ MagicItemsList["nether scroll of azumar"] = {
 		description : "Nether Scroll of Azumar is not a consumable magic item. After 30 days of studying 8 h/day, I must succeed on a DC 25 Int (Arcana) check. If failed, I take 16d10 psychic damage and start anew. On a success, I gain +2 Int to a max of 22, advantage on saves vs. spells and magical effects, and a stone golem ally.",
 	},
 	"read" : {
-		description : "Nether Scroll of Azumar is not a consumable magic item.\n\nAfter 30 days of studying 8 h/day, I succeeded on a DC 25 Int (Arcana) check. I gain +2 Int to a max of 22, I gain advantage on saves against spells and magical effects, and a stone golem ally appears within 60 ft. If I die, the golem turns to dust.",
+		description : "Nether Scroll of Azumar is not a consumable magic item. After 30 days of studying 8 h/day, I succeeded on a DC 25 Int (Arcana) check. I gain +2 Int to a max of 22, I gain advantage on saves against spells and magical effects, and a stone golem ally appears within 60 ft. If I die, the golem turns to dust.",
 		eval : function() {[
 		MagicItemsList["manual of bodily health"].applyStatBonus("Nether Scroll of Azumar", "Intelligence", 2) + SetProf("savetxt", true, { adv_vs : ["magic"] }) + processAddCompanions(true, "Nether Scroll of Azumar (item)", [["Stone Golem"]])];
 	}}
