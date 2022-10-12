@@ -84,6 +84,80 @@ MagicItemsList["horn of valhalla"] = {
 		descriptionFull : "You can use an action to blow this horn. In response, warrior spirits from the plane of Ysgard appear within 60 feet of you. These spirits use the berserker statistics. They return to Ysgard after 1 hour or when they drop to 0 hit points. Once you use the horn, it can't be used again until 7 days have passed.\n   The iron horn summons 5d4+5 berserkers. To use the iron horn, you must be proficient with all martial weapons.\n   If you blow the horn without meeting its requirement, the summoned berserkers attack you. If you meet the requirement, they are friendly to you and your companions and follow your commands."
 	},
 };
+// Add Golems to two magic items that create Golems
+MagicItemsList["manual of golems"] = {
+	name : "Manual of Golems",
+	source : [["SRD", 229], ["D", 180]],
+	type : "wondrous item",
+	rarity : "very rare",
+	magicItemTable : "H",
+	description : "This tome can only be used by a spellcaster with two 5th-level spell slots. Others reading it take 6d6 psychic damage.",
+	descriptionFull : "This tome contains information and incantations necessary to make a particular type of golem. The DM chooses the type or determines it randomly. To decipher and use the manual, you must be a spellcaster with at least two 5th-level spell slots. A creature that can't use a manual of golems and attempts to read it takes 6d6 psychic damage.\n   To create a golem, you must spend a the time shown on the table, working without interruption with the manual at hand and resting no more than 8 hours per day. You must also pay the specified cost to purchase supplies. Once you finish creating the golem, the book is consumed in eldritch flames. The golem becomes animate when the ashes of the manual are sprinkled on it. It is under your control, and it understands and obeys your spoken commands.",
+	weight : 5,
+	allowDuplicates : true,
+	prerequisite : "Requires a spellcaster with at least two 5th-level spell slots",
+	prereqeval : function () { return What('SpellSlots.CheckboxesSet.lvl5') >= 2; },
+	choices : ["Clay", "Flesh", "Iron", "Stone"],
+	"clay" : {
+		name : "Manual of Clay Golems",
+		sortname : "Manual of Golems, Clay",
+		description : "Only spellcasters with two 5th-level spell slots can use this tome. Creating a clay golem requires 65000 gp of supplies, 30 days working uninterrupted with the manual at hand, resting no more than 8 hours per day. The manual is consumed to animate the golem, which understands and obeys my spoken commands.",
+		descriptionLong : "Only spellcasters with two 5th-level spell slots can use this tome, others reading it take 6d6 psychic damage. Creating a clay golem requires 65000 gp of supplies, 30 days working uninterrupted with the manual at hand, resting no more than 8 hours per day. The manual is consumed to animate the golem, which understands and obeys my spoken commands.",
+		descriptionFull : "This tome contains information and incantations necessary to make a particular type of golem. The DM chooses the type or determines it randomly. To decipher and use the manual, you must be a spellcaster with at least two 5th-level spell slots. A creature that can't use a manual of golems and attempts to read it takes 6d6 psychic damage.\n   To create a clay golem, you must spend 30 days, working without interruption with the manual at hand and resting no more than 8 hours per day. You must also pay 65,000 gp to purchase supplies. Once you finish creating the golem, the book is consumed in eldritch flames. The golem becomes animate when the ashes of the manual are sprinkled on it. It is under your control, and it understands and obeys your spoken commands.",
+		eval : function() {[processAddCompanions(true, "Manual of Clay Golems (item)", [["Clay Golem"]])];
+		}
+	},
+	"flesh" : {
+		name : "Manual of Flesh Golems",
+		sortname : "Manual of Golems, Flesh",
+		description : "Only spellcasters with two 5th-level spell slots can use this tome. Creating a flesh golem requires 50000 gp of supplies, 60 days working uninterrupted with the manual at hand, resting no more than 8 hours per day. The manual is consumed to animate the golem, which understands and obeys my spoken commands.",
+		descriptionLong : "Only spellcasters with two 5th-level spell slots can use this tome, others reading it take 6d6 psychic damage. Creating a flesh golem requires 50000 gp of supplies, 60 days working uninterrupted with the manual at hand, resting no more than 8 hours per day. The manual is consumed to animate the golem, which understands and obeys my spoken commands.",
+		descriptionFull : "This tome contains information and incantations necessary to make a particular type of golem. The DM chooses the type or determines it randomly. To decipher and use the manual, you must be a spellcaster with at least two 5th-level spell slots. A creature that can't use a manual of golems and attempts to read it takes 6d6 psychic damage.\n   To create a flesh golem, you must spend 60 days, working without interruption with the manual at hand and resting no more than 8 hours per day. You must also pay 50,000 gp to purchase supplies. Once you finish creating the golem, the book is consumed in eldritch flames. The golem becomes animate when the ashes of the manual are sprinkled on it. It is under your control, and it understands and obeys your spoken commands.",
+		eval : function() {[processAddCompanions(true, "Manual of Flesh Golems (item)", [["Flesh Golem"]])];
+		}
+	},
+	"iron" : {
+		name : "Manual of Iron Golems",
+		sortname : "Manual of Golems, Iron",
+		description : "Only spellcasters with two 5th-level spell slots can use this tome. Creating a iron golem requires 100000 gp of supplies, 120 days working uninterrupted with the manual at hand, resting no more than 8 hours per day. The manual is consumed to animate the golem, which understands and obeys my spoken commands.",
+		descriptionLong : "Only spellcasters with two 5th-level spell slots can use this tome, others reading it take 6d6 psychic damage. Creating a iron golem requires 100000 gp of supplies, 120 days working uninterrupted with the manual at hand, resting no more than 8 hours per day. The manual is consumed to animate the golem, which understands and obeys my spoken commands.",
+		descriptionFull : "This tome contains information and incantations necessary to make a particular type of golem. The DM chooses the type or determines it randomly. To decipher and use the manual, you must be a spellcaster with at least two 5th-level spell slots. A creature that can't use a manual of golems and attempts to read it takes 6d6 psychic damage.\n   To create an iron golem, you must spend 120 days, working without interruption with the manual at hand and resting no more than 8 hours per day. You must also pay 100,000 gp to purchase supplies. Once you finish creating the golem, the book is consumed in eldritch flames. The golem becomes animate when the ashes of the manual are sprinkled on it. It is under your control, and it understands and obeys your spoken commands.",
+		eval : function() {[processAddCompanions(true, "Manual of Iron Golems (item)", [["Iron Golem"]])];
+		}
+	},
+	"stone" : {
+		name : "Manual of Stone Golems",
+		sortname : "Manual of Golems, Stone",
+		description : "Only spellcasters with two 5th-level spell slots can use this tome. Creating a stone golem requires 80000 gp of supplies, 90 days working uninterrupted with the manual at hand, resting no more than 8 hours per day. The manual is consumed to animate the golem, which understands and obeys my spoken commands.",
+		descriptionLong : "Only spellcasters with two 5th-level spell slots can use this tome, others reading it take 6d6 psychic damage. Creating a stone golem requires 80000 gp of supplies, 90 days working uninterrupted with the manual at hand, resting no more than 8 hours per day. The manual is consumed to animate the golem, which understands and obeys my spoken commands.",
+		descriptionFull : "This tome contains information and incantations necessary to make a particular type of golem. The DM chooses the type or determines it randomly. To decipher and use the manual, you must be a spellcaster with at least two 5th-level spell slots. A creature that can't use a manual of golems and attempts to read it takes 6d6 psychic damage.\n   To create a stone golem, you must spend 90 days, working without interruption with the manual at hand and resting no more than 8 hours per day. You must also pay 80,000 gp to purchase supplies. Once you finish creating the golem, the book is consumed in eldritch flames. The golem becomes animate when the ashes of the manual are sprinkled on it. It is under your control, and it understands and obeys your spoken commands.",
+		eval : function() {[processAddCompanions(true, "Manual of Stone Golems (item)", [["Stone Golem"]])];
+		}
+	}
+};
+MagicItemsList["nether scroll of azumar"] = {
+	name : "Nether Scroll of Azumar",
+	source : [["CM", 210]],
+	type : "scroll",
+	rarity : "legendary",
+	storyItemAL : true,
+	attunement : false,
+	description : "After 30 days of studying 8 h/day, I make a DC 25 Int (Arcana) check. If failed, I take 16d10 psychic damage and start anew. On a success, I gain +2 Int to a max of 22, I gain advantage on saves against spells and magical effects, and a stone golem appears within 60 ft that acts as ally. If I die, the golem turns to dust.",
+	descriptionFull : "Unlike most scrolls, a Nether Scroll of Azumar is not a consumable magic item. It takes 30 days of concentrated study\u2014at least 8 hours per day\u2014to attempt to understand this scroll. After completing this study, you must make a DC 25 Intelligence (Arcana) check. If this check fails, you take 16d10 psychic damage, and you can attempt the check again after another 30 days of concentrated study."+
+	"\n   When you succeed on the check, you gain the following benefits:"+
+	"\n   \u2022 Your Intelligence score increases by 2, to a maximum of 22. Once you gain this benefit, you can't use this scroll to increase your Intelligence again."+
+	"\n   \u2022 You gain advantage on saving throws against spells and other magical effects."+
+	"\n\n   When you gain the scroll's benefits, a stone golem magically appears in an unoccupied space within 60 feet of you and acts as your ally. If you die, the golem turns to dust.",
+ 	choices : ["Not Read", "Read"],
+	"not read" : {
+		description : "Nether Scroll of Azumar is not a consumable magic item. After 30 days of studying 8 h/day, I must succeed on a DC 25 Int (Arcana) check. If failed, I take 16d10 psychic damage and start anew. On a success, I gain +2 Int to a max of 22, advantage on saves vs. spells and magical effects, and a stone golem ally.",
+	},
+	"read" : {
+		description : "Nether Scroll of Azumar is not a consumable magic item.\n\nAfter 30 days of studying 8 h/day, I succeeded on a DC 25 Int (Arcana) check. I gain +2 Int to a max of 22, I gain advantage on saves against spells and magical effects, and a stone golem ally appears within 60 ft. If I die, the golem turns to dust.",
+		eval : function() {[
+		MagicItemsList["manual of bodily health"].applyStatBonus("Nether Scroll of Azumar", "Intelligence", 2) + SetProf("savetxt", true, { adv_vs : ["magic"] }) + processAddCompanions(true, "Nether Scroll of Azumar (item)", [["Stone Golem"]])];
+	}}
+};
 // Add Blessings (coded as Feats) [contributed by Nod_Hero]
 FeatsList["blessing"] = {
 	name : "Blessing",
@@ -220,7 +294,7 @@ MagicItemsList["charm"] = {
 	},
 	"heroism" : {
 		name : "Charm of Heroism",
-		description : "Different types of charms exist, each with a different effect.\n As an action, I can can expend the charm to give myself the benefit of a Potion of Heroism. For one hour, I gain 10 temporary hit points and am under the effect of the Bless spell (no concentration required).",
+		description : "Different types of charms exist, each with a different effect. As an action, I can can expend the charm to give myself the benefit of a Potion of Heroism. For one hour, I gain 10 temporary hit points and am under the effect of the Bless spell (no concentration required).",
 		usages : 1,
 		recovery : "never",
 		spellFirstColTitle : "Ch",
@@ -245,7 +319,7 @@ MagicItemsList["charm"] = {
 	},
 	"restoration" : {
 		name : "Charm of Restoration",
-		description : "Different types of charms exist, each with a different effect.\n This Charm has 6 charges. I can use an action to expend some of its charges to cast one of the following spells:\n Greater Restoration (4 charges) or Lesser Restoration (2 charges). The Charm vanishes once all its charges have been expended.",
+		description : "Different types of charms exist, each with a different effect. This Charm has 6 charges. I can use an action to expend some of its charges to cast one of the following spells:\n Greater Restoration (4 charges) or Lesser Restoration (2 charges). The Charm vanishes once all its charges have been expended.",
 		usages : 10,
 		recovery : "never",
 		action : [["action", ""]],
@@ -264,7 +338,7 @@ MagicItemsList["charm"] = {
 	},
 	"the slayer" : {
 		name : "Charm of The Slayer",
-		description : "Different types of charms exist, each with a different effect.\n One sword in my possession becomes a Dragon Slayer or Giant Slayer (DM's choice) for the next 9 days. The charm then vanishes from me, and the weapon returns to normal.",
+		description : "Different types of charms exist, each with a different effect. One sword in my possession becomes a Dragon Slayer or Giant Slayer (DM's choice) for the next 9 days. The charm then vanishes from me, and the weapon returns to normal.",
 		usages : "9 days",
 		recovery : "never",
 	},
@@ -479,7 +553,6 @@ FeatsList["epic boon"] = {
         addMod : { type : "skill", field : "Stealth", mod : "10", text : "I gain a +10 bonus to Stealth checks" },
     },
 };
-
 // Add Chwinga Charms (coded as Magic Items) from RotF [contributed by Nod_Hero]
 MagicItemsList["chwinga charm"] = {
 	name : "Chwinga Charm",
@@ -582,13 +655,6 @@ MagicItemsList["chwinga charm"] = {
 };
 
 // Add Magic Items missing from official sources
-MagicItemsList["potion of watchful rest"] = { // WDotMM
-	name : "Potion of Watchful Rest",
-	source : [["WDotMM", 62]],
-	type : "potion",
-	rarity : "common",
-	description : "When I drink this potion, I gain the following benefits for the next 8 hours: magic can't put me to sleep, and I can remain awake during a long rest and still gain its benefits. This sweet, amber-colored brew has no effect on creatures that don't require sleep, such as elves.",
-};
 MagicItemsList["candle mace"] = { // DiA
 	name : "Candle Mace",
 	source : ["DiA", 39],
@@ -736,6 +802,21 @@ toNotesPage : [{
 	]) + sentientItemConflictTxt
 	}]
 };
+MagicItemsList["faerie dust"] = { // SKT
+	name : "Faerie Dust",
+	source : [["SKT", 35]],
+	type : "wondrous item",
+	description : "A pinch of this dust can substitute for the material components of any enchantment spell of 3rd level or lower. If a pinch of faerie dust is sprinkled on a creature, roll percentile dice and consult the Faerie Dust table to determine the effect.\n[See 3rd page 'Notes']",
+	descriptionFull : "A pinch of this dust can substitute for the material components of any enchantment spell of 3rd level or lower. If a pinch of faerie dust is sprinkled on a creature, roll percentile dice and consult the Faerie Dust table to determine the effect.\n\n Faerie Dust\n   d100\tMagical Effect\n  01-70\tThe creature sprinkled with dust gains a flying\n\tspeed of 60 feet for 10 minutes.\n  71-80\tThe creature sprinkled with dust must succeed\n\ton a DC 11 Constitution saving throw or fall\n\tunconscious for 1 minute. The creature awakens\n\tif it takes damage or if it is shaken or slapped as\n\tan action.\n  81-90\tThe creature sprinkled with dust must succeed on\n\ta DC 11 Wisdom saving throw or be affected by a\n\tconfusion spell.\n  91-00\tThe creature sprinkled with dust becomes\n\tinvisible for 1 hour. Any equipment it is wearing\n\tor carrying is invisible as long as it is on the\n\tcreature's person. The effect on the creature ends\n\tif it attacks, deals any damage, or casts a spell.\n"+
+	"\nThis small pouch contains ten pinches of faerie dust.",
+	toNotesPage : [{
+	name : "",
+	page3notes : true,
+	note : [
+		"d100 \tMagical Effect\n  01-70\tThe creature sprinkled with dust gains a flying speed of 60 feet for 10 minutes.\n  71-80\tThe creature sprinkled with dust must succeed on a DC 11 Constitution saving\n\tthrow or fall unconscious for 1 minute. The creature awakens if it takes damage\n\tor if it is shaken or slapped as an action.\n  81-90\tThe creature sprinkled with dust must succeed on a DC 11 Wisdom saving throw\n\tor be affected by a confusion spell.\n  91-00\tThe creature sprinkled with dust becomes invisible for 1 hour. Any equipment it\n\tis wearing or carrying is invisible as long as it is on the creature's person. The\n\teffect on the creature ends if it attacks, deals any damage, or casts a spell.",
+		],
+	}],
+};
 MagicItemsList["bob"] = { // ToA
 	name : "Bob",
 	source : ["ToA", 89],
@@ -754,6 +835,31 @@ MagicItemsList["bob"] = { // ToA
 		modifiers : [1, 1]
 	}
 };
+MagicItemsList["longsword of speaking draconic"] = { // ToA
+	name : "Longsword of Speaking Draconic",
+	source : ["ToA", 173],
+	type : "weapon (longsword)",
+	rarity : "common",
+	description : "This longsword has a dragon-shaped hilt. While I carry it, I gain the ability to speak and understand the Draconic language.",
+	descriptionFull : "This longsword has a dragon-shaped hilt. While you carry it, you gain the ability to speak and understand the Draconic language.",
+	weight : 3,
+	languageProfs : ["[speak Draconic]"],
+	weaponsAdd : ["Longsword of Speaking Draconic"],
+	weaponOptions : {
+		baseWeapon : "longsword",
+		regExpSearch : /^(?=.*speaking)(?=.*draconic).*$/i,
+		name : "Longsword of Speaking Draconic",
+		source : ["ToA", 173],
+	}
+};
+/* Longsword of Speaking Draconic
+ToA p173
+Weapon (longsword)
+Martial weapon, melee weapon
+3 lb. 	1d8 slashing - versatile (1d10)
+
+This longsword has a dragon-shaped hilt. While you carry it, you gain the ability to speak and understand the Draconic language.
+*/
 MagicItemsList["flame tongue shortsword of gem detection"] = {	// TftYP
 	name : "Flame Tongue Shortsword of Gem Detection",
 	source : [["TftYP", 179]],
@@ -771,20 +877,12 @@ MagicItemsList["flame tongue shortsword of gem detection"] = {	// TftYP
 		description : "Finesse, light; While active, +2d6 fire damage",
 	},
 };
-MagicItemsList["faerie dust"] = { // SKT
-	name : "Faerie Dust",
-	source : [["SKT", 35]],
-	type : "wondrous item",
-	description : "A pinch of this dust can substitute for the material components of any enchantment spell of 3rd level or lower. If a pinch of faerie dust is sprinkled on a creature, roll percentile dice and consult the Faerie Dust table to determine the effect.\n[See 3rd page 'Notes']",
-	descriptionFull : "A pinch of this dust can substitute for the material components of any enchantment spell of 3rd level or lower. If a pinch of faerie dust is sprinkled on a creature, roll percentile dice and consult the Faerie Dust table to determine the effect.\n\n Faerie Dust\n   d100\tMagical Effect\n  01-70\tThe creature sprinkled with dust gains a flying\n\tspeed of 60 feet for 10 minutes.\n  71-80\tThe creature sprinkled with dust must succeed\n\ton a DC 11 Constitution saving throw or fall\n\tunconscious for 1 minute. The creature awakens\n\tif it takes damage or if it is shaken or slapped as\n\tan action.\n  81-90\tThe creature sprinkled with dust must succeed on\n\ta DC 11 Wisdom saving throw or be affected by a\n\tconfusion spell.\n  91-00\tThe creature sprinkled with dust becomes\n\tinvisible for 1 hour. Any equipment it is wearing\n\tor carrying is invisible as long as it is on the\n\tcreature's person. The effect on the creature ends\n\tif it attacks, deals any damage, or casts a spell.\n"+
-	"\nThis small pouch contains ten pinches of faerie dust.",
-	toNotesPage : [{
-	name : "",
-	page3notes : true,
-	note : [
-		"d100 \tMagical Effect\n  01-70\tThe creature sprinkled with dust gains a flying speed of 60 feet for 10 minutes.\n  71-80\tThe creature sprinkled with dust must succeed on a DC 11 Constitution saving\n\tthrow or fall unconscious for 1 minute. The creature awakens if it takes damage\n\tor if it is shaken or slapped as an action.\n  81-90\tThe creature sprinkled with dust must succeed on a DC 11 Wisdom saving throw\n\tor be affected by a confusion spell.\n  91-00\tThe creature sprinkled with dust becomes invisible for 1 hour. Any equipment it\n\tis wearing or carrying is invisible as long as it is on the creature's person. The\n\teffect on the creature ends if it attacks, deals any damage, or casts a spell.",
-		],
-	}],
+MagicItemsList["potion of watchful rest"] = { // WDotMM
+	name : "Potion of Watchful Rest",
+	source : [["WDotMM", 62]],
+	type : "potion",
+	rarity : "common",
+	description : "When I drink this potion, I gain the following benefits for the next 8 hours: magic can't put me to sleep, and I can remain awake during a long rest and still gain its benefits. This sweet, amber-colored brew has no effect on creatures that don't require sleep, such as elves.",
 };
 
 // Add Creatures missing from official sources
@@ -832,212 +930,85 @@ CreatureList["armored saber-toothed tiger"] = { //CoS
 		description : "If the tiger moves at least 20 ft straight toward a creature and then hits it with a claw attack on the same turn, that target must succeed on a DC 14 Strength saving throw or be knocked prone. If the target is prone, the tiger can make one bite attack against it as a bonus action."
 	}]
 };
-CreatureList["cave badger"] = { // OoTA
-	name : "Cave Badger",
-	source : ["OotA", 96],
-		size : 3, //Medium
-		type : "Beast",
-		subtype : "",
-		companion : "companion",
-		alignment : "Unaligned",
-		ac : 12,
-		hp : 13,
-		hd : [2, 8],
-		speed : "30 ft, burrow 10 ft",
-		scores : [13, 10, 15, 2, 12, 5],
-		saves : ["", "", "", "", "", ""],
-		senses : "Darkvision 30 ft, Tremorsense 60 ft; Adv. on Wis (Perception) checks using smell",
-		passivePerception : 11,
-		languages : "",
-		challengeRating : "1/4",
-		proficiencyBonus : 2,
-		attacksAction : 2,
-		attacks : [{
-			name : "Bite",
-			ability : 1,
-			damage : [1, 6, "piercing"],
-			range : "Melee (5 ft)",
-			description : "One bite and one claws attack as an Attack action"
-		}, {
-			name : "Claws",
-			ability : 1,
-			damage : [2, 4, "slashing"],
-			range : "Melee (5 ft)",
-			description : "One claws and one bite attack as an Attack action"
-		}],
-		traits : [{
-			name : "Keen Smell",
-			description : "The badger has advantage on Wisdom (Perception) checks that rely on smell."
-		}]
-	};
-CreatureList["ice spider"] = { // SKT
-	name : "Ice Spider",
-	source : ["SKT", 127],
-	size : 2, //Large
-	type : "Beast",
-	subtype : "",
-	alignment : "Unaligned",
-	ac : 14,
-	hp : 26,
-	hd : [4, 10],
-	speed : "30 ft, climb 30 ft",
-	scores : [14, 16, 12, 2, 11, 4],
-	saves : ["", "", "", "", "", ""],
-	skills : {
-			"stealth" : 7
-		},
-	senses : "Blindsight 10 ft; Darkvision 60 ft",
-	passivePerception : 10,
-	languages : "",
-	challengeRating : "1",
-	proficiencyBonus : 2,
-	attacksAction : 1,
-	attacks : [{
-			name : "Bite",
-			ability : 2,
-			damage : [1, 8, "piercing"],
-			range : "Melee (5 ft)",
-			description : "Target also takes 2d8 poison damage, half on a DC 11 Constitution saving throw"
-		}, {
-			name : "Icy Web (Recharge 5-6)",
-			ability : 2,
-			damage : ["\u2015", "", "Restrained"],
-			range : "30/60 ft",
-			description : "Target can escape as an action with a DC 12 Strength check, or by destroying the webbing (AC 10; 5 HP)",
-			modifiers : ["", "", false],
-			tooltip : "On a hit, the target is restrained by webbing and takes 1 cold damage at the start of each of its turns. As an action, the restrained target can make a DC 12 Strength check, bursting the webbing on a success. The webbing can also be attacked and destroyed (AC 10; hp 5; vulnerability to fire damage; immunity to poison and psychic damage)."
-		}],
-		traits : [{
-			name : "Bite",
-			description : "If the poison damage from the spider's bite attack reduces the target to 0 HP, the target is stable but poisoned for 1 hour, even after regaining HP, and is paralyzed while poisoned in this way."
-		}, {
-			name : "Spider Climb",
-			description : "The spider can climb difficult surfaces, including upside down on ceilings, without needing to make an ability check."
-		}, {
-			name : "Web Sense",
-			description : "While in contact with a web, the spider knows the exact location of any other creature in contact with the same web."
-		}, {
-			name : "Web Walker",
-			description : "The spider ignores movement restrictions caused by webbing."
-		}],
-	actions : [{
-			name : "Icy Web (Recharge 5-6)",
-			description : "See attack. On a hit, the target is restrained by webbing and takes 1 cold damage at the start of each of its turns. As an action, the restrained target can make a DC 12 Strength check, bursting the webbing on a success. The webbing can also be attacked and destroyed (AC 10; hp 5; vulnerability to fire damage; immunity to bludgeoning, poison, and psychic damage)."
-		}],
-		wildshapeString : "Blindsight 10 ft; Darkvision 60 ft| If the bite's poison damage reduces the target to 0 HP, the target is stable but poisoned and paralyzed for 1 hour, even after regaining HP| Spider Climb: climb difficult surfaces, including upside down, without an ability check| Web Sense: knows the exact location of any other creature in contact with the same web| Web Walker: ignores movement restrictions from webbing"
+CreatureList["young horizonback tortoise"] = { // CotN
+  name: "Young Horizonback Tortoise",
+  source: [["CotN", 26]],
+  size: 1,
+  type: "Beast",
+  alignment: "Unaligned",
+  ac: 15,
+  hp: 68,
+  hd: [8, 12],
+  speed: "30 ft",
+  scores: [19, 11, 15, 2, 12, 5],
+  senses: "",
+  passivePerception: 11,
+  languages: "understands Goblin but can't speak",
+  challengeRating: "3",
+  proficiencyBonus: 2,
+  attacksAction: 1,
+  attacks: [
+    {
+      name: "Bite",
+      ability: 1,
+      damage: [4, 6, "piercing"],
+      range: "Melee (10 ft)",
+      description:
+        "If the target is a creature, it must succeed on a DC 14 Strength saving throw or be knocked prone",
+    },
+  ],
+  traits: [
+    {
+      name: "Amphibious",
+      description: "The young horizonback tortoise can breathe air and water.",
+    },
+  ],
 };
-CreatureList["snow leopard"] = { // TftYP
-	name : "Snow Leopard",
-	source : ["TftYP", 183],
-	size : 2, //Large
-	type : "Beast",
-	subtype : "",
-	alignment : "Unaligned",
-	ac : 12,
-	hp : 37,
-	hd : [5, 10],
-	speed : "40 ft",
-	scores : [17, 15, 14, 3, 12, 8],
-	saves : ["", "", "", "", "", ""],
-	skills : {
-		"perception" : 3,
-		"stealth" : 6
-		},
-	senses : "Darkvision 60 ft; Adv. on Wis (Perception) checks using smell",
-	passivePerception : 13,
-	languages : "",
-	challengeRating : "1",
-	proficiencyBonus : 2,
-	attacksAction : 1,
-	attacks : [{
-		name : "Claw",
-		ability : 1,
-		damage : [1, 8, "slashing"],
-		range : "Melee (5 ft)",
-		description : "If used after moving 20 ft straight in the same round, see Pounce trait"
-		}, {
-		name : "Bite",
-		ability : 1,
-		damage : [1, 10, "piercing"],
-		range : "Melee (5 ft)",
-		description : "Can be used in combination with claw while pouncing (see Pounce trait)"
-		}],
-	traits : [{
-		name : "Keen Smell",
-		description : "The leopard has advantage on Wisdom (Perception) checks that rely on smell."
-		}, {
-		name : "Pounce",
-		description : "If the leopard moves at least 20 ft straight toward a creature and hits it with a claw attack, that target must succeed on a DC 13 Strength saving throw or be knocked prone. If the target is prone, the tiger can make one bite attack against it as a bonus action."
-		}]
-};
-CreatureList["berserker"] = { // MM
-	name : "Berserker",
-	source : [["SRD", 392], ["M", 344]],
-	size : 3, //Medium
-	type : "Humanoid",
-	alignment : "any chaotic alignment",
-	ac : 13,
-	hp : 67,
-	hd : [9, 8],
-	speed : "30 ft",
-	scores : [16, 12, 17, 9, 11, 9],
-	senses : "",
-	passivePerception : 10,
-	languages : "any one language (usually Common)",
-	challengeRating : "2",
-	proficiencyBonus : 2,
-	attacksAction : 1,
-	attacks : [{
-		name : "Greataxe",
-		ability : 1,
-		damage : [1, 12, "slashing"],
-		range : "Melee (5 ft)",
-		description : "Heavy, two-handed"
-	}],
-	traits : [{
-		name : "Reckless",
-		description : "At the start of its turn, the berserker can gain advantage on all melee weapon attack rolls during that turn, but attack rolls against it have advantage until the start of its next turn.",
-		}],
-};
-CreatureList["wyvern"] = { // SRD & MM (Includes contributions by kingspooker)
-		name : "Wyvern",
-		source : [["SRD", 319], ["M", 303]],
-		size : 2, //Large
-		type : "Dragon",
-		companion : "race",
-		alignment : "Unaligned",
-		ac : 13,
-		hp : 110,
-		hd : [13, 10],
-		speed : "20 ft, fly 80 ft",
-		scores : [18, 15, 16, 2, 13, 8],
-		skills : {
-			"perception" : 4
-		},
-		passivePerception : 14,
-		challengeRating : "6",
-		proficiencyBonus : 3,
-		attacksAction : 2,
-		attacks : [{
-			name : "Bite",
-			ability : 1,
-			damage : [2, 6, "piercing"],
-			range : "Melee (10 ft)",
-			description : "One bite and one stinger attack as an Attack action"
-		}, {
-			name : "Claws",
-			ability : 1,
-			damage : [2, 8, "slashing"],
-			range : "Melee (5 ft)",
-			description : "One claw and one bite or stinger attack as an Attack action, if the Wyvern is flying"
-		}, {
-			name : "Stinger",
-			ability : 1,
-			damage : [2, 6, "piercing"],
-			range : "Melee (5 ft)",
-			description : "Target also takes 7d6 poison damage, half on a DC 15 Constitution saving throw"
-		}
-	]
+CreatureList["moonshark"] = { // CotN
+  name: "Moonshark",
+  source: [["CotN", 33]],
+  size: 1,
+  type: "Beast",
+  alignment: "Unaligned",
+  ac: 13,
+  hp: 126,
+  hd: [11, 12],
+  speed: "0 ft, swim 50 ft",
+  scores: [23, 11, 21, 1, 10, 5],
+  senses: "blindsight 60 ft",
+  skills: {
+    perception: 3,
+  },
+  passivePerception: 13,
+  challengeRating: "5",
+  proficiencyBonus: 3,
+  attacksAction: 1,
+  attacks: [
+    {
+      name: "Bite",
+      ability: 1,
+      damage: [3, 10, "piercing"],
+      range: "Melee (5 ft)",
+      description:
+        "If the shark misses, it can use a bonus action to swim up to 25 feet; this movement doesn't provoke opportunity attacks",
+    },
+  ],
+  traits: [
+    {
+      name: "Blood Frenzy",
+      description:
+        "The shark has advantage on melee attack rolls against any creature that doesn't have all its hit points.",
+    },
+    {
+      name: "Silver Spear",
+      description:
+        "A character within 5 feet of the shark can use an action to try to dislodge the spear, doing so with a successful DC 13 Strength (Athletics) check. While the spear is lodged in the shark, the shark glows with silvery illumination, shedding bright light in a 10-foot radius and dim light for an additional 10 feet.",
+    },
+    {
+      name: "Water Breathing",
+      description: "The shark can breathe only underwater.",
+    },
+  ],
 };
 CreatureList["valenar hawk"] = { // ERftLW
 	name : "Valenar Hawk",
@@ -1148,6 +1119,44 @@ CreatureList["valenar steed"] = { // ERftLW
 		description : "The steed can magically bond with one creature it can see, immediately after spending at least 1 hour observing that creature while within 30 feet of it. The bond lasts until the steed bonds with a different creature or until the bonded creature dies. While bonded, the steed and the bonded creature can communicate telepathically with each other at a distance of up to 100 feet."
 		}]
 };
+CreatureList["cave badger"] = { // OoTA
+	name : "Cave Badger",
+	source : ["OotA", 96],
+		size : 3, //Medium
+		type : "Beast",
+		subtype : "",
+		companion : "companion",
+		alignment : "Unaligned",
+		ac : 12,
+		hp : 13,
+		hd : [2, 8],
+		speed : "30 ft, burrow 10 ft",
+		scores : [13, 10, 15, 2, 12, 5],
+		saves : ["", "", "", "", "", ""],
+		senses : "Darkvision 30 ft, Tremorsense 60 ft; Adv. on Wis (Perception) checks using smell",
+		passivePerception : 11,
+		languages : "",
+		challengeRating : "1/4",
+		proficiencyBonus : 2,
+		attacksAction : 2,
+		attacks : [{
+			name : "Bite",
+			ability : 1,
+			damage : [1, 6, "piercing"],
+			range : "Melee (5 ft)",
+			description : "One bite and one claws attack as an Attack action"
+		}, {
+			name : "Claws",
+			ability : 1,
+			damage : [2, 4, "slashing"],
+			range : "Melee (5 ft)",
+			description : "One claws and one bite attack as an Attack action"
+		}],
+		traits : [{
+			name : "Keen Smell",
+			description : "The badger has advantage on Wisdom (Perception) checks that rely on smell."
+		}]
+	};
 CreatureList["sled dog"] = { // RotF
 	name : "Sled Dog",
 	source : [["RoT", 27]],
@@ -1185,6 +1194,399 @@ CreatureList["sled dog"] = { // RotF
 		}, {
 		name : "Pack Tactics",
 		description : "The sled dog has advantage on an attack roll against a creature if at least one of the sled dog's allies is within 5 ft of the creature and the ally isn't incapacitated."
+		}]
+};
+CreatureList["ice spider"] = { // SKT
+	name : "Ice Spider",
+	source : ["SKT", 127],
+	size : 2, //Large
+	type : "Beast",
+	subtype : "",
+	alignment : "Unaligned",
+	ac : 14,
+	hp : 26,
+	hd : [4, 10],
+	speed : "30 ft, climb 30 ft",
+	scores : [14, 16, 12, 2, 11, 4],
+	saves : ["", "", "", "", "", ""],
+	skills : {
+			"stealth" : 7
+		},
+	senses : "Blindsight 10 ft; Darkvision 60 ft",
+	passivePerception : 10,
+	languages : "",
+	challengeRating : "1",
+	proficiencyBonus : 2,
+	attacksAction : 1,
+	attacks : [{
+			name : "Bite",
+			ability : 2,
+			damage : [1, 8, "piercing"],
+			range : "Melee (5 ft)",
+			description : "Target also takes 2d8 poison damage, half on a DC 11 Constitution saving throw"
+		}, {
+			name : "Icy Web (Recharge 5-6)",
+			ability : 2,
+			damage : ["\u2015", "", "Restrained"],
+			range : "30/60 ft",
+			description : "Target can escape as an action with a DC 12 Strength check, or by destroying the webbing (AC 10; 5 HP)",
+			modifiers : ["", "", false],
+			tooltip : "On a hit, the target is restrained by webbing and takes 1 cold damage at the start of each of its turns. As an action, the restrained target can make a DC 12 Strength check, bursting the webbing on a success. The webbing can also be attacked and destroyed (AC 10; hp 5; vulnerability to fire damage; immunity to poison and psychic damage)."
+		}],
+		traits : [{
+			name : "Bite",
+			description : "If the poison damage from the spider's bite attack reduces the target to 0 HP, the target is stable but poisoned for 1 hour, even after regaining HP, and is paralyzed while poisoned in this way."
+		}, {
+			name : "Spider Climb",
+			description : "The spider can climb difficult surfaces, including upside down on ceilings, without needing to make an ability check."
+		}, {
+			name : "Web Sense",
+			description : "While in contact with a web, the spider knows the exact location of any other creature in contact with the same web."
+		}, {
+			name : "Web Walker",
+			description : "The spider ignores movement restrictions caused by webbing."
+		}],
+	actions : [{
+			name : "Icy Web (Recharge 5-6)",
+			description : "See attack. On a hit, the target is restrained by webbing and takes 1 cold damage at the start of each of its turns. As an action, the restrained target can make a DC 12 Strength check, bursting the webbing on a success. The webbing can also be attacked and destroyed (AC 10; hp 5; vulnerability to fire damage; immunity to bludgeoning, poison, and psychic damage)."
+		}],
+		wildshapeString : "Blindsight 10 ft; Darkvision 60 ft| If the bite's poison damage reduces the target to 0 HP, the target is stable but poisoned and paralyzed for 1 hour, even after regaining HP| Spider Climb: climb difficult surfaces, including upside down, without an ability check| Web Sense: knows the exact location of any other creature in contact with the same web| Web Walker: ignores movement restrictions from webbing"
+};
+CreatureList["berserker"] = { // SRD & MM
+	name : "Berserker",
+	source : [["SRD", 392], ["M", 344]],
+	size : 3, //Medium
+	type : "Humanoid",
+	alignment : "any chaotic alignment",
+	ac : 13,
+	hp : 67,
+	hd : [9, 8],
+	speed : "30 ft",
+	scores : [16, 12, 17, 9, 11, 9],
+	senses : "",
+	passivePerception : 10,
+	languages : "any one language (usually Common)",
+	challengeRating : "2",
+	proficiencyBonus : 2,
+	attacksAction : 1,
+	attacks : [{
+		name : "Greataxe",
+		ability : 1,
+		damage : [1, 12, "slashing"],
+		range : "Melee (5 ft)",
+		description : "Heavy, two-handed"
+	}],
+	traits : [{
+		name : "Reckless",
+		description : "At the start of its turn, the berserker can gain advantage on all melee weapon attack rolls during that turn, but attack rolls against it have advantage until the start of its next turn.",
+		}],
+};
+CreatureList["clay golem"] = { // SRD & MM
+	name : "Golem, Clay",
+	nameAlt : ["Clay Golem"],
+	source : [["SRD", 318], ["M", 168]],
+	size : 2, //Large
+	type : "Construct",
+	alignment : "Unaligned",
+	ac : 14,
+	hp : 133,
+	hd : [14, 10],
+	speed : "20 ft",
+	scores : [20, 9, 18, 3, 8, 1],
+	damage_immunities : "acid, poison, psychic; bludgeoning, piercing, and slashing from nonmagical attacks that aren't adamantine",
+	condition_immunities : "charmed, exhaustion, frightened, paralyzed, petrified, poisoned",
+	senses : "Darkvision 60 ft",
+	passivePerception : 9,
+	languages : "understands the languages of its creator but can't speak",
+	challengeRating : "9",
+	proficiencyBonus : 4,
+	attacksAction : 2,
+	attacks : [{
+		name : "Slam",
+		ability : 1,
+		damage : [2, 10, "bludgeoning"],
+		modifiers : [-1, ""],
+		range : "Melee (5 ft)",
+		description : "Two Slam attacks as an Attack action",
+		abilitytodamage : true,
+	},{
+		name : "Haste (Recharge 5-6)",
+		ability : "",
+		damage : ["", "", ""],
+		range : "Self",
+		description : "+2 AC, Adv on Dex saves, and can Slam as a bonus action until the end of its next turn.",
+		abilitytodamage : false,
+		dc : false,
+		tooltip : "Until the end of its next turn, the golem magically gains a +2 bonus to its AC, has advantage on Dexterity saving throws, and can use its slam attack as a bonus action.",
+	}],
+	traits : [{
+		name : "Acid Absorption",
+		description : "Whenever the golem is subjected to acid damage, it takes no damage and instead regains a number of hit points equal to the acid damage dealt."
+	}, {
+		name : "Berserk",
+		description : "If the golem starts its turn with 60 hp or fewer, roll a d6. On a 6, golem goes berserk until destroyed or it regains all its hp. While berserk, the golem moves to and attacks nearest seen creature. If no creature near enough, golem attacks an object, with preference for an object smaller than itself."
+	}, {
+		name : "Immutable Form",
+		description : "The golem is immune to any spell or effect that would alter its form."
+	}, {
+		name : "Magic Resistance",
+		description : "The golem has advantage on saving throws against spells and other magical effects."
+	}, {
+		name : "Magic Weapons",
+		description : "The golem's attacks are magical."
+	}],
+	actions : [{
+		name : "Haste (Recharge 5-6)",
+		description : "As an Action, the golem magically gains +2 AC, advantage on Dex saves, and can Slam attack as a bonus action until the end of its next turn."
+	}],
+};
+CreatureList["flesh golem"] = { // SRD & MM
+	name : "Golem, Flesh",
+	nameAlt : ["Flesh Golem"],
+	source : [["SRD", 319], ["M", 169]],
+	size : 2, //Large
+	type : "Construct",
+	alignment : "Unaligned",
+	ac : 9,
+	hp : 93,
+	hd : [11, 8],
+	speed : "30 ft",
+	scores : [19, 9, 18, 6, 10, 5],
+	damage_immunities : "lightning, poison; bludgeoning, piercing, and slashing from nonmagical attacks that aren't adamantine",
+	condition_immunities : "charmed, exhaustion, frightened, paralyzed, petrified, poisoned",
+	senses : "Darkvision 60 ft",
+	passivePerception : 10,
+	languages : "understands the languages of its creator but can't speak",
+	challengeRating : "5",
+	proficiencyBonus : 3,
+	attacksAction : 2,
+	attacks : [{
+		name : "Slam",
+		ability : 1,
+		damage : [2, 8, "bludgeoning"],
+		range : "Melee (5 ft)",
+		description : "Two Slam attacks as an Attack action",
+		abilitytodamage : true,
+	}],
+	traits : [{
+		name : "Aversion of Fire",
+		description : "The golem has disadv. on ability checks & attacks until end of its next turn if it takes fire damage."
+	}, {
+		name : "Berserk",
+		description : "If the golem starts its turn with 40 hp or fewer, roll a d6. On a 6, golem goes berserk until destroyed or it regains all its hp. While berserk, the golem moves to and attacks nearest seen creature. If no creature near enough, golem attacks an object, with preference for an object smaller than itself. If within 60 ft of the berserk golem and the golem can hear its creator, the golem's creator can try to calm it by taking an action to make a DC 15 Charisma (Persuasion) check. If the check succeeds, the golem ceases being berserk. If it takes damage while still at 40 hp or fewer, the golem might go berserk again."
+	}, {
+		name : "Lightning Absorption",
+		description : "Whenever the golem is subjected to lightning damage, it takes no damage and instead regains a number of hp equal to the lightning damage."
+	}, {
+		name : "Magic Weapons",
+		description : "The golem's attacks are magical."
+	}],
+	features : [{
+		name : "Immutable Form",
+		description : "The golem is immune to any spell or effect that would alter its form."
+	}, {
+		name : "Magic Resistance",
+		description : "The golem has advantage on saving throws against spells and other magical effects."
+	}],
+};
+CreatureList["iron golem"] = { // SRD & MM
+	name : "Golem, Iron",
+	nameAlt : ["Iron Golem"],
+	source : [["SRD", 319], ["M", 170]],
+	size : 2, //Large
+	type : "Construct",
+	alignment : "Unaligned",
+	ac : 20,
+	hp : 210,
+	hd : [20, 10],
+	speed : "30 ft",
+	scores : [24, 9, 20, 3, 11, 1],
+	damage_immunities : "fire, poison, psychic; bludgeoning, piercing, and slashing from nonmagical attacks that aren't adamantine",
+	condition_immunities : "charmed, exhaustion, frightened, paralyzed, petrified, poisoned",
+	senses : "Darkvision 120 ft",
+	passivePerception : 10,
+	languages : "understands the languages of its creator but can't speak",
+	challengeRating : "16",
+	proficiencyBonus : 5,
+	attacksAction : 2,
+	attacks : [{
+		name : "Slam",
+		ability : 1,
+		damage : [3, 8, "bludgeoning"],
+		modifiers : [1, ""],
+		range : "Melee (5 ft)",
+		description : "Two melee attacks as an Attack action"
+	},{
+		name : "Sword",
+		ability : 1,
+		damage : [3, 10, "slashing"],
+		modifiers : [1, ""],
+		range : "Melee (10 ft)",
+		description : "Two melee attacks as an Attack action"
+	},{
+		name : "Poison Breath (Recharge 5-6)",
+		ability : 3,
+		damage : [10, 8, "poison"],
+		range : "15-ft cone",
+		description : "Hits all in area; Con save, success - half damage",
+		abilitytodamage : false,
+		dc : true,
+		modifiers : [1, ""],
+		tooltip : "The golem exhales poisonous gas in a 15-foot cone. Each creature in that area must make a DC 19 Constitution saving throw, taking 45 (10d8) poison damage on a failed save, or half as much damage on a successful one.",
+	}],
+	traits : [{
+		name : "Fire Absorption",
+		description : "Whenever the golem is subjected to fire damage, it takes no damage and instead regains a number of hit points equal to the fire damage dealt."
+	}, {
+		name : "Magic Weapons",
+		description : "The golem's weapon attacks are magical."
+	}],
+	actions : [{
+		name : "Poison Breath (Recharge 5-6)",
+		description : "See attack. The golem exhales poisonous gas in a 15-foot cone. Each creature in that area must make a DC 19 Constitution saving throw, taking 45 (10d8) poison damage on a failed save, or half as much damage on a successful one."
+	}],
+	features : [{
+		name : "Immutable Form",
+		description : "The golem is immune to any spell or effect that would alter its form."
+	}, {
+		name : "Magic Resistance",
+		description : "The golem has advantage on saving throws against spells and other magical effects."
+	}],
+};
+CreatureList["stone golem"] = { // SRD & MM
+	name : "Golem, Stone",
+	nameAlt : ["Stone Golem"],
+	source : [["SRD", 320], ["M", 170]],
+	size : 2, //Large
+	type : "Construct",
+	alignment : "Unaligned",
+	ac : 17,
+	hp : 178,
+	hd : [17, 10],
+	speed : "30 ft",
+	scores : [22, 9, 20, 3, 11, 1],
+	damage_immunities : "poison, psychic; bludgeoning, piercing, and slashing from nonmagical attacks that aren't adamantine",
+	condition_immunities : "charmed, exhaustion, frightened, paralyzed, petrified, poisoned",
+	senses : "Darkvision 120 ft",
+	passivePerception : 10,
+	languages : "understands the languages of its creator but can't speak",
+	challengeRating : "10",
+	proficiencyBonus : 4,
+	attacksAction : 2,
+	attacks : [{
+		name : "Slam",
+		ability : 1,
+		damage : [3, 8, "bludgeoning"],
+		range : "Melee (5 ft)",
+		description : "Two Slam attacks as an Attack action"
+	},{
+		name : "Slow (Recharge 5-6)",
+		ability : 3,
+		damage : ["Wis save", "", "Slowed"],
+		range : "sight, 10 ft",
+		description : "Wis save or slowed for 1 min (can save at end of each turn)",
+		abilitytodamage : false,
+		dc : true,
+		tooltip : "The golem targets one or more creatures it can see within 10 feet of it. Each target must make a DC 17 Wisdom saving throw against this magic. On a failed save, a target can't use reactions, its speed is halved, and it can't make more than one attack on its turn. In addition, the target can take either an action or a bonus action on its turn, not both. These effects last for 1 minute. A target can repeat the saving throw at the end of each of its turns, ending the effect on itself on a success.",
+	}],
+	traits : [{
+		name : "Magic Weapons",
+		description : "The golem's weapon attacks are magical."
+	}],
+	actions : [{
+		name : "Slow (Recharge 5-6)",
+		description : "See attack. The golem targets one or more creatures it can see within 10 feet of it. Each target must make a DC 17 Wisdom saving throw against this magic. On a failed save, a target can't use reactions, its speed is halved, and it can't make more than one attack on its turn. In addition, the target can take either an action or a bonus action on its turn, not both. These effects last for 1 minute. A target can repeat the saving throw at the end of each of its turns, ending the effect on itself on a success."
+	}],
+	features : [{
+		name : "Immutable Form",
+		description : "The golem is immune to any spell or effect that would alter its form."
+	}, {
+		name : "Magic Resistance",
+		description : "The golem has advantage on saving throws against spells and other magical effects."
+	}],
+};
+CreatureList["wyvern"] = { // SRD & MM (Includes contributions by kingspooker)
+		name : "Wyvern",
+		source : [["SRD", 319], ["M", 303]],
+		size : 2, //Large
+		type : "Dragon",
+		companion : "race",
+		alignment : "Unaligned",
+		ac : 13,
+		hp : 110,
+		hd : [13, 10],
+		speed : "20 ft, fly 80 ft",
+		scores : [18, 15, 16, 2, 13, 8],
+		skills : {
+			"perception" : 4
+		},
+		passivePerception : 14,
+		challengeRating : "6",
+		proficiencyBonus : 3,
+		attacksAction : 2,
+		attacks : [{
+			name : "Bite",
+			ability : 1,
+			damage : [2, 6, "piercing"],
+			range : "Melee (10 ft)",
+			description : "One bite and one stinger attack as an Attack action"
+		}, {
+			name : "Claws",
+			ability : 1,
+			damage : [2, 8, "slashing"],
+			range : "Melee (5 ft)",
+			description : "One claw and one bite or stinger attack as an Attack action, if the Wyvern is flying"
+		}, {
+			name : "Stinger",
+			ability : 1,
+			damage : [2, 6, "piercing"],
+			range : "Melee (5 ft)",
+			description : "Target also takes 7d6 poison damage, half on a DC 15 Constitution saving throw"
+		}
+	]
+};
+CreatureList["snow leopard"] = { // TftYP
+	name : "Snow Leopard",
+	source : ["TftYP", 183],
+	size : 2, //Large
+	type : "Beast",
+	subtype : "",
+	alignment : "Unaligned",
+	ac : 12,
+	hp : 37,
+	hd : [5, 10],
+	speed : "40 ft",
+	scores : [17, 15, 14, 3, 12, 8],
+	saves : ["", "", "", "", "", ""],
+	skills : {
+		"perception" : 3,
+		"stealth" : 6
+		},
+	senses : "Darkvision 60 ft; Adv. on Wis (Perception) checks using smell",
+	passivePerception : 13,
+	languages : "",
+	challengeRating : "1",
+	proficiencyBonus : 2,
+	attacksAction : 1,
+	attacks : [{
+		name : "Claw",
+		ability : 1,
+		damage : [1, 8, "slashing"],
+		range : "Melee (5 ft)",
+		description : "If used after moving 20 ft straight in the same round, see Pounce trait"
+		}, {
+		name : "Bite",
+		ability : 1,
+		damage : [1, 10, "piercing"],
+		range : "Melee (5 ft)",
+		description : "Can be used in combination with claw while pouncing (see Pounce trait)"
+		}],
+	traits : [{
+		name : "Keen Smell",
+		description : "The leopard has advantage on Wisdom (Perception) checks that rely on smell."
+		}, {
+		name : "Pounce",
+		description : "If the leopard moves at least 20 ft straight toward a creature and hits it with a claw attack, that target must succeed on a DC 13 Strength saving throw or be knocked prone. If the target is prone, the tiger can make one bite attack against it as a bonus action."
 		}]
 };
 
