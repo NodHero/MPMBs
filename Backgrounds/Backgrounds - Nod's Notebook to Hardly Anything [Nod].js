@@ -1,9 +1,9 @@
 var iFileName = "Backgrounds - Nod's Notebook to Hardly Anything [Nod].js"; 
 RequiredSheetVersion(13);
 
-SourceList["NNHA:B"] = {
-	name : "Backgrounds Galore - Nod's Notebook to Hardly Anything [Nod]",
-	abbreviation : "NNHA:B",
+SourceList["NN:B"] = {
+	name : "Backgrounds - Nod's Notebook to Hardly Anything [Nod]",
+	abbreviation : "NN:B",
 	abbreviationSpellsheet: "HA",
 	group : "Nod's Homebrew",
 	date : "2022/02/26"
@@ -13,7 +13,7 @@ SourceList["NNHA:B"] = {
 BackgroundList["hellrider"] = { // Hellrider
 	regExpSearch : /hellrider/i,
 	name : "Hellrider",
-	source : [["NNHA:B", 19]],
+	source : [["NN:B", 19]],
 	skills : ["Animal Handling", "Persuasion"],
 	calcChanges : {
 	spellList : [
@@ -80,13 +80,13 @@ BackgroundList["hellrider"] = { // Hellrider
 };
 BackgroundFeatureList["respected rider"] = {
 	description : "While in the Kingdom of Two Suns, I can commandeer fresh mounts for myself and my party. Hellriders are held in high regard and can resupply in any Elturgard settlement. Use the warhorse statistics for my mount and the riding horse statistics for those of my comrades. Outside of the Elturgard, I can purchase nonexotic mounts from merchants sympathetic to the Hellriders at half price.",
-	source : [["NNHA:B", 19]],
+	source : [["NN:B", 19]],
 };
 
 BackgroundList["order of the gauntlet "] = { // Order of the Gauntlet
 	regExpSearch : /^(?=.*order)(?=.*gauntlet).*$/i,
 	name : "Order of the Gauntlet ",
-	source : [["NNHA:B", 20]],
+	source : [["NN:B", 20]],
 	skills : ["Insight", "Religion"],
 	languageProfs : [2],
 	calcChanges : {
@@ -155,13 +155,13 @@ BackgroundList["order of the gauntlet "] = { // Order of the Gauntlet
 };
 BackgroundFeatureList["constant vigilance"] = {
 	description : "The Order of the Gauntlet must be poised to retaliate should evil misbehave. To stay prepared, the organization works openly with local groups to identify and monitor evil threats such as cults, crime syndicates, or inherently evil creatures. When I enter a new settlement, I can request an audience on behalf of the order with faction agents, law enforcement, or clergy sympathetic to my cause.",
-	source : [["NNHA:B", 20]],
+	source : [["NN:B", 20]],
 };
 
 BackgroundList["flaming fist"] = { // Flaming Fist
 	regExpSearch : /^(?=.*flaming)(?=.*fist).*$/i,
 	name : "Flaming Fist",
-	source : [["NNHA:B", 21]],
+	source : [["NN:B", 21]],
 	skills : ["Athletics", "Intimidation"],
 	calcChanges : {
 	spellList : [
@@ -231,14 +231,14 @@ BackgroundList["flaming fist"] = { // Flaming Fist
 };
 BackgroundFeatureList["tighten the grip"] = {
 	description : "I can enact justice on behalf of the Flaming Fist or the city of Baldur’s Gate. If I compel a creature to surrender or knock it unconscious, I may choose to place it under arrest. I may confiscate any of an arrested creature’s possessions or contraband on behalf of the Flaming Fist. At my DM’s discretion, my commanding officer may allow me to keep a portion of these items as payment.",
-	source : [["NNHA:B", 21]],
+	source : [["NN:B", 21]],
 };
 
 // Add Backgrounds
 BackgroundList["angelfire brigade"] = { // angelfire brigade
 	regExpSearch : /^(?=.*angelfire)(?=.*brigade).*$/i,
 	name : "Angel Brigade",
-	source : ["NNHA:B"],
+	source : ["NN:B"],
 	skills : ["Athletics", "Intimidation"],
 	calcChanges : {
 		spellList : [
@@ -302,26 +302,12 @@ BackgroundList["angelfire brigade"] = { // angelfire brigade
 	],
 	lifestyle : "poor"
 };
-BackgroundFeatureList["brigade station"] = {
-	description : "I am established in the hierarchy of the Angelfire Brigade. I can requisition simple equipment for temporary use. I have access to any Angelfire garrison in my homeland where I can rest in safety and have access to medics. I'm paid 1 gp per week, allowing me (together with the free brigade lodging) to have a poor lifestyle between adventures.",
-	source : ["NNHA:B"]
-};
 BackgroundList["folk healer"] = { // folk healer
 	regExpSearch : /^(?=.*folk)(?=.*healer).*$/i,
 	name : "Folk Healer",
-	source : [["NNHA:B"]],
+	source : [["NN:B"]],
 	skills : ["Medicine"],
 	skillstxt : "Medicine and choose one from Nature or Investigation",
-	calcChanges : {
-		spellList : [
-			function(spList, spName, spType) {
-				if (!ClassList[spName] || spList.spells || spList.psionic) return;
-				if (spType.indexOf("bonus") !== -1 && (spList.school || !spList["class"] || (spList["class"].indexOf(spName) === -1 && spName !== "fighter"))) return;
-				spList.extraspells = spList.extraspells.concat(["guidance", "resistance", "spare the dying", "detect poison and disease", "healing word", "calm emotions", "gentle repose", "beacon of hope", "mass healing word", "aura of purity", "death ward", "mass cure wounds"]);
-			},
-			"My background adds extra spells to the spell list(s) of my spellcasting class(es): Guidance, Resistance, Spare the Dying, Detect Poison and Disease, Healing Word, Calm Emotions, Gentle Repose, Beacon of Hope, Mass Healing Word, Aura of Purity, Death Ward, Mass Cure Wounds.",
-		],
-	},
 	gold : 15,
 	equipleft : [
 		["Herbalism kit", "", 3],
@@ -380,16 +366,24 @@ BackgroundList["folk healer"] = { // folk healer
 		"I do not have a sense of humor, especially when it comes to jokes at my expense."
 	],
 	toolProfs : [["Herbalism Kit"], ["Poisoner’s Kit"]],
-	lifestyle : "modest"
-};
-BackgroundFeatureList["the doctor is in"] = {
-	description : "Healers are almost universally seen positively. I can gain the trust of almost any intelligent creature that is sick or hurt if I seem willing to help. I can find a place to hide, rest, or recuperate among other commoners, unless I have shown yourself to be a danger to them. They will shield me from the law or anyone else searching for me, though they will not risk their lives for me.",
-	source : [["NNHA:B"]]
+	lifestyle : "modest",
+	calcChanges : {
+		spellList : [
+			function(spList, spName, spType) {
+				if (!ClassList[spName] || spList.spells || spList.psionic) return;
+				if (spType.indexOf("bonus") !== -1 && (spList.school || !spList["class"] || (spList["class"].indexOf(spName) === -1 && spName !== "fighter"))) return;
+				spList.extraspells = spList.extraspells.concat(["guidance", "resistance", "spare the dying", "detect poison and disease", "healing word", "calm emotions", "gentle repose", "beacon of hope", "mass healing word", "aura of purity", "death ward", "mass cure wounds"]);
+			},
+			"My background adds extra spells to the spell list(s) of my spellcasting class(es): Guidance, Resistance, Spare the Dying, Detect Poison and Disease, Healing Word, Calm Emotions, Gentle Repose, Beacon of Hope, Mass Healing Word, Aura of Purity, Death Ward, Mass Cure Wounds.",
+		],
+	},
+	eval : function() { AddFeat("Home Remedy"); },
+	removeeval : function() { RemoveFeat("Home Remedy"); }
 };
 BackgroundList["former innkeeper"] = { // former innkeeper
 	regExpSearch : /^(?=.*former)(?=.*innkeeper).*$/i,
 	name : "Former Innkeeper",
-	source : [["NNHA:B"]],
+	source : [["NN:B"]],
 	skills : ["Insight"],
 	skillstxt : "Insight and choose one from Intimidation or Persuasion",
 	calcChanges : {
@@ -464,23 +458,10 @@ BackgroundList["former innkeeper"] = { // former innkeeper
 	languageProfs : [["Choose one (including Thieves’ Cant)", 1]],
 	lifestyle : "modest"
 };
-BackgroundFeatureList["warm welcome"] = {
-	description : "When you first meet new people, your demeanor is such to put them at ease and they usually assume you are friendly. You ran an inn, which you gave up for the life of adventure. However, the new owner of the inn or tavern may give you free room and board at a modest standard. You also know a lot of former patrons hailing from many places near and far, who may offer you favors or jobs.",
-	source : [["NNHA:B"]]
-};	
-/* Inquisitor Background
-Historically, inquisitors were church detectives who investigated crimes both mundane and supernatural. They
-were known for traveling to remote parishes plagued by unexplained murders, and for exposing werewolves living among normal humans. During darker times, the inquisitors led a series of brutal forays into unsuspecting villages. They executed suspected lycanthropes with little or no proof, and punished accused heretics in unsanctioned trials. This savage form of inquisition has become the norm, and inquisitors who still pry into dark mysteries have become a minority.
-Skill Proficiencies: Investigation, Religion
-Tool Proficiencies: Thieves’ tools, one set of artisan’s tools of your choice
-Equipment: A holy symbol, a set of traveler’s clothes, and a belt pouch containing 15 gp
-Feature: Legal Authority
-As an inquisitor of the church, you have the authority to arrest criminals. In the absence of other authorities, you are authorized to pass judgment and even carry out sentencing. If you abuse this power, however, your superiors in the church might strip it from you.
-*/
-BackgroundList["grifter"] = {
+BackgroundList["grifter"] = { // Baldur's Gate Criminal with Orzhov Representative spell list
 	regExpSearch : /grifter/i,
 	name : "Grifter",
-	source : [["NNHA:B", 128]],
+	source : [["NN:B", 128]],
 	skills: ["Deception"],
 	skillstxt: "Deception and choose one from Insight, Sleight of Hand, or Stealth",
 	languageProfs: ["Thieves' Cant"],
@@ -564,14 +545,128 @@ BackgroundList["grifter"] = {
 		]
 	},
 };
-BackgroundFeatureList["down low"] = {
-	description : "I am acquainted with a network of smugglers who are willing to help me out of tight spots. While in a particular town, city, or other similarly sized community, my companions and I can stay for free in safe houses. Safe houses provide a poor lifestyle. While staying at a safe house, I can choose to keep my presence (and that of my companions) a secret.",
-	source : [["NNHA:B", 128], ["GoS", 34], ["ALbackground", 0]]
+BackgroundList["guild craftsperson"] = { // Guild Artisan with Izzet Engineer spells
+	regExpSearch : /^(?=.*guild)(?=.*craftsperson).*$/i,
+	name : "Guild Craftsperson",
+	source : [["NN:B", 132], ["P", 132], ["ALbackground", 0]],
+	skills : ["Insight", "Persuasion"],
+	toolProfs : [["Artisan's tools", 1]],
+	languageProfs : [1],
+	gold : 15,
+	equipleft : [
+		["Set of artisan's tools", "", ""],
+		["Letter of introduction from guild", "", ""]
+	],
+	equipright : [
+		["Traveler's clothes", "", 4],
+		["Belt pouch (with coins)", "", 1]
+	],
+	feature : "Guild Membership",
+	trait : [
+		"I believe that anything worth doing is worth doing right. I can't help it\u2015 I'm a perfectionist.",
+		"I'm a snob who looks down on those who can't appreciate fine art.",
+		"I always want to know how things work and what makes people tick.",
+		"I'm full of witty aphorisms and have a proverb for every occasion.",
+		"I'm rude to people who lack my commitment to hard work and fair play.",
+		"I like to talk at length about my profession.",
+		"I don't part with my money easily and will haggle tirelessly to get the best deal possible.",
+		"I'm well known for my work, and I want to make sure everyone appreciates it. I'm always taken aback when people haven't heard of me."
+	],
+	ideal : [
+		["Community", "Community: It is the duty of all civilized people to strengthen the bonds of community and the security of civilization. (Lawful)"],
+		["Generosity", "Generosity: My talents were given to me so that I could use them to benefit the world. (Good)"],
+		["Freedom", "Freedom: Everyone should be free to pursue his or her own livelihood. (Chaotic)"],
+		["Greed", "Greed: I'm only in it for the money. (Evil)"],
+		["People", "People: I'm committed to the people I care about, not to ideals. (Neutral)"],
+		["Aspiration", "Aspiration: I work hard to be the best there is at my craft. (Any)"]
+	],
+	bond : [
+		"The workshop where I learned my trade is the most important place in the world to me.",
+		"I created a great work for someone, and then found them unworthy to receive it. I'm still looking for someone worthy.",
+		"I owe my guild a great debt for forging me into the person I am today.",
+		"I pursue wealth to secure someone's love.",
+		"One day I will return to my guild and prove that I am the greatest artisan of them all.",
+		"I will get revenge on the evil forces that destroyed my place of business and ruined my livelihood."
+	],
+	flaw : [
+		"I'll do anything to get my hands on something rare or priceless.",
+		"I'm quick to assume that someone is trying to cheat me.",
+		"No one must ever learn that I once stole money from guild coffers.",
+		"I'm never satisfied with what I have\u2015 I always want more.",
+		"I would kill to acquire a noble title.",
+		"I'm horribly jealous of anyone who can outshine my handiwork. Everywhere I go, I'm surrounded by rivals."
+	],
+	extra : [
+		"Select a Guild Business",
+		"Alchemists and apothecaries",
+		"Armorers, locksmiths, and finesmiths",
+		"Brewers, distillers, and vintners",
+		"Calligraphers, scribes, and scriveners",
+		"Carpenters, roofers, and plasterers",
+		"Cartographers, surveyors, and chart-makers",
+		"Cobblers and shoemakers",
+		"Cooks and bakers",
+		"Glassblowers and glaziers",
+		"Jewelers and gemcutters",
+		"Leatherworkers, skinners, and tanners",
+		"Masons and stonecutters",
+		"Painters, limners, and sign-makers",
+		"Potters and tile-makers",
+		"Shipwrights and sailmakers",
+		"Smiths and metal-forgers",
+		"Tinkers, pewterers, and casters",
+		"Wagon-makers and wheelwrights",
+		"Weavers and dyers",
+		"Woodcarvers, coopers, and bowyers"
+	],
+	lifestyle : "comfortable",
+	calcChanges : {
+	spellList : [
+		function(spList, spName, spType) {
+			if (!ClassList[spName] || spList.spells || spList.psionic) return;
+			if (spType.indexOf("bonus") !== -1 && (spList.school || !spList["class"] || (spList["class"].indexOf(spName) === -1 && spName !== "fighter"))) return;
+			spList.extraspells = spList.extraspells.concat(["produce flame", "shocking grasp", "chaos bolt", "create or destroy water", "unseen servant", "heat metal", "rope trick", "call lightning", "elemental weapon", "glyph of warding", "conjure minor elementals", "divination", "otiluke's resilient sphere", "animate objects", "conjure elemental"]);
+		},
+		"My background adds extra spells to the spell list(s) of my spellcasting class(es): Produce Flame, Shocking Grasp, Chaos Bolt, Create or Destroy Water, Unseen Servant, Heat Metal, Rope Trick, Call Lightning, Elemental Weapon, Glyph of Warding, Conjure Minor Elementals, Divination, Otiluke's Resilient Sphere, Animate Objects, and Conjure Elemental."
+	]},
+	eval : function() { AddFeat("Vocational Magic"); },
+	removeeval : function() { RemoveFeat("Vocational Magic"); }
 };
+AddBackgroundVariant("noble", "highborn", {
+	regExpSearch : /^(?!.*(waterdhavian|waterdeep|knight))(?=.*highborn).*$/i,
+	name : "Highborn",
+	source : [["NN:B", 135], ["P", 135], ["ALbackground", 0]],
+	skills : ["History", "Persuasion"],
+	gold : 25,
+	equipleft : [
+		["Scroll of pedigree", "", ""],
+	],
+	equipright : [
+		["Fine clothes", "", 6],
+		["Signet ring", "", ""],
+		["Purse (with coins)", "", 1],
+	],
+	feature : "Position of Privilege",
+	toolProfs : [["Gaming set", 1]],
+	languageProfs : [1],
+	lifestyle : "wealthy",
+	calcChanges : {
+		spellList : [
+			function(spList, spName, spType) {
+				// don't add if this is not a class or a list of spells is already given
+				if (!ClassList[spName] || spList.spells || spList.psionic) return;
+				// if this is an 'extra spell', also test if it uses the class' spell list or not
+				if (spType.indexOf("bonus") !== -1 && (spList.school || !spList["class"] || (spList["class"].indexOf(spName) === -1 && spName !== "fighter"))) return;
+				spList.extraspells = spList.extraspells.concat(["friends", "guidance", "command", "illusory script", "enthrall", "ray of enfeeblement", "zone of truth", "bestow curse", "speak with dead", "spirit guardians", "blight", "death ward", "leomund's secret chest", "geas"]);
+			},
+			"My background adds extra spells to the spell list(s) of my spellcasting class(es): Friends, Guidance, Command, Illusory Script, Enthrall, Ray of Enfeeblement, Zone of Truth, Bestow Curse, Speak with Dead, Spirit Guardians, Blight, Death Ward, Leomund's Secret Chest, and Geas."
+		]
+	},
+});
 BackgroundList["inquisitor"] = {
 	regExpSearch : /inquisitor/i,
 	name : "Inquisitor",
-	source : ["NNHA:B"],
+	source : ["NN:B"],
 	skills : ["Investigation", "Religion"],
 	gold : 15,
 	equipright : [
@@ -629,14 +724,92 @@ BackgroundList["inquisitor"] = {
 	toolProfs : [["Artisan's tools", 1], ["Thieves' tools", "Dex"]],
 	variant : []
 };
-BackgroundFeatureList["legal authority"] = {
-	description : "As an inquisitor of the church, I have the authority to arrest criminals. In the absence of other authorities, I am authorized to pass judgment and even carry out sentencing. If I abuse this power, however, my superiors in the church might strip it from me.",
-	source : ["NNHA:B"]
+/* Inquisitor Background
+Historically, inquisitors were church detectives who investigated crimes both mundane and supernatural. They
+were known for traveling to remote parishes plagued by unexplained murders, and for exposing werewolves living among normal humans. During darker times, the inquisitors led a series of brutal forays into unsuspecting villages. They executed suspected lycanthropes with little or no proof, and punished accused heretics in unsanctioned trials. This savage form of inquisition has become the norm, and inquisitors who still pry into dark mysteries have become a minority.
+Skill Proficiencies: Investigation, Religion
+Tool Proficiencies: Thieves’ tools, one set of artisan’s tools of your choice
+Equipment: A holy symbol, a set of traveler’s clothes, and a belt pouch containing 15 gp
+Feature: Legal Authority
+As an inquisitor of the church, you have the authority to arrest criminals. In the absence of other authorities, you are authorized to pass judgment and even carry out sentencing. If you abuse this power, however, your superiors in the church might strip it from you.
+*/
+BackgroundList["military veteran"] = { // Soldier with Boros Legionnaire spells
+	regExpSearch : /^(?=.*military)(?=.*(veteran)).*$/i,
+	name : "Military Veteran",
+	source : [["NN:B", 140], ["P", 140], ["ALbackground", 0]],
+	skills : ["Athletics", "Intimidation"],
+	toolProfs : [["Gaming set", 1], "Vehicles (land)"],
+	gold : 10,
+	equipright : [
+		["Common clothes", "", 3],
+		["Insignia of rank", "", ""],
+		["Trophy from fallen enemy", "", ""],
+		["Bone dice or playing cards", "", ""],
+		["Belt pouch (with coins)", "", 1]
+	],
+	feature : "Military Rank",
+	trait : [
+		"I'm always respectful and polite.",
+		"I'm haunted by memories of war. I can't get the violent images out of my mind.",
+		"I'm slow to make new friends, because I've lost too many old ones.",
+		"I'm full of inspiring and cautionary tales from my military experience with some relevance to almost every type of combat situation.",
+		"I can stare down a owlbear without flinching.",
+		"I enjoy my strength and like to break things.",
+		"I have a rough sense of humor.",
+		"I approach problems head-on. A simple, direct course is the best path to a solution."
+	],
+	ideal : [
+		["Greater Good", "Greater Good: Our fate is to give our lives in the defense of others. (Good)"],
+		["Responsibility", "Responsibility: I do what I have to and follow just authority. (Lawful)"],
+		["Independence", "Independence: When people obey orders blindly, they affirm a kind of tyranny. (Chaotic)"],
+		["Might", "Might: In life as in war, the mightier force prevails. (Evil)"],
+		["Live and Let Live", "Live and Let Live: Ideals aren't worth killing over or going to war for. (Neutral)"],
+		["Nation", "Nation: My city, state, or people are the only things that matter. (Any)"]
+	],
+	bond : [
+		"I would still give my life for the people I have served with.",
+		"Someone saved my life on the battlefield. Even now, I would never leave a friend behind.",
+		"My honor is my life.",
+		"I'll never forget the crushing defeat my company endured or the foes who inflicted it.",
+		"Those who fight with me are those worth laying down my life for.",
+		"I fight for those who cannot fight for themselves."
+	],
+	flaw : [
+		"The atrocious enemy we faced in battle still leaves me trembling with fear.",
+		"I have little respect for those who are not a tested warrior.",
+		"A disastrous mistake I made in battle cost many lives\u2015 I will do anything to keep that mistake a secret.",
+		"My hatred of my foes is blind and unreasoning. ",
+		"I uphold the law, even if the law causes suffering.",
+		"I'd rather eat my weapon than admit when I'm wrong."
+	],
+	extra : ["Select a Specialty",
+		"Officer",
+		"Scout",
+		"Infantry",
+		"Cavalry",
+		"Healer",
+		"Quartermaster",
+		"Standard-bearer",
+		"Support staff"
+	],
+	lifestyle : "modest",
+	calcChanges : {
+		spellList : [
+			function(spList, spName, spType) {
+				if (!ClassList[spName] || spList.spells || spList.psionic) return;
+				if (spType.indexOf("bonus") !== -1 && (spList.school || !spList["class"] || (spList["class"].indexOf(spName) === -1 && spName !== "fighter"))) return;
+				spList.extraspells = spList.extraspells.concat(["fire bolt", "sacred flame", "guiding bolt", "heroism", "aid", "scorching ray", "beacon of hope", "blinding smite", "death ward", "wall of fire", "flame strike"]);
+			},
+			"My background adds extra spells to the spell list(s) of my spellcasting class(es): Fire Bolt, Sacred Flame, Guiding Bolt, Heroism, Aid, Scorching Ray, Beacon of Hope, Blinding Smite, Death Ward, Wall of Fire, and Flame Strike."
+		]
+	},
+	eval : function() { AddFeat("Soldier's Superstition"); },
+	removeeval : function() { RemoveFeat("Soldier's Superstition"); }
 };
 BackgroundList["monastic traveller"] = { // monastic traveller
 	regExpSearch : /^(?=.*monastic)(?=.*traveller).*$/i,
 	name : "Monastic Traveller",
-	source : ["NNHA:B"],
+	source : ["NN:B"],
     skills : ["History", "Perception"],
 		gold : 10,
 	equipleft : [
@@ -697,16 +870,12 @@ BackgroundList["monastic traveller"] = { // monastic traveller
 	toolProfs : ["Calligrapher's supplies, Cook's utensils, Painter's supplies, Herbalism kit", 1],
 	languageProfs : ["Celestial, Draconic, Dwarvish, Elvish, Gnomish, or Halfling", 1],
 };
-BackgroundFeatureList["monastic influence"] = {
-    description : "While within the lands where the local monastery has influence, people will tend to be helpful and friendly to the monk and his party. Additionally merchants and locals tend to be more likely to share information.  Gain advantage on persuasion or investigation checks to gather local information as long you maintain good standing with the local monastery.",
-    source : ["NNHA:B"],
-};
 /* Monastic Traveller
 At a young age a travelling monk requested from your parents that you travel with him. During this time you and your master's tasks were to gather information from the outside world and bring supplies back to support your local monastery.  During these trips your master would instruct you on the local customs and history of the surrounding lands near your monastery.  You trained with your brothers and sisters in the temple whenever given the opportunity but mostly accompanied your master and almost all of your training came directly from his or her teachings. */
 BackgroundList["native tribe member"] = { // native tribe member
 	regExpSearch: /^(?=.*(barbarian|native|nomad|clan))(?=.*tribe)(?=.*member).*$/i,
 	name: "Native Tribe Member",
-	source : ["NNHA:B"],
+	source : ["NN:B"],
 	skills : ["Nature",],
 	skillstxt : "Nature and choose one from Animal Handling, Athletics, Stealth, or Survival",
 	equipright: [["Traveler's clothes", "", 4], ["Hunting trap", "", 25], ["Totemic token or tattoos of tribal totem", "", ""], ["Belt pouch (with coins)", "", 1]],
@@ -762,21 +931,17 @@ BackgroundList["native tribe member"] = { // native tribe member
 	languageProfs: [1],
 	lifestyle: "poor"
 };
-BackgroundFeatureList["native tribe heritage"] = {
-	description: "I have an excellent knowledge of my tribe's territory, and surrounding terrain and natural resources. I am familiar enough with any wilderness area that I can find twice as much food and water as one normally would. I can call upon the hospitality of my people, and those allied, often including members of druid circles, nomadic elves, and priesthoods.",
-	source : ["NNHA:B"],
-};
 AddBackgroundVariant("outlander", "outlands wanderer", { // Outlander with Selesnya Initiate spell list
 	regExpSearch : /^(?!.*urban)(?=.*(outlander|outlands|guide|exile|outcast|bounty.?hunter|tribal nomad|wanderer|tribal.?marauder)).*$/i,
 	name : "Outlands Wanderer",	
-	source : [["NNHA:B", 136], ["P", 136], ["ALbackground", 0]],
+	source : [["NN:B", 136], ["P", 136], ["ALbackground", 0]],
 	skills : ["Athletics", "Survival"],
 	gold : 10,
 	equipright : [
 		["Traveler's clothes", "", 4],
 		["Staff", "", 4],
-		["Healer's kit", "", 3]
-		["Belt pouch (with coins)", "", 1]
+		["Healer's kit", "", 3],
+		["Belt pouch (with coins)", "", 1],
 	],
 	feature : "Wanderer",
 	toolProfs : [["Musical instrument", 1]],
@@ -793,10 +958,95 @@ AddBackgroundVariant("outlander", "outlands wanderer", { // Outlander with Seles
 		]
 	},
 });
+BackgroundList["performer"] = { // Entertainer w/ Azorius spell list
+	regExpSearch : /(performer)/i,
+	name : "Performer",
+	source : [["NN:B", 130], ["P", 130], ["ALbackground", 0]],
+	skills : ["Acrobatics", "Performance"],
+	gold : 15,
+	equipright : [
+		["Costume", "", 4],
+		["Favor of an admirer", "", ""],
+		["Belt pouch (with coins)", "", 1],
+		["Musical instrument of my choice", "", ""]
+	],
+	feature : "By Popular Demand",
+	trait : [
+		"I know a story relevant to almost every situation.",
+		"Whenever I come to a new place, I collect local rumors and spread gossip.",
+		"I'm a hopeless romantic, always searching for that 'special someone'.",
+		"Nobody stays angry at me or around me for long, since I can defuse any amount of tension.",
+		"I love a good insult, even one directed at me.",
+		"I get bitter if I'm not the center of attention.",
+		"I'll settle for nothing less than perfection.",
+		"I change my mood or my mind as quickly as I change key in a song."
+	],
+	ideal : [
+		["Beauty",
+			"Beauty: When I perform, I make the world better than it was. (Good)"
+		],
+		["Tradition",
+			"Tradition: The stories, legends, and songs of the past must never be forgotten, for they teach us who we are. (Lawful)"
+		],
+		["Creativity",
+			"Creativity: The world is in need of new ideas and bold action. (Chaotic)"
+		],
+		["Greed",
+			"Greed: I'm only in it for the money and fame. [Evil]"
+		],
+		["People",
+			"People: I like seeing the smiles on people's faces when I perform. That's all that matters. (Neutral)"
+		],
+		["Honesty",
+			"Honesty: Art should reflect the soul; it should come from within and reveal who we really are. (Any)"
+		]
+	],
+	bond : [
+		"My instrument is my most treasured possession, and it reminds me of someone I love.",
+		"Someone stole my precious instrument, and someday I'll get it back.",
+		"I want to be famous, whatever it takes.",
+		"I idolize a hero of the old tales and measure my deeds against that person's.",
+		"I will do anything to prove myself superior to my hated rival.",
+		"I would do anything for the other members of my old troupe."
+	],
+	flaw : [
+		"I'll do anything to win fame and renown.",
+		"I'm a sucker for a pretty face.",
+		"A scandal prevents me from ever going home again. That kind of trouble seems to follow me around.",
+		"I once satirized a noble who still wants my head. It was a mistake that I will likely repeat.",
+		"I have trouble keeping my true feelings hidden. My sharp tongue lands me in trouble.",
+		"Despite my best efforts, I am unreliable to my friends."
+	],
+	extra : [
+		"Select an Entertainer Routine",
+		"Actor",
+		"Dancer",
+		"Fire-eater",
+		"Jester",
+		"Juggler",
+		"Instrumentalist",
+		"Poet",
+		"Singer",
+		"Storyteller",
+		"Tumbler"
+	],
+	toolProfs : ["Disguise kit", ["Musical instrument", 1]],
+	lifestyle : "modest",
+	calcChanges : {
+		spellList : [
+			function(spList, spName, spType) {
+				if (!ClassList[spName] || spList.spells || spList.psionic) return;
+				if (spType.indexOf("bonus") !== -1 && (spList.school || !spList["class"] || (spList["class"].indexOf(spName) === -1 && spName !== "fighter"))) return;
+				spList.extraspells = spList.extraspells.concat(["friends", "message", "command", "ensnaring strike", "arcane lock", "calm emotions", "hold person", "clairvoyance", "counterspell", "compulsion", "divination", "dominate person"]);
+			},
+			"My background adds extra spells to the spell list(s) of my spellcasting class(es): Friends, Message, Command, Ensnaring Strike, Arcane Lock, Calm Emotions, Hold Person, Clairvoyance, Counterspell, Compulsion, Divination, and Dominate Person."
+		]
+	},
+};
 BackgroundList["refugee athlete"] = { // refugee athlete
 	regExpSearch : /^(?=.*refugee)(?=.*athlete).*$/i,
     name: "Refugee Athlete",
-    source: ["NNHA:B"],
+    source: ["NN:B"],
     skills: ["acrobatics" /* Acrobatics */, "athletics" /* Athletics */],
     gold: 10,
     equipleft: [
@@ -844,10 +1094,6 @@ BackgroundList["refugee athlete"] = { // refugee athlete
     ],
     languageProfs: [1],
     toolProfs: ["Vehicles (land)"],
-};
-BackgroundFeatureList["long way from home"] = {
-    description: "I can move twice the normal amount of time each day before being subject to the effects of a forced march. Additionally, stories of my past athletic victories have attracted admiration among spectators, fellow athletes, and trainers. I can always find a place to perform (arena/pit fight/inn/tavern), where I receive free lodging and food of a modest or comfortable standard, as long as I perform each night.",
-    source: ["NNHA:B"]
 };
 BackgroundList["scrivener"] = { // scrivener [Izzet Engineer (GGtR) as a Sage]
 	regExpSearch : /scrivener/i,
@@ -927,10 +1173,187 @@ BackgroundList["scrivener"] = { // scrivener [Izzet Engineer (GGtR) as a Sage]
 		"I can't keep a secret to save my life, or anyone else's."
 	],
 };
+BackgroundList["sideshow act"] = { // Entertainer/Witchlight mix with Prismari spells
+	regExpSearch : /^(?=.*(sideshow))(?=.*act).*$/i,
+	name : "Sideshow Act",
+	source : [["NN:B", 130]],
+	skills : ["Acrobatics", "Performance"],
+	toolProfs : [["Disguise kit or Smith's tools", 1]],
+	languageProfs : [1],
+	gold : 8,
+	equipleft : [
+		["Disguise kit or Smith's tools", "", ""],
+		["Deck of cards", "", ""],
+		["Feywild trinket", "", ""]
+	],
+	equipright : [
+		["Carnival uniform or Costume", "", 4],
+		["Belt pouch (with coins)", "", 1]
+	],
+	feature : "By Popular Demand",
+	trait : [
+		"I know a story relevant to almost every situation.",
+		"Whenever I come to a new place, I collect local rumors and spread gossip.",
+		"When I have a new idea, I get wildly excited about it until I come up with another, better idea.",
+		"Nobody stays angry at me or around me for long, since I can defuse any amount of tension.",
+		"I love a good insult, even one directed at me.",
+		"Like a nomad, I can't settle down in one place for very long.",
+		"I'll settle for nothing less than perfection.",
+		"I change my mood or my mind as quickly as I change key in a song."
+	],
+	ideal : [
+		["Beauty", "Beauty: When I perform, I make the world better than it was. (Good)"],
+		["Honor", "Honor: A deal is a deal, and I would never break one. (Lawful)"],
+		["Creativity", "Creativity: The world is in need of new ideas and bold action. (Chaotic)"],
+		["Greed", "Greed: I'm only in it for the money and fame. [Evil]"],
+		["People", "People: I like seeing the smiles on people's faces when I perform. That's all that matters. (Neutral)"],
+		["Honesty", "Honesty: Art should reflect the soul; it should come from within and reveal who we really are. (Any)"]
+	],
+	bond : [
+		"I would never break my word.",
+		"I find magic in all its forms to be compelling. The more magical a place, the more I am drawn to it.",
+		"I want to be famous, whatever it takes.",
+		"I idolize a hero of the old tales and measure my deeds against that person's.",
+		"I will do anything to prove myself superior to a hated rival.",
+		"I feel indebted to members of my old troupe for giving me a home and a purpose."
+	],
+	flaw : [
+		"I'll do anything to win fame and renown.",
+		"I have many vices and tend to indulge them.",
+		"I'm forgetful. Sometimes I can't remember even the simplest things.",
+		"I once satirized a noble who still wants my head. It was a mistake that I will likely repeat.",
+		"I have trouble keeping my true feelings hidden. My sharp tongue lands me in trouble.",
+		"Despite my best efforts, I am unreliable to my friends."
+	],
+	extra : [
+		"Select a Sideshow Routine",
+		"Contortion Act",
+		"Fire Breathing/Eating",
+		"Impalement Arts",
+		"Juggling Stunts",
+		"Magic Tricks",
+		"Museum Freakshow",
+		"Piercing Stunts",
+		"Strongman Act",
+		"Sword Swallowing Act",
+		"Tumbling Stunts",
+	],
+	lifestyle : "modest",
+	calcChanges : {
+		spellList : [
+			function(spList, spName, spType) {
+				if (!ClassList[spName] || spList.spells || spList.psionic) return;
+				if (spType.indexOf("bonus") !== -1 && (spList.school || !spList["class"] || (spList["class"].indexOf(spName) === -1 && spName !== "fighter"))) return;
+				spList.extraspells = spList.extraspells.concat(["chromatic orb", "thunderwave", "flaming sphere", "kinetic jaunt", "haste", "water walk", "freedom of movement", "wall of fire", "cone of cold", "conjure elemental"]);
+			},
+			"My background feature adds extra spells to the spell list(s) of my spellcasting class(es): Chromatic Orb, Thunderwave, Flaming Sphere, Kinetic Jaunt, Haste, Water Walk, Freedom of Movement, Wall of Fire, Cone of Cold, and Conjure Elemental."
+		]
+	},
+	eval : function() { AddFeat("Sideshow Magic"); },
+	removeeval : function() { RemoveFeat("Sideshow Magic"); }
+};
+BackgroundList["spirited away"] = { // Feylost with Witherbloom spell list and feat
+	regExpSearch : /^(?=.*(spirited))(?=.*away).*$/i,
+	name : "Spirited Away",
+	source : [["NN:B", 9], ["WBtW", 9], ["ALbackground", 0]],
+	skills : ["Deception", "Survival"],
+	toolProfs : [["Musical instrument", 1]],
+	languageProfs : [["Elvish, Gnomish, Goblin, or Sylvan", 1]],
+	gold : 8,
+	equipleft : [
+		["Musical instrument of my choice", "", ""],
+		["Three Feywild trinkets", "", ""]
+	],
+	equipright : [
+		["Traveler's clothes", "", 4],
+		["Belt pouch (with coins)", "", 1]
+	],
+	feature : "Feywild Demeanor",
+	trait : [
+		"I'm haunted by fey laughter that only I can hear, though I know it's just my mind playing tricks on me.",
+		"Like a nomad, I can't settle down in one place for very long.",
+		"Good music makes me weep like a baby.",
+		"Wherever I go, I try to bring a little of the warmth and tranquility of home with me.",
+		"I have never lost my childlike sense of wonder.",
+		"When I have a new idea, I get wildly excited about it until I come up with another, better idea.",
+		"I live by my own set of weird and wonderful rules.",
+		"I can't bring myself to trust most adults."
+	],
+	ideal : [
+		["Friendship", "Friendship: I never leave a friend behind. (Good)"],
+		["Empathy", "Empathy: No creature should be made to suffer. (Good)"],
+		["Wanderlust", "Wanderlust: I prefer to take the less traveled path. (Chaotic)"],
+		["Changeability", "Changeability: Change is good, which is why I live by an ever-changing set of rules. (Chaotic)"],
+		["Honor", "Honor: A deal is a deal, and I would never break one. (Lawful)"],
+		["Rule of Three", 'Rule of Three: Everything in the multiverse happens in threes. I see the "rule of three" everywhere. (Lawful)'],
+		["Obsession", "Obsession: I won't let go of a grudge. (Evil)"],
+		["Greed", "Greed: I will do whatever it takes to get what I want, regardless of the harm it might cause. (Evil)"]
+	],
+	bond : [
+		"I would never break my word.",
+		"I find magic in all its forms to be compelling. The more magical a place, the more I am drawn to it.",
+		"I do what I can to protect the natural world.",
+		"A trusted friend is the most important thing in the multiverse to me.",
+		"I can't bring myself to harm a Fey creature, either because I consider myself one or because I fear the repercussions.",
+		"The Witchlight Carnival feels like home to me.",
+		"I'm drawn to the Feywild and long to return there, if only for a short while.",
+		"I feel indebted to Mister Witch and Mister Light for giving me a home and a purpose."
+	],
+	flaw : [
+		"I easily lose track of time. My poor sense of time means I'm always late.",
+		"I think the whole multiverse is out to get me.",
+		"I'm always operating under a tight timeline, and I'm obsessed with keeping everything on schedule.",
+		"I'm a kleptomaniac who covets shiny, sparkling treasure.",
+		"I'm forgetful. Sometimes I can't remember even the simplest things.",
+		"I never give away anything for free and always expect something in return.",
+		"I have many vices and tend to indulge them.",
+		"I'm always changing my mind—well, almost always."
+	],
+	extra : [
+		"Select a Fey Mark",
+		"Iridescent color eyes",
+		"Sweet scent",
+		"Long whiskers",
+		"Furry ears",
+		"Skin sparkles in moonlight",
+		"Flowers bloom in my presence",
+		"Flowers wilt in my presence",
+		"Vines for hair",
+		"Brambles for hair",
+		"Tail"
+	],
+	toNotesPage : [{
+		name : "Feywild Visitor",
+		note : [
+			"Whenever I'm sound asleep or in a deep trance during a long rest, a spirit of the Feywild might pay me a visit, if the DM wishes it. Determine the spirit's form by rolling on the table below. No harm ever comes to me as a result of such visits, which can last for minutes or hours, and I remember each visit when I wake up. Conversations that occur with a visitor can contain any number of things, from messages and insights to nonsense and red herrings, at the DM's discretion. Such conversations are always conducted in a language I can understand, even if the Feywild visitor can't speak that language normally.",
+			"d8\tVisitor",
+			" 1\tAwakened creature (beast/plant that had the Awaken spell cast on it)",
+			" 2\tCentaur",
+			" 3\tDryad",
+			" 4\tFaerie dragon",
+			" 5\tPixie",
+			" 6\tSatyr",
+			" 7\tSprite",
+			" 8\tUnicorn"
+		]
+	}],
+	calcChanges : {
+		spellList : [
+			function(spList, spName, spType) {
+				// don't add if this is not a class or a list of spells is already given
+				if (!ClassList[spName] || spList.spells || spList.psionic) return;
+				// if this is an 'extra spell', also test if it uses the class' spell list or not
+				if (spType.indexOf("bonus") !== -1 && (spList.school || !spList["class"] || (spList["class"].indexOf(spName) === -1 && spName !== "fighter"))) return;
+				spList.extraspells = spList.extraspells.concat(["cure wounds", "inflict wounds", "lesser restoration", "wither and bloom", "revivify", "vampiric touch", "blight", "death ward", "antilife shell", "greater restoration"]);
+			},
+			"My background feature adds extra spells to the spell list(s) of my spellcasting class(es): Cure Wounds, Inflict Wounds, Lesser Restoration, Wither and Bloom, Revivify, Vampiric Touch, Blight, Death Ward, Antilife Shell, and Greater Restoration."
+		]
+	},
+};
 BackgroundList["tribal nomad"] = { // tribal nomad
 	regExpSearch: /^(?=.*tribal)(?=.*nomad).*$/i,
 	name: "Tribal Nomad",
-	source : ["NNHA:B"],
+	source : ["NN:B"],
 	skills : ["Nature",],
 	skillstxt : "Nature and choose one from Animal Handling, Athletics, Stealth, or Survival",
 	toolProfs: ["Herbalism Kit"],
@@ -945,14 +1368,80 @@ BackgroundList["tribal nomad"] = { // tribal nomad
 	languageProfs: [1],
 	lifestyle: "poor"
 };
-BackgroundFeatureList["at home in the wild"] = {
-	description: "In the wilderness, my home, I can find a place to hide, rest, or recuperate that is secure enough to conceal me from most natural threats, but not all supernatural, magical, or threats that actively seek me out. However, this feature doesn't shield or conceal me from scrying, mental probing, nor from threats that don't need the five senses to find me.",
-	source : ["NNHA:B"],
+BackgroundList["undeserved end"] = {
+	regExpSearch : /undeserved.end/i,
+	name : "Undeserved End",
+	source : [["NN:B", 209]],
+	skillstxt : "Choose two from Insight, Investigation, Perception, and Survival",
+	toolProfs : [["Herbalism kit"], ["Artisan's tools", 1]],
+	gold : 0.01,
+	equipleft : [
+		["Chest, with:", "", 25],
+		["Crowbar", "", 5],
+		["Hammer", "", 3],
+		["Wooden Stakes", 3, 1],
+		["Holy symbol", "", 1],
+		["Holy water, flasks of", "", 1],
+		["Manacles", "", 6],
+		["Steel Mirror", "", 0.5],
+		["Oil, flasks of", "", 1],
+		["Tinderbox", "", 1],
+		["Torch", 3, 1]
+	],
+	equipright : [
+		["Common clothes", "", 3],
+		["Trinket of special significance", "", ""]
+	],
+	feature : "Task Unfinished",
+	trait : [
+		"I don't run from evil. Evil runs from me.",
+		"I like to read and memorize poetry. It keeps me calm and brings me fleeting moments of happiness.",
+		"I spend money freely and live life to the fullest, knowing that tomorrow I might die.",
+		"I live for the thrill of the hunt.",
+		"I don't talk about the thing that torments me. I'd rather not burden others with my curse.",
+		"I expect danger around every corner.",
+		"I refuse to become a victim, and I will not allow others to be victimized.",
+		"I put no trust in divine beings."
+	],
+	ideal : [
+		["Sacrifice", "Sacrifice: I try to help those in need, no matter what the personal cost. (Good)"],
+		["Desperation", "Desperation: I'll stop the spirits that haunt me or die trying. (Any)"],
+		["Cleansing", "Cleansing: I kill monsters to make the world a safer place, and to exorcise my own demons. (Good)"],
+		["Vigilante", "Vigilante: I have a dark calling that puts me above the law. (Chaotic)"],
+		["Preparation", "Preparation: I like to know my enemy's capabilities and weaknesses before rushing into battle. (Lawful)"],
+		["Destruction", "Destruction: I'm a monster that destroys other monsters, and anything else that gets in my way. (Evil)"]
+	],
+	bond : [
+		"I keep my thoughts and discoveries in a journal. My journal is my legacy.",
+		"I would sacrifice my life and my soul to protect the innocent.",
+		"My torment drove away the person I love. I strive to win back the love I've lost.",
+		"A terrible guilt consumes me. I hope that I can find redemption through my actions.",
+		"There's evil in me, I can feel it. It must never be set free.",
+		"I have a child to protect. I must make the world a safer place for him (or her)."
+	],
+	flaw : [
+		"I have certain rituals that I must follow every day. I can never break them.",
+		"I assume the worst in people.",
+		"I feel no compassion for the dead. They're the lucky ones.",
+		"I have an addiction.",
+		"I am a purveyor of doom and gloom who lives in a world without hope.",
+		"I talk to spirits that no one else can see."
+	],
+	calcChanges : {
+		spellList : [
+			function(spList, spName, spType) {
+				if (!ClassList[spName] || spList.spells || spList.psionic) return;
+				if (spType.indexOf("bonus") !== -1 && (spList.school || !spList["class"] || (spList["class"].indexOf(spName) === -1 && spName !== "fighter"))) return;
+				spList.extraspells = spList.extraspells.concat(["cure wounds", "inflict wounds", "lesser restoration", "wither and bloom", "revivify", "vampiric touch", "blight", "death ward", "antilife shell", "greater restoration"]);
+			},
+			"My background feature adds extra spells to the spell list(s) of my spellcasting class(es): Cure Wounds, Inflict Wounds, Lesser Restoration, Wither and Bloom, Revivify, Vampiric Touch, Blight, Death Ward, Antilife Shell, and Greater Restoration."
+		]
+	},
 };
 AddBackgroundVariant("criminal", "urban bounty hawk", { // Urban Bounty Hunter with Dimir Operative spell list
 	regExpSearch : /^(?=.*urban)(?=.*bounty)(?=.*hawk).*$/i,
 	name : "Urban Bounty Hawk",
-	source : [["NHB", 153], ["S", 153], ["ALbackground", 0]],
+	source : [["NN:B", 153], ["S", 153], ["ALbackground", 0]],
 	skills : "",
 	skillstxt : "Choose two from Deception, Insight, Persuasion, and Stealth",
 	gold : 20,
@@ -978,12 +1467,10 @@ AddBackgroundVariant("criminal", "urban bounty hawk", { // Urban Bounty Hunter w
 		]
 	},	
 });
-/* Wild Blood
-You grew up in the wilds, far from civilization and the comforts of town and technology. Part of a savage society that clings desperately to the Old Ways, the wilds are in your blood—attuned to nature, full of primal rage, and given short shrift by a world consumed with continuing civilization's march of progress. You found quiet, solitude, and perhaps deeper spiritual communion with the wild world. In your time apart from the clamor of society, you've witnessed the migration of herds larger than forests, survived weather more extreme than any city-dweller could comprehend, and enjoyed the solitude of being the only thinking creature for miles in any direction. */
 BackgroundList["wild blood"] = {
 	regExpSearch : /^(?=.*blood)(?=.*wild).*$/i,
 	name : "Wild Blood",
-	source : ["NNHA:B"],
+	source : ["NN:B"],
 	skills : ["Nature", "Survival"],
 	calcChanges : {
 		spellList : [
@@ -1046,14 +1533,12 @@ BackgroundList["wild blood"] = {
 		"I'm easily manipulated by people I find attractive.",
 	]
 };
-BackgroundFeatureList["voice in the wild"] = {
-	description: "I can always recall the general layout of natural terrain features around me. I can find a hidden place to rest that is secure enough to conceal me from most natural threats, but not supernatural or magical threats (scrying, mental probing, etc.). Each day I can find food and water for myself and up to five other creatures, provided that the land offers berries, small game, water, and so forth.",
-	source : ["NNHA:B"]
-};
+/* Wild Blood
+You grew up in the wilds, far from civilization and the comforts of town and technology. Part of a savage society that clings desperately to the Old Ways, the wilds are in your blood—attuned to nature, full of primal rage, and given short shrift by a world consumed with continuing civilization's march of progress. You found quiet, solitude, and perhaps deeper spiritual communion with the wild world. In your time apart from the clamor of society, you've witnessed the migration of herds larger than forests, survived weather more extreme than any city-dweller could comprehend, and enjoyed the solitude of being the only thinking creature for miles in any direction. */
 BackgroundList["wild survivor"] = { // wild survivor
 	regExpSearch : /^(?=.*wild)(?=.*survivor).*$/i,
 	name: "Wild Survivor",
-	source: ["NNHA:B"],
+	source: ["NN:B"],
 	skills: ["Medicine", "Survival"],
 	gold: 5,
 	equipleft: [
@@ -1122,7 +1607,194 @@ BackgroundList["wild survivor"] = { // wild survivor
 	toolProfs: [["Herbalism kit"]],
 	languageProfs: [1],
 };
+
+// Background Features
+BackgroundFeatureList["at home in the wild"] = {
+	description: "In the wilderness, my home, I can find a place to hide, rest, or recuperate that is secure enough to conceal me from most natural threats, but not all supernatural, magical, or threats that actively seek me out. However, this feature doesn't shield or conceal me from scrying, mental probing, nor from threats that don't need the five senses to find me.",
+	source : ["NN:B"],
+};
+BackgroundFeatureList["brigade station"] = {
+	description : "I am established in the hierarchy of the Angelfire Brigade. I can requisition simple equipment for temporary use. I have access to any Angelfire garrison in my homeland where I can rest in safety and have access to medics. I'm paid 1 gp per week, allowing me (together with the free brigade lodging) to have a poor lifestyle between adventures.",
+	source : ["NN:B"]
+};
+BackgroundFeatureList["deep miner"] = {
+	description : "I am used to navigating the deep places of the earth. I never get lost in caves or mines if I have either seen an accurate map of them or have been through them before. Furthermore, I am able to scrounge fresh water and food for myself and as many as five other people each day if I am in a mine or natural caves.",
+	source : [["NN:B"], ["AL:EE", 3], ["ALbackground", 0]]
+};
+BackgroundFeatureList["down low"] = {
+	description : "I am acquainted with a network of smugglers who are willing to help me out of tight spots. While in a particular town, city, or other similarly sized community, my companions and I can stay for free in safe houses. Safe houses provide a poor lifestyle. While staying at a safe house, I can choose to keep my presence (and that of my companions) a secret.",
+	source : [["NN:B", 128], ["GoS", 34], ["ALbackground", 0]]
+};
+BackgroundFeatureList["feywild demeanor"] = {
+	description : "My mannerisms and knowledge of fey customs are recognized by natives of the Feywild, who see me as one of their own. Because of this, friendly Fey creatures are inclined to come to my aid if I am lost or need help in the Feywild.",
+	source : [["NN:B", 11], ["WBtW", 11], ["ALbackground", 0]],
+	eval : function() { AddFeat("Fey and Fell"); },
+	removeeval : function() { RemoveFeat("Fey and Fell"); }
+};
+BackgroundFeatureList["legal authority"] = {
+	description : "As an inquisitor of the church, I have the authority to arrest criminals. In the absence of other authorities, I am authorized to pass judgment and even carry out sentencing. If I abuse this power, however, my superiors in the church might strip it from me.",
+	source : ["NN:B"]
+};
+BackgroundFeatureList["long way from home"] = {
+    description: "I can move twice the normal amount of time each day before being subject to the effects of a forced march. Additionally, stories of my past athletic victories have attracted admiration among spectators, fellow athletes, and trainers. I can always find a place to perform (arena/pit fight/inn/tavern), where I receive free lodging and food of a modest or comfortable standard, as long as I perform each night.",
+    source: ["NN:B"]
+};
+BackgroundFeatureList["monastic influence"] = {
+    description : "While within the lands where the local monastery has influence, people will tend to be helpful and friendly to the monk and his party. Additionally merchants and locals tend to be more likely to share information.  Gain advantage on persuasion or investigation checks to gather local information as long you maintain good standing with the local monastery.",
+    source : ["NN:B"],
+};
+BackgroundFeatureList["native tribe heritage"] = {
+	description: "I have an excellent knowledge of my tribe's territory, and surrounding terrain and natural resources. I am familiar enough with any wilderness area that I can find twice as much food and water as one normally would. I can call upon the hospitality of my people, and those allied, often including members of druid circles, nomadic elves, and priesthoods.",
+	source : ["NN:B"],
+};
+BackgroundFeatureList["task unfinished"] = {
+	description : "Those who look into my eyes can see that I have faced unimaginable horror and that I am no stranger to darkness. Though they might fear me, commoners will extend me every courtesy and do their utmost to help. Unless I have shown myself to be a danger to them, they will even take up arms to fight with me, should I find myself facing an enemy alone.",
+	source : [["NN:B", 209]],
+	eval : function() { AddFeat("Vitality Sacrifice"); },
+	removeeval : function() { RemoveFeat("Vitality Sacrifice"); }
+};
+BackgroundFeatureList["the doctor is in"] = {
+	description : "Healers are almost universally seen positively. I can gain the trust of almost any intelligent creature that is sick or hurt if I seem willing to help. I can find a place to hide, rest, or recuperate among other commoners, unless I have shown yourself to be a danger to them. They will shield me from the law or anyone else searching for me, though they will not risk their lives for me.",
+	source : [["NN:B"]]
+};
+BackgroundFeatureList["voice in the wild"] = {
+	description: "I can always recall the general layout of natural terrain features around me. I can find a hidden place to rest that is secure enough to conceal me from most natural threats, but not supernatural or magical threats (scrying, mental probing, etc.). Each day I can find food and water for myself and up to five other creatures, provided that the land offers berries, small game, water, and so forth.",
+	source : ["NN:B"]
+};
+BackgroundFeatureList["warm welcome"] = {
+	description : "When you first meet new people, your demeanor is such to put them at ease and they usually assume you are friendly. You ran an inn, which you gave up for the life of adventure. However, the new owner of the inn or tavern may give you free room and board at a modest standard. You also know a lot of former patrons hailing from many places near and far, who may offer you favors or jobs.",
+	source : [["NN:B"]]
+};
 BackgroundFeatureList["wild reputation"] = {
 	description: "People whisper behind my back about the trials I have suffered. Some fear me. Others offer pity. But all avoid getting to close to me, worried that they will be the next loss I suffer. People are happy to see me move on so I get away with minor offenses such as rude behavior or leaving the tavern before paying my tab.",
-	source: ["NNHA:B"],
+	source: ["NN:B"],
 };
+
+// Background Feats
+FeatsList["fey and fell"] = {
+	name : "Fey and Fell",
+	source : [["NN:B", 36]],
+	description : "I learn two cantrips (Chill Touch, Druidcraft, or Spare the Dying) and a 1st-level spell from the druid or wizard spell list. I can cast the spell once per long rest at its lowest level without expending a spell slot, and can cast it if I have a spell slot to do so. I can choose Int, Wis, or Cha as my spellcasting ability for this.",
+	spellcastingAbility : [4, 5, 6],
+	allowUpCasting : true,
+	spellcastingBonus : [{
+		name : "Cantrip",
+		spells : ["chill touch", "druidcraft", "spare the dying"],
+		firstCol : "atwill",
+		times : 2
+	}, {
+		name : "1st-level spell",
+		"class" : ["druid", "wizard"],
+		level : [1, 1],
+		firstCol : "oncelr"
+	}]
+};
+FeatsList["home remedy"] = {
+	name : "Home Remedy",
+	source : [["NN:B", 36]],
+	description : "I learn two cantrips (Light, Sacred Flame, or Thaumaturgy) and a 1st-level spell from the cleric or druid spell list. I can cast the spell once per long rest at its lowest level without expending a spell slot, and can cast it if I have a spell slot to do so. I can choose Int, Wis, or Cha as my spellcasting ability for this.",
+	spellcastingAbility : [4, 5, 6],
+	allowUpCasting : true,
+	spellcastingBonus : [{
+		name : "Cantrip",
+		spells : ["light", "sacred flame", "thaumaturgy"],
+		firstCol : "atwill",
+		times : 2
+	}, {
+		name : "1st-level spell",
+		"class" : ["cleric", "druid"],
+		level : [1, 1],
+		firstCol : "oncelr"
+	}]
+};
+FeatsList["sideshow magic"] = {
+	name : "Sideshow Magic",
+	source : [["NN:B", 36]],
+	description : "I learn two cantrips (Fire Bolt, Prestidigitation, or Ray of Frost) and a 1st-level spell from the bard or sorcerer spell list. I can cast the spell once per long rest at its lowest level without expending a spell slot, and can cast it if I have a spell slot to do so. I can choose Int, Wis, or Cha as my spellcasting ability for this.",
+	spellcastingAbility : [4, 5, 6],
+	allowUpCasting : true,
+	spellcastingBonus : [{
+		name : "Cantrip",
+		spells : ["fire bolt", "prestidigitation", "ray of frost"],
+		firstCol : "atwill",
+		times : 2,
+	}, {
+		name : "1st-level spell",
+		"class" : ["bard", "sorcerer"],
+		level : [1, 1],
+		firstCol : "oncelr",
+	}],
+};
+FeatsList["soldier's superstition"] = {
+	name : "Soldier's Superstition",
+	source : [["NN:B", 140]],
+	description : "I learn two cantrips (Light, Sacred Flame, or Thaumaturgy) and a 1st-level spell from the bard or cleric spell list. I can cast the spell once per long rest at its lowest level without expending a spell slot, and can cast it if I have a spell slot to do so. I can choose Int, Wis, or Cha as my spellcasting ability for this.",
+	spellcastingAbility : [4, 5, 6],
+	allowUpCasting : true,
+	spellcastingBonus : [{
+		name : "Cantrip",
+		spells : ["light", "sacred flame", "thaumaturgy"],
+		firstCol : "atwill",
+		times : 2,
+	}, {
+		name : "1st-level spell",
+		"class" : ["bard", "cleric"],
+		level : [1, 1],
+		firstCol : "oncelr",
+	}],
+};
+FeatsList["vitality sacrifice"] = {
+  name: "Vitality Sacrifice",
+  source: [["NN:B", 191]],
+  descriptionFull:
+    "You've learned secrets that grant you esoteric power at the price of your own life force. As a bonus action, you can choose to take 1d6 necrotic damage to gain a blood boon. Your blood boon lasts for 1 hour or until expended." +
+    "\n   " +
+    "You can expend this blood boon to gain one of the following benefits:" +
+    "\n" +
+    "\u2022 When you make an attack roll, you roll 1d6 and add it to the total." +
+    "\n" +
+    "\u2022 When you hit with an attack or spell, you deal an additional 2d6 necrotic damage." +
+    "\n" +
+    "\u2022 When you cause a creature to make a Strength, Dexterity, or Constitution saving throw, roll a d4 and reduce their save by the amount rolled." +
+    "\n   " +
+    "The damage you take to gain a blood boon can't be reduced in any way.",
+  description:
+    "As a bonus action, I can take 1d6 necrotic damage, which cannot be reduced, to gain a blood boon. This boon lasts for 1 hour or until it is expended. I can expend this blood boon to gain benefits. See third page.",
+  action: ["bonus action", " (1d6 necrotic damage)"],
+  toNotesPage: [
+    {
+      name: "Vitality Sacrifice",
+      source: [["NN:B", 191]],
+      popupName: "Vitality Sacrifice (Feat)",
+      page3notes: true,
+      note: [
+        "As a bonus action, I can take 1d6 necrotic damage for a blood boon",
+        "This damage cannot be reduced in any way",
+        "This boon lasts for 1 hour, or until it is expended",
+        "I can expend the blood boon to gain one of the following benefits:",
+        " \u2022 When I make an attack roll, add 1d6 to the total",
+        " \u2022 When I hit with an attack or spell, it deals an extra 2d6 necrotic damage",
+        " \u2022 When I force a creature to make a Str/Dex/Con save, reduce their save by 1d4",
+      ],
+    },
+  ],
+};
+FeatsList["vocational magic"] = {
+	name : "Vocational Magic",
+	source : [["NN:B", 36]],
+	description : "I learn two cantrips (Druidcraft, Guidance, or Mage Hand) and a 1st-level spell from the druid or wizard spell list. I can cast the spell once per long rest at its lowest level without expending a spell slot, and can cast it if I have a spell slot to do so. I can choose Int, Wis, or Cha as my spellcasting ability for this.",
+	spellcastingAbility : [4, 5, 6],
+	allowUpCasting : true,
+	spellcastingBonus : [{
+		name : "Cantrip",
+		spells : ["druidcraft", "guidance", "mage hand"],
+		firstCol : "atwill",
+		times : 2
+	}, {
+		name : "1st-level spell",
+		"class" : ["druid", "wizard"],
+		level : [1, 1],
+		firstCol : "oncelr"
+	}]
+};
+
