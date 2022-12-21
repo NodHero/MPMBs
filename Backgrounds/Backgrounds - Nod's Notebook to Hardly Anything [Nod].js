@@ -1797,4 +1797,3 @@ FeatsList["vocational magic"] = {
 		firstCol : "oncelr"
 	}]
 };
-
