@@ -121,7 +121,7 @@ SpellsList["imbue stone"] = {
 	duration : "1 min",
 	description : "Imbue 3 pebbles for spell attacks, thrown 60 ft or with sling, do 1d6 Bludg. dmg and -10 speed.",
 	descriptionCantripDie : "Imbue 3 pebbles for spell attacks, thrown 60 ft or with sling, do `CD`d6 Bludg. dmg and -10 speed.",
-	descriptionFull : "You touch one to three pebbles and imbue them with magic. You or someone else can make a ranged spell attack with one of the pebbles by throwing it or hurling it with a sling. If thrown, it has a range of 60 feet. On a hit, it takes 1d6 bludgeoning damage, and its speed is reduced by 10 feet until the start of your next turn. Hit or miss, the spell then ends on the stone." + "\n   " + "If you cast this spell again, the spell ends early on any pebbles still affected by it."
+	descriptionFull : "You touch one to three pebbles and imbue them with magic. You or someone else can make a ranged spell attack with one of the pebbles by throwing it or hurling it with a sling. If thrown, it has a range of 60 feet. On a hit, it takes 1d6 bludgeoning damage, and its speed is reduced by 10 feet until the start of your next turn. Hit or miss, the spell then ends on the stone." + "\n   " + "If you cast this spell again, the spell ends early on any pebbles still affected by it. This spell's damage increases by 1d6 when you reach 5th Level (2d6), 11th level (3d6) and 17th level (4d6)."
 };
 WeaponsList["imbue stone"] = {
 	regExpSearch : /^(?=.*imbue)(?=.*stone).*$/i,
@@ -219,6 +219,49 @@ SpellsList["augmented alacrity"] = {
 	description : "1+1/SL willing creature has advantage on its next initiative roll during the duration",
 	descriptionFull : "You touch a creature and give it a small amount of foresight that enables it to react quickly in battle. The target has advantage on the next initiative roll it makes before the duration expires.\n At Higher Levels. When you cast this spell using a spell slot of 2nd level or higher, you can touch and affect one extra creature for each slot level above 1st."
 };
+SpellsList["bowstaff"] = {
+	name : "Bowstaff",
+	classes : ["paladin","ranger"],
+	source : [["NN:S", 3]],
+	level : 1,
+	school : "Trans",
+	time : "1 bns",
+	range : "Touch",
+	components : "V, M",
+	compMaterial : "A short or longbow",
+	duration : "1 min",
+	description : "Short/longbow I hold does melee 1d8 Bludg. dmg and uses my spellcasting ability modifier instead of Str",
+	descriptionShorter : "Short/longbow I hold does 1d8 Bludg. dmg \u0026 uses my spellcasting modifier instead of Str",
+	descriptionFull : "The bow that is touched takes on the rigidity and toughness of forged steel, allowing it to be used as a two-handed melee weapon instead of a ranged weapon. For the duration, you can use your spellcasting ability instead of Strength for the attack and damage rolls of melee attacks using that weapon, and the weapon's damage die becomes a d8. The bow’s enhancement bonus, if any, applies on melee attack and damage rolls.\n Additional weapon special weapon qualities also apply to melee attacks if such qualities can be added to a melee weapon. The weapon also becomes magical, if it isn't already. On each of your turns before the spell ends, you can use a bonus action to switch the weapon between melee and ranged. The spell ends if you cast it again or if you let go of the weapon. \n At Higher Levels. When you cast this spell using a spell slot of 2nd or 3rd level, the duration becomes 10 minutes. When you use a spell slot of 4th level, the duration becomes 1 hour. When you use a spell slot of 5th level or higher, the duration becomes 8 hours."
+};
+WeaponsList["bowstaff"] = {
+	baseWeapon : "quarterstaff",
+	regExpSearch : /bowstaff/i,
+	name : "Bowstaff",
+	source : [["NN:S", 3]],
+	list : "spell",
+	ability : 5,
+	type : "Simple",
+	damage : [1, 8, "bludgeoning"],
+	range : "Melee",
+	description : "Imbued short or longbow; two-handed, counts as a magical weapon",
+	monkweapon : true,
+	abilitytodamage : true
+};
+/* Bowstaff
+1st-level transmutation
+Casting Time: 1 bonus action
+Range: Touch
+Components: S, M (A short or longbow)
+Duration: 1 minute
+
+The bow that is touched takes on the rigidity and toughness of forged steel, allowing it to be used as a two-handed melee weapon instead of a ranged weapon. For the duration, you can use your spellcasting ability instead of Strength for the attack and damage rolls of melee attacks using that weapon, and the weapon's damage die becomes a d8. 
+The bow’s enhancement bonus, if any, applies on melee attack and damage rolls. Additional weapon special weapon qualities also apply to melee attacks if such qualities can be added to a melee weapon. The weapon also becomes magical, if it isn't already. On each of your turns before the spell ends, you can use a bonus action to switch the weapon between melee and ranged. The spell ends if you cast it again or if you let go of the weapon.
+
+At Higher Levels.
+When you cast this spell using a spell slot of 2nd or 3rd level, the duration becomes 10 minutes. When you use a spell slot of 4th level, the duration becomes 1 hour. When you use a spell slot of 5th level or higher, the duration becomes 8 hours.
+
+Classes: Paladin, Ranger */
 SpellsList["call nature spirits"] = {
 	name: "Call Nature Spirits",
 	classes: ["druid", "ranger"],
@@ -354,8 +397,8 @@ SpellsList["insidious innuendo"] = {
 	components : "V,S",
 	duration : "Conc, 1 min",
 	save : "Wis",
-	description : "1 crea save or incapacitated and end of each turn 1d12 Psychic damage, after which it can save to end",
-	descriptionFull : "You unleash a torrent of conflicting thoughts in the mind of one creature you can see within range, impairing its ability to make decisions. The target must succeed on a Wisdom saving throw or be incapacitated. At the end of each of its turns, it takes 1d12 psychic damage, and it can then make another Wisdom saving throw. On a success, the spell ends on the target."
+	description : "1 crea save or incapacitated; end of its turn 1d12 Psychic damage, repeat save; ends if out of range or total cover",
+	descriptionFull : "You unleash a torrent of conflicting thoughts in the mind of one creature you can see within range, impairing its ability to make decisions. The target must succeed on a Wisdom saving throw or become incapacitated and can’t move. At the end of each of its turns, it takes 1d12 psychic damage, and it can then make another Wisdom saving throw. On a success, the spell ends on the target. The spell also ends if the target is ever outside the spell's range or if it has total cover from you."
 };
 SpellsList["magical melee"] = {
 	name : "Magical Melee",
@@ -555,7 +598,7 @@ SpellsList["scold"] = { // Destructive Resonance from Midgard
 	level : 2,
 	school : "Ench",
 	time : "1 a",
-	range : "Self (15-foot cone)",
+	range : "S:15" + (typePF ? "-" : "") + "ft cone",
 	components : "V,S", 
 	duration : "Instantaneous",
 	description : "15-ft cone, 4d6 (+1d6/SL) psychic damage/Wis half, prevents reactions 1 round.",
@@ -882,6 +925,7 @@ SpellsList["acidic bolt"] = {
 		components : "V,S",
 		duration : "Instantaneous",
 		description : "Spell attack for 1d10 Acid dmg; unattended flammable objects ignite; +1d10 at CL 5, 11, and 17",
+		descriptionCantripDie : "Spell attack for `CD`d10 Acid dmg; unattended flammable objects ignite",
 		descriptionFull : "You hurl a drop of acid at a creature or object within range. Make a ranged spell attack against the target. On a hit, the target takes 1d10 acid damage. A flammable object hit by this spell ignites if it isn't being worn or carried." + "\n   " + "This spell's damage increases by 1d10 when you reach 5th level (2d10), 11th level (3d10), and 17th level (4d10)."
 };
 WeaponsList["acidic bolt"] = {
@@ -908,6 +952,7 @@ SpellsList["create acidspout"] = {
 	duration: "Conc, 1 min",
 	save: "Dex",
 	description: "5-ft cube all crea at casting or entering save or 1d8 Acid dmg; ignites flammable; +1d8 at CL 5/11/17",
+	descriptionCantripDie : "5-ft cube all crea at casting, entering, or end turn in save or `CD`d8 Acid dmg; ignites flammable",
 	descriptionFull: "You create an acidspout on ground that you can see within range. Until the spell ends, the magic acidspout fills a 5-foot cube. Any creature in the acidspout's space when you cast the spell must succeed on a Dexterity saving throw or take 1d8 acid damage. A creature must also make the saving throw when it moves into the acidspout's space for the first time on a turn or ends its turn there." + "\n   " + "The acidspout ignites flammable objects in its area that aren't being worn or carried." + "\n   " + "The spell's damage increases by 1d8 when you reach 5th level (2d8), 11th level (3d8), and 17th level (4d8)."
 };
 WeaponsList["create acidspout"] = {
@@ -998,6 +1043,7 @@ SpellsList["create arcing current"] = {
 	duration: "Conc, 1 min",
 	save: "Dex",
 	description: "5-ft cube all crea at casting or entering save or 1d8 Lightning dmg; ignites flammable; +1d8 at CL 5/11/17",
+	descriptionCantripDie : "5-ft cube all crea at casting, entering, or end turn in save or `CD`d8 Lightning dmg; ignites flammable",
 	descriptionFull: "You create an arcing current on ground that you can see within range. Until the spell ends, the magic arcing current fills a 5-foot cube. Any creature in the arcing current's space when you cast the spell must succeed on a Dexterity saving throw or take 1d8 lightning damage. A creature must also make the saving throw when it moves into the arcing current's space for the first time on a turn or ends its turn there." + "\n   " + "The arcing current ignites flammable objects in its area that aren't being worn or carried." + "\n   " + "The spell's damage increases by 1d8 when you reach 5th level (2d8), 11th level (3d8), and 17th level (4d8)."
 };
 WeaponsList["create arcing current"] = {
@@ -1014,17 +1060,18 @@ WeaponsList["create arcing current"] = {
 	dc: true
 };
 SpellsList["shocking bolt"] = {
-		name : "Shocking Bolt",
-		classes : ["artificer", "sorcerer", "wizard"],
-		source : ["NN:S", 0],
-		level : 0,
-		school : "Evoc",
-		time : "1 a",
-		range : "120 ft",
-		components : "V,S",
-		duration : "Instantaneous",
-		description : "Spell attack for 1d10 Lightning dmg; unattended flammable objects ignite; +1d10 at CL 5, 11, and 17",
-		descriptionFull : "You hurl a spark of lightning at a creature or object within range. Make a ranged spell attack against the target. On a hit, the target takes 1d10 lightning damage. A flammable object hit by this spell ignites if it isn't being worn or carried." + "\n   " + "This spell's damage increases by 1d10 when you reach 5th level (2d10), 11th level (3d10), and 17th level (4d10)."
+	name : "Shocking Bolt",
+	classes : ["artificer", "sorcerer", "wizard"],
+	source : ["NN:S", 0],
+	level : 0,
+	school : "Evoc",
+	time : "1 a",
+	range : "120 ft",
+	components : "V,S",
+	duration : "Instantaneous",
+	description : "Spell attack for 1d10 Lightning dmg; unattended flammable objects ignite; +1d10 at CL 5, 11, and 17",
+	descriptionCantripDie : "Spell attack for `CD`d10 Lightning dmg; unattended flammable objects ignite",
+	descriptionFull : "You hurl a spark of lightning at a creature or object within range. Make a ranged spell attack against the target. On a hit, the target takes 1d10 lightning damage. A flammable object hit by this spell ignites if it isn't being worn or carried." + "\n   " + "This spell's damage increases by 1d10 when you reach 5th level (2d10), 11th level (3d10), and 17th level (4d10)."
 };
 WeaponsList["shocking bolt"] = {
 		regExpSearch : /^(?=.*shocking)(?=.*bolt).*$/i,
@@ -1470,341 +1517,136 @@ SpellsList["pulsing fissure"] = { // Gravity Fissure
 	descriptionShorter : "100-ft long 5-ft wide all 8d6+1d6/SL Force dmg, save half; all in 10 ft of it save or dmg \u0026 pulled",
 	descriptionFull : "You manifest a ravine of gravitational energy in a line originating from you that is 100 feet long and 5 feet wide. Each creature in that line must make a Constitution saving throw, taking 8d8 force damage on a failed save, or half as much damage on a successful one.\n   Each creature within 10 feet of the line but not in it must succeed on a Constitution saving throw or take 8d8 force damage and be pulled toward the line until the creature is in its area." + AtHigherLevels + "When you cast this spell using a spell slot of 7th level or higher, the damage increases by 1d8 for each slot level above 6th."
 },
-
-// Artificer Spell Customization
-// Cantrip
-SpellsList["advising gadget"] = { // Guidance
-	name : "Advising Gadget",
-	classes : ["artificer"],
-	source : [["NN:S", 248]],
-	level : 0,
-	school : "Div",
-	time : "1 a",
-	range : "Touch",
-	components : "V,S",
-	duration : "Conc, 1 min",
-	description : "1 willing creature adds 1d4 to ability check of its choice, after rolling, once during the duration",
-	descriptionFull : "You touch one willing creature. Once before the spell ends, the target can roll a d4 and add the number rolled to one ability check of its choice. It can roll the die before or after making the ability check. The spell then ends."
-},
-SpellsList["fusillading gadget"] = { // Ice Barrage (Knuckleheads) with choose your own damage
-	name: "Fusillading Gadget",
-	classes: ["artificer","sorcerer","warlock","wizard"],
-	source: ["NN:S"],
-	level: 0,
-	school: "Evoc",
-	time: "1 a",
-	range: "90 ft",
-	components: "V,S",
-	description: "Fling arcane projectile 2d4 Bludgeoning/Piercing/Slashing dmg; projectiles at same or different targets; CL5:2, CL11:3, CL17:4 projectiles",
-	descriptionCantripDie: "Fling `CD` arcane projectile 2d4 Bludge./Pierce./Slash. dmg; projectiles at same or different targets;",
-	descriptionFull: "I conjure arcane projectiles and fling it at a creature within range. Make a ranged spell attack against the target. On a hit, the target takes 2d4 bludgeoning, piercing, or slashing damage (chosen when the spell is cast.)" + "\n   " + AtHigherLevels + "The spell creates more than one projectile when I reach higher levels: two projectiles at 5th level, three projectiles at 11th level, and four projectiles at 17th level. I can direct the projectiles at the same target or at different ones. Make a separate attack roll for each projectile."
-},
-WeaponsList["fusillading gadget"] = { // Ice Barrage (Knuckleheads) with choose your own damage
-	regExpSearch : /^(?=.*fusillading)(?=.*gadget).*$/i,
-	name: "Fusillading Gadget",
-	source: ["NN:S"], 
-	list: "spell",
-	ability: 6,
-	type: "Cantrip",
-	damage : ["C\u00D7" + 2, 4, "B/P/S"],
-	range: "90 ft",
-	description: "Choose B/P/S damage when cast; Each 2d4 requires separate rolls",
-	SpellsList: "arcane projectile",
-	abilitytodamage : false
-},
-/* Fusillading Gadget
-Evocation cantrip
-Casting Time: 1 action
-Range: 90 feet
-Components: V, S
-Duration: Instantaneous
-You conjure a arcane projectile and fling it at a creature within range. Make a ranged spell attack against the target. On a hit, the target takes 2d4 bludgeoning, piercing, or slashing damage (choose when you cast this spell.)
-The spell creates more than one projectile when you reach higher levels: two projectiles at 5th level, three projectiles at 11th level, and four projectiles at 17th level. You can direct the projectiles at the same target or at different ones. Make a separate attack roll for each projectile. 
-Classes: Artificer, Sorcerer, Warlock, Wizard */
-SpellsList["reverberating gadget"] = { // Booming Blade
-	name : "Reverberating Gadget",
-	classes : ["artificer"],
-	source : [["NN:S"]],
-	level : 0,
-	school : "Evoc",
-	time : "1 a",
-	range : "S:5-ft rad",
-	components : "S,M\u0192",
-	compMaterial : "A melee weapon worth at least 1 sp",
-	duration : "1 round",
-	description : "Melee wea atk with cast; hit: 0d8 Thunder dmg, if it moves next round +1d8; +1d8 at CL5, 11, \u0026 17",
-	descriptionShorter : "melee wea atk with cast; hit: 0d8 Thunder dmg, if move next rnd +1d8; +1d8 CL 5/11/17 ",
-	descriptionCantripDie : "Melee wea atk with cast; if hit: `CD-1`d8 Thunder dmg and if moves next round +`CD`d8 Thunder dmg",
-	descriptionFull : "You brandish the weapon used in the spell's casting and make a melee attack with it against one creature within 5 feet of you. On a hit, the target suffers the weapon attack's normal effects and then becomes sheathed in arcane energy until the start of your next turn. If the target willingly moves 5 feet or more before then, the target takes 1d8 thunder damage, and the spell ends.\n   This spell's damage increases when you reach certain levels. At 5th level, the melee attack deals an extra 1d8 thunder damage to the target on a hit, and the damage the target takes for moving increases to 2d8. Both damage rolls increase by 1d8 at 11th level (2d8 and 3d8) and again at 17th level (3d8 and 4d8).",
-	dynamicDamageBonus : {
-		extraDmgGroupsSameType : /(next r(?:ou)?nd )((?:\+?\d+d?\d*)+)/i
-		}
-},
-WeaponsList["reverberating gadget"] = { // Booming Blade
-	regExpSearch : /^(?=.*reverberating)(?=.*gadget).*$/i,
-	name : "Reverberating Gadget",
-	source : [["NN:S"]],
-	list : "spell",
-	ability : 6,
-	type : "Cantrip",
-	damage : ["Bd8/Cd8", "", "thunder"],
-	range : "With melee wea",
-	description : "First damage added to the attack; second to the target if it moves next round",
-	abilitytodamage : false
-},
-SpellsList["yanking gadget"] = { // Thorn Whip
-	name : "Yanking Gadget",
-	classes : ["artificer"],
-	source : ["NN:S", 282],
-	level : 0,
-	school : "Trans",
-	time : "1 a",
-	range : "30 ft",
-	components : "V,S,M",
-	compMaterial : "strip of metal with burrs",
-	duration : "Instantaneous",
-	description : "Melee spell atk, 1d6 Piercing dmg and pull ≤ Large crea up to 10 ft towards me; +1d6 at CL 5, 11, 17",
-	descriptionCantripDie : "Melee spell attack for `CD`d6 Piercing dmg and pull ≤ Large crea up to 10 ft towards me",
-	descriptionFull : "You create a long, arcane whip covered in runic barbs that lashes out at your command toward a creature in range. Make a melee spell attack against the target. If the attack hits, the creature takes 1d6 piercing damage, and if the creature is Large or smaller, you pull the creature up to 10 feet closer to you." + "\n   " + "This spell's damage increases by 1d6 when you reach 5th level (2d6), 11th level (3d6), and 17th level (4d6)."
-},
-WeaponsList["yanking gadget"] = { // Thorn Whip
-	regExpSearch : /^(?=.*yanking)(?=.*gadget).*$/i,
-	name : "Yanking Gadget",
-	source : ["NN:S", 282],
-	list : "spell",
-	ability : 5,
-	type : "Cantrip",
-	damage : ["C", 6, "piercing"],
-	range : "Melee, 30 ft",
-	description : "Melee spell attack, pull target up to 10 ft closer",
-	abilitytodamage : false
-},
-/* Yanking Gadget
-Transmutation cantrip
-Casting Time: 1 action
-Range: 30 feet
-Components: V, S, M (the stem of a plant with thorns)
-Duration: Instantaneous
-You create a long, arcane whip covered in runic barbs that lashes out at your command toward a creature in range. Make a melee spell attack against the target. If the attack hits, the creature takes 1d6 piercing damage, and if the creature is Large or smaller, you pull the creature up to 10 feet closer to you.
-This spell's damage increases by 1d6 when you reach 5th level (2d6), 11th level (3d6), and 17th level (4d6).
-Classes: Artificer */
-
-// Level 1
-SpellsList["adrenalizing gadget"] = { // Gift of Alacrity
-	name : "Adrenalizing Gadget",
-	classes : ["artificer"],
-	source : [["NN:S", 186]],
-	level : 1,
-	school : "Div",
-	time : "1 min",
-	range : "Touch",
-	components : "V,S",
-	duration : "8 h",
-	description : "1 willing creature can add 1d8 to its initiative rolls for the duration",
-	descriptionFull : "You touch a willing creature. For the duration, the target can add 1d8 to its initiative rolls."
-},
-SpellsList["climbing gadget"] = { // Climbing Spikes (Knuckleheads)
-	name: "Climbing Gadget",
-	classes: ["artificer"],
-	source: ["NN:S", 33],
-	level: 1,
-	school: "Trans",
-	time: "1 a",
-	range: "Touch",
-	components: "V,S,M",
-	compMaterial: "a nail",
-	duration: "8 hr",
-	description: "1 crea's boots & gloves, gain adv to climb/balance on icy/rocky terrain, ignore ice/snow difficult terrain",
-	descriptionFull: "Icy spikes grow from the boots and gloves of a creature I touch. Until the spell ends, the creature has advantage on any checks made to climb or maintain their balance on icy or rocky terrain, and they ignore difficult terrain created by ice or deep snow. The spell ends early if the boots or gloves are removed." + "\n   " + AtHigherLevels + "When I cast this spell using a spell slot of 2nd or higher level, I can target one additional creature for each slot level above 1st."
-},
-SpellsList["gravity surging gadget"] = { // Magnify Gravity
-	name : "Gravity Surging Gadget",
-	classes : ["artificer"],
-	source : [["NN:S", 188]],
-	level : 1,
-	school : "Trans",
+// Level 7
+SpellsList["inevitibility"] = {  // Tether Essence
+	name : "Inevitibility",
+	classes : ["wizard"],
+	source : [["NN:S", 189], ["W", 189]],
+	level : 7,
+	school : "Necro",
 	time : "1 a",
 	range : "60 ft",
-	components : "V,S",
-	duration : "1 rnd",
-	save : "Con",
-	description : "10-ft rad all crea 2d8+1d8/SL Force dmg, half spd; Save halves \u0026 no spd reduce; Str check to move obj",
-	descriptionShorter : "10-ft rad all 2d8+1d8/SL Force dmg, half spd; Save half, no spd reduce; Str check to move obj",
-	descriptionFull : "The gravity in a 10-foot-radius sphere centered on a point you can see within range increases for a moment. Each creature in the sphere on the turn when you cast the spell must make a Constitution saving throw. On a failed save, a creature takes 2d8 force damage, and its speed is halved until the end of its next turn. On a successful save, a creature takes half as much damage and suffers no reduction to its speed.\n   Until the start of your next turn, any object that isn't being worn or carried in the sphere requires a successful Strength check against your spell save DC to pick up or move." + AtHigherLevels + "When you cast this spell using a spell slot of 2nd level or higher, the damage increases by 1d8 for each slot level above 1st."
-},
-SpellsList["illuminating gadget"] = { // Faerie Fire
-	name : "Illuminating Gadget",
-	classes : ["artificer"],
-	source : [["NN:S", 141], ["SRD", 141], ["P", 239]],
-	level : 1,
-	school : "Evoc",
-	time : "1 a",
-	range : "60 ft",
-	components : "V",
-	duration : "Conc, 1 min",
-	save : "Dex",
-	description : "20-ft cube all obj/crea save or outlined in 10 ft dim light and attacks have adv.; see invisible crea",
-	descriptionFull : "Each object in a 20-foot cube within range is outlined in blue, green, or violet light (your choice). Any creature in the area when the spell is cast is also outlined in light if it fails a Dexterity saving throw. For the duration, objects and affected creatures shed dim light in a 10-foot radius." + "\n   " + "Any attack roll against an affected creature or object has advantage if the attacker can see it, and the affected creature or object can't benefit from being invisible.",
-},
-SpellsList["medicating gadget"] = { // Cure Wounds
-	name : "Medicating Gadget",
-	classes : ["artificer"],
-	source : [["NN:S", 132], ["SRD", 132], ["P", 230]],
-	level : 1,
-	school : "Evoc",
-	time : "1 a",
-	range : "Touch",
-	components : "V,S",
-	duration : "Instantaneous",
-	description : "1 living creature heals 1d8+1d8/SL+spellcasting ability modifier HP",
-	descriptionFull : "A creature you touch regains a number of hit points equal to 1d8 + your spellcasting ability modifier. This spell has no effect on undead or constructs." + AtHigherLevels + "When you cast this spell using a spell slot of 2nd level or higher, the healing increases by 1d8 for each slot level above 1st."
-},
-SpellsList["navigating gadget"] = { // Conjure Compass (Knuckleheads)
-	name: "Navigating Gadget",
-	classes: ["artificer"],
-	source: ["NN:S", 34],
-	level: 1,
-	school: "Conj",
-	time: "1 min",
-	range: "Touch",
-	components: "V,S,M",
-	compMaterial: "a small stone",
-	duration: "8 hr",
-	description: "Ench a stone that tugs north in a creature's hand",
-	descriptionFull: "I temporarily enchant a small stone to emit a gentle tug when the creature holding it faces north."
-},
-SpellsList["purifying gadget"] = { // Purify Food and Drink
-	name : "Purifying Gadget",
-	classes : ["artificer"],
-	source : [["NN:S", 173], ["SRD", 173], ["P", 270]],
-	ritual : true,
-	level : 1,
-	school : "Trans",
-	time : "1 a",
-	range : "10 ft",
-	components : "V,S",
-	duration : "Instantaneous",
-	description : "5-ft rad of food and drink is rendered free of all poison and disease",
-	descriptionFull : "All nonmagical food and drink within a 5-foot-radius sphere centered on a point of your choice within range is purified and rendered free of poison and disease."
-},
-SpellsList["thawing gadget"] = { // Thaw (Knuckleheads)
-	name: "Thawing Gadget",
-	classes: ["artificer"],
-	source: ["NN:S", 36],
-	level: 1,
-	school: "Evoc",
-	time: "1 a",
-	range: "30 ft",
-	components: "V,S",
-	duration: "1 hr",
-	description: "Melt 3+1/SL x 10-ft cubes or deal 1 ice/snow-noid crea 3d6+1d6/SL Fire dmg, Dex save to halve",
-	descriptionFull: "I melt an area of ice and snow that I can see within range. Three 10-ft.cubes anywhere within 30 feet of me are instantaneously melted. The resulting area is not magical and will refreeze normally. Instead of melting ice and snow, I may choose to instead target a single creature within 30 feet that is made of ice or snow (such as an ice mephit or a simulacrum.) The creature must make a Constitution saving throw. On a failed save the creature takes 3d6 fire damage, or half as much damage on a successful one." + "\n   " + AtHigherLevels + "When I cast this spell using a spell slot of 2nd level or higher, I may affect an additional 10-ft.cube or increase the damage by 1d6 for each slot level above 1st."
-},
-SpellsList["warding gadget"] = { // Sanctuary
-	name : "Warding Gadget",
-	classes : ["artificer"],
-	source : [["NN:S", 176], ["SRD", 176], ["P", 272]],
-	level : 1,
-	school : "Abjur",
-	time : "1 bns",
-	range : "30 ft",
-	components : "V,S,M",
-	compMaterial : "A small silver mirror",
-	duration : "1 min",
-	save : "Wis",
-	description : "1 crea warded; any who want to attack/target must first make save; doesn't protect vs. area spells",
-	descriptionFull : "You ward a creature within range against attack. Until the spell ends, any creature who targets the warded creature with an attack or a harmful spell must first make a Wisdom saving throw. On a failed save, the creature must choose a new target or lose the attack or spell. This spell doesn't protect the warded creature from area effects, such as the explosion of a fireball." + "\n   " + "If the warded creature makes an attack, casts a spell that affects an enemy, or deals damage to another creature, this spell ends."
-},
-SpellsList["weapon bursting gadget"] = { // Brittle (Knuckleheads)
-	name: "Weapon Bursting Gadget",
-	classes: ["artificer"],
-	source: ["NN:S", 33],
-	level: 1,
-	school: "Trans",
-	time: "1 a",
-	range: "15 ft",
-	components: "V,S",
-	duration: "Conc, 1 min",
-	save: "Dex",
-	description: "1 crea w/ non-magic weapon save or weapon is destroyed after its next use",
-	descriptionFull: "I make a non-magical weapon held by a creature temporarily fragile. The next time the weapon is used to make an attack, the creature holding it must succeed a Dexterity saving throw or the weapon shatters and is destroyed after the attack is resolved. If the save succeeds, the weapon is unharmed and the spell ends."
-},
-SpellsList["weapon infusing gadget"] = { // Arcane Weapon
-	name : "Weapon Infusing Gadget",
-	classes : ["artificer"],
-	source : [["NN:S", 14]],
-	level : 1,
-	school : "Trans",
-	time : "1 bns",
-	range : "Self",
-	components : "V,S",
+	components : "V,S,M\u2020",
+	compMaterial : "A spool of platinum cord worth at least 250 gp, which the spell consumes",
 	duration : "Conc, 1 h",
-	description : "1 wea +1d6 dmg (acid, cold, fire, lightn., poison, or thunder); 1 bns change dmg type; SL3: conc, 8 h",
-	descriptionFull : "You channel arcane energy into one simple or martial weapon you're holding, and choose one damage type: acid, cold, fire, lightning, poison, or thunder. Until the spell ends, you deal an extra 1d6 damage of the chosen type to any target you hit with the weapon. If the weapon isn't magical, it becomes a magic weapon for the spell's duration.\n   As a bonus action, you can change the damage type, choosing from the options above." + AtHigherLevels + "When you cast this spell using a spell slot of 3rd level or higher, you can maintain your concentration on the spell for up to 8 hours. "
+	save : "Con",
+	description : "2 crea save (dis. if in 30 ft) or if both fail take same dmg and same healing; ends if 0 hp (250gp cons.)",
+	descriptionFull : "Two creatures you can see within range must make a Constitution saving throw, with disadvantage if they are within 30 feet of each other. Either creature can willingly fail the save. If either save succeeds, the spell has no effect. If both saves fail, the creatures are magically linked for the duration, regardless of the distance between them. When damage is dealt to one of them, the same damage is dealt to the other one. If hit points are restored to one of them, the same number of hit points are restored to the other one. If either of the tethered creatures is reduced to 0 hit points, the spell ends on both. If the spell ends on one creature, it ends on both."
 };
-
-// Remove certain spells from Artificer list
-SpellsList["cure wounds"] = {
-	name : "Cure Wounds",
-	classes : ["bard", "cleric", "druid", "paladin", "ranger"],
-	source : [["NN:S", 132], ["SRD", 132], ["P", 230]],
-	level : 1,
+// Level 8
+SpellsList["black hole sun"] = { // Dark Star
+	name : "Black Hole Sun",
+	classes : ["wizard"],
+	source : [["NN:S", 186], ["W", 186]],
+	level : 8,
 	school : "Evoc",
 	time : "1 a",
-	range : "Touch",
-	components : "V,S",
-	duration : "Instantaneous",
-	description : "1 living creature heals 1d8+1d8/SL+spellcasting ability modifier HP",
-	descriptionFull : "A creature you touch regains a number of hit points equal to 1d8 + your spellcasting ability modifier. This spell has no effect on undead or constructs." + AtHigherLevels + "When you cast this spell using a spell slot of 2nd level or higher, the healing increases by 1d8 for each slot level above 1st."
-},
-SpellsList["faerie fire"] = {
-	name : "Faerie Fire",
-	classes : ["bard", "druid"],
-	source : [["NN:S", 141], ["SRD", 141], ["P", 239]],
-	level : 1,
-	school : "Evoc",
+	range : "150 ft",
+	components : "V,S,M",
+	compMaterial : "A shard of onyx and a drop of the caster's blood, both of which the spell consumes",
+	duration : "Conc, 1 min",
+	save : "Con",
+	description : "Up to 40-ft rad as Darkness spell, as Silence spell, dif. ter.; enter/start turn 8d10 Force dmg, save half",
+	descriptionShorter : "Up to 40-ft rad as Darkness \u0026 Silence, dif. ter.; enter/start turn 8d10 Force dmg, save half",
+	descriptionFull : "This spell creates a sphere centered on a point you choose within range. The sphere can have a radius of up to 40 feet. The area within this sphere is filled with magical darkness and crushing gravitational force.\n   For the duration, the spell's area is difficult terrain. A creature with darkvision can't see through the magical darkness, and nonmagical light can't illuminate it. No sound can be created within or pass through the area. Any creature or object entirely inside the sphere is immune to thunder damage, and creatures are deafened while entirely inside it. Casting a spell that includes a verbal component is impossible there.\n   Any creature that enters the spell's area for the first time on a turn or starts its turn there must make a Constitution saving throw. The creature takes 8d10 force damage on a failed save, or half as much damage on a successful one. A creature reduced to 0 hit points by this damage is disintegrated. A disintegrated creature and everything it is wearing and carrying, except magic items, are reduced to a pile of fine gray dust."
+};
+SpellsList["reality break"] = { // Reality Break
+	name : "Reality Break",
+	classes : ["wizard"],
+	source : [["NN:S", 189], ["W", 189]],
+	level : 8,
+	school : "Conj",
 	time : "1 a",
 	range : "60 ft",
-	components : "V",
-	duration : "Conc, 1 min",
-	save : "Dex",
-	description : "20-ft cube all obj/crea save or outlined in 10 ft dim light and attacks have adv.; see invisible crea",
-	descriptionFull : "Each object in a 20-foot cube within range is outlined in blue, green, or violet light (your choice). Any creature in the area when the spell is cast is also outlined in light if it fails a Dexterity saving throw. For the duration, objects and affected creatures shed dim light in a 10-foot radius." + "\n   " + "Any attack roll against an affected creature or object has advantage if the attacker can see it, and the affected creature or object can't benefit from being invisible."
-},
-SpellsList["purify food and drink"] = {
-	name : "Purify Food and Drink",
-	classes : ["cleric", "druid", "paladin"],
-	source : [["NN:S", 173], ["SRD", 173], ["P", 270]],
-	ritual : true,
-	level : 1,
-	school : "Trans",
-	time : "1 a",
-	range : "10 ft",
-	components : "V,S",
-	duration : "Instantaneous",
-	description : "5-ft rad of food and drink is rendered free of all poison and disease",
-	descriptionFull : "All nonmagical food and drink within a 5-foot-radius sphere centered on a point of your choice within range is purified and rendered free of poison and disease."
-},
-SpellsList["sanctuary"] = {
-	name : "Sanctuary",
-	classes : ["cleric"],
-	source : [["NN:S", 176], ["SRD", 176], ["P", 272]],
-	level : 1,
-	school : "Abjur",
-	time : "1 bns",
-	range : "30 ft",
 	components : "V,S,M",
-	compMaterial : "A small silver mirror",
-	duration : "1 min",
+	compMaterial : "A crystal prism",
+	duration : "Conc, 1 min",
 	save : "Wis",
-	description : "1 crea warded; any who want to attack/target must first make save; doesn't protect vs. area spells",
-	descriptionFull : "You ward a creature within range against attack. Until the spell ends, any creature who targets the warded creature with an attack or a harmful spell must first make a Wisdom saving throw. On a failed save, the creature must choose a new target or lose the attack or spell. This spell doesn't protect the warded creature from area effects, such as the explosion of a fireball." + "\n   " + "If the warded creature makes an attack, casts a spell that affects an enemy, or deals damage to another creature, this spell ends."
+	description : "1 crea save or can't take reactions, random effect each turn, see book; extra save at end of every turn",
+	descriptionFull : "You shatter the barriers between realities and timelines, thrusting a creature into turmoil and madness. The target must succeed on a Wisdom saving throw, or it can't take reactions until the spell ends. The affected target must also roll a d10 at the start of each of its turns; the number rolled determines what happens to the target, as shown on the Reality Break Effects table."+
+	"\n   At the end of each of its turns, the affected target can repeat the Wisdom saving throw, ending the spell on itself on a success."+
+	"\n\n d10 \tEffect"+
+	"\n 1-2 \tVision of the Far Realm: The target takes 6d12 psychic damage, and it is stunned until the end of the turn."+
+	"\n 3-5 \tRending Rift: The target must make a Dexterity saving throw, taking 8d12 force damage on a failed save, or half as much damage on a successful one."+
+	"\n 6-8 \tWormhole: The target is teleported, along with everything it is wearing and carrying, up to 30 feet to an unoccupied space of your choice that you can see. The target also takes 10d12 force damage and is knocked prone."+
+	"\n 9-10\tChill of the Dark Void: The target takes 10d12 cold damage, and it is blinded until the end of the turn."
 };
+// Level 9
+SpellsList["pulsing void sphere"] = { // Ravenous Void
+	name : "Pulsing Void Sphere",
+	classes : ["wizard"],
+	source : [["NN:S", 188], ["W", 188]],
+	level : 9,
+	school : "Evoc",
+	time : "1 a",
+	range : "1000 ft",
+	components : "V,S,M",
+	compMaterial : "A small, nine-pointed star made of iron",
+	duration : "Conc, 1 min",
+	save : "Str",
+	description : "20-ft rad all enter/start 5d10 Force dmg, restrained; all enter/start in 100 ft save or pulled in; see B",
+	descriptionShorter : "20-ft rad all enter/start 5d10 Force dmg, restrained; all start in 100 ft save or pull in; see B",
+	descriptionFull : "You create a 20-foot-radius sphere of destructive gravitational force centered on a point you can see within range. For the spell's duration, the sphere and any space within 100 feet of it are difficult terrain, and nonmagical objects fully inside the sphere are destroyed if they aren't being worn or carried.\n   When the sphere appears and at the start of each of your turns until the spell ends, unsecured objects within 100 feet of the sphere are pulled toward the sphere's center, ending in an unoccupied space as close to the center as possible.\n   A creature that starts its turn within 100 feet of the sphere must succeed on a Strength saving throw or be pulled straight toward the sphere's center, ending in an unoccupied space as close to the center as possible. A creature that enters the sphere for the first time on a turn or starts its turn there takes 5d10 force damage and is restrained until it is no longer in the sphere. If the sphere is in the air, the restrained creature hovers inside the sphere. A creature can use its action to make a Strength check against your spell save DC, ending this restrained condition on itself or another creature in the sphere that it can reach. A creature reduced to 0 hit points by this spell is annihilated, along with any nonmagical items it is wearing or carrying."
+};
+SpellsList["life siphon"] = { // Time Ravage
+	name : "Life Siphon",
+	classes : ["wizard"],
+	source : [["NN:S", 189], ["W", 189]],
+	level : 9,
+	school : "Necro",
+	time : "1 a",
+	range : "90 ft",
+	components : "V,S,M\u2020",
+	compMaterial : "An hourglass filled with diamond dust worth at least 5,000 gp, which the spell consumes",
+	duration : "Instantaneous",
+	save : "Con",
+	description : "1 crea 10d12 Necrotic dmg \u0026 aged: dis. atk/chk/save, die in 30 days; save half, not aged (5k gp cons.)",
+	descriptionShorter : "1 crea 10d12 Necro. dmg, aged: dis. atk/chk/save, die in 30 days; save hlf, no aged (5k gp cons)",
+	descriptionFull : "You target a creature you can see within range, putting its physical form through the devastation of rapid aging. The target must make a Constitution saving throw, taking 10d12 necrotic damage on a failed save, or half as much damage on a successful one. If the save fails, the target also ages to the point where it has only 30 days left before it dies of old age. In this aged state, the target has disadvantage on attack rolls, ability checks, and saving throws, and its walking speed is halved. Only the wish spell or the greater restoration cast with a 9th-level spell slot can end these effects and restore the target to its previous age."
+};
+
 
 // Add Familiar Options
+CreatureList["chicken"] = {
+	name : "Chicken",
+	nameAlt : ["Rooster"],
+	source : [["NN:S", 382]],
+	size : 5,
+	type : "Beast",
+	companion : "familiar",
+	alignment : "Unaligned",
+	ac : 12,
+	hp : 4,
+	hd : [2, 4],
+	speed : "30 ft, fly 30 ft",
+	scores : [3, 14, 8, 2, 12, 6],
+	passivePerception : 11,
+	challengeRating : "0",
+	proficiencyBonus : 2,
+	attacksAction : 1,
+	attacks : [{
+		name : "Beak",
+		ability : 2,
+		damage : [1, 4, "piercing"],
+		range : "Melee (5 ft)",
+		description : "",
+		abilitytodamage : true
+	}],
+	actions : [{
+	name : "Uncanny Dodge",
+	description : "When an attacker that the [THIS] can see hits it with an attack, the [THIS] can use their reaction to halve the attack's damage against them."
+	}],
+	traits : [{
+		name : "Bad Flier",
+		description : "The [THIS] falls at the end of a turn if it's airborne and the only thing holding it aloft is its flying speed."
+	},{
+		name : "Chicken Walk",
+		description : "All attempts to grapple the [THIS] have disadvantage."
+	}]
+};
 CreatureList["hummingbird"] = {
 	name : "Hummingbird",
-	source : ["NHB"],
+	source : ["NN:S"],
 	size : 5, //Tiny
 	type : "Beast",
 	subtype : "",
