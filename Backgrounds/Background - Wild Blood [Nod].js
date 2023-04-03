@@ -2,7 +2,7 @@ var iFileName = "Background - Wild Blood [Nod].js";
 RequiredSheetVersion(13);
 
 SourceList["NodHB-WB"] = {
-	name : "Scrivner",
+	name : "Wild Blood",
 	abbreviation : "NodHB-WB",
 	group : "Nod's Homebrew",
 	date : "2021/12/29"
