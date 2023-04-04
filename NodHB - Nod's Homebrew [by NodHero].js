@@ -1,14 +1,21 @@
+/*	-WHAT IS THIS?-
+	This file adds optional material to "MPMB's Character Record Sheet" found at https://flapkan.com/mpmb/charsheets
+	Import this file using the "Add Extra Materials" bookmark.
+	-KEEP IN MIND-
+	It is recommended to enter the code in a fresh sheet before adding any other information (i.e. before making your character with it).
+*/
+/* A collection of things made by me and things made by others found from all around the internet.
+Credit goes to the original creators of the stuff I didn't make myself! */
+
 var iFileName = "Nod's Homebrew Collection.js"; 
 RequiredSheetVersion(13);
 
 SourceList["NHB"] = {
 	name : "Nod's Homebrew Collection",
-	/* A collection of things made by me and things made by others found from all around the internet.
-	Credit goes to the original creators of the stuff I didn't make myself! */
 	abbreviation : "NHB",
 	abbreviationSpellsheet: "N",
 	group : "Nod's Homebrew",
-	date : "2023/03/28"
+	date : "2021/12/29"
 };
 
 // Add Races
@@ -208,6 +215,163 @@ RaceList["revenant"] = {
 };
 
 // Add Classes/Subclasses
+AddSubClass("druid", "circle of hoarfrost", {
+	regExpSearch : /^(?=.*(druid|shaman))(?=.*circle)(?=.*hoar.{0,1}frost).*$/i,
+	subname : "Circle of Hoarfrost",
+	source : [["NHB", 1]],
+	features : {
+		"subclassfeature2" : {
+			name : "Circle Spells",
+			source : [["NHB", 1]],
+			minlevel : 2,
+			description: desc ([
+				"My link to an arctic spirit infuses me with the ability to cast Ice Barrage and choose certain",
+				"spells as druid spells. My Circle of Hoarfrost spells are always prepared, but don't count",
+				"against the number of spells I can prepare"
+			]),
+			calcChanges : {
+			spellList : [
+			function(spList, spName, spType) {
+				if (!ClassList[spName] || spList.spells || spList.psionic) return;
+				if (spType.indexOf("bonus") !== -1 && (spList.school || !spList["class"] || (spList["class"].indexOf(spName) === -1 && spName !== "fighter"))) return;
+				spList.extraspells = spList.extraspells.concat(["ray of frost", "wall of ice"]);
+			},
+		]
+	},
+			spellcastingBonus: {
+				name: "Circle Spells",
+				spells: ["ice barrage"],
+				selection : ["ice barrage"],
+			},
+			spellcastingExtra: ["cure wounds", "frost fingers", "buffeting eddies", "rime's binding ice", "revivify", "sleet storm", "auroral winds", "ice storm", "cone of cold", "mass cure wounds"]
+		},
+		"subclassfeature2.1" : {
+			name : "Summon Arctic Spirit",
+			source : [["NHB", 1]],
+			minlevel : 2,
+			description : desc([
+				"As an action, I can expend a use of wild shape to summon an arctic spirit within 30 ft",
+				"All within 10 ft of where it manifests must make a Dex save or take 2d10 cold damage",
+				"It is friendly and obeys my commands; It lasts for 1 hour, until it has 0 HP, or I die",
+				"Unless I use a bonus action to command it, it only takes the Dodge action on its turn",
+				"It can always take reactions and move on its turn; It acts on my initiative, after me",
+				'It disappears if I summon another; See "Arctic Spirit" on a companion page for its stats',
+			]),
+			action : [["action", ""], ["bonus action", "Command Arctic Spirit"]],
+			creaturesAdd : [["Arctic Spirit", true]],
+			creatureOptions : [{
+				name : "Arctic Spirit",
+				source : [["NHB", 1]],
+				size : 4,
+				type : "Elemental",
+				alignment : "",
+				ac : 13,
+				hp : 20,
+				hd : [],
+				speed : "30 ft, fly 30 ft (hover)",
+				scores : [10, 14, 14, 13, 15, 11],
+				damage_immunities : "cold",
+				condition_immunities : "charmed, frightened, grappled, prone, restrained",
+				senses : "Darkvision 60 ft",
+				passivePerception : 12,
+				languages : "understands the languages of its creator",
+				challengeRating : "1/2",
+				proficiencyBonus : 2,
+				proficiencyBonusLinked : true,
+				attacksAction : 1,
+				attacks : [{
+					name : "Hailstone",
+					ability : 5,
+					damage : [1, 6, "cold"],
+					range : "60 ft",
+					description : "Ranged weapon attack",
+					modifiers : ["", "Prof"],
+					abilitytodamage : false,
+					useSpellMod : "druid"
+				}, {
+					name : "Frigid Teleportation",
+					ability : 5,
+					damage : [1, 6, "cold"],
+					range : "5-ft radius",
+					description : "Dex save for all within 5 ft of teleportation origin, success - no damage; See traits",
+					dc : true,
+					modifiers : ["", "Prof"],
+					abilitytodamage : false,
+					useSpellMod : "druid"
+				}, {
+					name : "Frigid Manifestation",
+					ability : 5,
+					damage : [2, 6, "cold"],
+					range : "10-ft radius",
+					description : "Dex save for all within 10 ft where spirit is summoned, success - no damage",
+					dc : true,
+					abilitytodamage : false,
+					useSpellMod : "druid"
+				}],
+				features : [{
+					name : "Creator",
+					description : "The spirit obeys the commands of its creator and has the same proficiency bonus. It takes its turn immediately after its creator, on the same initiative count. It can move and take reactions on its own, but only takes the Dodge action on its turn unless its creator takes a bonus action to command it to take another action. If its creator is incapacitated, it can take any action, not just Dodge."
+				}],
+				actions : [{
+					name : "Frigid Teleportation",
+					description : "The spirit and each willing creature of its creator's choice within 5 ft of it teleport up to 15 ft to unoccupied spaces its creator can see. Then each creature within 5 ft of the space that the spirit left must succeed on a Dexterity saving throw against its creator's spell save DC or take cold damage equal to 1d6 + its proficiency bonus."
+				}],
+				traits : [{
+					name : "Frigid Manifestation",
+					description : "The spirit appears in an unoccupied space of its creator's choice that its creator can see within 30 ft. Each creature within 10 ft of the spirit (other than its creator) when it appears must succeed on a Dexterity saving throw against its creator's spell save DC or take 2d6 cold damage."
+				}],
+				header : "Tundra",
+				calcChanges : {
+					hp : function (totalHD, HDobj, prefix) {
+						if (!classes.known.druid) return;
+						var drdLvl = classes.known.druid.level;
+						var drdLvl5 = 5 * drdLvl;
+						HDobj.alt.push(5 + drdLvl5);
+						HDobj.altStr.push(" = 10 as a base\n + 5 \xD7 " + drdLvl + " from five times its creator's druid level (" + drdLvl5 + ")");
+					},
+					setAltHp : true
+				}
+			}]
+		},
+		"subclassfeature6" : {
+			name : "Tundral Bond",
+			source : [["NHB", 2]],
+			minlevel : 6,
+			description : desc([
+				"While my arctic spirit is present, I can have my spells originate from it (no range 'self')",
+				"I can add 1d8 to a single roll of my spells that restore HP. Also, any spell or effect I create",
+				"that deals cold damage ignores resistance to cold damage. At 18th level, any spell or effect",
+				"I create that deals cold damage treats immunity to cold damage as resistance", 
+			])
+		},
+		"subclassfeature10" : {
+			name : "Boreal Lights",
+			source : [["NHB", 2]],
+			minlevel : 10,
+			description : desc([
+				"As a reaction when a Small or larger creature dies within 30 ft of me or arctic spirit,",
+				"I can have a spectral light erupt in its space that lasts for 1 minute",
+				"As a reaction when I see a creature enter the light's space, I can extinguish the light",
+				"This heals or deals cold damage to the creature (my choice) equal to 2d10 + my Wis mod"
+			]),
+			action : [["reaction", ""]],
+			usages : "Proficiency Bonus per ",
+			usagescalc : "event.value = How('Proficiency Bonus');",
+			recovery : "long rest"
+		},
+		"subclassfeature14" : {
+			name : "Polar Succor",
+			source : [["NHB", 2]],
+			minlevel : 14,
+			description : desc([
+				"If I drop to 0 HP and don't die, and my arctic spirit is within 120 ft, it can save me",
+				"I can have it drop to 0 HP; I then regain half my HP and immediately rise to my feet"
+			]),
+			usages : 1,
+			recovery : "long rest"
+		}
+	}
+});
 AddSubClass("druid", "circle of the tundra", {
 	regExpSearch : /^(?=.*(druid|shaman))(?=.*circle)(?=.*tundra).*$/i,
 	subname: "Circle of the Tundra",
@@ -866,6 +1030,19 @@ FEAT: Backroad Magic
 You learn two cantrips (Druidcraft, Guidance, or Mage Hand) and a 1st-level spell from the druid or wizard spell list. You can cast the chosen 1st-level spell without a spell slot, and you must finish a long rest before you can cast it in this way again. You can also cast the spell using any spell slots you have.
 Your spellcasting ability for this feat's spells is Intelligence, Wisdom, or Charisma (choose when you select this feat).
 */
+AddBackgroundVariant("hermit", "eremite", { // Hermit w/ Dimir spell list and Magic Initiate Druid feat
+	regExpSearch : /eremite/i,
+	name : "Eremite",
+	source : [["NHB", 139]],
+	calcChanges : {
+	spellList : [
+	function(spList, spName, spType) {
+		if (!ClassList[spName] || spList.spells || spList.psionic) return;
+		if (spType.indexOf("bonus") !== -1 && (spList.school || !spList["class"] || (spList["class"].indexOf(spName) === -1 && spName !== "fighter"))) return; spList.extraspells = spList.extraspells.concat(["dissonant whispers", "silvery barbs", "calm emotions", "darkness", "beacon of hope", "daylight", "compulsion", "confusion", "dominate person", "rary's telepathic bond"]); },
+		"My background feature adds extra spells to the spell list(s) of my spellcasting class(es): Dissonant Whispers, Silvery Barbs, Calm Emotions, Darkness, Beacon of Hope, Daylight, Compulsion, Confusion, Dominate Person, and Rary's Telepathic Bond." ]},
+	eval : function() { AddFeat("Magic Initiate [Druid]"); },
+	removeeval : function() { RemoveFeat("Magic Initiate [Druid]"); },
+});
 BackgroundList["folk healer"] = { // folk healer
 	regExpSearch : /^(?=.*folk)(?=.*healer).*$/i,
 	name : "Folk Healer",
@@ -1334,7 +1511,6 @@ AddBackgroundVariant("soldier", "knight gallant", {
 	removeeval : function() { RemoveFeat("Gallant Magic"); },
 	lifestyle : "comfortable"
 });
-
 BackgroundList["military veteran"] = { // Soldier with Boros Legionnaire spells and Silverquill feat
 	regExpSearch : /^(?=.*military)(?=.*(veteran)).*$/i,
 	name : "Military Veteran",
@@ -3563,7 +3739,7 @@ FeatsList["swift and ruthless violence"] = { // Bugbear
 	source : ["NHB", 3],
 	prerequisite : "Being a Bugbear",
 	prereqeval : "CurrentRace.known.indexOf('bugbear') !== -1",
-	description : " [+1 Strength or Dexterity]",
+	description : "Prof/LR I can make a bonus action melee attack, gain THP equal to the damage dealt when I reduce a creature to zero hp, and double my speed [+1 Strength or Dexterity]",
 	descriptionFull : "Bugbears are capable of bouts of incredible ferocity, using their long-limbed muscular bodies to exact swift and ruthless violence. You gain the following benefits:\n \u2022 Increase your Strength or Dexterity score by 1, to a maximum of 20.\n \u2022 You can make one melee weapon attack as a bonus action. You can use this trait a number of times equal to your proficiency bonus, regaining all expended uses when you finish a long rest.\n \u2022 On your turn, when you reduce a creature to 0 hit points, you can gain temporary hit points equal to the damage roll. You can use this ability a number of times equal to your proficiency bonus, regaining all expended uses when you finish a long rest, and you can use it no more than once per turn.\n \u2022 When you move on your turn in combat, you can double your speed until the end of the turn. You can use this ability a number of times equal to your proficiency bonus, regaining all expended uses when you finish a long rest, and you can use it no more than once per turn.",
 	scorestxt : "+1 Strength or Dexterity",
 	action : [["bonus action", "One melee weapon attack"]],
@@ -3999,10 +4175,10 @@ FeatsList["vizier heritage"] = {
 	source : ["NHB"],
 	prerequisite : "Being an Air Genasi",
 	prereqeval : "CurrentRace.known.indexOf('genasi') !== -1 && CurrentRace.known.indexOf('air') !== -1",
-	description : "I can cast the Gust cantrip, and the Jump spell as a Bonus action at-will targeting myself. Once per rest, I can transform the lower half of my body into a whirlwind for up to 10 minutes. I gain a flying speed of 30 ft, can Dash as a Bonus action, and don't provoke attacks of opportunity. [+1 Int, Wis, or Cha]",
-	descriptionFull : "You manifest more of the magical power of your Vizier (noble djinn) heritage. You gain the following benefits:\n \u2022 Increase your Intelligence, Wisdom or Charisma score by 1, to a maximum of 20.\n \u2022 You learn the Gust cantrip and the Jump spell, which you can cast as a bonus action at will, without expending a spell slot, but can target only yourself when you do so.\n \u2022 As an action, you can transform the lower half of your body into a spiraling whirlwind, allowing you to float through the air. While transformed, you have a flying speed of 30 feet and as a bonus action on each of your turns until the whirlwind ends, you can take the Dash action. Movement while in whirlwind form does not provoke attacks of opportunity. You can maintain this form for up to 10 minutes. Once you use this ability, you cannot use it again until you finish a short or long rest.",
+	description : "I learn Gust, Jump as a Bonus action at-will on myself. If I haven't moved, bonus action move speed x 2 to make full distance high or long jump. Move 0 when land, must full turn no move before doing again. 1/SR, Whirlwind Form for 10 min = 30 ft Fly, bonus Dash, don't provoke opportunity attacks. [+1 Int, Wis, or Cha]",
+	descriptionFull : "You manifest more of the magical power of your Vizier (noble djinn) heritage. You gain the following benefits:\n \u2022 Increase your Intelligence, Wisdom or Charisma score by 1, to a maximum of 20.\n \u2022 You learn the Gust cantrip. You learn the Jump spell, which you can cast as a bonus action at will, without expending a spell slot, but can target only yourself when you do so. The spells' spellcasting ability is the ability increased by this feat.\n \u2022 Get Air. If you haven't moved during this turn, as a bonus action, you can double your move speed until the end of the turn. The extra movement can only be used as as part of a long jump or high jump, neither of which requires a running start to move your full jump distance. After you land, your speed is 0 until the end of the current turn, and you can't use this feature again until you move 0 feet on one of your turns.\n \u2022 Whirlwind Form. As an action, you can transform the lower half of your body into a spiraling whirlwind, allowing you to float through the air. While transformed, you have a flying speed of 30 feet and as a bonus action on each of your turns until the whirlwind ends, you can take the Dash action. Movement while in whirlwind form does not provoke attacks of opportunity. You can maintain this form for up to 10 minutes. Once you use this ability, you cannot use it again until you finish a short or long rest.",
 	scorestxt : "+1 Intelligence, Wisdom, or Charisma",
-	action : [["action", "Whirlwind Transformation"]],
+	action : [["action", "Whirlwind Form"], ["bonus action", "Catch Air"], ["bonus action", "Jump spell (self)"]],
 	usages : 1,
 	recovery : "short rest",
 	additional : "Whirlwind",
@@ -4031,8 +4207,9 @@ FeatsList["vizier heritage"] = {
 Prerequisites: being a Genasi (Air)
 You manifest more of the magical power of your Vizier (Noble Djinn) heritage. You gain the following benefits:
 • Increase your Intelligence, Wisdom, or Charisma by 1, to a maximum of 20.
-• You learn the Gust cantrip and the Jump spell, which you can cast as a bonus action at will, without expending a spell slot, but can target only yourself when you do so.
-• As an action, you can transform the lower half of your body into a spiraling whirlwind, allowing you to float through the air. While transformed, you have a flying speed of 30 feet and as a bonus action on each of your turns until the whirlwind ends, you can take the Dash action. Movement while in whirlwind form does not provoke attacks of opportunity. You can maintain this form for up to 10 minutes. Once you use this ability, you cannot use it again until you finish a short or long rest. */
+• You learn the Gust cantrip. You learn the Jump spell, which you can cast as a bonus action at will, without expending a spell slot, but can target only yourself when you do so. The spells' spellcasting ability is the ability increased by this feat.
+• Get Air. If you haven't moved during this turn, as a bonus action, you can double your move speed until the end of the turn. The extra movement can only be used as as part of a long jump or high jump, neither of which requires a running start to move your full jump distance. After you land, your speed is 0 until the end of the current turn, and you can't use this feature again until you move 0 feet on one of your turns.
+• Whirlwind Form. As an action, you can transform the lower half of your body into a spiraling whirlwind, allowing you to float through the air. While transformed, you have a flying speed of 30 feet and as a bonus action on each of your turns until the whirlwind ends, you can take the Dash action. Movement while in whirlwind form does not provoke attacks of opportunity. You can maintain this form for up to 10 minutes. Once you use this ability, you cannot use it again until you finish a short or long rest. */
 
 // Genasi (Earth)
 FeatsList["pasha heritage"] = {
@@ -4572,6 +4749,131 @@ You are a special example for your race. You gain the following benefits:
 • Leap About. You regain all expended uses of your Rabbit Hop feature when you finish a short rest.
 • Better Not Risk Another Frontal Assault. You have advantage on Wisdom (Perception) checks that rely on hearing. */
 
+// Hexblood
+FeatsList["a heart's desire"] = {  // Hexblood
+    name : "A Heart's Desire",
+	source : [["NHB", 74]],
+	prerequisite : "Being a Hexblood",
+	prereqeval : function(v) { return CurrentRace.known.indexOf('hexblood') !== -1; },
+	descriptionFull : "Where wishing fails, ancient magic can offer a heart's desire—at least, for a time. Hexbloods are individuals infused with eldritch magic, fey energy, or mysterious witchcraft. You gain the following benefits:\n \u2022 Increase your Intelligence, Wisdom, or Charisma by 1, to a maximum of 20.\n \u2022 You learn the Detect Magic spell and can cast it at will, without expending a spell slot.\n \u2022 You learn the Blindness/Deafness and Bestow Curse spells. You can cast each of these spells without expending a spell slot. Once you cast either of these spells in this way, you can't cast that spell in this way again until you finish a long rest. You can also cast these spells using spell slots you have of the appropriate level. The spells' spellcasting ability is the ability increased by this feat.",
+	description : "I can cast Detect Magic at will. I learn the Blindness/Deafness and Bestow Curse spells. I can cast each once per long rest at their lowest level without expending a spell slot, and can cast them if I have a spell slot to do so. My spellcasting ability is the ability I choose to increase when I gain this feat. [+1 Intelligence, Wisdom, or Charisma]",
+	spellcastingBonus : [{
+		name : "At will",
+		spells : ["detect magic"],
+		selection : ["detect magic"],
+		firstCol : 'atwill'
+	},	{
+		name : "Blindness/Deafness",
+		spells : ["blindness/deafness"],
+		selection : ["blindness/deafness"],
+		firstCol : "oncelr"
+	}, {
+		name : "Bestow Curse",
+		spells : ["bestow curse"],
+		selection : ["bestow curse"],
+		firstCol : "oncelr"
+	}],
+	spellcastingAbility : 4,
+	allowUpCasting : true,
+	choices: ["Intelligence", "Wisdom", "Charisma"],
+	"intelligence" : {
+		description : "I can cast Detect Magic at will, without expending a spell slot. I learn the Blindness/Deafness and Bestow Curse spells. I can cast each once per long rest at their lowest level without expending a spell slot, and can cast them by expending a spell slot as normal. Intelligence is my spellcasting ability for these spells. [+1 Intelligence]",
+		spellcastingAbility : 4,
+		scores : [0, 0, 0, 1, 0, 0]
+	},
+	"wisdom" : {
+		description : "I can cast Detect Magic at will, without expending a spell slot. I learn the Blindness/Deafness and Bestow Curse spells. I can cast each once per long rest at their lowest level without expending a spell slot, and can cast them by expending a spell slot as normal. Wisdom is my spellcasting ability for these spells. [+1 Wisdom]",
+		spellcastingAbility : 5,
+		scores : [0, 0, 0, 0, 1, 0]
+	},
+	"charisma" : {
+		description : "I can cast Detect Magic at will, without expending a spell slot. I learn the Blindness/Deafness and Bestow Curse spells. I can cast each once per long rest at their lowest level without expending a spell slot, and can cast them by expending a spell slot as normal. Charisma is my spellcasting ability for these spells. [+1 Charisma]",
+		spellcastingAbility : 6,
+		scores : [0, 0, 0, 0, 0, 1]
+	},
+	extraLimitedFeatures : [{
+		name : "Blindness/Deafness",
+		usages : 1,
+		recovery: "long rest",
+		altResource : "SS 2+"
+	},{
+		name : "Bestow Curse",
+		usages : 1,
+		recovery: "long rest",
+		altResource : "SS 3+"
+	}],
+};
+/* A Heart's Desire
+Prerequisite: Hexblood
+Where wishing fails, ancient magic can offer a heart's desire—at least, for a time. Hexbloods are individuals infused with eldritch magic, fey energy, or mysterious witchcraft. You gain the following benefits:
+• Increase your Intelligence, Wisdom, or Charisma by 1, to a maximum of 20.
+• You learn the Detect Magic spell and can cast it at will, without expending a spell slot. You also learn the Blindness/Deafness and Bestow Curse spells. You can cast each of these spells without expending a spell slot. Once you cast either of these spells in this way, you can't cast that spell in this way again until you finish a long rest. You can also cast these spells using spell slots you have of the appropriate level. The spells' spellcasting ability is the ability increased by this feat. */
+FeatsList["heir of hags"] = {
+	name : "Heir of Hags",
+	source : [["NHB", 74]],
+	prerequisite : "Being a Hexblood",
+	prereqeval : function(v) { return CurrentRace.known.indexOf('hexblood') !== -1; },
+	descriptionFull : "A bargain with a hag or other eerie forces transformed your character into a magical being. Your transformation was more potent than many other hexbloods. You gain the following benefits:\n \2022 Eerier Tokens. You can now create a number of Eerie Tokens equal to your proficiency bonus. Instead of an action, you may instead use a bonus action for Remote Viewing or to send a Telepathic Message. The creature holding or carrying the token can respond to you telepathically with a short message of twenty-five words or less, but can not initiate a message to you.\n \2022 Epicaricacy. When a creature you can see within 30 feet of you rolls a 1 on an attack roll, skill check, or saving throw, you can use your rection to gain advantage on your next attack roll, skill check, or saving throw. You can give yourself advantage in this way a number of times equal to your proficiency bonus, and you regain all expended uses when you finish a short rest.",
+	description : "I can create up to my prof bonus of Eerie Tokens, and can use a bonus action to use them. Creatures carrying my token can respond to my telepathic messages. [Prof/SR] When a 1 is rolled within 30 ft, I can use my reaction to gain advantage on my next attack/check/save. [+1 to Intelligence, Wisdom, or Charisma]",
+	scorestxt : "+1 Intelligence, Wisdom, or Charisma",
+	action : [["reaction", "Epicaricacy"], ["bonus action", "Eerie Token (use)"]],
+	extraLimitedFeatures : [{
+		name : "Eerie Token",
+		usages : "Proficiency Bonus per ",
+		usagescalc : "event.value = How('Proficiency Bonus');",
+		recovery : "long rest"
+	}, {
+		name : "Epicaricacy",
+		usages : "Proficiency Bonus per ",
+		usagescalc : "event.value = How('Proficiency Bonus');",
+		recovery : "short rest"
+	}],
+};
+/* Heir of Hags
+Prerequisite: Hexblood
+A bargain with a hag or other eerie forces transformed your character into a magical being. Your transformation was more potent than many other hexbloods. You gain the following benefits:
+• Increase your Intelligence, Wisdom, or Charisma by 1, to a maximum of 20.
+• Eerier Tokens. You can now create a number of Eerie Tokens equal to your proficiency bonus. Instead of an action, you may instead use a bonus action for Remote Viewing or to send a Telepathic Message. The creature holding or carrying the token can respond to you telepathically with a short message of twenty-five words or less, but can not initiate a message to you.
+• Epicaricacy. When a creature you can see within 30 feet of you rolls a 1 on an attack roll, skill check, or saving throw, you can use your rection to gain advantage on your next attack roll, skill check, or saving throw. You can give yourself advantage in this way a number of times equal to your proficiency bonus, and you regain all expended uses when you finish a short rest. */
+FeatsList["weird companionship"] = {
+	name : "Weird Companionship",
+	source : [["NHB", 74]],
+	prerequisite : "Being a Hexblood",
+	prereqeval : function(v) { return CurrentRace.known.indexOf('hexblood') !== -1; },
+	descriptionFull : "Although they are solitary by nature, hags sometimes feel the need for companionship, and the weird magic at a hag's disposal means that she might have almost any type of creature helping or serving her. Some of this weird magic has transferred over to you. You gain the following benefits:\n \2022 Mimicry. You can can mimic animal sounds and humanoid voices. A creature that hears the sounds can tell they are imitations with a successful Wisdom (Insight) check opposed by your Charisma (Deception) check.\n \2022 Minion. You learn the Find Familiar spell. You can cast it as a ritual and can also cast it without expending a spell slot. Once you cast it in this way, you can't cast it in this way again until you finish a long rest. You can also cast it using spell slots you have. The spells' spellcasting ability is the ability increased by this feat.\n\n> The familiar can perch on your shoulder. While perched on your shoulder, the familiar can't be targeted by any attack or other harmful effect; only you can cast spells on it; it can't take damage; and it is incapacitated. While the familiar is perched on your shoulder, you gain a bonus to your passive Wisdom (Perception) score and to Wisdom (Perception) checks. The bonus equals the modifier for the ability increased by this feat.\n\n> The familiar doesn't require sleep. While it is within 100 feet of you, it can awaken you from sleep as a bonus action. The familiar vanishes when it dies, if you die, or if the two of you are separated by more than 5 miles. If it is slain by a creature, you gain advantage on all attack rolls against the killer for the next 24 hours.\n\n> At the end of a short or long rest, you can call the familiar back to you—no matter where it is or whether it died—and it reappears within 5 feet of you.",
+	description : "I can mimic sounds. They can be detected as imitations with a successful Insight check against my Deception check. I can cast Find Familiar as a ritual, once per long rest without a spell slot, and by expending a spell slot as normal. The familiar has extra features. See book for details. [+1 to Int, Wis, or Cha]",
+	scorestxt : "+1 Intelligence, Wisdom, or Charisma",
+	languageProfs : ["Mimicry"],
+	spellcastingAbility : [4,5,6],
+	spellcastingBonus : [{
+		name : "Weird Companionship",
+		spells : ["find familiar"],
+		selection : ["find familiar"],
+		firstCol : 'oncelr'
+	}],
+	extraLimitedFeatures : [{
+		name : "Weird Companionship (Find Familiar)",
+		usages : 1,
+		recovery : "long rest",
+		altResource : "SS 1+",
+	}],
+	calcChanges : { companionCallback : [function(prefix, oCrea, bAdd, sCompType) {
+		if (sCompType !== "familiar") return;
+		var str = "\u25C6 Perched: While perched on my shoulder, the familiar can't be targeted by any attack or other harmful effect; only I can cast spells on it; it can't take damage; and it is incapacitated. It grants me a bonus to my passive Wisdom (Perception) score and to Wisdom (Perception) checks equal to the ability modifier of the ability increased by the Weird Companionship feat.\n\u25C6 Watchful. While it is within 100 feet of me, the familiar can awaken me from sleep as a bonus action.\n\u25C6 Recall. At the end of a short or long rest, I can call the familiar back to me—no matter where it is or whether it died—and it reappears within 5 feet of me.";
+		var aFnc = bAdd ? AddString : RemoveString;
+		aFnc(prefix + "Comp.Use.Traits", str, true); }, 
+		"The familiars I create using the Find Familiar spell gain the Perched, Recall, and Watchful traits."]},
+};
+/* Weird Companionship
+Prerequisite: Hexblood
+Although they are solitary by nature, hags sometimes feel the need for companionship, and the weird magic at a hag's disposal means that she might have almost any type of creature helping or serving her. Some of this weird magic has transferred over to you. You gain the following benefits:
+• Increase your Intelligence, Wisdom, or Charisma by 1, to a maximum of 20.
+• Mimicry. You can can mimic animal sounds and humanoid voices. A creature that hears the sounds can tell they are imitations with a successful Wisdom (Insight) check opposed by your Charisma (Deception) check.
+• Minion. You learn the Find Familiar spell. You can cast it as a ritual and can also cast it without expending a spell slot. Once you cast it in this way, you can't cast it in this way again until you finish a long rest. You can also cast it using spell slots you have. The spells' spellcasting ability is the ability increased by this feat. 
+> The familiar can perch on your shoulder. While perched on your shoulder, the familiar can't be targeted by any attack or other harmful effect; only you can cast spells on it; it can't take damage; and it is incapacitated. While the familiar is perched on your shoulder, you gain a bonus to your passive Wisdom (Perception) score and to Wisdom (Perception) checks. The bonus equals the modifier for the ability increased by this feat. 
+> The familiar doesn't require sleep. While it is within 100 feet of you, it can awaken you from sleep as a bonus action. The familiar vanishes when it dies, if you die, or if the two of you are separated by more than 5 miles. If it is slain by a creature, you gain advantage on all attack rolls against the killer for the next 24 hours.
+> At the end of a short or long rest, you can call the familiar back to you—no matter where it is or whether it died—and it reappears within 5 feet of you. */
+
 // Human
 FeatsList["angelfire blessing"] = {  
 	name : "Angelfire Blessing",
@@ -4741,10 +5043,10 @@ FeatsList["subterranean lizardfolk"] = {
 /* Subterranean Lizardfolk
 Prerequisites: Lizardfolk
 Your heritage is more akin to the great lizards of the underdark. You gain the following benefits:
-	• Increase your Strength, Dexterity, Constitution or Wisdom by 1, to a maximum of 20.
-	• Darkvision. You have superior vision in dark and dim conditions. You can see in dim light within 60 feet of you as if it were bright light, and in darkness as if it were dim light. You can't discern color in darkness, only shades of gray.
-	• Reptilian Build. Climbing doesn't cost you extra movement. You count as one size larger when determining your carrying capacity and the weight you can push, drag, or lift.
-	• Deep Hunger. You can use your Hungry Jaws trait twice before you must finish a short or long rest.
+• Increase your Strength, Dexterity, Constitution or Wisdom by 1, to a maximum of 20.
+• Darkvision. You have superior vision in dark and dim conditions. You can see in dim light within 60 feet of you as if it were bright light, and in darkness as if it were dim light. You can't discern color in darkness, only shades of gray.
+• Reptilian Build. Climbing doesn't cost you extra movement. You count as one size larger when determining your carrying capacity and the weight you can push, drag, or lift.
+• Deep Hunger. You can use your Hungry Jaws trait twice before you must finish a short or long rest.
 */
 FeatsList["swamp blood"] = { 
 	name : "Swamp Blood",
@@ -4768,10 +5070,10 @@ FeatsList["swamp blood"] = {
 /* Swamp Blood
 Prerequisites: Lizardfolk
 Your heritage is more akin to the great lizards of the swamp. You gain the following benefits:
-	• Increase your Strength, Dexterity, Constitution or Wisdom by 1, to a maximum of 20.
-	• Aquatic Hunter. You have advantage on Dexterity (Stealth) checks made to hide while underwater or while in swampy terrain. As a bonus action, you can move up to your movement speed toward a hostile creature you can see or hear. You must end this move closer to the enemy than when you started. You can use this feature a number of times equal to your proficiency bonus, and you regain all expended uses of it when you finish a short rest.
-	• Reptilian Build. You can hold your breath for one hour at a time. You count as one size larger when determining your carrying capacity and the weight you can push, drag, or lift.
-	• Envie. You can use your Hungry Jaws trait twice before you must finish a short or long rest.
+• Increase your Strength, Dexterity, Constitution or Wisdom by 1, to a maximum of 20.
+• Aquatic Hunter. You have advantage on Dexterity (Stealth) checks made to hide while underwater or while in swampy terrain. As a bonus action, you can move up to your movement speed toward a hostile creature you can see or hear. You must end this move closer to the enemy than when you started. You can use this feature a number of times equal to your proficiency bonus, and you regain all expended uses of it when you finish a short rest.
+• Reptilian Build. You can hold your breath for one hour at a time. You count as one size larger when determining your carrying capacity and the weight you can push, drag, or lift.
+• Envie. You can use your Hungry Jaws trait twice before you must finish a short or long rest.
 */
 
 // Locathah
@@ -5801,6 +6103,16 @@ Wondrous item, uncommon (requires attunement)
 This item appears to be a regular human upper arm bone. While holding the bone you can use an action to speak the command word and turn the bone into a skeleton. The skeleton reverts to bone form after 1 hour or when it drops to 0 hit points.
 The skeleton is friendly to you and your companions for the duration. Roll initiative for the skeleton, which has its own turns. It obeys any verbal commands that you issue to it (no action required by you). If you don’t issue any commands to the skeleton, it defends itself from hostile creatures but otherwise takes no actions.
 Once the bone is used, it can’t be used again until the next dawn. */
+MagicItemsList["crystal adorned staff"] = {
+	name : "Crystal Adorned Staff",
+	source : [["NHB", 139]],
+	type : "staff",
+	rarity : "rare",
+	description : 'This ornate staff grants me advantage on initiative rolls, and can be used it as my spellcasting focus. When I cast a spell slot using spell I can teleport to an unoccupied space I can see within 15 ft. I can place up to 3 objects (≤1 lb) to float/spin 1" above the tip that remains there until removed or I no longer possess the staff.',
+	descriptionFull : "This ornate object with imagery of gem dragon limbs or scales grants you advantage on initiative rolls. While you are holding it, you can use it as your spellcasting focus and when you use a spell slot to cast a spell you can immediately teleport to an unoccupied space you can see within 15 ft. If you place an object weighing no more than 1 pound (such as a shard of crystal, an egg, or a stone) above the tip of the staff while holding it, the object floats an inch from the staff's tip and remains there until it is removed or until the staff is no longer in your possession. The staff can have up to three such objects floating over its tip at any given time. While holding the staff, you can make one or more of the objects slowly spin or turn in place.",
+	weight : 4,
+	advantages : [["Initiative", true]],
+};
 MagicItemsList["diamond of the ise rune"] = {
 	name : "Diamond of the Ise Rune",
 	source : ["NHB"],
@@ -6289,6 +6601,26 @@ MagicItemsList["half-gallon sword"] = {
 		],
 	}
 };
+MagicItemsList["indistinguishable shortbow"] = {
+	name : "Indistinguishable Shortbow",
+	source : ["NHB"],
+	type : "weapon (shortbow)",
+	rarity : "common",
+	description : "This shortbow contains a small, secret compartment, which can hold up to 1/2 a pound. The compartment is indistinguishable unless a creature succeeds on a DC 20 Wisdom (Perception) check to discover the compartment.",
+	weight : 2,
+	weaponsAdd : ["Indistinguishable Shortbow"],
+	weaponOptions : {
+		baseWeapon : "shortbow",
+		regExpSearch : /^(?=.*indistinguishable)(?=.*shortbow).*$/i,
+		name : "Indistinguishable Shortbow",
+		source : ["NHB"],
+	}
+};
+/* Indistinguishable Shortbow
+Simple weapon (shortbow), ranged weapon, common
+2 lb. 	1d6 piercing - (80/320 ft.), two-handed
+This shortbow contains a small, secret compartment, which can hold up to 1/2 a pound. The compartment is indistinguishable unless a creature succeeds on a DC 20 Wisdom (Perception) check to discover the compartment.
+*/
 MagicItemsList["knight's spear"] = {
 	name : "Knight's Spear",
 	source : ["NHB"],
@@ -6401,6 +6733,45 @@ Simple weapon (shortbow), ranged weapon, rare (requires attunement)
 2 lb. 	1d8 radiant - (80/320 ft.), two-handed
 Simply drawing your fingers in the air near this finely crafted bow causes it to be strung with an arrow of lunar energy that deals 1d8 radiant damage. When drawn using both hands, the bow sheds moonlight, creating bright light in a 15-foot radius and dim light for an additional 15 feet.
 */
+MagicItemsList["one-gallon sword"] = {	
+	name : "One-gallon Sword",
+	source : ["NHB"],
+	type : "weapon (any sword)",
+	rarity : "uncommon",
+	description : "I have a +1 bonus to attack and damage rolls made with this magic sword. As an action, I can speak the command word, and pour a gallon of fresh water out of the pommel. Once this special action is used, it can't be used again until the next dawn.",
+	usages : 1,
+	recovery : "dawn",
+	additional: " Summon Water",
+	action : [["action", "Summon Water (1 gallon)"]],
+	chooseGear : {
+		type : "weapon",
+		prefixOrSuffix : "brackets",
+		descriptionChange : ["replace", "sword"],
+		excludeCheck : function (inObjKey, inObj) {
+			var testRegex = /sword|scimitar|rapier/i;
+			return !(testRegex).test(inObjKey) && (!inObj.baseWeapon || !(testRegex).test(inObj.baseWeapon));
+		}
+	},
+	calcChanges : {
+		atkAdd : [
+			function (fields, v) {
+				if (!v.theWea.isMagicWeapon && v.isMeleeWeapon && (/sword|scimitar|rapier/i).test(v.baseWeaponName) && (/half-gallon/i).test(v.WeaponText)) {
+					v.theWea.isMagicWeapon = true;
+					fields.Description = fields.Description.replace(/(, |; )?Counts as magical/i, '');
+					fields.Description += (fields.Description ? '; ' : '') + '1/dawn summon water';
+				}
+			},
+			'If I include the word "One-gallon" in a the name of a sword, it will be treated as the magic weapon One-gallon Sword. It has +1 to hit and damage, and can summon water once per dawn'
+		],
+		atkCalc : [
+			function (fields, v, output) {
+				if (v.isMeleeWeapon && (/sword|scimitar|rapier/i).test(v.baseWeaponName) && (/half-gallon/i).test(v.WeaponText)) {
+					output.magic = v.thisWeapon[1] + 1;
+				}
+			}, ''
+		],
+	}
+};
 MagicItemsList["quickdraw longbow"] = {
 	name : "Quickdraw Longbow",
 	source : ["NHB"],
@@ -7524,7 +7895,7 @@ SpellsList["virtuous smite"] = {
 SpellsList["eldritch perception"] = { // Arcane Sight from Midgard
 	name : "Eldritch Perception",
 	classes : ["sorcerer","warlock","wizard"],
-	source: ["TLS"],
+	source: ["NHB"],
 	level : 8,
 	school : "Div",
 	time : "1 a",
@@ -8843,6 +9214,14 @@ GearList["animal feed (1 day)"] = {
     amount : 1,
     weight : 10
 };
+GearList["chef's treat"] = {
+    infoname : "Chef's treat",
+    name : "Chef's treat (Gain THP)",
+    source : ["T", 79],
+    amount : 1,
+    weight : "",
+	action : [["bonus action", "Chef's Treat (Gain THP)"]],
+};
 
 // Add Weapons
 WeaponsList["bolo"] = {
@@ -9124,6 +9503,43 @@ WeaponsList["horsechopper"] = {
 };
 
 // Add Creatures - Homebrew
+CreatureList["chicken"] = {
+	name : "Chicken",
+	nameAlt : ["Rooster"],
+	source : [["NHB", 382]],
+	size : 5,
+	type : "Beast",
+	companion : "familiar",
+	alignment : "Unaligned",
+	ac : 12,
+	hp : 4,
+	hd : [2, 4],
+	speed : "30 ft, fly 30 ft",
+	scores : [3, 14, 8, 2, 12, 6],
+	passivePerception : 11,
+	challengeRating : "0",
+	proficiencyBonus : 2,
+	attacksAction : 1,
+	attacks : [{
+		name : "Beak",
+		ability : 2,
+		damage : [1, 4, "piercing"],
+		range : "Melee (5 ft)",
+		description : "",
+		abilitytodamage : true
+	}],
+	actions : [{
+	name : "Uncanny Dodge",
+	description : "When an attacker that the [THIS] can see hits it with an attack, the [THIS] can use their reaction to halve the attack's damage against them."
+	}],
+	traits : [{
+		name : "Bad Flier",
+		description : "The [THIS] falls at the end of a turn if it's airborne and the only thing holding it aloft is its flying speed."
+	},{
+		name : "Chicken Walk",
+		description : "All attempts to grapple the [THIS] have disadvantage."
+	}]
+};
 CreatureList["hippopotamus"] = {
 	name : "Hippopotamus",
 	source : ["NHB"],
