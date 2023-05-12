@@ -15,21 +15,23 @@ Clerics of a god of time are given godly insight and powerful chronomancy, which
 protect and bring justice to the people of the world. */
 
 // Define the sources
-SourceList["HB"] = {
-	name : "Cleric - Time Domain (Revised)",
-	abbreviation : "HB",
-	group : "Third Party",
-};
+SourceList["J:TD"] = {
+    name : "/u/Jonoman3000: Time Domain",
+    abbreviation : "J:TD",
+    group : "Reddit/r/UnearthedArcana",
+    url : "https://redd.it/3nb6ee/",
+    date : "2015/10/05"
+}; 
 
 AddSubClass("cleric", "time domain", {
 	regExpSearch : /^(?=.*(cleric|priest|clergy|acolyte))(?=.*\b(time|temporal|chronal)\b).*$/i,
 	subname : "Time Domain",
-	source : ["HB"],
+	source : ["J:TD"],
 	spellcastingExtra : ["longstrider", "sleep", "blur", "gentle repose", "haste", "slow", "divination", "dimension door", "modify memory", "transmute rock"],
 	features : {
 		"subclassfeature1" : {
 			name : "Bonus Cantrip",
-			source : ["HB"],
+			source : ["J:TD"],
 			minlevel : 1,
 			description : "\n   " + "I learn the Mending cantrip if I didn't already know it",
 			spellcastingBonus : {
@@ -40,7 +42,7 @@ AddSubClass("cleric", "time domain", {
 		},
 		"subclassfeature1.1" : {
 			name : "Glimpse of the Future",
-			source : ["HB"],
+			source : ["J:TD"],
 			minlevel : 1,
 			description : "\n   " + "When I make an attack roll, ability check or saving throw, I may use my bonus action" + "\n   " + "to give myself advantage on the roll",
 			usages : "Wisdom modifier per ",
@@ -50,21 +52,21 @@ AddSubClass("cleric", "time domain", {
 		},
 		"subclassfeature2" : {
 			name : "Channel Divinity: Continuum Split",
-			source : ["HB"],
+			source : ["J:TD"],
 			minlevel : 2,
 			description : "\n   " + "As an action, I present my holy symbol and create an invisible symbol that lasts for 1 minute" + "\n   " + "Whenever I take damage that doesn’t kill me outright, I may use my reaction to negate that" + "\n   " + "damage and teleport back to the symbol, destroying it." + "\n   " + "If the symbol still exists at the end of the duration, I can teleport back to it as a free action.",
 			action : [["action", " (Create Symbol)"], ["reaction", ""]]
 		},
 		"subclassfeature6" : {
 			name : "Improved Glimpse of the Future",
-			source : ["HB"],
+			source : ["J:TD"],
 			minlevel : 6,
 			description : "\n   " + "As a reaction when a creature that I can see within 30 ft of me makes an attack roll, ability" + "\n   " + "check, or saving throw, I can use my Glimpse of the Future to give advantage on the roll",
 			action : ["reaction", ""]
 		},
 		"subclassfeature8" : {
 			name : "Potent Spellcasting",
-			source : ["HB"],
+			source : ["J:TD"],
 			minlevel : 8,
 			description : "\n   " + "I can add my Wisdom modifier to the damage I deal with my cleric cantrips",
 			calcChanges : {
@@ -87,7 +89,7 @@ AddSubClass("cleric", "time domain", {
 		},
 		"subclassfeature17" : {
 			name : "Deja Vu",
-			source : ["HB"],
+			source : ["J:TD"],
 			minlevel : 17,
 			description : "\n   " + "As part of the reaction used for 'Channel Divinity: Continuum Split,' I may cast a 6th level or" + "\n   " + "lower spell with a casting time of one action, reaction, or bonus action, without using a spell" + "\n   " + "slot. The spell must be one that I cast since creating Channel Divinity: Continuum Split's" + "\n   " + "symbol and must be able to target the creature that damaged me or target an area" + "\n   " + "centered on that creature.",
 			action : [["reaction", " (with Continuum Split)"]]
