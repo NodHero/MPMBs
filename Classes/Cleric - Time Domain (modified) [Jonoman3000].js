@@ -5,21 +5,23 @@ RequiredSheetVersion(13);
 
 
 // Define the sources
-SourceList["HB"] = {
-	name : "Cleric - Time Domain",
-	abbreviation : "HB",
-	group : "Third Party",
-};
+SourceList["J:TD"] = {
+    name : "/u/Jonoman3000: Time Domain",
+    abbreviation : "J:TD",
+    group : "Reddit/r/UnearthedArcana",
+    url : "https://redd.it/3nb6ee/",
+    date : "2015/10/05"
+}; 
 
 AddSubClass("cleric", "time domain", {
 	regExpSearch : /^(?=.*(cleric|priest|clergy|acolyte))(?=.*\b(time|temporal|chronal)\b).*$/i,
 	subname : "Time Domain",
-	source : ["HB"],
+	source : ["J:TD"],
 	spellcastingExtra : ["identify", "sleep", "blur", "gentle repose", "haste", "slow", "divination", "dimension door", "modify memory", "transmute rock", "foresight", "time stop"], // Longstrider replaced with Identify per request
 	features : {
 		"subclassfeature1" : {
 			name : "Bonus Cantrip",
-			source : ["HB"],
+			source : ["J:TD"],
 			minlevel : 1,
 			description : "\n   " + "I learn the Mending cantrip if I didn't already know it",
 			spellcastingBonus : {
@@ -30,7 +32,7 @@ AddSubClass("cleric", "time domain", {
 		},
 		"subclassfeature1.1" : {
 			name : "Glimpse of the Future",
-			source : ["HB"],
+			source : ["J:TD"],
 			minlevel : 1,
 			description : "\n   " + "When I make an attack roll, ability check or saving throw, I may use my bonus action" + "\n   " + "to give myself advantage on the roll",
 			usages : "Wisdom modifier per ",
@@ -40,21 +42,21 @@ AddSubClass("cleric", "time domain", {
 		},
 		"subclassfeature2" : {
 			name : "Channel Divinity: Continuum Split",
-			source : ["HB"],
+			source : ["J:TD"],
 			minlevel : 2,
 			description : "\n   " + "As a bonus action, I present my holy symbol and a visible time rift appears on the ground" + "\n   " + "below me, requiring my concentration. As a reaction or at the start of my next turn," + "\n   " + "I teleport to the rift and restore my health to what it was when I created the time rift",
 			action : [["bonus action", ""], ["reaction", "Time Rift Teleport"]]
 		},
 		"subclassfeature6" : {
 			name : "Improved Glimpse of the Future",
-			source : ["HB"],
+			source : ["J:TD"],
 			minlevel : 6,
 			description : "\n   " + "As a reaction when a creature that I can see within 30 ft of me makes an attack roll, ability" + "\n   " + "check, or saving throw, I can use my Glimpse of the Future to give advantage on the roll",
 			action : ["reaction", ""]
 		},
 		"subclassfeature8" : {
 			name : "Potent Spellcasting",
-			source : ["HB"],
+			source : ["J:TD"],
 			minlevel : 8,
 			description : "\n   " + "I can add my Wisdom modifier to the damage I deal with my cleric cantrips",
 			calcChanges : {
@@ -77,7 +79,7 @@ AddSubClass("cleric", "time domain", {
 		},
 		"subclassfeature17" : {
 			name : "Master of Time",
-			source : ["HB"],
+			source : ["J:TD"],
 			minlevel : 17,
 			description : "\n   " + "I always have the Foresight and Time Stop spells prepared, which count as cleric spells for me",
 		},
