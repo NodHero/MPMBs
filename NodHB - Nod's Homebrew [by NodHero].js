@@ -4,18 +4,18 @@
 	-KEEP IN MIND-
 	It is recommended to enter the code in a fresh sheet before adding any other information (i.e. before making your character with it).
 */
-/* A collection of things made by me and things made by others found from all around the internet.
-Credit goes to the original creators of the stuff I didn't make myself! */
 
 var iFileName = "Nod's Homebrew Collection.js"; 
 RequiredSheetVersion(13);
 
 SourceList["NHB"] = {
-	name : "Nod's Homebrew Collection",
+	name : "Homebrew Collection [many folks]",
+	/* A collection of things made by me and things made by others found from all around the internet.
+	Credit goes to the original creators of the stuff I didn't make myself! */
 	abbreviation : "NHB",
 	abbreviationSpellsheet: "N",
 	group : "Nod's Homebrew",
-	date : "2021/12/29"
+	date : "2021/12/29" // last updated 2023/06/05
 };
 
 // Add Races
@@ -118,7 +118,7 @@ RaceList["lupin"] = {
 			minlevel : 1,
 			usages : "Proficiency bonus per ",
 			usagescalc : "event.value = How('Proficiency Bonus');",
-			recovery: "long rest"
+			recovery: "long rest",
 			action : [["bonus action", ""]]
 		}
 	},
@@ -2974,8 +2974,8 @@ FeatsList["primaeval air heritage"] = {
 FeatsList["primaeval earth heritage"] = {
     name : "Primaeval Earth Heritage",
     source : ["NHB"],
-	descriptionFull : "Your heritage carries magic left over from ancient times, granting you the following benefits:\n \u2022 Increase your Intelligence, Wisdom, or Charisma by 1, to a maximum of 20.\n \u2022 You learn the Earth Tremor and ‌‌‌‌‌‌‌‌‌​​​​​Maximilian's Earthen Grasp spells. You can cast each of these spells without expending a spell slot. Once you cast either of these spells in this way, you can't cast that spell in this way again until you finish a long rest. You can also cast these spells using spell slots you have of the appropriate level. The spells' spellcasting ability is the ability increased by this feat.",
-	description : "I learn the Earth Tremor and ‌‌‌‌‌‌‌‌‌​​​​​Maximilian's Earthen Grasp spells. I can cast each once per long rest at their lowest level without expending a spell slot, and can cast them if I have a spell slot to do so. My spellcasting ability is the ability I choose to increase when I gain this feat. [+1 Intelligence, Wisdom, or Charisma]",
+	descriptionFull : "Your heritage carries magic left over from ancient times, granting you the following benefits:\n \u2022 Increase your Intelligence, Wisdom, or Charisma by 1, to a maximum of 20.\n \u2022 You learn the Earth Tremor and Maximilian's Earthen Grasp spells. You can cast each of these spells without expending a spell slot. Once you cast either of these spells in this way, you can't cast that spell in this way again until you finish a long rest. You can also cast these spells using spell slots you have of the appropriate level. The spells' spellcasting ability is the ability increased by this feat.",
+	description : "I learn the Earth Tremor and Maximilian's Earthen Grasp spells. I can cast each once per long rest at their lowest level without expending a spell slot, and can cast them if I have a spell slot to do so. My spellcasting ability is the ability I choose to increase when I gain this feat. [+1 Intelligence, Wisdom, or Charisma]",
 	spellcastingBonus : [{
 		name : "Earth Tremor",
 		spells : ["earth tremor"],
@@ -2991,17 +2991,17 @@ FeatsList["primaeval earth heritage"] = {
 	allowUpCasting : true,
 	choices: ["Intelligence", "Wisdom", "Charisma"],
 	"intelligence" : {
-		description : "I learn the Earth Tremor and ‌‌‌‌‌‌‌‌‌​​​​​Maximilian's Earthen Grasp spells. I can cast each once per long rest at their lowest level without expending a spell slot, and can cast them by expending a spell slot as normal. Intelligence is my spellcasting ability for these spells. [+1 Intelligence]",
+		description : "I learn the Earth Tremor and Maximilian's Earthen Grasp spells. I can cast each once per long rest at their lowest level without expending a spell slot, and can cast them by expending a spell slot as normal. Intelligence is my spellcasting ability for these spells. [+1 Intelligence]",
 		spellcastingAbility : 4,
 		scores : [0, 0, 0, 1, 0, 0]
 	},
 	"wisdom" : {
-		description : "I learn the Earth Tremor and ‌‌‌‌‌‌‌‌‌​​​​​Maximilian's Earthen Grasp spells. I can cast each once per long rest at their lowest level without expending a spell slot, and can cast them by expending a spell slot as normal. Wisdom is my spellcasting ability for these spells. [+1 Wisdom]",
+		description : "I learn the Earth Tremor and Maximilian's Earthen Grasp spells. I can cast each once per long rest at their lowest level without expending a spell slot, and can cast them by expending a spell slot as normal. Wisdom is my spellcasting ability for these spells. [+1 Wisdom]",
 		spellcastingAbility : 5,
 		scores : [0, 0, 0, 0, 1, 0]
 	},
 	"charisma" : {
-		description : "I learn the Earth Tremor and ‌‌‌‌‌‌‌‌‌​​​​​Maximilian's Earthen Grasp spells. I can cast each once per long rest at their lowest level without expending a spell slot, and can cast them by expending a spell slot as normal. Charisma is my spellcasting ability for these spells. [+1 Charisma]",
+		description : "I learn the Earth Tremor and Maximilian's Earthen Grasp spells. I can cast each once per long rest at their lowest level without expending a spell slot, and can cast them by expending a spell slot as normal. Charisma is my spellcasting ability for these spells. [+1 Charisma]",
 		spellcastingAbility : 6,
 		scores : [0, 0, 0, 0, 0, 1]
 	}
@@ -3009,8 +3009,8 @@ FeatsList["primaeval earth heritage"] = {
 FeatsList["primaeval fire heritage"] = {
     name : "Primaeval Fire Heritage",
     source : ["NHB"],
-	descriptionFull : "Your heritage carries magic left over from ancient times, granting you the following benefits:\n \u2022 Increase your Intelligence, Wisdom, or Charisma by 1, to a maximum of 20.\n \u2022 You learn the Hellish Rebuke and ‌‌‌‌‌‌‌‌‌​​​​​Flame Blade spells. You can cast each of these spells without expending a spell slot. Once you cast either of these spells in this way, you can't cast that spell in this way again until you finish a long rest. You can also cast these spells using spell slots you have of the appropriate level. The spells' spellcasting ability is the ability increased by this feat.",
-	description : "I learn the Hellish Rebuke and ‌‌‌‌‌‌‌‌‌​​​​​Flame Blade spells. I can cast each once per long rest at their lowest level without expending a spell slot, and can cast them if I have a spell slot to do so. My spellcasting ability is the ability I choose to increase when I gain this feat. [+1 Intelligence, Wisdom, or Charisma]",
+	descriptionFull : "Your heritage carries magic left over from ancient times, granting you the following benefits:\n \u2022 Increase your Intelligence, Wisdom, or Charisma by 1, to a maximum of 20.\n \u2022 You learn the Hellish Rebuke and Flame Blade spells. You can cast each of these spells without expending a spell slot. Once you cast either of these spells in this way, you can't cast that spell in this way again until you finish a long rest. You can also cast these spells using spell slots you have of the appropriate level. The spells' spellcasting ability is the ability increased by this feat.",
+	description : "I learn the Hellish Rebuke and Flame Blade spells. I can cast each once per long rest at their lowest level without expending a spell slot, and can cast them if I have a spell slot to do so. My spellcasting ability is the ability I choose to increase when I gain this feat. [+1 Intelligence, Wisdom, or Charisma]",
 	spellcastingBonus : [{
 		name : "Hellish Rebuke",
 		spells : ["hellish rebuke"],
@@ -3026,17 +3026,17 @@ FeatsList["primaeval fire heritage"] = {
 	allowUpCasting : true,
 	choices: ["Intelligence", "Wisdom", "Charisma"],
 	"intelligence" : {
-		description : "I learn the Hellish Rebuke and ‌‌‌‌‌‌‌‌‌​​​​​Flame Blade spells. I can cast each once per long rest at their lowest level without expending a spell slot, and can cast them by expending a spell slot as normal. Intelligence is my spellcasting ability for these spells. [+1 Intelligence]",
+		description : "I learn the Hellish Rebuke and Flame Blade spells. I can cast each once per long rest at their lowest level without expending a spell slot, and can cast them by expending a spell slot as normal. Intelligence is my spellcasting ability for these spells. [+1 Intelligence]",
 		spellcastingAbility : 4,
 		scores : [0, 0, 0, 1, 0, 0]
 	},
 	"wisdom" : {
-		description : "I learn the Hellish Rebuke and ‌‌‌‌‌‌‌‌‌​​​​​Flame Blade spells. I can cast each once per long rest at their lowest level without expending a spell slot, and can cast them by expending a spell slot as normal. Wisdom is my spellcasting ability for these spells. [+1 Wisdom]",
+		description : "I learn the Hellish Rebuke and Flame Blade spells. I can cast each once per long rest at their lowest level without expending a spell slot, and can cast them by expending a spell slot as normal. Wisdom is my spellcasting ability for these spells. [+1 Wisdom]",
 		spellcastingAbility : 5,
 		scores : [0, 0, 0, 0, 1, 0]
 	},
 	"charisma" : {
-		description : "I learn the Hellish Rebuke and ‌‌‌‌‌‌‌‌‌​​​​​Flame Blade spells. I can cast each once per long rest at their lowest level without expending a spell slot, and can cast them by expending a spell slot as normal. Charisma is my spellcasting ability for these spells. [+1 Charisma]",
+		description : "I learn the Hellish Rebuke and Flame Blade spells. I can cast each once per long rest at their lowest level without expending a spell slot, and can cast them by expending a spell slot as normal. Charisma is my spellcasting ability for these spells. [+1 Charisma]",
 		spellcastingAbility : 6,
 		scores : [0, 0, 0, 0, 0, 1]
 	}
@@ -3044,8 +3044,8 @@ FeatsList["primaeval fire heritage"] = {
 FeatsList["primaeval water heritage"] = {
     name : "Primaeval Water Heritage",
     source : ["NHB"],
-	descriptionFull : "Your heritage carries magic left over from ancient times, granting you the following benefits:\n \u2022 Increase your Intelligence, Wisdom, or Charisma by 1, to a maximum of 20.\n \u2022 You learn the Create or Destroy Water and ‌‌‌‌‌‌‌‌‌​​​​​Blur spells. You can cast each of these spells without expending a spell slot. Once you cast either of these spells in this way, you can't cast that spell in this way again until you finish a long rest. You can also cast these spells using spell slots you have of the appropriate level. The spells' spellcasting ability is the ability increased by this feat.",
-	description : "I learn the Create or Destroy Water and ‌‌‌‌‌‌‌‌‌​​​​​Blur spells. I can cast each once per long rest at their lowest level without expending a spell slot, and can cast them if I have a spell slot to do so. My spellcasting ability is the ability I choose to increase when I gain this feat. [+1 Intelligence, Wisdom, or Charisma]",
+	descriptionFull : "Your heritage carries magic left over from ancient times, granting you the following benefits:\n \u2022 Increase your Intelligence, Wisdom, or Charisma by 1, to a maximum of 20.\n \u2022 You learn the Create or Destroy Water and Blur spells. You can cast each of these spells without expending a spell slot. Once you cast either of these spells in this way, you can't cast that spell in this way again until you finish a long rest. You can also cast these spells using spell slots you have of the appropriate level. The spells' spellcasting ability is the ability increased by this feat.",
+	description : "I learn the Create or Destroy Water and Blur spells. I can cast each once per long rest at their lowest level without expending a spell slot, and can cast them if I have a spell slot to do so. My spellcasting ability is the ability I choose to increase when I gain this feat. [+1 Intelligence, Wisdom, or Charisma]",
 	spellcastingBonus : [{
 		name : "Create or Destroy Water",
 		spells : ["create or destroy water"],
@@ -3061,17 +3061,17 @@ FeatsList["primaeval water heritage"] = {
 	allowUpCasting : true,
 	choices: ["Intelligence", "Wisdom", "Charisma"],
 	"intelligence" : {
-		description : "I learn the Create or Destroy Water and ‌‌‌‌‌‌‌‌‌​​​​​Blur spells. I can cast each once per long rest at their lowest level without expending a spell slot, and can cast them by expending a spell slot as normal. Intelligence is my spellcasting ability for these spells. [+1 Intelligence]",
+		description : "I learn the Create or Destroy Water and Blur spells. I can cast each once per long rest at their lowest level without expending a spell slot, and can cast them by expending a spell slot as normal. Intelligence is my spellcasting ability for these spells. [+1 Intelligence]",
 		spellcastingAbility : 4,
 		scores : [0, 0, 0, 1, 0, 0]
 	},
 	"wisdom" : {
-		description : "I learn the Create or Destroy Water and ‌‌‌‌‌‌‌‌‌​​​​​Blur spells. I can cast each once per long rest at their lowest level without expending a spell slot, and can cast them by expending a spell slot as normal. Wisdom is my spellcasting ability for these spells. [+1 Wisdom]",
+		description : "I learn the Create or Destroy Water and Blur spells. I can cast each once per long rest at their lowest level without expending a spell slot, and can cast them by expending a spell slot as normal. Wisdom is my spellcasting ability for these spells. [+1 Wisdom]",
 		spellcastingAbility : 5,
 		scores : [0, 0, 0, 0, 1, 0]
 	},
 	"charisma" : {
-		description : "I learn the Create or Destroy Water and ‌‌‌‌‌‌‌‌‌​​​​​Blur spells. I can cast each once per long rest at their lowest level without expending a spell slot, and can cast them by expending a spell slot as normal. Charisma is my spellcasting ability for these spells. [+1 Charisma]",
+		description : "I learn the Create or Destroy Water and Blur spells. I can cast each once per long rest at their lowest level without expending a spell slot, and can cast them by expending a spell slot as normal. Charisma is my spellcasting ability for these spells. [+1 Charisma]",
 		spellcastingAbility : 6,
 		scores : [0, 0, 0, 0, 0, 1]
 	}
@@ -5262,8 +5262,8 @@ FeatsList["built horn tough"] = {
 	source : [["NHB"]],
 	prerequisite : "Being a Minotaur",
 	prereqeval : "CurrentRace.known.indexOf('minotaur') !== -1",
-	descriptionFull : "Your horns are hard enough to be considered nigh-unbreakable. You gain the following benefits:\n \u2022 Increase your Strength or Constitution score by 1, to a maximum of 20.\n \u2022 Your Horns damage die increases to a d8. \n \u2022 If you used your Horns as part of the Attack action on your turn, when you use your Hammering Horns during the same turn, you may choose to knock the target creature prone instead of push it up to 10 feet away from you.\n \u2022 When you use your Goring Rush feature, you gain advantage on ability checks and saving throws that you make against attacks, spells and effects that would move you away from your current space or knock you prone until the start of your next turn.",
-	description : "My Horns damage die increases to a d8. When I use Horns as part of Attack action, I may prone with Hammering Horns. When I use Goring Rush, I have advantage on checks and saves against spells and effects that push, pull, or prone me until the start of my next turn. [+1 Strength or Constitution]",
+	descriptionFull : "Your horns are hard enough to be considered nigh-unbreakable. You gain the following benefits:\n \u2022 Increase your Strength or Constitution score by 1, to a maximum of 20.\n \u2022 Your Horns damage die increases to a d8. \n \u2022 If you used your Horns as part of the Attack action on your turn, when you use your Hammering Horns during the same turn, you may choose to knock the target creature prone instead of push it up to 10 feet away from you.\n \u2022 When you use your Goring Rush feature, you gain a +5 bonus to the attack's damage roll and have advantage on ability checks and saving throws that you make against attacks, spells and effects that would move you away from your current space or knock you prone until the start of your next turn.",
+	description : "My Horns damage die increases to a d8. When I use Horns as part of Attack action, I may prone with Hammering Horns. When I use Goring Rush, I have +5 damage and advantage on checks and saves against spells and effects that push, pull, or prone me until the start of my next turn. [+1 Strength or Constitution]",
 	savetxt : { text : ["After Goring Horns = Adv. vs push/pull/prone; "] },
 	scorestxt : "+1 Strength or Constitution",
 	action : ["bonus action", "Improved Hammering Horns (with Attack action)"],
@@ -5284,7 +5284,7 @@ Your horns are hard enough to be considered nigh-unbreakable. You gain the follo
 • Increase your Strength or Constitution by 1, to a maximum of 20.
 • Improved Horns. Your Horns damage die increases to a d8. 
 • Improved Hammering Horns. If you used your Horns as part of the Attack action on your turn,  when you use your Hammering Horns during the same turn, you may choose to knock the target creature prone instead of push it up to 10 feet away from you. 
-• Improved Goring Rush. When you use your Goring Rush feature, you gain advantage on ability checks and saving throws that you make against attacks, spells and effects that would move you away from your current space or knock you prone until the start of your next turn. */
+• Improved Goring Rush. When you use your Goring Rush feature, you gain a +5 bonus to the attack's damage roll and have advantage on ability checks and saving throws that you make against attacks, spells and effects that would move you away from your current space or knock you prone until the start of your next turn. */
 FeatsList["bullheadedness"] = { // Minotaur
 	name : "Bullheadedness",
 	source : [["NHB"]],
@@ -5334,6 +5334,132 @@ Prerequisite: Being an Owlfolk
 • You have advantage on Wisdom (Perception) checks that rely on sight.
 • You can cast the Detect Magic spell at will, without expending a spell slot.
 • Your darkvision has a radius of 120 feet.
+*/
+
+// Plasmoid
+FeatsList["gloop and gleep of things"] = {
+	name : "Gloop and Gleep of Things",
+	source : [["NHB"]],
+	prerequisite : "Being a Plasmoid",
+	prereqeval : "CurrentRace.known.indexOf('plasmoid') !== -1",
+	descriptionFull : "Plasmoids are amorphous beings. There's little chance of mistaking a plasmoid for anything else. You gain the following benefits:\n \u2022 Increase one Ability Score score by 1, to a maximum of 20.\n \u2022 When you Shape Self, you can also adjust your height between Medium and Small.\n \u2022 Your pseudopod can be used to make unarmed strikes. When you hit with it, the strike deals 1d6 + your Strength modifier bludgeoning damage.\n \u2022 You can use your reaction to make yourself resistant to bludgeoning, piercing or slashing damage until the start of your next turn. You can use this feature a number of times equal to your proficiency bonus, and you regain all expended uses when you finish a long rest.",
+	description : "When I Shape Self, I can adjust between Medium and Small size. I can use my pseudopod for unarmed attacks that deal 1d6 bludgeoning damage. Prof bonus times per long rest, as a Reaction, I gain resistance to bludgeoning, piercing or slashing damage until the start of my next turn. [+1 to one ability score]",
+	scorestxt : "+1 to one ability score of my choice",
+	action : [['reaction', 'Resistance to B/P/S']],
+	extraLimitedFeatures : [{
+		name : "Resistance to B/P/S",
+		usages : "Proficiency bonus per ",
+		usagescalc : "event.value = How('Proficiency Bonus');",
+		recovery : "long rest",
+	}],
+	weaponOptions : {
+		baseWeapon : "unarmed strike",
+		regExpSearch : /pseudopod/i,
+		name : "Pseudopod",
+		source : [["NHB"]],
+		damage : [1, 6, "bludgeoning"],
+	},
+	weaponsAdd : ["Pseudopod"],
+};
+/* Gloop and Gleep of Things
+Prerequisite: Plasmoid
+Plasmoids are amorphous beings. There's little chance of mistaking a plasmoid for anything else. You gain the following benefits:
+• Increase one ability score of your choice by 1, to a maximum of 20.
+• When you ‘Shape Self’, you can also adjust your height between Medium and Small.
+• Your pseudopod can be used to make unarmed strikes. When you hit with it, the strike deals 1d6 + your Strength modifier bludgeoning damage.
+• You can use your reaction to make yourself resistant to bludgeoning, piercing, or slashing damage until the start of your next turn. You can use this feature a number of times equal to your proficiency bonus, and you regain all expended uses when you finish a long rest.
+*/
+FeatsList["no typical shape"] = {
+	name : "No Typical Shape",
+	source : [["NHB"]],
+	prerequisite : "Being a Plasmoid",
+	prereqeval : function(v) { return CurrentRace.known.indexOf('plasmoid') !== -1; },
+	descriptionFull : "Plasmoids don't have internal organs of the usual sort. Their bodies are composed of cells, fibers, plasma-like ooze, and clusters of nerves. You gain the following benefits:\n \u2022 Increase your Dexterity, Intelligence, Wisdom, or Charisma score by 1, to a maximum of 20.\n \u2022 Whenever you have advantage on an attack roll using Dexterity, Intelligence, Wisdom, or Charisma, you can reroll one of the dice once.",
+	description : "Whenever I have advantage on an attack roll that uses Dexterity, Intelligence, Wisdom, or Charisma, I can reroll one of the dice once. [+1 Dexterity, Intelligence, Wisdom, or Charisma]",
+	scorestxt : "+1 Dexterity, Intelligence, Wisdom, or Charisma"
+};
+/* No Typical Shape
+Prerequisite: Plasmoid
+Plasmoids don't have internal organs of the usual sort. Their bodies are composed of cells, fibers, plasma-like ooze, and clusters of nerves. You gain the following benefits:
+• Increase your Dexterity, Intelligence, Wisdom, or Charisma by 1, to a maximum of 20.
+• Whenever you have advantage on an attack roll using Dexterity, Intelligence, Wisdom, or Charisma, you can reroll one of the dice once.
+*/
+FeatsList["prepseudohensilepod"] = {
+	name : "Prepseudohensilepod",
+	source : [["NHB"]],
+	prerequisite : "Being a Plasmoid",
+	prereqeval : "CurrentRace.known.indexOf('plasmoid') !== -1",
+	descriptionFull : "Plasmoids are amorphous beings. Their limbs are strong and flexible enough to grasp and manipulate weapons and tools. On occasion, due to some biological anomaly, a plasmoid's pseudopod becomes more pliable upon reaching adulthood (around the age of twenty years). You gain the following benefits:\n \u2022 Increase your Strength or Dexterity score by 1, to a maximum of 20.\n \u2022 You can use your pseudopod to lift, drop, hold, push, or pull an object or a creature; grapple someone; manipulate an object; open an unlocked door or container, stow or retrieve an item from an open container, or pour out the contents of a container. The pseudopod can't activate magic items, or carry more than 10 pounds. Your DM might allow other simple tasks to be added to that list of options.\n \u2022 Your pseudopod can also be used to make unarmed strikes with finesse and reach. When you hit with it, the strike deals 1d4 + your Strength or Dexterity modifier bludgeoning damage.",
+	description : "My pseudopod can lift, drop, hold, push, or pull an object (10 lbs max) or creature; grapple; manipulate an object; open unlocked doors/containers, stow/retrieve an item from an open container, or pour out the contents of a container; make 1d4 bludgeoning unarmed attacks with finesse and reach. [+1 Str or Dex]",
+	scorestxt : "+1 to one ability score of my choice",
+	weaponOptions : {
+		baseWeapon : "unarmed strike",
+		regExpSearch : /prepseudohensilepod/i,
+		name : "Prepseudohensilepod",
+		source : [["NHB"]],
+		damage : [1, 4, "bludgeoning"],
+		description : "Finesse, reach; ",
+	},
+	weaponsAdd : ["Prepseudohensilepod"],
+};
+/* Prepseudohensilepod
+Prerequisite: Plasmoid
+Plasmoids are amorphous beings. Their limbs are strong and flexible. On occasion, due to some biological anomaly, a plasmoid's pseudopod becomes more pliable upon reaching adulthood (around the age of twenty years). You gain the following benefits:
+• Increase your Strength or Dexterity score by 1, to a maximum of 20.
+• You can use your pseudopod to lift, drop, hold, push, or pull an object or a creature; grapple someone; manipulate an object; open an unlocked door or container, stow or retrieve an item from an open container, or pour out the contents of a container. The pseudopod can't activate magic items, or carry more than 10 pounds. Your DM might allow other simple tasks to be added to that list of options.
+• Your pseudopod can also be used to make unarmed strikes with finesse and reach. When you hit with it, the strike deals 1d4 + your Strength or Dexterity modifier bludgeoning damage.
+*/
+FeatsList["what have i got in my pocket?"] = {
+	name : "What Have I Got In My Pocket?",
+	source : [["NHB"]],
+	prerequisite : "Being a Plasmoid",
+	prereqeval : function(v) { return CurrentRace.known.indexOf('plasmoid') !== -1; },
+	description : "I can finish a long rest in 6 hours and remain concious. I have AC 13+Dex when wearing no armor, and can stealth when travelling alone. I learn the Vanish and Wristpocket spells, neither requiring concentration, and cast Wristpocket 1/LR without expending a spell slot. [+1 Int, Wis, or Cha]",
+	descriptionFull : "Wanderlust compels some plasmoids to explore the Astral Plane and visit different worlds of the Material Plane. Such an explorer usually travels light. You gain the following benefits:\n \u2022 Increase your Intelligence, Wisdom, or Charisma score by 1, to a maximum of 20.\n \u2022 Light Sleeper. When you take a long rest, you must spend at least six hours in an inactive, motionless state, rather than sleeping. In this state, you appear inert, but it doesn't render you unconscious, and you can see and hear as normal.\n \u2022 Light Stepper. While you aren't wearing armor, your base Armor Class is 13 + your Dexterity modifier. When you are traveling alone for an extended period of time (one hour or more), you can move stealthily at a normal pace. (See chapter 8 of the Player's Handbook for information about travel pace.)\n \u2022 You learn the Vanish cantrip, and can cast this spell without requiring concentration. You learn the Wristpocket spell, and can cast this spell without expending a spell slot or requiring concentration. Once you cast this spell in this way, you can't do so again until you finish a long rest. You can also cast this spell normally using spell slots you have. These spells' spellcasting ability is the ability increased by this feat.",
+	scorestxt : "+1 Intelligence, Wisdom or Charisma",
+	addArmor : "Light Stepper",
+	armorOptions : [{
+		regExpSearch : /^(?=.*light)(?=.*stepper).*$/i,
+		name : "Light Stepper",
+		source : [["NHB", 122]],
+		ac : 13,
+		affectsWildShape : true
+	}],
+	spellcastingAbility : [4,5,6],
+	allowUpCasting : true,
+	spellcastingBonus : [{
+		name : "Vanish",
+		spells : ["vanish"],
+		selection : ["vanish"],
+		firstCol : "atwill",
+	},{
+		name : "Wristpocket",
+		spells : ["wristpocket"],
+		selection : ["wristpocket"],
+		firstCol : "oncelr",
+	}],
+	spellChanges : {
+		"vanish" : {
+			duration : "(1 min)",
+			changes : "My feat allows me to cast Vanish once per long rest without requiring concentration." },
+		"wristpocket" : {
+			duration : "(1 h)",
+			changes : "My feat allows me to cast Wristpocket once per long rest without requiring a spell slot or concentration, or by using a spell slot as normal." }
+	},
+	extraLimitedFeatures : [{
+		name : "Wristpocket",
+		usages : 1,
+		recovery: "long rest",
+		altResource : "SS 2+"
+	}]
+};
+/* What Have I Got in My Pocket?
+Prerequisite: Plasmoid
+Wanderlust compels some plasmoids to explore the Astral Plane and visit different worlds of the Material Plane. Such an explorer usually travels light. You gain the following benefits:
+• Increase your Intelligence, Wisdom, or Charisma score by 1, to a maximum of 20.
+• Light Sleeper. When you take a long rest, you must spend at least six hours in an inactive, motionless state, rather than sleeping. In this state, you appear inert, but it doesn't render you unconscious.
+• Light Stepper. While you aren't wearing armor, your base Armor Class is 13 + your Dexterity modifier. When you are traveling alone for an extended period of time (one hour or more), you can move stealthily at a normal pace. (See chapter 8 of the Player's Handbook for information about travel pace.)
+• You learn the Vanish cantrip and can cast it without requiring concentration. You learn the Wristpocket spell and can cast it without expending a spell slot or requiring concentration. Once you cast this spell in this way, you can't do so again until you finish a long rest. You can also cast this spell normally using spell slots you have of the appropriate level. These spells' spellcasting ability is the ability increased by this feat.
 */
 
 // Reborn
@@ -5584,8 +5710,8 @@ FeatsList["evolved thri-kreen physiology"] = {
 	name : "Evolved Thri-kreen Physiology",
 	source : ["NHB"],
 	prerequisite : "Being a Thri-kreen",
-	descriptionFull : "Some of your inherent Thri-kreen traits have become augmented. You gain the following benefits:\n \u2022 Increase your Strength, Dexterity, or Constitution score by 1, to a maximum of 20.\n \u2022 Kreen Claws. You grow retractable claws which you can use to make unarmed strikes. When you hit with them, the strike deals 1d6 + your Strength modifier slashing damage, instead of the bludgeoning damage normal for an unarmed strike.\n \u2022 Leap. As a bonus action, you can leap up to 20 feet in any direction. You can use this trait only if your speed is greater than 0. You can use it a number of times equal to your proficiency bonus, and you regain all expended uses when you finish a long rest.",
-	description : "I can use my retractable claws to make unarmed strikes dealing 1d6 slashing damage. As a bonus action if my speed isn't 0, I can leap up to 20 ft in any direction. I can do this my Prof Bonus times per long rest. [+1 Strength, Dexterity, or Constitution]",
+	descriptionFull : "Some of your inherent Thri-kreen traits have become augmented. You gain the following benefits:\n \u2022 Increase your Strength, Dexterity, or Constitution score by 1, to a maximum of 20.\n \u2022 Kreen Claws. You grow retractable claws which you can use to make unarmed strikes. When you hit with them, the strike deals 1d6 + your Strength modifier slashing damage, instead of the bludgeoning damage normal for an unarmed strike.\n \u2022 Leap. As a bonus action, you can leap up to 20 feet in any direction. You can use this trait only if your speed is greater than 0. You can use it a number of times equal to your proficiency bonus, and you regain all expended uses when you finish a short rest.",
+	description : "I can use my retractable claws to make unarmed strikes dealing 1d6 slashing damage. As a bonus action if my speed isn't 0, I can leap up to 20 ft in any direction. I can do this my Prof Bonus times per short rest. [+1 Strength, Dexterity, or Constitution]",
 	scorestxt : "+1 Strength, Dexterity, or Constitution",
 	weaponOptions : {
 	baseWeapon : "unarmed strike",
@@ -5600,7 +5726,7 @@ FeatsList["evolved thri-kreen physiology"] = {
 		name : "Leap (up to 20 feet)",
 		usages : "Proficiency bonus per ",
 		usagescalc : "event.value = How('Proficiency Bonus');",
-		recovery : "long rest",
+		recovery : "short rest",
 	}],
 };
 /* Evolved Thri-kreen Physiology
@@ -5608,7 +5734,7 @@ Prerequisite: Thri-kreen
 Some of your inherent Kreen traits have become augmented. You gain the following benefits:
 • Increase your Strength, Dexterity, or Constitution by 1, to a maximum of 20.
 • Kreen Claws. You grow retractable claws which you can use to make unarmed strikes. When you hit with them, the strike deals 1d6 + your Strength modifier slashing damage, instead of the bludgeoning damage normal for an unarmed strike.
-• Leap. As a bonus action, you can leap up to 20 feet in any direction. You can use this trait only if your speed is greater than 0. You can use it a number of times equal to your proficiency bonus, and you regain all expended uses when you finish a long rest. */
+• Leap. As a bonus action, you can leap up to 20 feet in any direction. You can use this trait only if your speed is greater than 0. You can use it a number of times equal to your proficiency bonus, and you regain all expended uses when you finish a short rest. */
 FeatsList["many arms, one shield"] = {
 	name : "Many Arms, One Shield",
 	source : [["NHB", 3]],
@@ -6198,6 +6324,46 @@ MagicItemsList["everlasting picnic basket"] = {
 /* Everlasting Picnic Basket
 Wondrous item (basket), uncommon
 Each time you complete a long rest, this picnic basket fills with enough food and water to sustain four Tiny, two Small/Medium, or one Large creature(s). The food is bland but nourishing, and spoils if uneaten after 24 hours. The water is clean and doesn't go bad. */
+AddFeatureChoice(MagicItemsList["figurine of wondrous power"], false, "Ashwood Bear", {
+    source : ["NHB"],
+    rarity : "rare",
+    description: "As an action, I can speak the command word and throw this ashwood statuette to an unoccupied space within 60 ft, where it becomes a brown bear for up to 24 hours, until I use the command word again, or it reaches 0 hp. It is friendly, understands my languages, and obeys my commands.",
+    descriptionLong: "As an action, I can speak the command word and throw this ashwood statuette of a brown bear to an unoccupied space within 60 ft, where it becomes a brown bear for up to 24 hours, until I use an action to repeat the command word, or it reaches 0 hp. It is friendly to me and my allies, understands my languages, and obeys my spoken commands. If I issue no commands, the creature defends itself but takes no other actions. When it reverts back to a figurine, it can't be used again until 7 days have passed.",
+    descriptionFull: "...",
+    usages : 1,
+    recovery : "7 days",
+	creaturesAdd : [["Brown bear"]],
+});
+AddFeatureChoice(MagicItemsList["figurine of wondrous power"], false, "Bloodstone Spider", {
+    source : ["NHB"],
+    rarity : "rare",
+    description: "As an action, I can speak the command word and throw this bloodstone statuette to an unoccupied space within 60 ft, where it becomes a giant spider for up to 8 hours, until I use the command word again, or it reaches 0 hp. It is friendly, understands my languages, and obeys my commands.",
+    descriptionLong: "As an action, I can speak the command word and throw this bloodstone statuette of a spider to an unoccupied space within 60 ft, where it becomes a giant spider for up to 8 hours, until I use an action to repeat the command word, or it reaches 0 hp. It is friendly to me and my allies, understands my languages, and obeys my spoken commands. If I issue no commands, the creature defends itself but takes no other actions. When it reverts back to a figurine, it can't be used again until 3 days have passed.",
+    descriptionFull: "...",
+    usages : 1,
+    recovery : "3 days",
+	creaturesAdd : [["Giant spider"]],
+});
+AddFeatureChoice(MagicItemsList["figurine of wondrous power"], false, "Opal Fish", {
+    source : ["NHB"],
+    rarity : "rare",
+    description: "As an action, I can speak the command word and throw this opal statuette to an unoccupied space within 60 ft, where it becomes a hunter shark for up to 4 hours, until I use the command word again, or it reaches 0 hp. It is friendly, understands my languages, and obeys my commands.",
+    descriptionLong: "As an action, I can speak the command word and throw this opal statuette of a spider to an unoccupied space within 60 ft, where it becomes a hunter shark for up to 4 hours, until I use an action to repeat the command word, or it reaches 0 hp. It is friendly to me and my allies, understands my languages, and obeys my spoken commands. If I issue no commands, the creature defends itself but takes no other actions. When it reverts back to a figurine, it can't be used again until 4 days have passed.",
+    descriptionFull: "...",
+    usages : 1,
+    recovery : "4 days",
+	creaturesAdd : [["Hunter shark"]],
+});
+AddFeatureChoice(MagicItemsList["figurine of wondrous power"], false, "Quartz Owlbear", {
+    source : ["NHB"],
+    rarity : "rare",
+    description: "As an action, I can speak the command word and throw this quartz statuette to an unoccupied space within 60 ft, where it becomes a owlbear for up to 1 hour, until I use the command word again, or it reaches 0 hp. It is friendly, understands my languages, and obeys my commands.",
+    descriptionLong: "As an action, I can speak the command word and throw this quartz statuette of a owlbear to an unoccupied space within 60 ft, where it becomes a owlbear for up to 1 hour, until I use an action to repeat the command word, or it reaches 0 hp. It is friendly to me and my allies, understands my languages, and obeys my spoken commands. If I issue no commands, the creature defends itself but takes no other actions. When it reverts back to a figurine, it can't be used again until 7 days have passed.",
+    descriptionFull: "...",
+    usages : 1,
+    recovery : "7 days",
+	creaturesAdd : [["Owlbear"]],
+});
 MagicItemsList["glass cat's eye"] = {
 	name : "Glass Cat's Eye",
 	source : ["NHB"],
@@ -6534,6 +6700,33 @@ MagicItemsList["cloudsinger scimitar"] = {
 		modifiers : [2, 2],
 	}
 };
+MagicItemsList["faerlight weapon"] = {
+	name : "Faerlight Weapon",
+	nameTest : "Faerlight",
+	source : [["NHB", 210]],
+	type : "weapon",
+	rarity : "uncommon",
+	attunement : false,
+	vision : [["Darkvision", 60]],
+	description : "While this weapon is on my person, I have darkvision out to a range of 60 feet.",
+	chooseGear : {
+		type : "weapon",
+		prefixOrSuffix : "suffix",
+		descriptionChange : ["replace", "weapon"]
+	},
+	calcChanges : {
+		atkAdd : [
+			function (fields, v) {
+				if (!v.isSpell && !v.theWea.isMagicWeapon && (/faerlight/i).test(v.WeaponTextName)) {
+					v.theWea.isMagicWeapon = true;
+					fields.Description = fields.Description.replace(/(, |; )?Counts as magical/i, '');
+					fields.Description += (fields.Description ? '; ' : '') + '';
+				}
+			},
+			'If I include the word "Faerlight" in a the name of a weapon, it will be treated as the magic weapon Faerlight Weapon.'
+		]
+	}
+};
 MagicItemsList["forgeflame hammer"] = {
 	name : "Forgeflame Hammer",
 	nameAlt : "Forgeflame Hammer",
@@ -6601,6 +6794,29 @@ MagicItemsList["half-gallon sword"] = {
 		],
 	}
 };
+MagicItemsList["impressive javelin"] = {
+	name : "Impressive Javelin",
+	source : [["NHB", 229]],
+	type : "weapon (javelin)",
+	rarity : "rare",
+	description : "If I hurl this javelin, it returns to me at the end of the turn if I have an empty hand. During my turn, I can use a bonus action to spin it with both hands. Doing so gives me a +2 bonus to AC until the start of my next turn, until I stop spinning it, or until I attack with it again.",
+	descriptionFull : "If you hurl this javelin, it returns to you at the end of the turn if you have an empty hand. During your turn, you can use a bonus action to spin it with both hands. Doing so gives you a +2 bonus to AC until the start of your next turn, until you stop spinning it, or until you attack with it again.",
+	attunement : true,
+	weight : 2,
+	action : ["bonus action", " (spin +2 AC)"],
+	weaponsAdd : ["Impressive Javelin"],
+	weaponOptions : {
+		baseWeapon : "javelin",
+		regExpSearch : /^(?=.*javelin)(?=.*impressive).*$/i,
+		name : "Impressive Javelin",
+		source : [["NHB", 229]],
+		description : "Thrown; End of turn returning;",
+		modifiers : [1,1]
+	}
+};
+/* Impressive Javelin
+Weapon (javelin), rare (requires attunement)
+If you hurl this javelin, it returns to you at the end of the turn if you have an empty hand. During your turn you can use a bonus action to spin it with both hands. Doing so gives you a +2 bonus to AC until the start of your next turn, until you stop spinning it, or until you attack with it again. */
 MagicItemsList["indistinguishable shortbow"] = {
 	name : "Indistinguishable Shortbow",
 	source : ["NHB"],
@@ -6812,6 +7028,28 @@ MagicItemsList["red tiger scimitar"] = {
 		modifiers : [1, 1]
 	}
 };
+MagicItemsList["searing ammunition"] = {
+	name : "Searing Ammunition",
+	nameTest : "Searing",
+	source : [["NHB", 139]],
+	type : "weapon (any ammunition)",
+	rarity : "rare",
+	description : "When I hit a creature with this piece of ammunition, in addition to the normal effects of the hit, the target bursts into flames, taking 1d10 fire damage at the start of each of its turns. The flames last for one minute or until a creature uses an action to to extinguish the flames.",
+	descriptionFull : "When you hit a creature with this piece of ammunition, in addition to the normal effects of the hit, the target bursts into flames, taking 1d10 fire damage at the start of each of its turns. The flames last for one minute or until a creature uses an action to extinguish the flames.",
+	allowDuplicates : true,
+	chooseGear : {
+		type : "ammo",
+		prefixOrSuffix : "suffix",
+		descriptionChange : ["replace", "ammunition"],
+		excludeCheck : function (inObjKey, inObj) {
+			return (/vials|flasks/i).test(inObj.icon);
+		}
+	}
+};
+/* Searing Ammunition
+Ammunition (any), rare
+When you hit a creature with this piece of ammunition, in addition to the normal effects of the hit, the target bursts into flames, taking 1d10 fire damage at the start of each of its turns. The flames last for one minute or until a creature uses an action to extinguish the flames.
+*/
 MagicItemsList["sharkbane trident"] = {
 	name : "Sharkbane Trident",
 	source : [["NHB"]],
