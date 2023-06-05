@@ -1,8 +1,8 @@
 var iFileName = "Fighter - Memory Knight [Nod, original by Matthew Mercer].js"; 
 RequiredSheetVersion(13);
 
-SourceList["NodHB-MK"] = {
-	name : "Memory Knight",
+SourceList[["F:MK"]] = {
+	name : "Fighter - Memory Knight",
 	abbreviation : "NodHB-MK",
 	group : "Nod's Homebrew",
 	date : "2020/09/01"
@@ -12,12 +12,12 @@ SourceList["NodHB-MK"] = {
 AddSubClass("fighter", "memory knight", {
 	regExpSearch : /^(?=.*memory)(?=.*knight).*$/i,
 	subname : "Memory Knight",
-	source : ["NodHB-MK"],
+	source : [["F:MK"]],
 	fullname : "Memory Knight",
 	features : {
 		"subclassfeature3" : {
 			name : "Memory Projection",
-			source : ["NodHB-MK"],
+			source : [["F:MK"]],
 			minlevel : 3,
 			description : desc([
 				"I manifest an memory of myself in an unoccupied space I can see within 15 feet of me. This" + "\n   " + "memory is a magical, translucent, gray image of myself that lasts until destroyed, I dismiss it," + "\n   " + "I manifest another memory, or I'm incapacitated. My memory has AC 14 + my proficiency" + "\n   " + " bonus, 1 hit point, and immunity to all conditions. It uses my saving throw bonus, is the same" + "\n   " + "size as me, and it occupies its space. On my turn, I can mentally command the memory to" + "\n   " + "move up to 30 feet in any I can move. If my memory is ever more than 30 feet from me at" + "\n   " + "the end of my turn, it is destroyed.",
@@ -36,7 +36,7 @@ AddSubClass("fighter", "memory knight", {
 		},
 		"subclassfeature3.1" : {
 			name : "Flashback",
-			source : ["NodHB-MK"],
+			source : [["F:MK"]],
 			minlevel : 3,
 			description : desc([
 				"I can make one additional melee attack from the memory's position",
@@ -49,7 +49,7 @@ AddSubClass("fighter", "memory knight", {
 		},
 		"subclassfeature7" : {
 			name : "Reminiscence",
-			source : ["NodHB-MK"],
+			source : [["F:MK"]],
 			minlevel : 7,
 			description : desc([
 				"I can temporarily transfer my consciousness to my memory",
@@ -60,7 +60,7 @@ AddSubClass("fighter", "memory knight", {
 		},
 		"subclassfeature10" : {
 			name : "Sudden Recollection",
-			source : ["NodHB-MK"],
+			source : [["F:MK"]],
 			minlevel : 10,
 			description : desc([
 				"Before an attack roll is made, I can use my reaction to teleport the memory",
@@ -74,7 +74,7 @@ AddSubClass("fighter", "memory knight", {
 		},
 		"subclassfeature15" : {
 			name : "Instant Recall",
-			source : ["NodHB-MK"],
+			source : [["F:MK"]],
 			minlevel : 15,
 			description : desc([
 					"When my memory is destroyed and I don't already have temporary hit points",
@@ -88,7 +88,7 @@ AddSubClass("fighter", "memory knight", {
 		},
 		"subclassfeature18" : {
 			name : "Past, Present and Future",
-			source : ["NodHB-MK"],
+			source : [["F:MK"]],
 			minlevel : 18,
 			description : desc([
 					"I create two memories with my Memory Projection feature, and these memories can coexist",
@@ -102,7 +102,7 @@ AddSubClass("fighter", "memory knight", {
 
 CreatureList.memory = {
 	name : "Memory",
-	source : ["NodHB-MK"],
+	source : [["F:MK"]],
 	size : 3,
 	type : "",
 	subtype : "",
