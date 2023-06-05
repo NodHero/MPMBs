@@ -1,9 +1,9 @@
-var iFileName = "Nod's Homebrew - Fighter - Phase Knight [Nod, original by Matthew Mercer].js"; 
+var iFileName = "Fighter - Phase Knight [Nod, original by Matthew Mercer].js"; 
 RequiredSheetVersion(13);
 
-SourceList["NodHB-PK"] = {
-	name : "Phase Knight",
-	abbreviation : "NodHB-PK",
+SourceList[["F:PK"]] = {
+	name : "Fighter - Phase Knight",
+	abbreviation : "F:PK",
 	group : "Nod's Homebrew",
 	date : "2021/04/07"
 };
@@ -12,12 +12,12 @@ SourceList["NodHB-PK"] = {
 AddSubClass("fighter", "phase knight", {
 	regExpSearch : /^(?=.*phase)(?=.*knight).*$/i,
 	subname : "Phase Knight",
-	source : ["NodHB-PK"],
+	source : [["F:PK"]],
 	fullname : "Phase Knight",
 	features : {
 		"subclassfeature3" : {
 			name : "Phase Projection",
-			source : ["NodHB-PK"],
+			source : [["F:PK"]],
 			minlevel : 3,
 			description : desc([
 				"I project a phase of myself in an unoccupied space I can see within 15 feet of me. This", 
@@ -43,7 +43,7 @@ AddSubClass("fighter", "phase knight", {
 		},
 		"subclassfeature3.1" : {
 			name : "Flash Density",
-			source : ["NodHB-PK"],
+			source : [["F:PK"]],
 			minlevel : 3,
 			description : desc([
 				"When I take the Attack action, I can make 1 additional melee attack from the phase's space",
@@ -54,7 +54,7 @@ AddSubClass("fighter", "phase knight", {
 		},
 		"subclassfeature7" : {
 			name : "Synchronization",
-			source : ["NodHB-PK"],
+			source : [["F:PK"]],
 			minlevel : 7,
 			description : desc([
 				"As an action I can transfer my senses into my phase for 10 minutes. During this time I am",
@@ -63,7 +63,7 @@ AddSubClass("fighter", "phase knight", {
 		},
 		"subclassfeature10" : {
 			name : "Oscillation Shift",
-			source : ["NodHB-PK"],
+			source : [["F:PK"]],
 			minlevel : 10,
 			description : desc([
 				"Before an attack roll is made at another creature I can see, I can use my reaction to teleport",
@@ -76,7 +76,7 @@ AddSubClass("fighter", "phase knight", {
 		},
 		"subclassfeature15" : {
 			name : "Reverberation",
-			source : ["NodHB-PK"],
+			source : [["F:PK"]],
 			minlevel : 15,
 			description : desc([
 				"If I do not already have temporary hit points when my phase is destroyed, I gain 2d6 + my",
@@ -88,7 +88,7 @@ AddSubClass("fighter", "phase knight", {
 		},
 		"subclassfeature18" : {
 			name : "Concurrent Projection",
-			source : ["NodHB-PK"],
+			source : [["F:PK"]],
 			minlevel : 18,
 			description : desc([
 				"When I use my bonus action to Phase Projection I can create two phases that both function",
@@ -101,7 +101,7 @@ AddSubClass("fighter", "phase knight", {
 
 CreatureList.phase = {
 	name : "Phase",
-	source : ["NodHB-PK"],
+	source : [["F:PK"]],
 	size : 3,
 	type : "",
 	subtype : "",
