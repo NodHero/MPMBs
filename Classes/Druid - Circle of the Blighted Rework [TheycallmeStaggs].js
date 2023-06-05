@@ -6,29 +6,29 @@
 */
 
 /*  -INFORMATION-
-	Subject:    Homebrew: Druid Circle - Circle of the Blighted Rework
+	Subject:    Druid - Circle of the Blighted Rework
 	Effect:     This file adds the Circle of the Blighted Reworked as a druid subclass
 	File link:  https://drive.google.com/file/d/1DbfnzVQ8mayFQhNCcygKk95gjwcmxIVE/view
 	Author:     u/TheycallmeStaggs
 	Code by:	u/Nod_Hero
 	Date:		2023-04-01 (sheet v13)
 */
-
-var iFileName = "Druid - Circle of the Blighted Rework.js"; 
+	
+var iFileName = "Druid - Circle of Blight Revamped [TheycallmeStaggs].js"; 
 RequiredSheetVersion(13);
 
 SourceList["CotBR"] = {
-  name: "Druid - Circle of the Blighted Rework",
+  name: "Druid - Circle of Blight Revamped",
   abbreviation: "CotBR",
   group: "Third Party",
   url: "https://www.reddit.com/r/UnearthedArcana/comments/105horn/druid_circle_of_the_blighted_revamped/",
   date: "2023-01-07",
 };
 
-AddSubClass("druid", "circle of the blighted v2", {
-	regExpSearch: /^(?=.*(druid|shaman))(?=.*blighted).*$/i,
-	subname: "Circle of the Blighted",
-	source: ["CotBR", 1],
+AddSubClass("druid", "circle of blight", {
+	regExpSearch: /^(?=.*(druid|shaman))(?=.*blight).*$/i,
+	subname: "Circle of Blight",
+	source: ["CotBR", 171],
 	features: {
 	subclassfeature2: {
 		name: "Invoke Blight",
@@ -40,8 +40,8 @@ AddSubClass("druid", "circle of the blighted v2", {
 		description: desc([
 		"As a bonus action, I can Invoke Blight on a non-Undead/Construct enemy within 30 ft",
 		"For one minute, their speed is reduced by 10 ft, and they take extra necrotic damage the",
-		"first time they take damage on a turn. I can Invoke Blight on only one creature at a time.",
-		"Once used, I must complete a short or long rest, or use a Wild Shape, to Invoke Blight again.", ]),
+		"first time they take damage on a turn. I can Invoke Blight on one creature at a time.",
+		"Once used, I must complete a short or long rest, or use a Wild Shape to Invoke Blight again.", ]),
 		additional : levels.map(function (n) { return n < 2 ? "" : '1d' + (n < 5 ? 4 : n < 11 ? 6 : n < 17 ? 8 : 10) + " necrotic dmg"; }),
 		action: [["bonus action", ""]],
 	},
