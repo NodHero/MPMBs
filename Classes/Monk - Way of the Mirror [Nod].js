@@ -1,10 +1,10 @@
 /*	-INFORMATION-
 
 	Subject:	Subclass
-	Effect:		This script adds a subclass for the Monk, called "Way of the Mirror"
-			to "MPMB's Character Record Sheet" found at https://flapkan.com/mpmb/charsheets
-			Subclass created by NodHero, inspired by and heavily borrowed from the Echo Knight 
-			in Explorer's Guide to Wildemount (https://dnd.wizards.com/products/wildemount)
+	Effect:		This script adds a subclass for the Monk, called "Way of the Mirror" 
+				to "MPMB's Character Record Sheet" found at https://flapkan.com/mpmb/charsheets
+				Subclass created by NodHero, inspired by and heavily borrowed from the Echo Knight 
+				in Explorer's Guide to Wildemount (https://dnd.wizards.com/products/wildemount)
 	Code by:	NodHero, with contributions from the orginal Echo Knight coders
 	Date:		2022-06-12 (sheet v13)
 */
@@ -13,9 +13,9 @@ var iFileName = "Monk - Way of the Mirror [Nod].js";
 RequiredSheetVersion("13.1.0");
 
 // Define the source
-SourceList["NHB-WM"] = {
+SourceList["WotM"] = {
 	name : "Monk - Way of the Mirror",
-	abbreviation : "NHB-WM",
+	abbreviation : "WotM",
 	group : "Nod's Homebrew",
 	date : "2022/06/12"
 };
@@ -36,18 +36,18 @@ these monks, often called Mirror Dancers, charge into the fray as a flurry of si
 AddSubClass("monk", "way of the mirror", {
 	regExpSearch : /^(?=.*mirror)((?=.*(monk|monastic|dancer))|(((?=.*martial)(?=.*(artist|arts)))|((?=.*spiritual)(?=.*warrior)))).*$/i,
 	subname : "Way of the Mirror",
-	source : ["NHB-WM", 1],
+	source : [["WotM", 1]],
 	features : {
 		"subclassfeature3" : {
 			name : "Cast Reflection",
-			source : [["NHB-WM", 1]],
+			source : [["WotM", 1]],
 			minlevel : 3,
 			description : ' [see 3rd page]',
 			action: [["bonus action", "Reflection (summon/dismiss)"], ["bonus action", "Reflection (swap location)"]],
 			creaturesAdd : [["Reflection (Monk)"]],
 			creatureOptions : [{
 				name : "Reflection (Monk)",
-				source : [["NHB-WM", 1]],
+				source : [["WotM", 1]],
 				size : 3,
 				type : "Object",
 				alignment : "",
@@ -89,7 +89,7 @@ AddSubClass("monk", "way of the mirror", {
 			"cast reflection" : {
 			name : "Cast Reflection",
 			extraname : "Way of the Mirror 3",
-			source : [["NHB-WM", 1]],
+			source : [["WotM", 1]],
 			description : desc([
 				"As a bonus action, I can magically manifest a translucent silver image of myself within 15 ft",
 				"It counts as an object, has 1 HP, AC 14 + Prof. Bonus, immunity to poison/psychic damage",
@@ -107,7 +107,7 @@ AddSubClass("monk", "way of the mirror", {
 		},
 		"subclassfeature3.1" : {
 			name : "Mirror Incantations",
-			source : ["NHB-WM", 1],
+			source : [["WotM", 1]],
 			minlevel : 3,
 			description : "\n   " + "I know the Minor Illusion cantrip and can cast certain spells by using ki (see page 3)",
 			spellcastingBonus : {
@@ -120,7 +120,7 @@ AddSubClass("monk", "way of the mirror", {
 			"mirror spells" : {
 				name : "Mirror Spells",
 				extraname : "Mirror Incantations",
-				source : ["NHB-WM", 1],
+				source : [["WotM", 1]],
 				description : " [2 ki points, no material components]" + "\n   " + "As an action, I can cast Alter Self, Blur, Disguise Self, or Mirror Image",
 				action : ["action", ""],
 				spellcastingBonus : {
@@ -135,7 +135,7 @@ AddSubClass("monk", "way of the mirror", {
 		},
 		"subclassfeature6" : {
 			name : "Glass Looking",
-			source : [["NHB-WM", 1]],
+			source : [["WotM", 1]],
 			minlevel : 6,
 			description : desc([
 				"As an action, I can temporarily transfer my consciousness to my reflection for up to 10 min",
@@ -151,7 +151,7 @@ AddSubClass("monk", "way of the mirror", {
 		},
 		"subclassfeature11" : {
 			name : "Interpose Reflection",
-			source : [["NHB-WM", 1]],
+			source : [["WotM", 1]],
 			minlevel : 11,
 			description : desc([
 				"As a reaction when a creature I can see is attacked, I can make my reflection the target",
@@ -165,7 +165,7 @@ AddSubClass("monk", "way of the mirror", {
 		},
 		"subclassfeature17" : {
 			name : "Mirror Dance",
-			source : ["NHB-WM", 1],
+			source : [["WotM", 1]],
 			minlevel : 17,
 			description : desc([
 				"As a reaction, if a creature within 5 ft of me or my reflection is hit by another, I can make a", 
