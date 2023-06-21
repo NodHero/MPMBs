@@ -2,7 +2,7 @@ var iFileName = "Background - Scrivener [Nod].js";
 RequiredSheetVersion(13);
 
 SourceList["NodHB-Scv"] = {
-	name : "Folk Healer",
+	name : "Scrivener",
 	abbreviation : "NodHB-Scv",
 	group : "Nod's Homebrew",
 	date : "2021/12/29"
