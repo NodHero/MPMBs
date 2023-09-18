@@ -4,7 +4,7 @@ RequiredSheetVersion(13);
 /*	-INFORMATION-
 	Subject:	Subclass
 	Effect:		This script adds a sorcerer subclass called "Deathtouched", inspired by "Lichtouched – A New Sorcerous Origin" 
-				by James Introcaso (https://worldbuilderblog.me/2017/05/18/lichtouched-a-new-sorcerous-origin/)
+			by James Introcaso (https://worldbuilderblog.me/2017/05/18/lichtouched-a-new-sorcerous-origin/)
 	Code by:	NodHero
 	Completed Date:	2023-09-18
 */
@@ -13,7 +13,7 @@ SourceList["SO-DT"] = {
 	name : "Sorcerer Origin - Deathtouched",
 	abbreviation : "SO-DT",
 	group : "Nod's Homebrew",
-	url : "",
+	url : "https://github.com/NodHero/MPMBs/blob/master/Classes/Sorcerer%20-%20Deathtouched.pdf",
 	date : "2023/09/18",
 };
 
