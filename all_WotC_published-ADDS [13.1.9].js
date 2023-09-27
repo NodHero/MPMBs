@@ -708,7 +708,7 @@ MagicItemsList["fragment of suffering"] = { // Call of the Netherdeep
 	rarity : "unique",
 	allowDuplicates : true,
 	description : "As an action, a creature can touch a fragment it can see and thereby absorb the fragment into its body. A creature can absorb up to three Fragments of Suffering. If a creature that carries three fragments tries to absorb a fourth, the attempt fails automatically.",
-	descriptionFull : "This magnificent child's toy has three spinner sides engraved with runes spelling out 'Weal', 'Woe', and 'Weal and Woe'. The fourth side is blank. It can be used as the material component for the Augury spell and can be used to cast the Augury spell once per dawn.",
+	descriptionFull : "As an action, a creature can touch a fragment it can see and thereby absorb the fragment into its body. A creature can absorb up to three Fragments of Suffering. If a creature that carries three fragments tries to absorb a fourth, the attempt fails automatically.",
 	choices : ["Abhorrence","Attachment","Deception","Despondence","Intransigence","Loathing","Melancholy","Pity","Rancor"],
 	choicesNotInMenu : true,
 	"abhorrence" : {
