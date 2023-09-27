@@ -497,7 +497,7 @@ MagicItemsList["chwinga charm"] = {
 	}
 };
 
-// Add Magic Items missing from official sources
+// Add Artifacts and Story-line Magic Items
 MagicItemsList["sword of zariel"] = { // Descent into Avernus
 	name : "Sword of Zariel",
 	source : ["DiA", 225],
@@ -757,135 +757,6 @@ MagicItemsList["fragment of suffering"] = { // Call of the Netherdeep
 };
 
 // Add Creatures missing from official sources
-CreatureList["armored saber-toothed tiger"] = { //CoS
-	name : "Armored Saber-Toothed Tiger",
-	source : [["CoS", 115]],
-	size : 2, //Large
-	type : "Beast",
-	companion : "steed",
-	alignment : "Unaligned",
-	ac : 17,
-	hp : 84,
-	hd : [7, 10],
-	speed : "40 ft",
-	scores : [18, 14, 15, 3, 12, 8],
-	skills : {
-		"perception" : 3,
-		"stealth" : 6
-	},
-	senses : "Adv. on Wis (Perception) checks using smell",
-	passivePerception : 13,
-	challengeRating : "3",
-	proficiencyBonus : 2,
-	attacksAction : 1,
-	attacks : [{
-		name : "Claw",
-		ability : 1,
-		damage : [2, 6, "slashing"],
-		range : "Melee (5 ft)",
-		description : "If used after moving 20 ft straight in the same round, see Pounce trait",
-		modifiers : ["", 1, ""]
-	}, {
-		name : "Bite",
-		ability : 1,
-		damage : [1, 10, "piercing"],
-		range : "Melee (5 ft)",
-		description : "Can be used in combination with claw while pouncing (see Pounce trait)",
-		modifiers : ["", 1, ""]
-	}],
-	traits : [{
-	name : "Keen Smell",
-	description : "The tiger has advantage on Wisdom (Perception) checks that rely on smell."
-	}, {
-		name : "Pounce",
-		description : "If the tiger moves at least 20 ft straight toward a creature and then hits it with a claw attack on the same turn, that target must succeed on a DC 14 Strength saving throw or be knocked prone. If the target is prone, the tiger can make one bite attack against it as a bonus action."
-	}]
-};
-CreatureList["moonshark"] = { // CotN
-  name: "Moonshark",
-  source: [["CotN", 33]],
-  size: 1,
-  type: "Beast",
-  alignment: "Unaligned",
-  ac: 13,
-  hp: 126,
-  hd: [11, 12],
-  speed: "0 ft, swim 50 ft",
-  scores: [23, 11, 21, 1, 10, 5],
-  senses: "blindsight 60 ft",
-  skills: {
-    perception: 3,
-  },
-  passivePerception: 13,
-  challengeRating: "5",
-  proficiencyBonus: 3,
-  attacksAction: 1,
-  attacks: [
-    {
-      name: "Bite",
-      ability: 1,
-      damage: [3, 10, "piercing"],
-      range: "Melee (5 ft)",
-      description:
-        "If the shark misses, it can use a bonus action to swim up to 25 feet; this movement doesn't provoke opportunity attacks",
-    },
-  ],
-  traits: [
-    {
-      name: "Blood Frenzy",
-      description:
-        "The shark has advantage on melee attack rolls against any creature that doesn't have all its hit points.",
-    },
-    {
-      name: "Silver Spear",
-      description:
-        "A character within 5 feet of the shark can use an action to try to dislodge the spear, doing so with a successful DC 13 Strength (Athletics) check. While the spear is lodged in the shark, the shark glows with silvery illumination, shedding bright light in a 10-foot radius and dim light for an additional 10 feet.",
-    },
-    {
-      name: "Water Breathing",
-      description: "The shark can breathe only underwater.",
-    },
-  ],
-};
-CreatureList["sled dog"] = { // RotF
-	name : "Sled Dog",
-	source : [["RoT", 27]],
-	size : 3, //Medium
-	type : "Beast",
-	subtype : "",
-	companion : "companion",
-	alignment : "Unaligned",
-	ac : 13,
-	hp : 11,
-	hd : [2, 8],
-	speed : "40 ft",
-	scores : [12, 15, 12, 3, 12, 6],
-	saves : ["", "", "", "", "", ""],
-	skills : {
-		"perception" : 3,
-		"stealth" : 4
-		},
-	senses : "Adv. on Wis (Perception) checks using hearing/smell",
-	passivePerception : 13,
-	languages : "",
-	challengeRating : "1/4",
-	proficiencyBonus : 2,
-	attacksAction : 1,
-	attacks : [{
-		name : "Bite",
-		ability : 2,
-		damage : [2, 4, "piercing"],
-		range : "Melee (5 ft)",
-		description : "Target creature must succeed on a DC 11 Strength saving throw or be knocked prone"
-		}],
-	traits : [{
-		name : "Keen Hearing and Smell",
-		description : "The sled dog has advantage on Wisdom (Perception) checks that rely on hearing or smell."
-		}, {
-		name : "Pack Tactics",
-		description : "The sled dog has advantage on an attack roll against a creature if at least one of the sled dog's allies is within 5 ft of the creature and the ally isn't incapacitated."
-		}]
-};
 CreatureList["berserker"] = { // SRD & MM
 	name : "Berserker",
 	source : [["SRD", 392], ["M", 344]],
@@ -955,50 +826,7 @@ CreatureList["wyvern"] = { // SRD & MM (Includes contributions by kingspooker)
 		}
 	]
 };
-CreatureList["snow leopard"] = { // TftYP
-	name : "Snow Leopard",
-	source : ["TftYP", 183],
-	size : 2, //Large
-	type : "Beast",
-	subtype : "",
-	alignment : "Unaligned",
-	ac : 12,
-	hp : 37,
-	hd : [5, 10],
-	speed : "40 ft",
-	scores : [17, 15, 14, 3, 12, 8],
-	saves : ["", "", "", "", "", ""],
-	skills : {
-		"perception" : 3,
-		"stealth" : 6
-		},
-	senses : "Darkvision 60 ft; Adv. on Wis (Perception) checks using smell",
-	passivePerception : 13,
-	languages : "",
-	challengeRating : "1",
-	proficiencyBonus : 2,
-	attacksAction : 1,
-	attacks : [{
-		name : "Claw",
-		ability : 1,
-		damage : [1, 8, "slashing"],
-		range : "Melee (5 ft)",
-		description : "If used after moving 20 ft straight in the same round, see Pounce trait"
-		}, {
-		name : "Bite",
-		ability : 1,
-		damage : [1, 10, "piercing"],
-		range : "Melee (5 ft)",
-		description : "Can be used in combination with claw while pouncing (see Pounce trait)"
-		}],
-	traits : [{
-		name : "Keen Smell",
-		description : "The leopard has advantage on Wisdom (Perception) checks that rely on smell."
-		}, {
-		name : "Pounce",
-		description : "If the leopard moves at least 20 ft straight toward a creature and hits it with a claw attack, that target must succeed on a DC 13 Strength saving throw or be knocked prone. If the target is prone, the tiger can make one bite attack against it as a bonus action."
-		}]
-};
+
 
 // Add Telekinetic Shove to Telekinetic feat
 FeatsList["telekinetic"] = { // TCoE
@@ -1130,7 +958,7 @@ AddFeatureChoice(ClassList.wizard.features["arcane recovery"], true, "Wizard Can
 		]
 	},
 	eval : function () {
-		CurrentSpells['wizard-wizard cantrip formulas'] = {
+		CurrentSpells['wizard cantrip formulas'] = {
 			name : 'Wizard Cantrip Formulas (item)',
 			ability : "wizard",
 			list : { 'class' : 'wizard', level : [0, 0] },
