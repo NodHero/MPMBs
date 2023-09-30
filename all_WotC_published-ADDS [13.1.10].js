@@ -1,4 +1,4 @@
-var iFileName = "all_WotC_published-ADDS [13.1.9].js";
+var iFileName = "all_WotC_published-ADDS [13.1.10].js";
 RequiredSheetVersion("13.1.9");
 
 // Add Blessings (coded as Feats) [contributed by Nod_Hero]
@@ -396,18 +396,34 @@ FeatsList["epic boon"] = {
         addMod : { type : "skill", field : "Stealth", mod : "10", text : "I gain a +10 bonus to Stealth checks" },
     },
 };
-// Add Chwinga Charms (coded as Magic Items) from RotF [contributed by Nod_Hero]
+// Add Chwinga Charms (coded as Magic Items) [contributed by Nod_Hero]
 MagicItemsList["chwinga charm"] = {
 	name : "Chwinga Charm",
-	source : ["RotF"],
+	source : [["DMG", 228],["RotF", 283],["CM", 212],["S:AiS", 17]],
 	type : "wondrous item",
 	rarity : "rare",
-	descriptionFull : "This tiny object looks like a snowflake. Different types of chwinga charms exist, each with a different effect.",
+	descriptionFull : "Different types of chwinga charms exist, each with a different effect.",
 	allowDuplicates : true,
-	choices : ["Animal Conjuring", "Biting Cold", "Bounty", "Cold Resistance", "Heroism", "Snowball Strike", "The Ice Troll", "The Snow Walker", "The Traveler's Haven", "Vitality"],
+	choices : ["Air Bubbles", "Animal Conjuring", "Biting Cold", "Bounty", "Cold Resistance", "Darkvision", "Feather Falling", "Heroism", "Instant Tools", "Restoration", "Snowball Strike", "The Ice Troll", "The Mirage", "The Slayer", "The Snow Walker", "The Traveler's Haven", "The Water Bearer", "Vitality"],
+	"air bubbles" : {
+		name : "Chwinga Charm - Air Bubbles",
+		source : [["S:AiS", 17]],
+		description : "As an action, I can cast the Air Bubble spell. The charm disappears after 3 uses.",
+		usages : 3,
+		recovery : "never",
+		spellFirstColTitle : "Ch",
+		spellcastingBonus : [{
+		name : "1 charge",
+		spells : ["air bubble"],
+		selection : ["air bubble"],
+		firstCol : "1",
+		}],
+		action : [["action", ""]]
+	},
 	"animal conjuring" : {
 		name : "Chwinga Charm - Animal Conjuring",
-		description : "This tiny object looks like a snowflake. As an action, I can cast the Conjure Animals spell (3rd-level version). The charm disappears after 3 uses.",
+		source : [["DMG", 228]],
+		description : "As an action, I can cast the Conjure Animals spell (3rd-level version). The charm disappears after 3 uses.",
 		usages : 3,
 		recovery : "never",
 		spellFirstColTitle : "Ch",
@@ -421,14 +437,16 @@ MagicItemsList["chwinga charm"] = {
 	},
 	"biting cold" : {
 		name : "Chwinga Charm - Biting Cold",
-		description : "This tiny object looks like a snowflake. As a bonus action, I can can expend 1 of the charm's charges to wreathe my weapon attacks with biting cold for 1 minute. Until this effect ends, I deal an extra 1d6 cold damage when I hit with a melee or ranged weapon attack. The charm disappears after 3 uses.",
+		source : [["RotF", 283]],
+		description : "As a bonus action, I can can expend 1 of the charm's charges to wreathe my weapon attacks with biting cold for 1 minute. Until this effect ends, I deal an extra 1d6 cold damage when I hit with a melee or ranged weapon attack. The charm disappears after 3 uses.",
 		usages : 3,
 		recovery : "never",
 		action : [["bonus action", ""]]
 	},
 	"bounty" : {
 		name : "Chwinga Charm - Bounty",
-		description : "This tiny object looks like a snowflake. As an action, I can can expend 1 of the charm's charges to cast the Create Food And Water spell, requiring no components. The charm disappears after 3 uses.",
+		source : [["RotF", 283]],
+		description : "As an action, I can can expend 1 of the charm's charges to cast the Create Food And Water spell, requiring no components. The charm disappears after 3 uses.",
 		usages : 3,
 		recovery : "never",
 		spellFirstColTitle : "Ch",
@@ -442,20 +460,73 @@ MagicItemsList["chwinga charm"] = {
 	},
 	"cold resistance" : {
 		name : "Chwinga Charm - Cold Resistance",
-		description : "This tiny object looks like a snowflake. As an action, I can can expend the charm to give myself resistance to cold damage for 24 hours.",
+		source : [["RotF", 283]],
+		description : "As an action, I can can expend the charm to give myself resistance to cold damage for 24 hours.",
 		usages : 1,
 		recovery : "never",
 		action : [["action", ""]]
+	},
+	"darkvision" : {
+		name : "Chwinga Charm - Darkvision",
+		source : [["DMG", 228]],
+		description : "As an action, I can expend 1 of the charm's charges to cast the Darkvision spell, no components required. The charm disappears after 3 uses.",
+		usages : 3,
+		recovery : "never",
+		spellFirstColTitle : "Ch",
+		spellcastingBonus : [{
+		name : "1 charge",
+		spells : ["darkvision"],
+		selection : ["darkvision"],
+		firstCol : "1",
+		}],
+		action : [["action", ""]],
+	},
+	"feather falling" : {
+		name : "Chwinga Charm - Feather Falling",
+		source : [["DMG", 228]],
+		description : "This charm grants me the benefits of a ring of feather falling for 10 days, after which the charm vanishes from me. When I fall, I descend 60 feet per round and take no damage from falling.",
+		usages : "",
+		recovery : "never",
+		additional : "10 days",
 	},
 	"heroism" : {
 		name : "Chwinga Charm - Heroism",
-		description : "This tiny object looks like a snowflake. As an action, I can can expend the charm to give myself the benefit of a Potion of Heroism. I gain 10 temporary hit points that last for 1 hour and am under the effect of the Bless spell (no concentration required).",
+		source : [["DMG", 228]],
+		description : "As an action, I can can expend the charm to give myself the benefits of a Potion of Heroism. I gain 10 temporary hit points that last for 1 hour and am under the effect of the Bless spell (no concentration required).",
 		usages : 1,
 		recovery : "never",
 		action : [["action", ""]]
 	},
+	"instant tools" : {
+		name : "Chwinga Charm - Instant Tools",
+		source : [["S:AiS", 17]],
+		description : "This charm allows me to magically conjure a set of artisan's tools, navigator's tools, or thieves' tools. The conjured tools appear either in my hand or somewhere else in my space (my choice). Once used, this charm goes away, but the tools remain.",
+		usages : 1,
+		recovery : "never",
+	},
+	"restoration" : {
+		name : "Chwinga Charm - Restoration",
+		source : [["DMG", 228]],
+		description : "This Charm has 6 charges. I can use an action to expend some of its charges to cast one of the following spells:\n Greater Restoration (4 charges) or Lesser Restoration (2 charges). The Charm vanishes once all its charges have been expended.",
+		usages : 10,
+		recovery : "never",
+		action : [["action", ""]],
+		spellFirstColTitle : "Ch",
+		spellcastingBonus : [{
+			name : "2 charges",
+			spells : ["lesser restoration"],
+			selection : ["lesser restoration"],
+			firstCol : 2
+		}, {
+			name : "4 charges",
+			spells : ["greater restoration"],
+			selection : ["greater restoration"],
+			firstCol : 4
+		}],
+	},
 	"snowball strike" : {
 		name : "Chwinga Charm - Snowball Strike",
+		source : [["RotF", 283]],
 		description : "As a bonus action, I can can expend 1 of the charm's charges to create a magical snowball in my hand and throw it. The snowball is a magic ranged weapon , has a 20/60 range, deals 1d4 cold damage, and scores a critical hit on a roll of 19 or 20. On a critical hit, the target is blinded until the end of its next turn",
 		usages : 5,
 		recovery : "never",
@@ -463,13 +534,38 @@ MagicItemsList["chwinga charm"] = {
 	},
 	"the ice troll" : {
 		name : "Chwinga Charm - The Ice Troll",
-		description : "This tiny object looks like a snowflake. As a reaction when I take cold damage, I can expend the charm to reduce the damage to 0. I regain a number of hit points equal to half the cold damage I would have taken.",
+		source : [["RotF", 283]],
+		description : "As a reaction when I take cold damage, I can expend the charm to reduce the damage to 0. I regain a number of hit points equal to half the cold damage I would have taken.",
 		usages : 1,
 		recovery : "never",
 		action : [["reaction", "Chwinga Charm (cold damage)"]]
 	},
+	"the mirage" : {
+		name : "Chwinga Charm - The Mirage",
+		source : [["CM", 212]],
+		description : "As an action, I can cast the Hallucinatory Terrain spell (save DC 15). Once used, this charm vanishes from me.",
+		usages : 1,
+		recovery : "never",
+		spellFirstColTitle : "Ch",
+		fixedDC : 15,
+		spellcastingBonus : [{
+		name : "1 charge",
+		spells : ["hallucinatory terrain"],
+		selection : ["hallucinatory terrain"],
+		firstCol : "1",
+		}],
+		action : [["action", ""]]
+	},
+	"the slayer" : {
+		name : "Chwinga Charm - The Slayer",
+		source : [["DMG", 228]],
+		description : "One sword in my possession becomes a Dragon Slayer or Giant Slayer (DM's choice) for the next 9 days. The charm then vanishes from me, and the weapon returns to normal.",
+		usages : "9 days",
+		recovery : "never",
+	},
 	"the snow walker" : {
 		name : "Chwinga Charm - The Snow Walker",
+		source : [["RotF", 283]],
 		description : "As an action, I can expend 1 of the charm's charges to gain these 24 hour benefits: I can see 60 ft through areas heavily obscured by snow, I am immune to the effects of extreme cold (described in DMG), and I and my allies within 15 feet of me ignore snow/ice difficult terrain. The charm disappears after 3 uses.",
 		usages : 3,
 		recovery : "never",
@@ -477,7 +573,8 @@ MagicItemsList["chwinga charm"] = {
 	},
 	"the traveler's haven" : {
 		name : "Chwinga Charm - The Traveler's Haven",
-		description : "This tiny object looks like a snowflake. As an action, I can expend 1 of the charm's charges to cast the Leomund's Tiny Hut spell, no components required. The charm disappears after 3 uses.",
+		source : [["RotF", 283]],
+		description : "As an action, I can expend 1 of the charm's charges to cast the Leomund's Tiny Hut spell, no components required. The charm disappears after 3 uses.",
 		usages : 3,
 		recovery : "never",
 		spellFirstColTitle : "Ch",
@@ -488,8 +585,17 @@ MagicItemsList["chwinga charm"] = {
 		firstCol : "1",
 		}],
 	},
+	"the water bearer" : {
+		name : "Chwinga Charm - The Water Bearer",
+		source : [["CM", 212]],
+		description : "This charm allows me to create up to 1 gallon of fresh water, which fills one or more empty containers in my possession. I can do this up to thrice per day for 10 days, after which this charm vanishes from me.",
+		usages : 3,
+		recovery : "day",
+		additional : "10 days"
+	},
 	"vitality" : {
 		name : "Chwinga Charm - Vitality",
+		source : [["DMG", 228]],
 		description : "As an action, I can can expend the charm to give myself the benefit of a Potion of Vitality. I remove any exhaustion I am suffering and am cured of any disease or poison affecting me. For the next 24 hours, I regain the maximum number of hit points for any Hit Die I spend.",
 		usages : 1,
 		recovery : "never",
@@ -498,6 +604,43 @@ MagicItemsList["chwinga charm"] = {
 };
 
 // Add Artifacts and Story-line Magic Items
+MagicItemsList["stone of golorr"] = { // Waterdeep Dragon Heist
+	name : "Stone of Golorr",
+	source : ["WDH", 192],
+	type : "wondrous item",
+	rarity : "artifact",
+	storyItemAL : true,
+	description : "It has 3 charges and regains d3 expended charges at dawn. I can expend 1 charge to cast Legend Lore. When my attunement ends, I must make a DC 16 Wis save or I lose all memory of the stone and all knowledge imparted by it. Remove Curse is 20% chance of restoring lost info, Greater Restoration is 100%.",
+	descriptionFull : "The Stone of Golorr is a glossy, greenish-gray stone that fits in the palm of your hand. The stone is actually an aboleth named Golorr, transformed by magic into an object.\n  Random Properties. The Stone of Golorr has the following properties, determined by rolling on the tables in the \"Artifacts\" section in chapter 7 of the Dungeon Master's Guide:\n \u2022 1 minor beneficial property\n \u2022 1 minor detrimental property.\n\n Legend Lore. The Stone of Golorr has 3 charges and regains 1d3 expended charges daily at dawn. While holding the stone, you can expend 1 of its charges to cast the Legend Lore spell.\n   By using the stone to cast legend lore, you communicate directly with the aboleth, and it shares its knowledge with you. The aboleth can't lie to you, but the information it provides is often cryptic or vague.\n   The aboleth knows where Lord Neverember's secret vault is located. It also knows that three keys are needed to open the vault and that a gold dragon named Aurinax inhabits the vault and guards its treasures.\n\n  Failed Memory. When your attunement to the Stone of Golorr ends, you must make a DC 16 Wisdom saving throw. On a failed save, you lose all memory of the stone being in your possession and all knowledge imparted by it. A Remove Curse spell cast on you has a 20% chance of restoring the lost knowledge and memories, and a Greater Restoration spell does so automatically.\n\n  Sentience. The Stone of Golorr is a sentient lawful evil magic item with an Intelligence of 18, a Wisdom of 15, and a Charisma of 18. It has hearing and darkvision out to a range of 120 feet. It can communicate telepathically with the creature that is attuned to it, as long as that creature understands at least one language. In addition, the aboleth learns the greatest desires of any creature that communicates telepathically with the stone.\n The Stone of Golorr hungers for information and prefers not to remain in the clutches of any creature for too long. Whenever the stone desires a new owner, it demands to be given to another intelligent creature as quickly as possible. If its demands are ignored, it tries to take control of its owner (see \"Sentient Magic Items\" in chapter 7 of the Dungeon Master's Guide).\n\n Personality. The Stone of Golorr has an alien intellect that is both domineering and hungry for knowledge. It thinks of itself as an ageless and immortal god.\n\n Destroying the Stone. While in stone form, the aboleth isn't a creature and isn't subject to effects that target creatures. The Stone of Golorr is immune to all damage. Casting an Antipathy/Sympathy spell on the stone destroys it if the antipathy effect is selected and the spell is directed to repel aberrations. When the spell is cast in this way, the stone transforms into mucus and is destroyed, and Golorr the aboleth appears in an unoccupied space within 30 feet of the stone's remains. The aboleth is incensed by the stone's destruction, and it attacks all other creatures it can see.",
+	attunement : true,
+	toNotesPage : [{
+		name : "Stone of Golorr",
+		note : [
+			"The Stone of Golorr is a glossy, greenish-gray stone that fits in the palm of your hand. The stone is actually an aboleth named Golorr, transformed by magic into an object.",
+			"\nRandom Properties." 
+			"   The Stone of Golorr has the following random properties, which you can determine by rolling on the tables in the 'Artifacts' section of the Dungeon Masters Guide:\n\t1 minor beneficial properties\n\t1 minor detrimental property",
+			"\nLegend Lore." 
+			"   The Stone of Golorr has 3 charges and regains 1d3 expended charges daily at dawn. While holding the stone, you can expend 1 of its charges to cast the legend lore spell.\n   By using the stone to cast legend lore, you communicate directly with the aboleth, and it shares its knowledge with you. The aboleth can't lie to you, but the information it provides is often cryptic or vague.\n   The aboleth knows where Lord Neverember's secret vault is located. It also knows that three keys are needed to open the vault and that a gold dragon named Aurinax inhabits the vault and guards its treasures.",
+			"\nFailed Memory." 
+			"   When your attunement to the Stone of Golorr ends, you must make a DC 16 Wisdom saving throw. On a failed save, you lose all memory of the stone being in your possession and all knowledge imparted by it. A remove curse spell cast on you has a 20 percent chance of restoring the lost knowledge and memories, and a greater restoration spell does so automatically.",
+			"\nSentience." 
+			"   The Stone of Golorr is a sentient lawful evil magic item with an Intelligence of 18, a Wisdom of 15, and a Charisma of 18. It has hearing and darkvision out to a range of 120 feet. It can communicate telepathically with the creature that is attuned to it, as long as that creature understands at least one language. In addition, the aboleth learns the greatest desires of any creature that communicates telepathically with the stone.\n   The Stone of Golorr hungers for information and prefers not to remain in the clutches of any creature for too long. Whenever the stone desires a new owner, it demands to be given to another intelligent creature as quickly as possible. If its demands are ignored, it tries to take control of its owner (see 'Sentient Magic Items' in chapter 7 of the Dungeon Master's Guide).",
+			"\nPersonality." 
+			"   The Stone of Golorr has an alien intellect that is both domineering and hungry for knowledge. It thinks of itself as an ageless and immortal god.",
+			"\nDestroying the Stone." 
+			"   While in stone form, the aboleth isn't a creature and isn't subject to effects that target creatures. The Stone of Golorr is immune to all damage. Casting an antipathy/sympathy spell on the stone destroys it if the antipathy effect is selected and the spell is directed to repel aberrations. When the spell is cast in this way, the stone transforms into mucus and is destroyed, and Golorr the aboleth appears in an unoccupied space within 30 feet of the stone's remains. The aboleth is incensed by the stone's destruction, and it attacks all other creatures it can see.",
+		]
+	}],
+	usages : 3,
+	recovery : "dawn",
+	additional : "regains 1d3",
+	spellcastingBonus : [{
+		name : "1 charge",
+		spells : ["legend lore"],
+		selection : ["legend lore"],
+		firstCol : 1
+	}],
+};
 MagicItemsList["sword of zariel"] = { // Descent into Avernus
 	name : "Sword of Zariel",
 	source : ["DiA", 225],
@@ -626,7 +769,7 @@ MagicItemsList["sword of zariel"] = { // Descent into Avernus
 	]) + sentientItemConflictTxt
 	}]
 };
-MagicItemsList["demonomicon of iggwilv"] = { // TCoE (contains contributions by lizrdgizrd)
+MagicItemsList["demonomicon of iggwilv"] = { // Tasha's Cauldron of Everything (contains contributions by lizrdgizrd)
 	name : "Demonomicon of Iggwilv",
 	source : [["T", 125]],
 	type : "wondrous item",
@@ -708,7 +851,7 @@ MagicItemsList["fragment of suffering"] = { // Call of the Netherdeep
 	rarity : "unique",
 	allowDuplicates : true,
 	description : "As an action, a creature can touch a fragment it can see and thereby absorb the fragment into its body. A creature can absorb up to three Fragments of Suffering. If a creature that carries three fragments tries to absorb a fourth, the attempt fails automatically.",
-	descriptionFull : "As an action, a creature can touch a fragment it can see and thereby absorb the fragment into its body. A creature can absorb up to three Fragments of Suffering. If a creature that carries three fragments tries to absorb a fourth, the attempt fails automatically.",
+	descriptionFull : "As an action, a creature can touch a fragment it can see and thereby absorb the fragment into its body. A creature can absorb up to three Fragments of Suffering. If a creature that carries three fragments tries to absorb a fourth, the attempt fails automatically..",
 	choices : ["Abhorrence","Attachment","Deception","Despondence","Intransigence","Loathing","Melancholy","Pity","Rancor"],
 	choicesNotInMenu : true,
 	"abhorrence" : {
