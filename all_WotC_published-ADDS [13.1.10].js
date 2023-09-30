@@ -651,7 +651,7 @@ MagicItemsList["sword of zariel"] = { // Descent into Avernus
 	dmgres : ["Necrotic", "Radiant"],
 	scoresOverride : [0, 0, 0, 0, 0, 20],
 	speed : { fly : { spd : "fixed90", enc : "fixed80" } },
-	vision : [["Truesight", 60], ["Adv. on Insight checks", 0]],
+	vision : [["Truesight", "fixed 60"], ["Adv. on Insight checks", 0]],
 	advantages : [["Insight", true]],
 	action : [["bonus action", " (spread/dim light)"]],
 	description : "The sword sheds bright light in a 5-ft radius and dim light for an additional 5 feet. Fiends have disadvantage on attack rolls made within the bright light, even if they can't see it. You can intensify the sword's light as a bonus action, causing it to shed bright light and dim light each for a 15-ft radius instead. (See Notes)",
