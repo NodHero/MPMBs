@@ -399,7 +399,7 @@ FeatsList["epic boon"] = {
 // Add Chwinga Charms (coded as Magic Items) [contributed by Nod_Hero]
 MagicItemsList["chwinga charm"] = {
 	name : "Chwinga Charm",
-	source : [["DMG", 228],["RotF", 283],["CM", 212],["S:AiS", 17]],
+	source : [["D", 228],["RotF", 283],["CM", 212],["S:AiS", 17]],
 	type : "wondrous item",
 	rarity : "rare",
 	descriptionFull : "Different types of chwinga charms exist, each with a different effect.",
@@ -422,7 +422,7 @@ MagicItemsList["chwinga charm"] = {
 	},
 	"animal conjuring" : {
 		name : "Chwinga Charm - Animal Conjuring",
-		source : [["DMG", 228]],
+		source : [["D", 228]],
 		description : "As an action, I can cast the Conjure Animals spell (3rd-level version). The charm disappears after 3 uses.",
 		usages : 3,
 		recovery : "never",
@@ -468,7 +468,7 @@ MagicItemsList["chwinga charm"] = {
 	},
 	"darkvision" : {
 		name : "Chwinga Charm - Darkvision",
-		source : [["DMG", 228]],
+		source : [["D", 228]],
 		description : "As an action, I can expend 1 of the charm's charges to cast the Darkvision spell, no components required. The charm disappears after 3 uses.",
 		usages : 3,
 		recovery : "never",
@@ -483,7 +483,7 @@ MagicItemsList["chwinga charm"] = {
 	},
 	"feather falling" : {
 		name : "Chwinga Charm - Feather Falling",
-		source : [["DMG", 228]],
+		source : [["D", 228]],
 		description : "This charm grants me the benefits of a ring of feather falling for 10 days, after which the charm vanishes from me. When I fall, I descend 60 feet per round and take no damage from falling.",
 		usages : "",
 		recovery : "never",
@@ -491,7 +491,7 @@ MagicItemsList["chwinga charm"] = {
 	},
 	"heroism" : {
 		name : "Chwinga Charm - Heroism",
-		source : [["DMG", 228]],
+		source : [["D", 228]],
 		description : "As an action, I can can expend the charm to give myself the benefits of a Potion of Heroism. I gain 10 temporary hit points that last for 1 hour and am under the effect of the Bless spell (no concentration required).",
 		usages : 1,
 		recovery : "never",
@@ -506,7 +506,7 @@ MagicItemsList["chwinga charm"] = {
 	},
 	"restoration" : {
 		name : "Chwinga Charm - Restoration",
-		source : [["DMG", 228]],
+		source : [["D", 228]],
 		description : "This Charm has 6 charges. I can use an action to expend some of its charges to cast one of the following spells:\n Greater Restoration (4 charges) or Lesser Restoration (2 charges). The Charm vanishes once all its charges have been expended.",
 		usages : 10,
 		recovery : "never",
@@ -558,7 +558,7 @@ MagicItemsList["chwinga charm"] = {
 	},
 	"the slayer" : {
 		name : "Chwinga Charm - The Slayer",
-		source : [["DMG", 228]],
+		source : [["D", 228]],
 		description : "One sword in my possession becomes a Dragon Slayer or Giant Slayer (DM's choice) for the next 9 days. The charm then vanishes from me, and the weapon returns to normal.",
 		usages : "9 days",
 		recovery : "never",
@@ -595,7 +595,7 @@ MagicItemsList["chwinga charm"] = {
 	},
 	"vitality" : {
 		name : "Chwinga Charm - Vitality",
-		source : [["DMG", 228]],
+		source : [["D", 228]],
 		description : "As an action, I can can expend the charm to give myself the benefit of a Potion of Vitality. I remove any exhaustion I am suffering and am cured of any disease or poison affecting me. For the next 24 hours, I regain the maximum number of hit points for any Hit Die I spend.",
 		usages : 1,
 		recovery : "never",
@@ -1127,4 +1127,3 @@ AddFeatureChoice(ClassList.wizard.features["arcane recovery"], true, "Wizard Can
 		SetStringifieds('spells'); CurrentUpdates.types.push('spells');
 	}
 }, "Optional 3rd-level wizard features");
-
