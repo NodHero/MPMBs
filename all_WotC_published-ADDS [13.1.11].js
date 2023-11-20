@@ -1,4 +1,4 @@
-var iFileName = "all_WotC_published-ADDS [13.1.10].js";
+var iFileName = "all_WotC_published-ADDS [13.1.11].js";
 RequiredSheetVersion("13.1.9");
 
 // Add Blessings (coded as Feats) [contributed by Nod_Hero]
@@ -967,6 +967,43 @@ CreatureList["wyvern"] = { // SRD & MM (Includes contributions by kingspooker)
 			description : "Target also takes 7d6 poison damage, half on a DC 15 Constitution saving throw"
 		}
 	]
+};
+CreatureList["dragonnel"] = { // FToD, alternate for Find Greater Steed spell
+	name : "Dragonnel",
+	source : [["FToD", 190]],
+	size : 2, //Large
+	type : "Beast",
+	companion : ["steed"],
+	alignment : "Neutral",
+	ac : 13,
+	hp : 58,
+	hd : [9, 10],
+	speed : "30 ft, fly 60 ft",
+	scores : [16, 15, 12, 8, 13, 10],
+	skills : {
+		"perception" : 3
+	},
+	senses : "Blindsight 30 ft; Darkvision 120 ft",
+	passivePerception : 13,
+	languages : "understands Draconic and Common but can't speak",
+	challengeRating : "2",
+	proficiencyBonus : 2,
+	attacksAction : 2,
+	attacks : [{
+		name : "Rend",
+		ability : 1,
+		damage : [2, 6, "slashing"],
+		range : "Melee (5 ft)",
+		description : ""
+	}],
+	actions : [{
+		name : "Multiattack",
+		description : "The dragonnel makes two Rend attacks."
+	}],
+	traits : [{
+		name : "Flyby",
+		description : "The dragonnel doesn't provoke an opportunity attack when it flies out of an enemy's reach."
+	}]
 };
 
 
