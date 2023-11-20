@@ -142,7 +142,7 @@ MagicItemsList["charm"] = {
 	},
 	"heroism" : {
 		name : "Charm of Heroism",
-		description : "Different types of charms exist, each with a different effect.\n As an action, I can can expend the charm to give myself the benefit of a Potion of Heroism. For one hour, I gain 10 temporary hit points and am under the effect of the Bless spell (no concentration required).",
+		description : "Different types of charms exist, each with a different effect. As an action, I can can expend the charm to give myself the benefit of a Potion of Heroism. For one hour, I gain 10 temporary hit points and am under the effect of the Bless spell (no concentration required).",
 		usages : 1,
 		recovery : "never",
 		spellFirstColTitle : "Ch",
@@ -167,7 +167,7 @@ MagicItemsList["charm"] = {
 	},
 	"restoration" : {
 		name : "Charm of Restoration",
-		description : "Different types of charms exist, each with a different effect.\n This Charm has 6 charges. I can use an action to expend some of its charges to cast one of the following spells:\n Greater Restoration (4 charges) or Lesser Restoration (2 charges). The Charm vanishes once all its charges have been expended.",
+		description : "Different types of charms exist, each with a different effect. This Charm has 6 charges. I can use an action to expend some of its charges to cast one of the following spells:\n Greater Restoration (4 charges) or Lesser Restoration (2 charges). The Charm vanishes once all its charges have been expended.",
 		usages : 10,
 		recovery : "never",
 		action : [["action", ""]],
@@ -186,7 +186,7 @@ MagicItemsList["charm"] = {
 	},
 	"the slayer" : {
 		name : "Charm of The Slayer",
-		description : "Different types of charms exist, each with a different effect.\n One sword in my possession becomes a Dragon Slayer or Giant Slayer (DM's choice) for the next 9 days. The charm then vanishes from me, and the weapon returns to normal.",
+		description : "Different types of charms exist, each with a different effect. One sword in my possession becomes a Dragon Slayer or Giant Slayer (DM's choice) for the next 9 days. The charm then vanishes from me, and the weapon returns to normal.",
 		usages : "9 days",
 		recovery : "never",
 	},
