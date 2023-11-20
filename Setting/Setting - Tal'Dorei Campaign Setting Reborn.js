@@ -18,7 +18,7 @@ RequiredSheetVersion(13.1);
 SourceList["TDCSR"] = {
   name: "Tal'Dorei Campaign Setting Reborn",
   abbreviation: "TDCSR",
-  group: "Third Party",
+  group: "Critical Role",
   url: "https://shop.critrole.com/products/taldorei-campaign-setting-reborn",
   date: "2022-01-18",
 };
@@ -29,7 +29,7 @@ SourceList["TDCSR"] = {
 
 //Contributions from NodHero
 AddSubClass("barbarian", "juggernaut", {
-  regExpSearch: /path of the juggernaut/i,
+  regExpSearch : /(juggernaut|blitzer)/i,
   subname: "Path of the Juggernaut",
   source: ["TDCSR", 165],
   abilitySave: 1,
@@ -2058,18 +2058,9 @@ FeatsList["vital sacrifice"] = {
   ],
 };
 
-// Add Magic Items
-MagicItemsList["+2 ring of protection"] = {
-	name : "+2 Ring of Protection",
-	source : [["TDCSR", 263]],
-	type : "ring",
-	rarity : "very rare",
-	description : "While wearing this ring, I gain a +2 bonus to AC and saving throws.",
-	descriptionFull : "You gain a +2 bonus to AC and saving throws while wearing this ring.",
-	attunement : true,
-	extraAC : [{name : "Ring of Protection", mod : 2, magic : true, text : "I gain a +2 bonus to AC while attuned."}],
-	addMod : [{ type : "save", field : "all", mod : 2, text : "While I wear the Ring of Protection, I gain a +2 bonus to all my saving throws." }]
-};
+/*
+ * Magic Items
+ */
 
 MagicItemsList["boots of haste"] = {
   name: "Boots of Haste",
@@ -2681,9 +2672,10 @@ MagicItemsList["oceanic weapon"] = {
     itemName1stPage: ["suffix", "Oceanic"],
     descriptionChange: ["replace", "weapon"],
     excludeCheck: function (inObjKey, inObj) {
-      return (
-        !inObj.description || !/thrown/i.test(inObj.description) || !inObj.range
-      );
+      var isThrown = /thrown/i.test(inObj.description);
+      var isMelee = (/melee/i).test(inObj.range);
+
+      return !isThrown && isMelee;
     },
   },
   calcChanges: {
