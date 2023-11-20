@@ -972,7 +972,7 @@ CreatureList["dragonnel"] = { // FToD, alternate for Find Greater Steed spell
 	name : "Dragonnel",
 	source : [["FToD", 190]],
 	size : 2, //Large
-	type : "Beast",
+	type : "Dragon",
 	companion : ["steed"],
 	alignment : "Neutral",
 	ac : 13,
