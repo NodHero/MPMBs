@@ -1,9 +1,9 @@
-var iFileName = "Nod's Homebrew - Racial Feats.js"; 
-RequiredSheetVersion(13);
+var iFileName = "Feats - Racial Feats.js"; 
+RequiredSheetVersion("13.1.9");
 
-SourceList["RAC"] = {
-	name : "Homebrew Racial Feats",
-	abbreviation : "Racial Feats",
+SourceList["RCF"] = {
+	name : "Racial Feats",
+	abbreviation : "RACEFT",
 	abbreviationSpellsheet: "RA",
 	group : "Nod's Homebrew",
 	date : "2023/06/08"
@@ -13,7 +13,7 @@ SourceList["RAC"] = {
 // Aasimar
 FeatsList["celestial constitution"] = {
 	name : "Celestial Constitution",
-	source : [["RAC"]],
+	source : [["RCF"]],
 	prerequisite : "Being an Aasimar",
 	prereqeval : function(v) { return CurrentRace.known.indexOf('aasimar') !== -1; },
 	descriptionFull : "Celestial blood runs strong in you, unlocking a resilience akin to that possessed by some inhabitants of the Seven Heavens. You gain the following benefits:\n \u2022 Increase your Constitution score by 1, to a maximum of 20.\n \u2022 You have resistance to cold and poison damage.\n \u2022 You have advantage on saving throws against being poisoned.",
@@ -30,7 +30,7 @@ Celestial blood runs strong in you, unlocking a resilience akin to that possesse
 • You have advantage on saving throws against being poisoned. */
 FeatsList["divine ascendant"] = { // Multiverse Aasimar
 	name: "Divine Ascendant",
-	source: [["RAC", 81]],
+	source: [["RCF"]],
 	prerequisite : "Being an Aasimar",
 	prereqeval : "CurrentRace.known.indexOf('aasimar') !== -1",
 	descriptionFull : "The blood of your celestial ancestor is exceptionally strong within you, granting you power uncommon even among Aasimar. You gain the following benefits:\n\u2022 Increase your Intelligence, Wisdom, or Charisma score by 1, to a maximum of 20.\n\u2022 You learn the Sacred Flame cantrip. The spells' spellcasting ability is the ability increased by this feat.\n\u2022 You can use your Healing Hands trait twice before you need to finish a long rest to use them again.",
@@ -61,7 +61,7 @@ The blood of your celestial ancestor is exceptionally strong within you, grantin
 • You regain all expended uses of your Healing Hands feature when you finish a short rest. */
 FeatsList["sacred soul of the storm"] = { 
 	name : "Sacred Soul of the Storm",
-	source : [["RAC"]],
+	source : [["RCF"]],
 	prerequisite : "Being an Aasimar",
 	prereqeval : "CurrentRace.known.indexOf('aasimar') !== -1",
 	description : "When I cast a lightning damage spell, I can reroll any 1 on lightning damage dice once. I then sheathe myself in a storm cloud until my next turn ends. The storm sheds bright light in 30 ft, dim light in 30 ft and cause any within 5 ft that hit me in melee to take 1d4 lightning damage. [+1 Int, Wis, or Cha]",
@@ -77,7 +77,7 @@ You learn to call on primal energies to serve your commands. You gain the follow
 // Astral Elf
 FeatsList["luminous glow"] = {
 	name : "Luminous Glow",
-	source : [["RAC", 74]],
+	source : [["RCF"]],
 	prerequisite : "Being an Astral Elf",
 	prereqeval : function(v) { return CurrentRace.known.indexOf('astral elf') !== -1; },
 	descriptionFull : "You learn to call on the essence of the Astral to serve your commands. You gain the following benefits:\n \u2022 Increase one ability score of your choice by 1, to a maximum of 20.\n \u2022 You regain all expended uses of your 'Starlight Step' feature when you finish a short rest. Immediately after you use your Starlight Step, each creature of your choice that you can see within 5 feet of you takes radiant damage equal to your proficiency bonus.\n \u2022 When you deal radiant damage, you can reroll any roll of 1 on the radiant damage dice, but you must use the new roll, even if it is another 1.\n \u2022 Whenever you deal radiant damage, you can cause a luminous glow to wreathe you until the end of your next turn. The glow doesn't harm you or your possessions, and it sheds bright light out to 30 feet and dim light for an additional 30 feet. While the glow is present, any creature within 5 feet of you that hits you with a melee attack takes 1d4 radiant damage.",
@@ -103,7 +103,7 @@ You learn to call on the essence of the Astral to serve your commands. You gain 
 • Whenever you deal radiant damage, you can cause a luminous glow to wreathe you until the end of your next turn. The glow doesn't harm you or your possessions, and it sheds bright light out to 30 feet and dim light for an additional 30 feet. While the glow is present, any creature within 5 feet of you that hits you with a melee attack takes 1d4 radiant damage. */
 FeatsList["stars in their eyes"] = {
 	name : "Stars in Their Eyes",
-	source : [["RAC", 74]],
+	source : [["RCF"]],
 	prerequisite : "Being an Astral Elf",
 	prereqeval : function(v) { return CurrentRace.known.indexOf('astral elf') !== -1; },
 	descriptionFull : "Life in the Silver Void has imbued astral elf's souls with a spark of divine light. That light manifests as a starry gleam in their eyes. You gain the following benefits:\n \u2022 Increase your Intelligence, Wisdom, or Charisma by 1, to a maximum of 20.\n \u2022 You regain all expended uses of your 'Starlight Step' feature when you finish a short rest. When you teleport using 'Starlight Step', you can see normally in darkness, both magical and nonmagical, to a distance of 60 feet until the start of your next turn.\n \u2022 You can cast the Faerie Fire spell, requiring no spell slot or components, and you must finish a long rest before you can cast it this way again. You can also cast the spell as normal using any spell slots you have. In addition, you can cast it as a bonus action a number of times equal to your proficiency bonus, regaining all expended uses when you finish a long rest. When you cast it in this way, it appears as multi-colored sparkling stars.  Your spellcasting ability for the spell is the ability increased by this feat.",
@@ -152,7 +152,7 @@ Life in the Silver Void has imbued astral elf's souls with a spark of divine lig
 • You can cast the Faerie Fire spell, requiring no spell slot or components, and you must finish a long rest before you can cast it this way again. You can also cast the spell as normal using any spell slots you have. In addition, you can cast it as a bonus action a number of times equal to your proficiency bonus, regaining all expended uses when you finish a long rest. When you cast it in this way, it appears as multi-colored sparkling stars.  Your spellcasting ability for the spell is the ability increased by this feat. */
 FeatsList["unusual perspective"] = {
 	name : "Unusual Perspective",
-	source : [["RAC", 74]],
+	source : [["RCF"]],
 	prerequisite : "Being an Astral Elf",
 	prereqeval : function(v) { return CurrentRace.known.indexOf('astral elf') !== -1; },
 	descriptionFull : "Life in the Silver Void has imbued astral elf's souls with a spark of divine light. That light manifests as a starry gleam in their eyes. You gain the following benefits:\n \u2022 Increase your Strength, Dexterity, or Constitution by 1, to a maximum of 20.\n \u2022 You regain all expended uses of your 'Starlight Step' feature when you finish a short rest. You also gain resistance to all damage when you teleport using Starlight Step. The resistance lasts until the start of your next turn.\n \u2022 At the end of a long rest, you gain inspiration (described in chapter 4 of the Player's Handbook). You can meditate for 1 minute, at the end of which you gain the benefit of a short rest. You can't meditate in this way again until you finish a long rest\n \u2022 When you make an attack roll, an ability check, or a saving throw, you can do so with advantage. You must choose to do so before the roll, and once you use this ability, you can't use it again until you finish a short or long rest. ",
@@ -189,7 +189,7 @@ Astral elves' longevity gives them an unusual perspective on the passage of time
 // Autognome
 FeatsList["intricate design"] = { // Autognome
 	name : "Intricate Design",
-	source : [["RAC"]],
+	source : [["RCF"]],
 	prerequisite : "Being an Autognome",
 	prereqeval : "CurrentRace.known.indexOf('autognome') !== -1",
 	description : "I regain all expended uses of my Built for Success feature when I finish a short rest. I do not need to sleep and am immune to magical sleep. I gain Mending cantrip, can Bonus cast it Prof/LR. I can also be healed by Heal, Healing Spirit, Mass Heal, Power Word Heal, and Prayer of Healing spells. [+1 Con, Int, Wis, Cha]",
@@ -229,7 +229,7 @@ The internal components used in an autognome's manufacture can vary wildly. You 
 • In addition to the healing spells present on your 'Healing Machine' trait, you are also affected by the following spells: Heal, Healing Spirit, Mass Heal, Power Word Heal, and Prayer of Healing. You learn the Mending cantrip. You can cast it as normal, and you can also cast it as a bonus action, without needing a material component, a number of times equal to your proficiency bonus, regaining all expended uses when you finish a long rest. Your spellcasting ability for the spell is the ability increased by this feat. */
 FeatsList["mobile design"] = { // Autognome
 	name : "Mobile Design",
-	source : [["RAC"]],
+	source : [["RCF"]],
 	prerequisite : "Being an Autognome",
 	prereqeval : "CurrentRace.known.indexOf('autognome') !== -1",
 	description : "+5 ft walking speed. When moving on my turn, I can speed x 2. I can't do it again until I don't move at all on one of my turns. I regain 'Built for Success' when I finish a short rest. I gain prof or expertise with Acrobatics. As Bonus action, I can make a DC 15 Acro check to ignore difficult terrain on my turn. [+1 to one]",
@@ -266,7 +266,7 @@ No two autognomes are necessarily made of the same materials. Your design is muc
 • You gain proficiency in the Acrobatics skill. If you are already proficient in the skill, you add double your proficiency bonus to checks you make with it. As a bonus action, you can make a DC 15 Dexterity (Acrobatics) check. If you succeed, difficult terrain doesn't cost you extra movement and your movement doesn't provoke opportunity attacks until the end of the current turn. */
 FeatsList["sturdy design"] = { // Autognome
 	name : "Sturdy Design",
-	source : [["RAC"]],
+	source : [["RCF"]],
 	prerequisite : "Being an Autognome",
 	prereqeval : "CurrentRace.known.indexOf('autognome') !== -1",
 	description : "+5 ft walking speed. When moving on my turn, I can speed x 2. I can't do it again until I don't move at all on one of my turns. I regain 'Built for Success' when I finish a short rest. I gain prof or expertise with Acrobatics. As Bonus action, I can make a DC 15 Acro check to ignore difficult terrain on my turn. [+1 to one]",
@@ -307,7 +307,7 @@ Your creator made you from an atypical material, or included protective magic th
 // Bird [aarakocra|aven|kenku|owlfolk]
 FeatsList["hawkeyed accuracy"] = { 
 	name : "Hawkeyed Accuracy",
-	source : [["RAC"]],
+	source : [["RCF"]],
 	prerequisite : "Being a bird race",
 	prereqeval : function(v) { return (/aarakocra|aven|kenku|owlfolk/i).test(CurrentRace.known); },
 	descriptionFull : "You have uncanny aim with ranged attacks that rely on precision and pinpoint targeting. You gain the following benefits:\n \u2022 Increase your Dexterity or Wisdom score by 1, to a maximum of 20.\n \u2022 You have advantage on Perception checks based on sight.\n \u2022 Whenever you have advantage on a ranged attack roll using Dexterity or Wisdom, you can reroll one of the dice once.",
@@ -324,9 +324,32 @@ You have uncanny aim with ranged attacks that rely on precision and pinpoint tar
 */
 
 // Bugbear
+FeatsList["brutish force"] = { // Bugbear
+	name : "Brutish Force",
+	source : [["RCF"]],
+	prerequisite : "Being a Bugbear",
+	prereqeval : "CurrentRace.known.indexOf('bugbear') !== -1",
+	description : "My weapon attacks score a critical hit on a roll of 19 or 20. Proficiency bonus times per long rest, I may choose to make a melee weapon attack with advantage. If the attack hits, I add an additional roll of one of the weapon's damage dice. If I land a critical hit, I regain one use of this feature. [+1 to one]",
+	descriptionFull : "Your strength on the battlefield is unmatched in its primal ferocity. You gain the following benefits:\n \u2022 Your weapon attacks score a critical hit on a roll of 19 or 20.\n \u2022 When you make a melee weapon attack against a creature, you may choose to do so with advantage. If the attack hits, you roll one of the weapon's damage dice an additional time and add it as extra damage. You can use this ability a number of times equal to your proficiency bonus, and you regain all expended uses when you finish a long rest. If you land a critical hit, you regain one use of this feature.",
+	extraLimitedFeatures : [{
+		name : "Brutish Force (Attack w/ advantage)",
+		usages : "Proficiency bonus per ",
+		usagescalc : "event.value = How('Proficiency Bonus');",
+		recovery : "long rest",
+	}],
+	calcChanges : {
+		atkAdd : [
+			function (fields, v) { if (!v.isSpell && !v.CritChance) { fields.Description += (fields.Description ? '; ' : '') + 'Crit on 19-20'; v.CritChance = 19; }; },
+			"My weapon attacks score a critical on a to hit roll of both 19 and 20.", 19 ]}
+};
+/* Brutish Force
+Prerequisite: Bugbear
+Your strength on the battlefield is unmatched in its primal ferocity. You gain the following benefits:
+• Your weapon attacks score a critical hit on a roll of 19 or 20.
+• When you make a melee weapon attack against a creature, you may choose to do so with advantage. If the attack hits, you roll one of the weapon's damage dice an additional time and add it as extra damage. You can use this ability a number of times equal to your proficiency bonus, and you regain all expended uses when you finish a long rest. If you land a critical hit, you regain one use of this feature. */
 FeatsList["formidable smile"] = { // Bugbear
 	name : "Formidable Smile",
-	source : [["RAC", 3]],
+	source : [["RCF"]],
 	prerequisite : "Being a Bugbear",
 	prereqeval : "CurrentRace.known.indexOf('bugbear') !== -1",
 	description : "While not wearing heavy armor or using a shield, I gain +1 AC. I gain expertise with Intimidation, or proficiency if not so already. Instead of 1 attack in my Attack action, a humanoid within 30 ft I can see and that can see and hear me must make its Insight vs. my Intimidation or be frightened until end of my next turn. [+1 Strength, Dexterity, Constitution, or Charisma]",
@@ -348,7 +371,7 @@ Neither bugs nor bears, covered in coarse hair with wedge-shaped ears and pointe
 • When you take the Attack action on your turn, you can replace one attack with an attempt to demoralize one humanoid you can see within 30 feet of you that can see and hear you. Make a Charisma (Intimidation) check contested by the target's Wisdom (Insight) check. If your check succeeds, the target is frightened until the end of your next turn. If your check fails, the target can't be frightened by you in this way for 1 hour. */
 FeatsList["quiet and deadly skulker"] = { // Bugbear
 	name : "Quiet and Deadly Skulker",
-	source : [["RAC", 3]],
+	source : [["RCF"]],
 	prerequisite : "Being a Bugbear",
 	prereqeval : "CurrentRace.known.indexOf('bugbear') !== -1",
 	description : "I gain expertise in Stealth. If a creature can't see me, I can add one of the weapon's damage dice. When I hit with an attack of opportunity using Strength, I can make the target succeed on a Strength saving throw (DC 8 + my prof bonus + my Strength mod) or be knocked prone. [+1 Strength or Dexterity]",
@@ -378,7 +401,7 @@ With roots in the Feywild, early bugbears resided in hidden places, in hard-to-r
 */
 FeatsList["swift and ruthless violence"] = { // Bugbear
 	name : "Swift and Ruthless Violence",
-	source : [["RAC", 3]],
+	source : [["RCF"]],
 	prerequisite : "Being a Bugbear",
 	prereqeval : "CurrentRace.known.indexOf('bugbear') !== -1",
 	description : "Prof/LR I can make a bonus action melee attack, gain THP equal to the damage dealt when I reduce a creature to zero hp, and double my speed [+1 Strength or Dexterity]",
@@ -411,9 +434,9 @@ Bugbears are capable of bouts of incredible ferocity, using their long-limbed mu
 • When you move on your turn in combat, you can double your speed until the end of the turn. You can use this ability a number of times equal to your proficiency bonus, regaining all expended uses when you finish a long rest, and you can use it no more than once per turn. */
 
 // Centaur
-FeatsList["centaur orcish heritage"] = { 
+FeatsList["centaur orcish heritage"] = { // Centaur
 	name : "Centaur Orcish Heritage",
-	source : [["RAC"]],
+	source : [["RCF"]],
 	prerequisite : "Being a Centaur",
 	prereqeval : "CurrentRace.known.indexOf('centaur') !== -1",
 	description : "I have darkvision out to a range of 60 feet. My melee weapon attacks roll 1 additional dice on a critical hit. [+1 Str or Con]",
@@ -446,7 +469,7 @@ Through a twist of fate, an ancestor's legacy, or by some other means, you might
 */
 FeatsList["dexterous gait"] = { // Centaur
 	name : "Dexterous Gait",
-	source : [["RAC", 22]],
+	source : [["RCF"]],
 	prerequisite : "Being a Centaur",
 	prereqeval : "CurrentRace.known.indexOf('centaur') !== -1",
 	descriptionFull : "Centaurs gallop throughout the multiverse and trace their origins to many different realms. You gain the following benefits:\n \u2022 Increase your Dexterity score by 1, to a maximum of 20.\n \u2022 As long as you are not wearing heavy armor or using a shield, you gain a +1 bonus to Armor Class\n \u2022 Your hooves have the finesse property.\n \u2022 As a bonus action, you can make a DC 15 Dexterity (Acrobatics) check. If you succeed, difficult terrain doesn't cost you extra movement until the end of your next turn.",
@@ -481,7 +504,7 @@ Centaurs gallop throughout the multiverse and trace their origins to many differ
 • As a bonus action, you can make a DC 15 Dexterity (Acrobatics) check. If you succeed, difficult terrain doesn't cost you extra movement until the end of your next turn. */
 FeatsList["favor of the seldarine"] = { // Centaur
 	name : "Favor of the Seldarine",
-	source : [["RAC", 22]],
+	source : [["RCF"]],
 	prerequisite : "Being a Centaur",
 	prereqeval : "CurrentRace.known.indexOf('centaur') !== -1",
 	description : "I can make my words understood, in a limited manner, by equines. I have Adv. on Charisma checks with them and can cast Animal Friendship on them at will. I have a flying speed equal to my walking speed. To use this speed, I can't be wearing medium or heavy armor.",
@@ -510,7 +533,7 @@ A god of the elven pantheon has chosen you to carry a spark of their divine powe
 */
 FeatsList["half-moon adept"] = { // Centaur
 	name : "Half-Moon Adept",
-	source : [["RAC", 22]],
+	source : [["RCF"]],
 	prerequisite : "Being a Centaur",
 	prereqeval : "CurrentRace.known.indexOf('centaur') !== -1",
 	descriptionFull : "You're expertly proficient with the double-crescent. You gain the following benefits:\n \u2022 Increase your Dexterity or Strength score by 1, to a maximum of 20.\n \u2022 While you are holding a double-crescent with two hands, you gain a + 1 bonus to Armor Class.\n \u2022 A double-crescent has the finesse property when you wield it.",
@@ -545,9 +568,9 @@ You're expertly proficient with the double-crescent. You gain the following bene
 // Changeling
 FeatsList["changeling instinctive adjustment"] = {
 	name : "Changeling Instinctive Adjustment",
-	source : [["RAC"]],
+	source : [["RCF"]],
 	prerequisite : "Being a Changeling",
-	prereqeval : function(v) { return CurrentRace.known.indexOf('changeling') !== -1; },
+	prereqeval : function() {return CurrentRace.known.indexOf('changeling') !== -1;},
 	descriptionFull : "The instinctive ability of changelings to adjust their body on the spur of the moment gives them uncanny aim with attacks that rely on precision rather than brute force. You gain the following benefits:\n \u2022 Increase your Dexterity, Intelligence, Wisdom, or Charisma score by 1, to a maximum of 20.\n \u2022 Whenever you have advantage on an attack roll using Dexterity, Intelligence, Wisdom, or Charisma, you can reroll one of the dice once.",
 	description : "Whenever I have advantage on an attack roll that uses Dexterity, Intelligence, Wisdom, or Charisma, I can reroll one of the dice once. [+1 Dexterity, Intelligence, Wisdom, or Charisma]",
 	scorestxt : "+1 Dexterity, Intelligence, Wisdom, or Charisma"
@@ -557,11 +580,38 @@ Prerequisite: Changeling
 The instinctive ability of changelings to adjust their body on the spur of the moment gives them uncanny aim with attacks that rely on precision rather than brute force. You gain the following benefits:
 • Increase your Dexterity, Intelligence, Wisdom, or Charisma by 1, to a maximum of 20.
 • Whenever you have advantage on an attack roll using Dexterity, Intelligence, Wisdom, or Charisma, you can reroll one of the dice once. */
+FeatsList["more than skin deep"] = {
+    name : "More Than Skin Deep",
+    source : [["RCF"]],
+    prerequisite : "Changeling",
+    prereqeval : function() {return CurrentRace.known.indexOf('changeling') !== -1;},
+    scores : [0, 0, 1, 0, 0, 0],
+    scorestxt : "+1 Constitution",
+    descriptionFull : "Your ability to shapechange is more than skin deep. You gain the following benefits:\n \u2022 Increase your Constitution score by 1, to a maximum of 20.\n \u2022 When you use your Shapechanging trait, you can choose one of the following benefits, which lasts until you use your Shapechanging trait again. Some of these benefits require specific physical features, such as gills or claws, that can be seen by observers.\n \u2022 Aquatic Adaptation. You adapt your body to an aquatic environment, sprouting gills and growing webbing between your fingers. You can breathe underwater and gain a swimming speed equal to your walking speed.\n \u2022 Darkvision. You adapt your eyes and gain darkvision with a range of 60 feet.\n \u2022 Natural Weapons. You grow claws, fangs, spines, horns, or a different natural weapon of your choice. Your unarmed strikes deal 1d6 bludgeoning, piercing, or slashing damage (your choice).",
+    description : "I gain benefits from my Shapechanging trait which last until I use the Shapechanging trait again. These benefits are detailed on the Notes page. [+1 Constitution]",
+    toNotesPage : [{
+        name : "Shapechanging Benefits",
+        source : [["RCF"]],
+        note : [
+            "Aquatic Adaption. I can breathe underwater and gain a swimming speed equal to my walking speed",
+            "Darkvision. I gain darkvision with a range of 60 feet",
+            "Natural Weapons. I am proficient with unarmed strikes. My unarmed strikes deal 1d6 bludgeoning/piercing/slashing"
+        ]
+    }]
+};
+/* Changeling Metamorphosis
+Prerequisite: Changeling
+Your ability to shapechange is more than skin deep. You gain the following benefits:
+• Increase your Constitution score by 1, to a maximum of 20. 
+• When you use your Shapechanging trait, you can choose one of the following benefits, which lasts until you use your Shapechanging trait again. Some of these benefits require specific physical features, such as gills or claws, that can be seen by observers.
+	> Aquatic Adaptation. You adapt your body to an aquatic environment, sprouting gills and growing webbing between your fingers. You can breathe underwater and gain a swimming speed equal to your walking speed.
+	> Darkvision. You adapt your eyes and gain darkvision with a range of 60 feet.
+	> Natural Weapons. You grow claws, fangs, spines, horns, or a different natural weapon of your choice. Your unarmed strikes deal 1d6 bludgeoning, piercing, or slashing damage, as appropriate to the natural weapon you chose, and you are proficient with your unarmed strikes. */
 FeatsList["morphic body"] = {
 	name : "Morphic Body",
-	source : [["RAC"]],
+	source : [["RCF"]],
 	prerequisite : "Being a Changeling",
-	prereqeval : "CurrentRace.known.indexOf('changling') !== -1",
+	prereqeval : function() {return CurrentRace.known.indexOf('changeling') !== -1;},
 	descriptionFull : "Your control over your body allows you some control of your internal organs as well as your external appearance. You gain the following benefits:\n \u2022 Increase your Strength, Dexterity, or Constitution score by 1, to a maximum of 20.\n \u2022 You can use your reaction to make yourself resistant to bludgeoning, piercing or slashing damage until the start of your next turn. You can use this feature a number of times equal to your proficiency bonus, and you regain all expended uses when you finish a long rest.\n \u2022 You can use your reaction to make a critical hit of bludgeoning, piercing or slashing damage against you a normal hit. You can use this feature a number of times equal to your proficiency bonus, and you regain all expended uses when you finish a long rest.",
 	description : "As a Reaction, I gain resistance to bludgeoning, piercing or slashing damage until the start of my next turn. I can also use my Reaction to make a critical hit dealing bludgeoning, piercing or slashing damage to me a normal hit. I can use each of these Reactions my Prof Bonus per long rest. [+1 Str, Dex, or Con]",
 	scorestxt : "+1 Strength, Dexterity, or Constitution",
@@ -590,7 +640,7 @@ Your control over your body allows you some control of your internal organs as w
 // Custom Lineage
 FeatsList["likable quality"] = {
 	name : "Likable Quality",
-	source : [["RAC", 2]],
+	source : [["RCF"]],
 	prerequisite : "Being a Custom Lineage",
 	prereqeval : "CurrentRace.known.indexOf('custom lineage') !== -1",
 	descriptionFull : "You develop your magnetic personality to ease your way through the world. You gain the following benefits:\n \u2022 You gain proficiency in the Deception and Persuasion skills. If you're already proficient in either skill, your proficiency bonus is doubled for any check you make with that skill.",
@@ -605,7 +655,7 @@ You develop your magnetic personality to ease your way through the world. You ga
 • You gain proficiency in the Deception and Persuasion skills. If you're already proficient in either skill, your proficiency bonus is doubled for any check you make with that skill. */
 FeatsList["perseverance"] = {
 	name : "Perseverance",
-	source : [["RAC", 3]],
+	source : [["RCF"]],
 	prerequisite : "Being a Custom Lineage",
 	prereqeval : "CurrentRace.known.indexOf('custom lineage') !== -1",
 	descriptionFull : "You are filled with a determination that can draw the unreachable within your reach. You gain the following benefits:\n \u2022 Increase one ability score of your choice by 1, to a maximum of 20.\n \u2022 When you make an attack roll, an ability check, or a saving throw, you can do so with advantage. Once you use this ability, you can't use it again until you finish a short or long rest.",
@@ -622,7 +672,7 @@ You are filled with a determination that can draw the unreachable within your re
 • When you make an attack roll, an ability check, or a saving throw, you can do so with advantage. Once you use this ability, you can't use it again until you finish a short or long rest. */
 FeatsList["quilled skin"] = {
 	name : "Quilled Skin",
-	source : [["RAC"]],
+	source : [["RCF"]],
 	prerequisite : "Being a Custom Lineage",
 	prereqeval : "CurrentRace.known.indexOf('custom lineage') !== -1",
 	description : "I have quilled skin, giving me an AC of 13 + Dexterity modifier + shield when I'm not wearing armor. As a bonus action, I can protrude/retract small quills from my skin. When protruding, at the start of each of my turns I deal 1d6 piercing damage to any I'm grappling/are grappling me. [+1 Dex, Con, or Cha]",
@@ -632,7 +682,7 @@ FeatsList["quilled skin"] = {
 	armorOptions : {
 		regExpSearch : /^(?=.*quilled).*$/i,
 		name : "Quilled Skin",
-		source : ["RAC"],
+		source : ["RCF"],
 		ac : 13
 	},
 };
@@ -644,7 +694,7 @@ The backs of hedges are covered with spiny quills. These quills provide exceptio
 • As a bonus action, you can cause your quills to protrude all over your body or cause them to retract. At the start of each of your turns while the quills are out, you deal 1d6 piercing damage to any creature grappling you or any creature grappled by you. */
 FeatsList["the way up"] = {
 	name : "The Way Up",
-	source : [["RAC", 3]],
+	source : [["RCF"]],
 	prerequisite : "Being a Custom Lineage",
 	prereqeval : "CurrentRace.known.indexOf('custom lineage') !== -1",
 	description : "I grow wings, granting a flying speed of 30 ft. I can only fly with these wings while unarmored or wearing light armor. [+1 Dexterity]",
@@ -661,7 +711,7 @@ You manifest wings. You gain the following benefits:
 // Dhampir
 FeatsList["blood is life"] = {  
 	name : "Blood is Life",
-	source : [["RAC"]],
+	source : [["RCF"]],
 	prerequisite : "Being a Dhampir",
 	prereqeval : function(v) { return CurrentRace.known.indexOf('dhampir') !== -1; },
 	descriptionFull : "Every dhampir knows a thirst slaked only by the living. Those who overindulge their thirst risk losing control and forever viewing others as prey. Those who resist might find exceptional ways of controlling their urges or suppress them through constant, molar-grinding restraint. You gain the following benefits:\n \u2022 Increase one ability score of your choice by 1, to a maximum of 20.\n \u2022 You have advantage on saving throws you make to avoid or end the charmed condition on yourself.\n \u2022 Blood Burst. When you move on your turn in combat, you can double your speed until the end of the turn. You can use this ability a number of times equal to your proficiency bonus, regaining all expended uses when you finish a long rest, and you can use it no more than once per turn.\n \u2022 Blood Sense. As an action, you can open your awareness to detect the living. Until the end of your next turn, you know the location of any beast, giant, or humanoid within 60 feet of you that is not behind total cover. You know the type (beast, giant, or humanoid) of any being whose presence you sense, but not its identity. Once you use this ability, you can't do so again until you finish a short or long rest.",
@@ -690,7 +740,7 @@ Every dhampir knows a thirst slaked only by the living. Those who overindulge th
 • Blood Sense. As an action, you can open your awareness to detect the living. Until the end of your next turn, you know the location of any beast, giant, or humanoid within 60 feet of you that is not behind total cover. You know the type (beast, giant, or humanoid) of any being whose presence you sense, but not its identity. Once you use this ability, you can't do so again until you finish a short or long rest. */
 FeatsList["touched by the mists"] = {  
 	name : "Touched by the Mists",
-	source : [["RAC"]],
+	source : [["RCF"]],
 	prerequisite : "Being a Dhampir",
 	prereqeval : function(v) { return CurrentRace.known.indexOf('dhampir') !== -1; },
 	descriptionFull : "Through fell magic, you are touched by the corruptive power of a Dread Domain. You gain the following benefits:\n \u2022 Increase your Strength or Constitution score by 1, to a maximum of 20.\n \u2022 You have resistance to necrotic damage.\n \u2022 Whenever you spend one or more hit dice during a short rest, you can regain an extra 1d6 hit points.\n \u2022 Your Vampiric Bite damage die increases to a d6.",
@@ -719,7 +769,7 @@ Through fell magic, you are touched by the corruptive power of a Dread Domain. Y
 // Dragonborn
 FeatsList["tidal hatching"] = {
 	name : "Tidal Hatching",
-	source : [["RAC"]],
+	source : [["RCF"]],
 	prerequisite : "Being a Dragonborn",
 	prereqeval : "CurrentRace.known.indexOf('dragonborn') !== -1",
 	description : "I have darkvision out to a range of 60 feet. I can breathe air and water, and have a swimming speed equal to my walking speed. [+1 Strength, Dexterity, or Constitution]",
@@ -736,10 +786,28 @@ You were raised around water, and its as familiar to you as land. You gain the f
 • Darkvision. You can see in dim light within 60 feet of you as if it were bright light and in darkness as if it were dim light. You discern colors in that darkness only as shades of gray.
 • Amphibious. You can breathe air and water, and you have a swimming speed equal to your walking speed. */
 
+// Dwarf
+FeatsList["sacred light of dumathoin"] = { // Dwarf (Mark of Warding)
+	name : "Sacred Light of Dumathoin",
+	source : [["RCF"]],
+	prerequisite : "Being a creature with the Dragonmark of Warding",
+	prereqeval : function (v) { return (/^(?=.*dragonmark)(?=.*warding).*$/i).test(CurrentRace.known); },
+	description : "I can use Int, Wis, or Cha as my spellcasting ability for my 'Wards and Seals' spells, and need only to finish a short rest before I cast them again. When I deal radiant damage, I can reroll 1s, and until my next turn ends, glow bright light 30 ft, dim 30 ft, and deal 1d4 radiant if hit me in melee within 5 ft. [+1 to one]",
+	descriptionFull : "You have been chosen by the Keeper of Secrets under the Mountain to be a light amongst the darkness. This blessing by the Silent Keeper gives you the following benefits:\n \u2022 Increase one ability score of your choice by 1, to a maximum of 20.\n \u2022 You can use Intelligence, Wisdom, or Charisma as your spellcasting ability for the spells you cast from your 'Wards and Seals' feature, and you now need only to finish a short rest before you cast them again.\n \u2022 When you deal radiant damage, you can reroll any roll of 1 on the radiant damage dice, but you must use the new roll, even if it is another 1.\n \u2022 Whenever you deal radiant damage, you can cause a luminous glow to wreathe you until the end of your next turn. The glow doesn't harm you or your possessions, and it sheds bright light out to 30 feet and dim light for an additional 30 feet. While the glow is present, any creature within 5 feet of you that hits you with a melee attack takes 1d4 radiant damage.",
+	scorestxt : "+1 to one ability score of your choice",
+};
+/* Sacred Light of Dumathoin
+Prerequisite: Dwarf (Mark of Warding)
+You have been chosen by the Keeper of Secrets under the Mountain to be a light amongst the darkness. This blessing by the Silent Keeper gives you the following benefits:
+• Increase one ability score of your choice by 1, to a maximum of 20.
+• You can use Intelligence, Wisdom, or Charisma as your spellcasting ability for the spells you cast from your 'Wards and Seals' feature, and you now need only to finish a short rest before you cast them again.
+• When you deal radiant damage, you can reroll any roll of 1 on the radiant damage dice, but you must use the new roll, even if it is another 1.
+• Whenever you deal radiant damage, you can cause a luminous glow to wreathe you until the end of your next turn. The glow doesn't harm you or your possessions, and it sheds bright light out to 30 feet and dim light for an additional 30 feet. While the glow is present, any creature within 5 feet of you that hits you with a melee attack takes 1d4 radiant damage. */
+
 // Fairy
 FeatsList["fairly bricky"] = { 
 	name : "Fairly Bricky",
-	source : [["RAC"]],
+	source : [["RCF"]],
 	prerequisite : "Being a Fairy",
 	prereqeval : function(v) { return CurrentRace.known.indexOf('fairy') !== -1; },
 	description : "I do not have disadvantage on attack rolls with weapons with the heavy property. I count as one size larger for my carrying capacity and the weight I can push, drag, or lift, and on ability checks I make to initiate or escape a grapple [+1 Strength]",
@@ -755,7 +823,7 @@ Infused with the magic of the Feywild, most fairies look like Small elves with i
 */
 FeatsList["fairly quicky"] = { 
 	name : "Fairly Quicky",
-	source : [["RAC"]],
+	source : [["RCF"]],
 	prerequisite : "Being a Fairy",
 	prereqeval : function(v) { return CurrentRace.known.indexOf('fairy') !== -1; },
 	description : "+5 ft walking speed. Without squeezing, I can move through and stop in a space large enough for a Tiny creature. Celerity. As a bonus action, I gain +10 ft walking speed and don't provoke opportunity attacks until the end of my turn. [+1 Dexterity]",
@@ -772,7 +840,7 @@ Infused with the magic of the Feywild, most fairies look like Small elves with i
 */
 FeatsList["fairly tricky"] = { 
 	name : "Fairly Tricky",
-	source : [["RAC"]],
+	source : [["RCF"]],
 	prerequisite : "Being a Fairy",
 	prereqeval : function(v) { return CurrentRace.known.indexOf('fairy') !== -1; },
 	description : "+5 ft walking speed. Without squeezing, I can move through and stop in a space large enough for a Tiny creature. Celerity. As a bonus action, I gain +10 ft walking speed and don't provoke opportunity attacks until the end of my turn. [+1 Dexterity]",
@@ -817,7 +885,7 @@ Infused with the magic of the Feywild, fairies share a few commonalities with on
 // Firbolg
 FeatsList["walker in the woods"] = {  // Firbolg
     name : "Walker in the Woods",
-    source : [["RAC"]],
+    source : [["RCF"]],
 	prerequisite : "Being a Firbolg",
 	prereqeval : "CurrentRace.known.indexOf('firbolg') !== -1",
 	descriptionFull : "You lean further into your connection with nature, gaining additional abilities:\n \u2022 Increase your Intelligence, Wisdom, or Charisma by 1, to a maximum of 20.\n \u2022 You learn the Speak with Animals spell and can cast it at will, without expending a spell slot.\n \u2022 You learn the Speak with Plants and Plant Growth spells. You can cast each of these spells without expending a spell slot. Once you cast either of these spells in this way, you can't cast that spell in this way again until you finish a long rest. You can also cast these spells using spell slots you have of the appropriate level. The spells' spellcasting ability is the ability increased by this feat.",
@@ -878,7 +946,7 @@ You lean further into your connection with nature, gaining additional abilities:
 // Genasi (Air)
 FeatsList["storm's voice"] = { 
 	name : "Storm's Voice",
-	source : [["RAC"]],
+	source : [["RCF"]],
 	prerequisite : "Being an Air Genasi",
 	prereqeval : "CurrentRace.known.indexOf('genasi') !== -1 && CurrentRace.known.indexOf('air') !== -1",
 	description : "When I cast a lightning damage spell, I can reroll any 1 on lightning damage dice once. I then sheathe myself in a storm cloud until my next turn ends. The storm sheds bright light in 30 ft, dim light in 30 ft and cause any within 5 ft that hit me in melee to take 1d4 lightning damage. [+1 Int, Wis, or Cha]",
@@ -892,7 +960,7 @@ You learn to call on primal energies to serve your commands. You gain the follow
 • Whenever you cast a spell that deals lightning damage, you can cause a storm cloud to wreathe you until the end of your next turn. The storm cloud doesn't harm you or your possessions, and it sheds bright light out to 30 feet and dim light for an additional 30 feet. While the storm cloud is present, any creature within 5 feet of you that hits you with a melee attack takes 1d4 lightning damage. */
 FeatsList["vizier heritage"] = { 
 	name : "Vizier Heritage",
-	source : [["RAC"]],
+	source : [["RCF"]],
 	prerequisite : "Being an Air Genasi",
 	prereqeval : "CurrentRace.known.indexOf('genasi') !== -1 && CurrentRace.known.indexOf('air') !== -1",
 	description : "I learn Gust, Jump as a Bonus action at-will on myself. If I haven't moved, bonus action move speed x 2 to make full distance high or long jump. Move 0 when land, must full turn no move before doing again. 1/SR, Whirlwind Form for 10 min = 30 ft Fly, bonus Dash, don't provoke opportunity attacks. [+1 Int, Wis, or Cha]",
@@ -934,7 +1002,7 @@ You manifest more of the magical power of your Vizier (Noble Djinn) heritage. Yo
 // Genasi (Earth)
 FeatsList["pasha heritage"] = {
 	name : "Pasha Heritage",
-	source : [["RAC"]],
+	source : [["RCF"]],
 	prerequisite : "Being an Earth Genasi",
 	prereqeval : "CurrentRace.known.indexOf('earth genasi') !== -1",
 	description : "I learn the Move Earth cantrip. I learn Earth Tremor, which I can cast it without using a spell slot once per long rest, and by using spell slots as normal. Con is my spellcasting ability for these. I gain heritage armor, giving me an AC of 13 + my Con mod + shield while I'm not wearing armor. [+1 Con, Int, Wis, or Cha]",
@@ -942,7 +1010,7 @@ FeatsList["pasha heritage"] = {
 	armorOptions : {
 		regExpSearch : /^(?=.*heritage)(?=.*(natural|hide|skin)).*$/i,
 		name : "Heritage Natural Armor",
-		source : ["RAC"],
+		source : ["RCF"],
 		ac : "13+Con",
 		dex : -10
 	},
@@ -977,7 +1045,7 @@ You manifest more of the magical power of your Pasha (Noble Shaitan) heritage. Y
 // Genasi (Water)
 FeatsList["shahzada heritage"] = { 
 	name : "Shahzada Heritage",
-	source : [["RAC"]],
+	source : [["RCF"]],
 	prerequisite : "Being a Water Genasi",
 	prereqeval : "CurrentRace.known.indexOf('genasi') !== -1 && CurrentRace.known.indexOf('water') !== -1",
 	description : "I can cast Detect Evil and Good at will. I have resistance to lightning damage. Once per rest, I can transform the lower half of my body into a waterspout for up to 10 minutes. I gain flying speed of 30 ft and double swim speed. [+1 Con, Int, Wis, or Cha]",
@@ -1006,7 +1074,7 @@ You manifest more of the magical power of your Shahzada (Noble Marid) heritage. 
 // Giff
 FeatsList["g is for giff, and for gun"] = {
 	name : "G is for Giff, and for Gun",
-	source : [["RAC"]],
+	source : [["RCF"]],
 	prerequisite : "Being a Giff",
 	prereqeval : "CurrentRace.known.indexOf('giff') !== -1",
 	descriptionFull : "Your mystical connection to firearms that traces back to the gods of the giff, who delighted in such weapons, is stronger in you than in most others. You gain the following benefits:\n \u2022 Increase your Dexterity score by 1, to a maximum of 20.\n \u2022 You regain all expended uses of the Astral Spark feature when you finish a short rest.\n \u2022 Being within 5 feet of a hostile creature doesn't impose disadvantage on your ranged attack rolls.\n \u2022 You can use a 1-handed firearm as a club and a 2-handed firearm as a greatclub in melee combat. Both weapons gain the finesse property.",
@@ -1016,7 +1084,7 @@ FeatsList["g is for giff, and for gun"] = {
 		regExpSearch : /^(?=.*firearm|gun|boomstick)(?=.*butt|grip)(?=.*end|stock).*$/i,
 		baseWeapon : "club",
 		name : "Firearm butt end",
-		source : ["RAC", 168],
+		source : [["RCF"]],
 		description : "Finesse, two-handed (1d8)",
 	},
 	weaponsAdd : ["Firearm Butt End"],
@@ -1040,7 +1108,7 @@ Your mystical connection to firearms that traces back to the gods of the giff, w
 • You can use a one-handed firearm as a club and a two-handed firearm as a greatclub in melee combat. Both weapons gain the finesse property. */
 FeatsList["impressive size and unforgettable appearance"] = {
 	name : "Impressive Size and Unforgettable Appearance",
-	source : [["RAC"]],
+	source : [["RCF"]],
 	prerequisite : "Being a Giff",
 	prereqeval : "CurrentRace.known.indexOf('giff') !== -1",
 	description : "Once per turn, I can reroll a 1 on a damage die for a melee attack. If I move at least 20 ft in a straight line and end within 5 feet of a Large or smaller creature, I can use my Bonus action to make creature pass a DC 14 STR save or take 2d6 bludgeoning damage and be knocked prone. [+1 Strength or Constitution]",
@@ -1056,7 +1124,7 @@ Your Hippopotamidae heritage shows true. You gain the following benefits:
 • Headfirst Charge. A charging giff can try to knock a creature over; if you move at least 20 feet in a straight line and end within 5 feet of a Large or smaller creature, you can use your Bonus action to force that creature to succeed on a Strength saving throw or take 2d6 bludgeoning damage and be knocked prone. */
 FeatsList["sparks of their own"] = {
 	name : "Sparks of Their Own",
-	source : [["RAC"]],
+	source : [["RCF"]],
 	prerequisite : "Being a Giff",
 	prereqeval : "CurrentRace.known.indexOf('giff') !== -1",
 	description : "I regain 1 expended usage of 'Astral Spark' when I roll a natural 20 or deal a killing blow to a creature of significant threat (DM's discretion).\n \u2022 My weapon attacks score a critical hit on a roll of 19 or 20. [+1 to one]",
@@ -1077,7 +1145,7 @@ Although they don't realize it, giff remain connected to their creator gods, who
 // Githyanki
 FeatsList["dark silver savagery"] = { 
 	name : "Dark Silver Savagery",
-	source : [["RAC"]],
+	source : [["RCF"]],
 	prerequisite : "Being a Githyanki",
 	prereqeval : "CurrentRace.known.indexOf('githyanki') !== -1",
 	description : "I have darkvision out to a range of 60 feet. My melee weapon attacks roll 1 additional dice on a critical hit. [+1 Str or Con]",
@@ -1107,88 +1175,9 @@ Prerequisite: Githyanki
 • Increase your Strength or Constitution by 1, to a maximum of 20.
 • Darkvision. Thanks to [something related to Lich Queen], you have superior vision in dark and dim conditions. You can see in dim light within 60 feet of you as if it were bright light, and in darkness as if it were dim light. You can't discern color in darkness, only shades of gray.
 • Savage Attacks. When you score a critical hit with a melee weapon attack, you can roll one of the weapon's damage dice one additional time and add it to the extra damage of the critical hit. */
-FeatsList["psi-kinetic"] = {
-	name : "Psi-kinetic",
-	source : [["RAC"]],
-	prerequisite : "Being a Githyanki",
-	prereqeval : "CurrentRace.known.indexOf('githyanki') !== -1",
-	descriptionFull : "Your Githyanki psionics have developed the ability to move something by thinking about it without the application of physical force. You gain the following benefits:\n \u2022 Increase your Intelligence, Wisdom, or Charisma score by 1, to a maximum of 20.\n \u2022 Psi-kinetic Reprisal. When you take damage from a creature that is within 10 feet of you, you can use your reaction to emanate psychokinetic energy. The creature that dealt damage to you must make a Strength saving throw (DC equals 8 + your proficiency bonus + the ability modifier of the score increased by this feat). On a failed save, the creature takes 2d8 force damage and is pushed up to 10 feet away from you. On a successful save, the creature takes half as much damage and isn't pushed. You can use this reaction a number of times equal to your proficiency bonus, and you regain all expended uses when you finish a long rest.\n \u2022 Psi-kinesis. As a bonus action, you can try to telekinetically shove one creature you can see within 30 feet of you. When you do so, the target must succeed on a Strength saving throw (DC 8 + your proficiency bonus + the ability modifier of the score increased by this feat) or be moved 5 feet toward you or away from you. A creature can willingly fail this save.",
-	description : "As a reaction when I take damage from a creature that is within 10 ft, I can have it take 2d8 force damage and push it up to 10 ft away. Str save for half damage and no push. As a bonus action, I can shove one creature I can see within 30 ft. It must make a Str save or be moved 5 ft from or towards me. [+1 Int, Wis or Cha]",
-	action : [["reaction", " Reprisal"], ["bonus action", " shove"]],
-	extraLimitedFeatures : [{
-		name : "Psi-kinetic Reprisal",
-		usages : "Proficiency bonus per ",
-		usagescalc : "event.value = How('Proficiency Bonus');",
-		recovery : "long rest",
-	}],
-	choices : ["Intelligence", "Wisdom", "Charisma"],
-	"intelligence" : {
-		description : "As a reaction when I take damage from a creature that is within 10 ft, I can have it take 2d8 force damage and push it up to 10 ft away. Str save for half damage and no push. As a bonus action, I can shove one creature I can see within 30 ft. It must make a Str save or be moved 5 ft from or towards me. [+1 Int]",
-		spellcastingAbility : 4,
-		weaponsAdd : ["Psi-kinetic Shove"],
-		weaponOptions : {
-		regExpSearch : /psi-kinetic shove/i,
-		name : "Psi-kinetic Shove",
-		source: [["RAC", 81]],
-		list : "spell",
-		ability : 4,
-		type : "AlwaysProf",
-		damage : ["", "", "push/pull"],
-		range : "30 ft",
-		description : "Strength save (can willingly fail) or be moved 5 ft directly away from or towards me",
-		abilitytodamage : false,
-		dc : true
-		},
-		scores : [0, 0, 0, 1, 0, 0]
-	},
-	"wisdom" : {
-		description : "As a reaction when I take damage from a creature that is within 10 ft, I can have it take 2d8 force damage and push it up to 10 ft away. Str save for half damage and no push. As a bonus action, I can shove one creature I can see within 30 ft. It must make a Str save or be moved 5 ft from or towards me. [+1 Wis]",
-		spellcastingAbility : 5,
-		weaponsAdd : ["Psi-kinetic Shove"],
-		weaponOptions : {
-		regExpSearch : /psi-kinetic shove/i,
-		name : "Psi-kinetic Shove",
-		source: [["RAC", 81]],
-		list : "spell",
-		ability : 5,
-		type : "AlwaysProf",
-		damage : ["", "", "push/pull"],
-		range : "30 ft",
-		description : "Strength save (can willingly fail) or be moved 5 ft directly away from or towards me",
-		abilitytodamage : false,
-		dc : true
-		},
-		scores : [0, 0, 0, 0, 1, 0]
-	},
-	"charisma" : {
-		description : "As a reaction when I take damage from a creature that is within 10 ft, I can have it take 2d8 force damage and push it up to 10 ft away. Str save for half damage and no push. As a bonus action, I can shove one creature I can see within 30 ft. It must make a Str save or be moved 5 ft from or towards me. [+1 Cha]",
-		spellcastingAbility : 6,
-		weaponsAdd : ["Psi-kinetic Shove"],
-		weaponOptions : {
-		regExpSearch : /psi-kinetic shove/i,
-		name : "Psi-kinetic Shove",
-		source: [["RAC", 81]],
-		list : "spell",
-		ability : 6,
-		type : "AlwaysProf",
-		damage : ["", "", "push/pull"],
-		range : "30 ft",
-		description : "Strength save (can willingly fail) or be moved 5 ft directly away from or towards me",
-		abilitytodamage : false,
-		dc : true
-		},
-		scores : [0, 0, 0, 0, 0, 1]
-	}
-};
-/* Psi-kinetic
-Prerequisite: Githyanki
-Your Githyanki psionics have developed the ability to move something by thinking about it without the application of physical force. You gain the following benefits:
-• Increase your Intelligence, Wisdom, or Charisma by 1, to a maximum of 20.
-• Psi-kinetic Reprisal. When you take damage from a creature that is within 10 feet of you, you can use your reaction to emanate telekinetic energy. The creature that dealt damage to you must make a Strength saving throw (DC equals 8 + your proficiency bonus + the ability modifier of the score increased by this feat). On a failed save, the creature takes 2d8 force damage and is pushed up to 10 feet away from you. On a successful save, the creature takes half as much damage and isn't pushed. You can use this reaction a number of times equal to your proficiency bonus, and you regain all expended uses when you finish a long rest.
-• Psi-kinesis. As a bonus action, you can try to telekinetically shove one creature you can see within 30 feet of you. When you do so, the target must succeed on a Strength saving throw (DC 8 + your proficiency bonus + the ability modifier of the score increased by this feat) or be moved 5 feet toward you or away from you. A creature can willingly fail this save. */
-FeatsList["the lich queen's notice"] = { 
-	name : "The Lich Queen's Notice",
-	source : [["RAC"]],
+FeatsList["lich queen's notice"] = { 
+	name : "Lich Queen's Notice",
+	source : [["RCF"]],
 	prerequisite : "Being a Githyanki",
 	prereqeval : "CurrentRace.known.indexOf('githyanki') !== -1",
 	description : "I no longer need to sleep and can't be forced to sleep by any means. To gain the benefits of a long rest, I can spend all 8 hours doing light activity. My melee weapon attacks roll 1 additional dice on a critical hit.",
@@ -1211,20 +1200,18 @@ FeatsList["the lich queen's notice"] = {
 				]
 		},	
 };
-/* The Lich Queen's Notice
+/* Lich Queen's Notice
 Prerequisite: Githyanki
 You were noticed by the dread lich-queen, Vlaakith, even if momentarily. You gain the following benefits:
 • Restless Nature. You no longer need to sleep and can't be forced to sleep by any means. To gain the benefits of a long rest, you can spend all 8 hours doing light activity, such as reading and keeping watch.
-• Restless Ferocity. When you score a critical hit with a melee weapon attack, you can roll one of the weapon's damage dice one additional time and add it to the extra damage of the critical hit.
-*/
-FeatsList["the lich queen's favor"] = {
-	name : "The Lich Queen's Favor",
-	source : [["RAC"]],
+• Restless Ferocity. When you score a critical hit with a melee weapon attack, you can roll one of the weapon's damage dice one additional time and add it to the extra damage of the critical hit. */
+FeatsList["lich queen's favor"] = {
+	name : "Lich Queen's Favor",
+	source : [["RCF"]],
 	prerequisite : "4th-level, The Lich Queen's Notice feat",
 	prereqeval : function(v) { return v.characterLevel >= 4 && CurrentFeats.known.indexOf("the lich queen's notice") !== -1; },
 	description : "If I score a critical hit or reduce a creature to 0 hit points with a melee weapon in my turn, I can make one melee weapon attack as a bonus action. With a heavy melee weapon, I can choose to take a -5 penalty on the attack roll for +10 on the attack's damage. [+1 to one ability score]",
 	descriptionFull : "You were noticed by the dread lich-queen, Vlaakith, and gained her favor, even if momentarily. You gain the following benefits:\n \u2022 Increase one ability score of your choice by 1, to a maximum of 20.\n \u2022 On your turn, when you score a critical hit with a melee weapon or reduce a creature to 0 hit points with one, you can make one melee weapon attack as a bonus action.\n \u2022 Before you make a melee attack with a heavy weapon that you are proficient with, you can choose to take a -5 penalty to the attack roll. If the attack hits, you add +10 to the attack's damage.",
-
 	action : ["bonus action", "Restless Attack (after crit or take-down)"],
 	calcChanges : {
 		atkCalc : [
@@ -1238,17 +1225,95 @@ FeatsList["the lich queen's favor"] = {
 		]
 	}
 };
-/* The Lich Queen's Favor
+/* Lich Queen's Favor
 Prerequisites: 4th level, The Lich Queen's Notice (feat)
 You were noticed by the dread lich-queen, Vlaakith, and gained her favor, even if momentarily. You gain the following benefits:
 • Increase one ability score of your choice by 1, to a maximum of 20.
-• Restless Attacks. Before you make a melee attack with a heavy weapon that you are proficient with, you can choose to take a -5 penalty to the attack roll. If the attack hits, you add +10 to the attack's damage. On your turn, when you score a critical hit with a melee weapon or reduce a creature to 0 hit points with one, you can make one melee weapon attack as a bonus action.
-*/
+• Restless Attacks. Before you make a melee attack with a heavy weapon that you are proficient with, you can choose to take a -5 penalty to the attack roll. If the attack hits, you add +10 to the attack's damage. On your turn, when you score a critical hit with a melee weapon or reduce a creature to 0 hit points with one, you can make one melee weapon attack as a bonus action. */
+FeatsList["psi-kinetic"] = {
+	name : "Psi-kinetic",
+	source : [["RCF"]],
+	prerequisite : "Being a Githyanki",
+	prereqeval : "CurrentRace.known.indexOf('githyanki') !== -1",
+	descriptionFull : "Your Githyanki psionics have developed the ability to move something by thinking about it without the application of physical force. You gain the following benefits:\n \u2022 Increase your Intelligence, Wisdom, or Charisma score by 1, to a maximum of 20.\n \u2022 Psi-kinetic Reprisal. When you take damage from a creature that is within 10 feet of you, you can use your reaction to emanate psychokinetic energy. The creature that dealt damage to you must make a Strength saving throw (DC equals 8 + your proficiency bonus + the ability modifier of the score increased by this feat). On a failed save, the creature takes 2d8 force damage and is pushed up to 10 feet away from you. On a successful save, the creature takes half as much damage and isn't pushed. You can use this reaction a number of times equal to your proficiency bonus, and you regain all expended uses when you finish a long rest.\n \u2022 Psi-kinesis. As a bonus action, you can try to telekinetically shove one creature you can see within 30 feet of you. When you do so, the target must succeed on a Strength saving throw (DC 8 + your proficiency bonus + the ability modifier of the score increased by this feat) or be moved 5 feet toward you or away from you. A creature can willingly fail this save.",
+	description : "As a reaction when I take damage from a creature that is within 10 ft, I can have it take 2d8 force damage and push it up to 10 ft away. Str save for half damage and no push. As a bonus action, I can shove one creature I can see within 30 ft. It must make a Str save or be moved 5 ft from or towards me. [+1 Int, Wis or Cha]",
+	action : [["reaction", " Reprisal"], ["bonus action", " shove"]],
+	extraLimitedFeatures : [{
+		name : "Psi-kinetic Reprisal",
+		usages : "Proficiency bonus per ",
+		usagescalc : "event.value = How('Proficiency Bonus');",
+		recovery : "long rest",
+	}],
+	choices : ["Intelligence", "Wisdom", "Charisma"],
+	"intelligence" : {
+		description : "As a reaction when I take damage from a creature that is within 10 ft, I can have it take 2d8 force damage and push it up to 10 ft away. Str save for half damage and no push. As a bonus action, I can shove one creature I can see within 30 ft. It must make a Str save or be moved 5 ft from or towards me. [+1 Int]",
+		spellcastingAbility : 4,
+		weaponsAdd : ["Psi-kinetic Shove"],
+		weaponOptions : {
+		regExpSearch : /psi-kinetic shove/i,
+		name : "Psi-kinetic Shove",
+		source: [["RCF"]],
+		list : "spell",
+		ability : 4,
+		type : "AlwaysProf",
+		damage : ["", "", "push/pull"],
+		range : "30 ft",
+		description : "Strength save (can willingly fail) or be moved 5 ft directly away from or towards me",
+		abilitytodamage : false,
+		dc : true
+		},
+		scores : [0, 0, 0, 1, 0, 0]
+	},
+	"wisdom" : {
+		description : "As a reaction when I take damage from a creature that is within 10 ft, I can have it take 2d8 force damage and push it up to 10 ft away. Str save for half damage and no push. As a bonus action, I can shove one creature I can see within 30 ft. It must make a Str save or be moved 5 ft from or towards me. [+1 Wis]",
+		spellcastingAbility : 5,
+		weaponsAdd : ["Psi-kinetic Shove"],
+		weaponOptions : {
+		regExpSearch : /psi-kinetic shove/i,
+		name : "Psi-kinetic Shove",
+		source: [["RCF"]],
+		list : "spell",
+		ability : 5,
+		type : "AlwaysProf",
+		damage : ["", "", "push/pull"],
+		range : "30 ft",
+		description : "Strength save (can willingly fail) or be moved 5 ft directly away from or towards me",
+		abilitytodamage : false,
+		dc : true
+		},
+		scores : [0, 0, 0, 0, 1, 0]
+	},
+	"charisma" : {
+		description : "As a reaction when I take damage from a creature that is within 10 ft, I can have it take 2d8 force damage and push it up to 10 ft away. Str save for half damage and no push. As a bonus action, I can shove one creature I can see within 30 ft. It must make a Str save or be moved 5 ft from or towards me. [+1 Cha]",
+		spellcastingAbility : 6,
+		weaponsAdd : ["Psi-kinetic Shove"],
+		weaponOptions : {
+		regExpSearch : /psi-kinetic shove/i,
+		name : "Psi-kinetic Shove",
+		source: [["RCF"]],
+		list : "spell",
+		ability : 6,
+		type : "AlwaysProf",
+		damage : ["", "", "push/pull"],
+		range : "30 ft",
+		description : "Strength save (can willingly fail) or be moved 5 ft directly away from or towards me",
+		abilitytodamage : false,
+		dc : true
+		},
+		scores : [0, 0, 0, 0, 0, 1]
+	}
+};
+/* Psi-kinetic
+Prerequisite: Githyanki
+Your Githyanki psionics have developed the ability to move something by thinking about it without the application of physical force. You gain the following benefits:
+• Increase your Intelligence, Wisdom, or Charisma by 1, to a maximum of 20.
+• Psi-kinetic Reprisal. When you take damage from a creature that is within 10 feet of you, you can use your reaction to emanate telekinetic energy. The creature that dealt damage to you must make a Strength saving throw (DC equals 8 + your proficiency bonus + the ability modifier of the score increased by this feat). On a failed save, the creature takes 2d8 force damage and is pushed up to 10 feet away from you. On a successful save, the creature takes half as much damage and isn't pushed. You can use this reaction a number of times equal to your proficiency bonus, and you regain all expended uses when you finish a long rest.
+• Psi-kinesis. As a bonus action, you can try to telekinetically shove one creature you can see within 30 feet of you. When you do so, the target must succeed on a Strength saving throw (DC 8 + your proficiency bonus + the ability modifier of the score increased by this feat) or be moved 5 feet toward you or away from you. A creature can willingly fail this save. */
 
 // Goblin
 FeatsList["favor of the queen of air and darkness"] = { // Goblin
 	name: "Favor of the Queen of Air and Darkness",
-	source: [["RAC", 81]],
+	source: [["RCF"]],
 	prerequisite : "Being a Goblin",
 	prereqeval : "CurrentRace.known.indexOf('goblin') !== -1",
 	descriptionFull : "Long before the god Maglubiyet conquered the goblins, early goblins served in the court of the Queen of Air and Darkness, one of the Feywild's archfey. Goblins thrived in her dangerous domain thanks to a special boon from her—a supernatural knack for finding the weak spots in foes larger than themselves and for getting out of trouble. For reasons unknown, the Queen of Air and Darkness has taken special notice of you and granted you a further boon, granting you the following benefits:\n \u2022 Increase your Intelligence, Wisdom, or Charisma by 1, to a maximum of 20.\n \u2022 You learn a cantrip from the abjuration, enchantment, illusion or necromancy school of magic.\n \u2022 You can cast the invisibility spell, requiring no spell slot or components, and you must finish a long rest before you can cast it this way again. Your spellcasting ability for the spell is the ability increased by this feat. If you have spell slots of 2nd level or higher, you can cast this spell with them.",
@@ -1299,7 +1364,7 @@ Long before the god Maglubiyet conquered the goblins, early goblins served in th
 • You can cast the Invisibility spell, requiring no spell slot or components, and you must finish a long rest before you can cast it this way again. Your spellcasting ability for the spell is the ability increased by this feat. If you have spell slots of 2nd level or higher, you can cast this spell with them. */
 FeatsList["goblin's furious accuracy"] = { // Multiverse Goblin
 	name : "Goblin's Furious Accuracy",
-	source : [["RAC"]],
+	source : [["RCF"]],
 	prerequisite : "Being a Goblin",
 	prereqeval : "CurrentRace.known.indexOf('goblin') !== -1",
 	description : "I regain all expended uses of my Fury of the Small feature when I finish a short rest. Whenever I have advantage on an attack roll that uses Dexterity, I can reroll one of the dice once. [+1 Dexterity]",
@@ -1325,7 +1390,7 @@ Goblins thrive in dangerous domains thanks to a supernatural knack for finding t
 • Whenever you have advantage on an attack roll using Dexterity, you can reroll one of the dice once. */
 FeatsList["trickster spirit's legacy"] = { // Goblin
 	name : "Trickster Spirit's Legacy",
-	source : [["RAC"]],
+	source : [["RCF"]],
 	prerequisite : "Being a Goblin",
 	prereqeval : "CurrentRace.known.indexOf('goblin') !== -1",
 	description : "I have advantage to interact socially with goblinoids. Reversal of Fortune: When another creature deals damage to me, I may use my reaction to spend one hit die and reduce the damage by the hit die + twice my Prof. bonus. If this reduces the damage taken to zero, you regain the hit die and hp equal to the hit die roll.",
@@ -1341,7 +1406,7 @@ At one point you or one of your ancestors was possessed by the spirit of a Nilbo
 // Goliath
 FeatsList["carved from mountain stone"] = { 
 	name : "Carved from Mountain Stone",
-	source : [["RAC"]],
+	source : [["RCF"]],
 	prerequisite : "Being a Goliath",
 	prereqeval : function(v) { return CurrentRace.known.indexOf('goliath') !== -1; },	
 	description : "I have stone-hard fists (1d6 (versatile 1d8) bludgeoning damage) and stone-hard skin (AC of 13 + Dexterity modifier + shield when I'm not wearing armor). When I use Stone's Endurance, I gain my Constitution modifier bonus AC until the end of my next turn. [+1 Strength or Constitution]",
@@ -1352,7 +1417,7 @@ FeatsList["carved from mountain stone"] = {
 		baseWeapon : "unarmed strike",
 		regExpSearch : /^(?=.*(stone-hard))(?=.*fists).*$/i,
 		name : "Stone-hard Fists",
-		source : [["RAC", 33]],
+		source : [["RCF"]],
 		damage : [1, 6, "bludgeoning"],
 		description : "Versatile (d8)"
 	},
@@ -1360,7 +1425,7 @@ FeatsList["carved from mountain stone"] = {
 	armorOptions : {
 		regExpSearch : /^(?=.*stone-hard).*$/i,
 		name : "Stone-hard Skin",
-		source : ["RAC"],
+		source : ["RCF"],
 		ac : 13
 	},
 };
@@ -1370,11 +1435,11 @@ Distantly related to giants and infused with the supernatural essence of their a
 • Increase your Strength or Constitution score by 1, to a maximum of 20.
 • You have stone-hard fists that you can use to make unarmed strikes. When you hit with them, the strike deals 1d6 + your Strength modifier bludgeoning damage, instead of the bludgeoning damage normal for an unarmed strike. If you strike with two free hands, the d6 becomes a d8.
 • You gain natural armor. When you aren't wearing armor, your stone-hard skin gives you a base AC is 13 + Dexterity modifier. You can use your natural armor to determine your AC if the armor you wear would leave you with a lower AC. A shield's benefits apply as normal while you use your natural armor.
-•  Immediately after you use Stone's Endurance, you gain a bonus to AC equal to your Constitution modifier (minimum of +1) until the end of your next turn.
+• Immediately after you use Stone's Endurance, you gain a bonus to AC equal to your Constitution modifier (minimum of +1) until the end of your next turn.
  */
 FeatsList["peak to peak"] = { 
 	name : "Peak to Peak",
-	source : [["RAC"]],
+	source : [["RCF"]],
 	prerequisite : "Being a Goliath",
 	prereqeval : function(v) { return CurrentRace.known.indexOf('goliath') !== -1; },	
 	description : "I regain Stone's Endurance with a short rest. After Stone's Endurance, up to 2 creatures within 5 ft of me make a Str save or pushed my Con mod (min 1) + 5 ft away; It can choose to fail. I learn Mold Earth, and Prof/LR, as a bonus action, make difficult terrain up to 30 ft around me for one minute. [+1 to one]",
@@ -1416,7 +1481,7 @@ Goliaths wander a bleak realm of rock, wind, and cold. Their spirits take after 
  */
  FeatsList["stone's fury"] = { 
 	name : "Stone's Fury",
-	source : [["RAC"]],
+	source : [["RCF"]],
 	prerequisite : "Being a Goliath",
 	prereqeval : function(v) { return CurrentRace.known.indexOf('goliath') !== -1; },
 	description : "Once per short rest, I can roll an extra damage die for an attack with a simple or martial weapon. In addition, Immediately after I use my Stone's Endurance trait, I can use my reaction to make one weapon attack. [+1 Strength or Constitution]",
@@ -1437,7 +1502,7 @@ Your competitive fury burns tirelessly. You gain the following benefits:
 // Halfling
 FeatsList["allez cuisine!"] = { // Mark of Hospitality
 	name : "Allez Cuisine!",
-	source : [["RAC", 4]],
+	source : [["RCF"]],
 	descriptionFull : "If memory serves me right... the Mark of Hospitality grants powers related to food and shelter. But it also helps the bearer connect with others. They may not always have gold, but a halfling with the Mark of Hospitality is sure to be rich in friends. You gain the following benefits:\n \u2022 Increase your Charisma score by 1, to a maximum of 20.\n \u2022 You gain proficiency with Cook's utensils. If you are already proficient with them, you gain expertise with them, which means your proficiency bonus is doubled for any ability check you make with them. Additionally, you can use Cook's utensils as a spellcasting focus for any spell you cast that uses Charisma as its spellcasting ability.\n \u2022 You learn the Create Food and Water spell. Your spellcasting ability for the spell is Charisma. You can cast it without a spell slot or needing a material component, and you must finish a long rest before you can cast it in this way again. If you have spell slots of 3rd level or higher, you can also cast this spell with them.\nYou can create the standard bland fare without requiring any sort of check, but you can attempt to create finer food by making a Charisma check, adding your Cook's utensils bonus to this check.\nFood Quality\tDifficulty\nPoor\t\tNo roll required\nModest\t\t10\nComfortable\t13\nWealthy\t\t15\n\Aristocratic\t18\n\nA failed check results in a sour and squalid meal.",
 	description : "I gain proficiency with Cook's utensils, or expertise if already proficient. I can use Cook's utensils as a spellcasting focus for any spell I cast that uses Charisma as its spellcasting ability. I can cast Create Food and Water once per long rest, with the posibility of enhanced meals. [+1 Cha]",
 	scores : [0, 0, 0, 0, 0, 1],
@@ -1487,7 +1552,7 @@ A failed check results in a sour and squalid meal. */
 // Half-Orc
 FeatsList["orcish centaur heritage"] = {
 	name : "Orcish Centaur Heritage",
-	source : [["RAC"]],
+	source : [["RCF"]],
 	prerequisite : "Being a Half-Orc",
 	prereqeval : function(v) { return (/^(?=.*half)(?=.*orc).*$/i).test(CurrentRace.known); },
 	description : "My walking speed increases by 10 ft. I can use my hooves for unarmed strikes that deal 1d4 bludgeoning damage. I count as one size larger for my carrying capacity and the weight I can push, drag, or lift. Because of my hooves, 1 ft of movement while climbing costs me 4 ft. [+1 Strength or Constitution]",
@@ -1498,7 +1563,7 @@ FeatsList["orcish centaur heritage"] = {
 		baseWeapon : "unarmed strike",
 		regExpSearch : /\b(hoofs?|hooves)\b/i,
 		name : "Hooves",
-		source : ["RAC"],
+		source : ["RCF"],
 		damage : [1, 6, "bludgeoning"],
 		description : ""
 	},
@@ -1513,7 +1578,7 @@ The upper bodies of centaurs are comparable to human torsos in size, and below t
 // Harengon (Rabbitfolk)
 FeatsList["colony defender"] = { 
 	name : "Colony Defender",
-	source : [["RAC"]],
+	source : [["RCF"]],
 	prerequisite : "Being a Harengon",
 	prereqeval : "CurrentRace.known.indexOf('harengon') !== -1",
 	description : "As a bonus action with the Attack action, I can make an extra with a double-tipped weapon for 2d4 piercing damage. I treat double-tipped weapons as having the finesse trait. +1 AC while wielding a double-tipped weapon with two hands. [+1 Strength or Dexterity]",
@@ -1535,7 +1600,7 @@ WeaponsList["double-tipped spear"] = {
 	baseWeapon : "spear",
 	regExpSearch : /^(?=.*double)(?=.*spear).*$/i,
 	name : "Double-tipped spear",
-	source : [["RAC"]],
+	source : [["RCF"]],
 	list : "melee",
 	ability : 1,
 	type : "Martial",
@@ -1552,7 +1617,7 @@ Special.
 If you attack with a double-tipped spear as part of the Attack action on your turn, you can use a bonus action immediately after to make a melee attack with it. This attack deals 1d4 piercing damage on a hit, instead of 2d4. */
 FeatsList["jumping flash"] = { 
 	name : "Jumping Flash",
-	source : [["RAC"]],
+	source : [["RCF"]],
 	prerequisite : "Being a Harengon",
 	prereqeval : "CurrentRace.known.indexOf('harengon') !== -1",
 	description : "My walking speed increases by 5 ft. I gain proficiency in either the Acrobatics or the Athletics skill. I regain all expended uses of my Rabbit Hop feature when I finish a short rest.",
@@ -1579,7 +1644,7 @@ You are uncommonly nimble for your race. You gain the following benefits:
 • You regain all expended uses of your Rabbit Hop feature when you finish a short rest. */
 FeatsList["powerhouse hopper"] = { // (small sized)
 	name : "Powerhouse Hopper",
-	source : [["RAC"]],
+	source : [["RCF"]],
 	prerequisite : "Being a Small sized Harengon",
 	prereqeval : "CurrentRace.known.indexOf('harengon') !== -1",
 	descriptionFull : "You are uncommonly hardy for your race. You gain the following benefits:\n \u2022 Increase your Strength or Constitution score by 1, to a maximum of 20.\n \u2022 Increase your walking speed by 5 feet.\n \u2022 You regain all expended uses of your Rabbit Hop feature when you finish a short rest.\n \u2022 You do not have disadvantage on attack rolls with weapons with the heavy property.",
@@ -1606,7 +1671,7 @@ You are uncommonly hardy for your race. You gain the following benefits:
 • You do not have disadvantage on attack rolls with weapons with the heavy property. */
 FeatsList["that's no ordinary rabbit!"] = {
 	name : "That's No Ordinary Rabbit!",
-	source : [["RAC"]],
+	source : [["RCF"]],
 	prerequisite : "Being a Harengon",
 	prereqeval : "CurrentRace.known.indexOf('harengon') !== -1",
 	description : "I gain a bite attack that uses Strength and deals 1d6 piercing damage. I regain all expended uses of my Rabbit Hop feature when I finish a short rest. I have Keen Hearing. [+1 Strength, Dexterity, Constitution or Wisdom]",
@@ -1617,7 +1682,7 @@ FeatsList["that's no ordinary rabbit!"] = {
 		baseWeapon : "unarmed strike",
 		regExpSearch : /\bbite\b/i,
 		name : "Bite",
-		source : ["RAC", 113],
+		source : [["RCF"]],
 		damage : [1, 6, "piercing"]
 	},
 	weaponsAdd : ["Bite"],
@@ -1643,7 +1708,7 @@ You are a special example for your race. You gain the following benefits:
 // Hexblood
 FeatsList["a heart's desire"] = {  // Hexblood
     name : "A Heart's Desire",
-	source : [["RAC", 74]],
+	source : [["RCF"]],
 	prerequisite : "Being a Hexblood",
 	prereqeval : function(v) { return CurrentRace.known.indexOf('hexblood') !== -1; },
 	descriptionFull : "Where wishing fails, ancient magic can offer a heart's desire—at least, for a time. Hexbloods are individuals infused with eldritch magic, fey energy, or mysterious witchcraft. You gain the following benefits:\n \u2022 Increase your Intelligence, Wisdom, or Charisma by 1, to a maximum of 20.\n \u2022 You learn the Detect Magic spell and can cast it at will, without expending a spell slot.\n \u2022 You learn the Blindness/Deafness and Bestow Curse spells. You can cast each of these spells without expending a spell slot. Once you cast either of these spells in this way, you can't cast that spell in this way again until you finish a long rest. You can also cast these spells using spell slots you have of the appropriate level. The spells' spellcasting ability is the ability increased by this feat.",
@@ -1701,7 +1766,7 @@ Where wishing fails, ancient magic can offer a heart's desire—at least, for a 
 • You learn the Detect Magic spell and can cast it at will, without expending a spell slot. You also learn the Blindness/Deafness and Bestow Curse spells. You can cast each of these spells without expending a spell slot. Once you cast either of these spells in this way, you can't cast that spell in this way again until you finish a long rest. You can also cast these spells using spell slots you have of the appropriate level. The spells' spellcasting ability is the ability increased by this feat. */
 FeatsList["heir of hags"] = {
 	name : "Heir of Hags",
-	source : [["RAC", 74]],
+	source : [["RCF"]],
 	prerequisite : "Being a Hexblood",
 	prereqeval : function(v) { return CurrentRace.known.indexOf('hexblood') !== -1; },
 	descriptionFull : "A bargain with a hag or other eerie forces transformed your character into a magical being. Your transformation was more potent than many other hexbloods. You gain the following benefits:\n \u2022 Eerier Tokens. You can now create a number of Eerie Tokens equal to your proficiency bonus. Instead of an action, you may instead use a bonus action for Remote Viewing or to send a Telepathic Message. The creature holding or carrying the token can respond to you telepathically with a short message of twenty-five words or less, but can not initiate a message to you.\n \u2022 Epicaricacy. When a creature you can see within 30 feet of you rolls a 1 on an attack roll, skill check, or saving throw, you can use your rection to gain advantage on your next attack roll, skill check, or saving throw. You can give yourself advantage in this way a number of times equal to your proficiency bonus, and you regain all expended uses when you finish a short rest.",
@@ -1728,7 +1793,7 @@ A bargain with a hag or other eerie forces transformed your character into a mag
 • Epicaricacy. When a creature you can see within 30 feet of you rolls a 1 on an attack roll, skill check, or saving throw, you can use your rection to gain advantage on your next attack roll, skill check, or saving throw. You can give yourself advantage in this way a number of times equal to your proficiency bonus, and you regain all expended uses when you finish a short rest. */
 FeatsList["weird companionship"] = {
 	name : "Weird Companionship",
-	source : [["RAC", 74]],
+	source : [["RCF"]],
 	prerequisite : "Being a Hexblood",
 	prereqeval : function(v) { return CurrentRace.known.indexOf('hexblood') !== -1; },
 	descriptionFull : "Although they are solitary by nature, hags sometimes feel the need for companionship, and the weird magic at a hag's disposal means that she might have almost any type of creature helping or serving her. Some of this weird magic has transferred over to you. You gain the following benefits:\n \u2022 Mimicry. You can can mimic animal sounds and humanoid voices. A creature that hears the sounds can tell they are imitations with a successful Wisdom (Insight) check opposed by your Charisma (Deception) check.\n \u2022 Minion. You learn the Find Familiar spell. You can cast it as a ritual and can also cast it without expending a spell slot. Once you cast it in this way, you can't cast it in this way again until you finish a long rest. You can also cast it using spell slots you have. The spells' spellcasting ability is the ability increased by this feat.\n\n> The familiar can perch on your shoulder. While perched on your shoulder, the familiar can't be targeted by any attack or other harmful effect; only you can cast spells on it; it can't take damage; and it is incapacitated. While the familiar is perched on your shoulder, you gain a bonus to your passive Wisdom (Perception) score and to Wisdom (Perception) checks. The bonus equals the modifier for the ability increased by this feat.\n\n> The familiar doesn't require sleep. While it is within 100 feet of you, it can awaken you from sleep as a bonus action. The familiar vanishes when it dies, if you die, or if the two of you are separated by more than 5 miles. If it is slain by a creature, you gain advantage on all attack rolls against the killer for the next 24 hours.\n\n> At the end of a short or long rest, you can call the familiar back to you—no matter where it is or whether it died—and it reappears within 5 feet of you.",
@@ -1768,7 +1833,7 @@ Although they are solitary by nature, hags sometimes feel the need for companion
 // Human
 FeatsList["angelfire blessing"] = {  
 	name : "Angelfire Blessing",
-	source : [["RAC"]],
+	source : [["RCF"]],
 	prerequisite : "Being a Human",
 	prereqeval : function(v) { return CurrentRace.known.indexOf('human') !== -1; },
 	descriptionFull : "You learn to call on heavenly angelfire to serve your commands. You gain the following benefits:\n \u2022 Increase your Intelligence or Charisma score by 1, to a maximum of 20.\n \u2022 When you roll fire damage for a spell you cast, you can reroll any roll of 1 on the fire damage dice, but you must use the new roll, even if it is another 1.\n \u2022 Whenever you cast a spell that deals fire damage, you can cause flames to wreathe you until the end of your next turn. The flames don't harm you or your possessions, and they shed bright light out to 30 feet and dim light for an additional 30 feet. While the flames are present, any creature within 5 feet of you that hits you with a melee attack takes 1d4 fire damage.",
@@ -1776,10 +1841,102 @@ FeatsList["angelfire blessing"] = {
 	scorestxt : "+1 Intelligence or Charisma"	
 };
 
+// Kalashtar
+FeatsList["thoughtsinger"] = {
+    name : "Thoughtsinger",
+    source : [["RCF"]],
+    prerequisite : "Kalashtar",
+    prereqeval : function() { return CurrentRace.known.indexOf('kalashtar') !== -1; },
+    scorestxt : "+1 Wisdom or Charisma",
+    descriptionFull : "You have honed your telepathic abilities, allowing you to link to and guide your companions as a united group. You gain the following benefits:\n \u2022 Increase your Wisdom or Charisma score by 1, to a maximum of 20.\n \u2022 When using your Mind Link trait, you can maintain links to up to 6 creatures at a time. When you establish a link, you decide whether the linked creature can telepathically communicate only with you, or if they can telepathically communicate with all of the creatures you are linked to at once. Likewise, you can communicate with one specific creature, or you can communicate with all creatures you’re currently linked to.\n \u2022 If you can speak telepathically to an ally using your Mind Link trait, you can use the Help action to aid them in attacking a creature, even if you are more than 5 feet away from them.",
+    description : "I can maintain my Mind Link with up to 6 creatures, choosing whether they can speak to each other or just me and whether I can communicate to a specific one or all of them. I can also use the help action to aid them even if I'm more than 5 ft away.\n[+1 Wisdom or Charisma]"
+};
+/* Thoughtsinger
+Prerequisite: Kalashtar
+You have honed your telepathic abilities, allowing you to link to and guide your companions as a united group. You gain the following benefits:
+• Increase your Wisdom or Charisma score by 1, to a maximum of 20.
+• When using your Mind Link trait, you can maintain links to up to 6 creatures at a time. When you establish a link, you decide whether the linked creature can telepathically communicate only with you, or if they can telepathically communicate with all of the creatures you are linked to at once. Likewise, you can communicate with one specific creature, or you can communicate with all creatures you're currently linked to.
+• If you can speak telepathically to an ally using your Mind Link trait, you can use the Help action to aid them in attacking a creature, even if you are more than 5 feet away from them. */
+
+// Kenku
+FeatsList["lightly feathered, less flightless"] = {
+	name : "Lightly Feathered, Less Flightless",
+	source : [["RCF"]],
+	prerequisite : "Being a Kenku",
+	prereqeval : function(v) { return CurrentRace.known.indexOf('kenku') !== -1; },
+	descriptionFull : "Feathers on your arms provide you with a limited ability to fly. You gain the following benefits:\n \u2022 Increase your Strength, Dexterity, Constitution, or Charisma score by 1, to a maximum of 20.\n \u2022 You can choose to use your Dexterity instead of your Strength to determine how far you can jump.\n \u2022 Feathered Hop. As a bonus action, you can jump a number of feet equal to five times your proficiency bonus, without provoking opportunity attacks. You can use this trait only if your speed is greater than 0. You can use it a number of times equal to your proficiency bonus, and you regain all expended uses when you finish a long rest.\n \u2022 Glide. When you fall at least 10 feet above the ground, you can use your reaction to extend your feathered arms to glide horizontally a number of feet equal to your walking speed, and you take 0 damage from the fall. You determine the direction of the glide.",
+	description : "I can use Dex for jump distances. As a reaction when I fall at least 10 ft above the ground, I can glide my walking speed horizontally, and take 0 fall damage. (Prof Bonus/LR) As a bonus action if speed isn't 0, I can jump my Prof Bonus x 5 feet without provoking opportunity attacks. [+1 to Str, Dex, Con, Cha]",
+	scorestxt : "+1 to Strength, Dexterity, Constitution, or Charisma",
+	action : [["bonus action", "Feathered Hop"],["reaction","Glide"]],
+	extraLimitedFeatures : {
+		name : "Feathered Hop",
+		usages : "Proficiency bonus per ",
+		usagescalc : "event.value = How('Proficiency Bonus');",
+		recovery : "long rest",
+		additional : "Prof Bonus x 5 ft",
+		},
+};
+/* Lightly Feathered, Less Flightless 
+Prerequisite: Kenku
+Feathers on your arms provide you with a limited ability to fly. You gain the following benefits:
+• Increase your Strength, Dexterity, Constitution, or Charisma score by 1, to a maximum of 20.
+• You can choose to use your Dexterity instead of your Strength to determine how far you can jump.
+• Feathered Hop. As a bonus action, you can jump a number of feet equal to five times your proficiency bonus, without provoking opportunity attacks. You can use this trait only if your speed is greater than 0. You can use it a number of times equal to your proficiency bonus, and you regain all expended uses when you finish a long rest.
+•  Glide. When you fall at least 10 feet above the ground, you can use your reaction to extend your feathered arms to glide horizontally a number of feet equal to your walking speed, and you take 0 damage from the fall. You determine the direction of the glide. */
+FeatsList["blessed with keen observation"] = {
+	name : "Blessed with Keen Observation",
+	source : [["RCF"]],
+	prerequisite : "Being a Kenku",
+	prereqeval : function(v) { return CurrentRace.known.indexOf('kenku') !== -1; },
+	descriptionFull : "Feathered folk who resemble ravens, kenku are blessed with keen observation and supernaturally accurate memories. You gain the following benefits:\n \u2022 Increase your Intelligence Wisdom score by 1, to a maximum of 20.\n \u2022 You gain proficiency in the Perception skill. If you are already proficient in the skill, you add double your proficiency bonus to checks you make with it.\n \u2022 Being in a lightly obscured area doesn't impose disadvantage on your Wisdom (Perception) checks if you can both see and hear.\n \u2022 You can use your action to try to get uncanny insight about one creature you can see within 30 feet of you. Make a Wisdom (Insight) check contested by the target's Charisma (Deception) check. If your check succeeds, you have advantage on attack rolls and ability checks against the target until the end of your next turn.",
+	description : "I gain prof/expertise with Perception. No disadvantage on my Perception in a lightly obscured area, if I can see and hear. As an action, a creature I can see within 30 ft must make its Deception vs. my Insight or I gain advantage on attacks and ability checks against it until the end of my next turn. [+1 Int or Wis]",
+	scorestxt : "+1 to Intelligence or Wisdom",
+	skills : [["Perception", "increment"]],
+	skillstxt : "Perception",
+	vision : [["No disadv. on Perception in lightly obscured or dim light", 0]],
+	action : ["action", "Uncanny Insight"],
+};
+/* Blessed with Keen Observation
+Prerequisite: Kenku
+Feathered folk who resemble ravens, kenku are blessed with keen observation and supernaturally accurate memories. You gain the following benefits:
+• Increase your Intelligence or Wisdom by 1, to a maximum of 20.
+• You gain proficiency in the Perception skill. If you are already proficient in the skill, you add double your proficiency bonus to checks you make with it.
+• Being in a lightly obscured area doesn't impose disadvantage on your Wisdom (Perception) checks if you can both see and hear.
+• You can use your action to try to get uncanny insight about one creature you can see within 30 feet of you. Make a Wisdom (Insight) check contested by the target's Charisma (Deception) check. If your check succeeds, you have advantage on attack rolls and ability checks against the target until the end of your next turn. */
+FeatsList["supernaturally good memory"] = {
+	name : "Supernaturally Good Memory",
+	source : [["RCF"]],
+	prerequisite : "Being a Kenku",
+	prereqeval : function(v) { return CurrentRace.known.indexOf('kenku') !== -1; },
+	descriptionFull : "Feathered folk who resemble ravens, kenku are blessed with keen observation and supernaturally accurate memories. You gain the following benefits:\n \u2022 Increase one ability score of your choice by 1, to a maximum of 20.\n \u2022 You regain all expended uses of your 'Kenku Recall' feature when you finish a short rest.\n \u2022 You gain proficiency in the History skill. If you are already proficient in the skill, you add double your proficiency bonus to checks you make with it.\n \u2022 When you take the Help action to aid another creature's ability check, you can make a DC 15 Intelligence (History) check. On a success, that creature's check gains a bonus equal to your proficiency bonus, as you share pertinent advice and historical examples. To receive this bonus, the creature must be able to understand what you're saying.",
+	description : "I gain proficiency/expertise with History. When I Help a creature with an ability check, DC 15 History check to add my Prof bonus if it understands me. I regain expended 'Kenku Recall' at the end of a short rest. [+1 to one ability score]",
+	scorestxt : "+1 to one ability score of my choice",
+	skills : [["History", "increment"]],
+	skillstxt : "History",
+	action : ["action", "Help action (DC 15 History check)"],
+	changeeval : function(prefix, lvl) {
+        if (CurrentRace.name == RaceList["multiverse kenku"].name && CurrentRace.features["kenku recall"] && CurrentRace.level != 0) {
+        CurrentRace.features["kenku recall"].recovery = "short rest";
+        ApplyFeatureAttributes("race", [CurrentRace.known, "kenku recall"], [CurrentRace.level, CurrentRace.level, true], false, false);
+	}}, 
+	removeeval : function(prefix, lvl) {
+		if (CurrentRace.name == RaceList["multiverse kenku"].name && CurrentRace.features["kenku recall"]) {
+		CurrentRace.features["kenku recall"].recovery = "long rest";
+		ApplyFeatureAttributes("race", [CurrentRace.known, "kenku recall"], [CurrentRace.level, CurrentRace.level, true], false, false);
+	}}
+};
+/* Supernaturally Good Memory
+Prerequisite: Kenku
+Feathered folk who resemble ravens, kenku are blessed with keen observation and supernaturally accurate memories. You gain the following benefits:
+• Increase one ability score of your choice by 1, to a maximum of 20.
+• You regain all expended uses of your 'Kenku Recall' feature when you finish a short rest.
+• You gain proficiency in the History skill. If you are already proficient in the skill, you add double your proficiency bonus to checks you make with it.
+• When you take the Help action to aid another creature's ability check, you can make a DC 15 Intelligence (History) check. On a success, that creature's check gains a bonus equal to your proficiency bonus, as you share pertinent advice and historical examples. To receive this bonus, the creature must be able to understand what you're saying. */
+
 // Kobold
 FeatsList["kobold ancestral roar"] = { 
 	name : "Kobold Ancestral Roar",
-	source : [["RAC"]],
+	source : [["RCF"]],
 	prerequisite : "Being a Kobold",
 	prereqeval : "CurrentRace.known.indexOf('kobold') !== -1",
 	description : "I have advantage on saves to avoid/end the frightened condition on myself. I can inspire myself to roar. Creatures of my choice within 30 ft that can see & hear me make a Wisdom save (DC 8 + prof bonus + CHA mod) or be frightened of me for 1 minute, repeating save whenever it takes damage. [+1 Dex, Con, or Cha]",
@@ -1793,7 +1950,7 @@ FeatsList["kobold ancestral roar"] = {
 WeaponsList["ancestral roar"] = { 
 		regExpSearch : /^(?=.*ancestral)(?=.*roar).*$/i,
 		name : "Ancestral Roar",
-		source : [["RAC"]],
+		source : [["RCF"]],
 		ability : 6,
 		type : "Natural",
 		damage : ["", "", ""],
@@ -1806,7 +1963,7 @@ WeaponsList["ancestral roar"] = {
 };
 FeatsList["kobold ancestral scales"] = {
 	name : "Kobold Ancestral Scales",
-	source : [["RAC"]],
+	source : [["RCF"]],
 	descriptionFull : "You manifest scales reminiscent of your draconic ancestors. You gain the following benefits:\n \u2022 Increase your Dexterity or Constitution score by 1, to a maximum of 20.\n \u2022 Your scales harden. While you aren't wearing armor, you can calculate your AC as 13 + your Dexterity modifier. You can use a shield and still gain this benefit.\n \u2022 When you take acid, cold, fire, lightning, or poison damage, you can use your reaction to give yourself resistance to that instance of damage. You can use this reaction a number of times equal to your proficiency bonus, and you regain all expended uses when you finish a long rest.",
 	description : "My scales harden, giving me an AC of 13 + Dexterity modifier + shield when I'm not wearing armor. As a reaction when I take acid, cold, fire, lightning, or poison damage, I can gain resistance to that damage instance. I can do this my Prof. Bonus per long rest. [+1 Dexterity or Constitution]",
 	scorestxt : "+1 Dexterity or Constitution",
@@ -1820,7 +1977,7 @@ FeatsList["kobold ancestral scales"] = {
 	armorOptions : {
 		regExpSearch : /^(?=.*(ancestral|dragon|draconic|scaly))(?=.*(hide|skin|scales|resilience)).*$/i,
 		name : "Ancestral Scales",
-		source : ["RAC"],
+		source : ["RCF"],
 		ac : 13
 	},
 	armorAdd : "Ancestral Scales"
@@ -1833,7 +1990,7 @@ Whatever their relationship to dragons, kobold scales tend to be rust colored, a
 • When you take acid, cold, fire, lightning, or poison damage, you can use your reaction to give yourself resistance to that instance of damage. You can use this reaction a number of times equal to your proficiency bonus, and you regain all expended uses when you finish a long rest. */
 FeatsList["kobold cleverness"] = { 
 	name : "Kobold Cleverness",
-	source : [["RAC"]],
+	source : [["RCF"]],
 	prerequisite : "Being a Kobold",
 	prereqeval : "CurrentRace.known.indexOf('kobold') !== -1",
 	description : "I can use my Dragon Growl trait twice before I must take a short rest. Whenever I have advantage on an attack roll that uses Dexterity or Wisdom, I can reroll one of the dice once. [+1 Dexterity or Wisdom]",
@@ -1852,7 +2009,7 @@ The cleverness of Kobolds is well-known. You gain the following benefits:
 • Whenever you have advantage on an attack roll using Dexterity or Wisdom, you can reroll one of the dice once. */
 FeatsList["kobold pack tactics"] = {
 	name : "Kobold Pack Tactics",
-	source : [["RAC"]],
+	source : [["RCF"]],
 	prerequisite : "Being a Kobold",
 	prereqeval : "CurrentRace.known.indexOf('kobold') !== -1",
 	description : "Pack Tactics: I have advantage on attack rolls if at least one of my non-incapacitated allies is within 5 ft of the targeted creature [+1 Dexterity or Wisdom]",
@@ -1868,7 +2025,7 @@ Kobolds know they sometimes have to use superior numbers and cunning to take dow
 // Leonin
 FeatsList["fierce pride"] = { 
 	name : "Fierce Pride",
-	source : [["RAC"]],
+	source : [["RCF"]],
 	prerequisite : "Being a Leonin",
 	prereqeval : function(v) { return CurrentRace.known.indexOf('leonin') !== -1; },
 	descriptionFull : "You often act with confidence, which can come off as imperiousness. While it reassures your allies, it can also suggest that you are quick to quarrel. The truth is that you simply enjoy fighting. You gain the following benefits:\n \u2022 Increase your Strength or Constitution score by 1, to a maximum of 20.\n \u2022 Once per encounter, you can deal an extra 2d6 damage to a creature you hit with a weapon attack if the target is within 5 ft of an ally that isn't incapacitated.\n \u2022 Immediately after you use your Daunting Roar trait, you can use your reaction to make one weapon attack.",
@@ -1888,7 +2045,7 @@ You often act with confidence, which can come off as imperiousness. While it rea
 */
 FeatsList["pride of lions"] = { 
 	name : "Pride of Lions",
-	source : [["RAC"]],
+	source : [["RCF"]],
 	prerequisite : "Being a Leonin",
 	prereqeval : function(v) { return CurrentRace.known.indexOf('leonin') !== -1; },
 	description : "When moving on my turn in combat, I can move double my speed. Once I do this, I can't do it again until I don't move at all on one of my turns. I take no damage from falling 20 ft or less, if I'm not incapacitated. I count as one size larger for my carrying capacity and the weight I can push, drag, or lift. [+1 to one]",
@@ -1918,7 +2075,7 @@ You often act with confidence, which can come off as imperiousness. The truth is
 // Lizardfolk
 FeatsList["subterranean lizardfolk"] = { 
 	name : "Subterranean Lizardfolk",
-	source : [["RAC"]],
+	source : [["RCF"]],
 	prerequisite : "Being a Lizardfolk",
 	prereqeval : "CurrentRace.known.indexOf('lizardfolk') !== -1",
 	description : "I have darkvision out to a range of 60 feet. Climbing doesn't cost me extra movement. I count as one size larger when determining my carrying capacity and push/drag/lift weight. [+1 Str, Dex, Con or Wis]",
@@ -1941,7 +2098,7 @@ Your heritage is more akin to the great lizards of the underdark. You gain the f
 */
 FeatsList["swamp blood"] = { 
 	name : "Swamp Blood",
-	source : [["RAC"]],
+	source : [["RCF"]],
 	prerequisite : "Being a Lizardfolk",
 	prereqeval : "CurrentRace.known.indexOf('lizardfolk') !== -1",
 	description : "I can hold my breath for one hour at a time. I have Stealth advantage while in swamp/underwater. I can move towards an enemy as a bonus action. I count as one size larger when determining my carrying capacity and push/drag/lift weight. I can use Hungry Jaws one extra time. [+1 Str, Dex, Con or Wis]",
@@ -1970,7 +2127,7 @@ Your heritage is more akin to the great lizards of the swamp. You gain the follo
 // Locathah
 FeatsList["adaptive amphibiousness"] = { 
 	name : "Adaptive Amphibiousness",
-	source : [["RAC"]],
+	source : [["RCF"]],
 	prerequisite : "Being a Locathah",
 	prereqeval : "CurrentRace.known.indexOf('locathah') !== -1",
 	description : "I have advantage on Wisdom (Perception) checks that rely on sight. My tough, scaly skin now provides a base AC of 13 + Dex mod. I only need to be submerged at least once every 24 hours to avoid suffocating. [+1 Str, Dex, or Con]",
@@ -1997,7 +2154,7 @@ Your physiology has adapted to the local environment. You gain the following ben
 // Loxodon
 FeatsList["an elephant never forgets"] = { 
 	name : "An Elephant Never Forgets",
-	source : [["RAC"]],
+	source : [["RCF"]],
 	prerequisite : "Being a Loxodon",
 	prereqeval : function(v) { return CurrentRace.known.indexOf('loxodon') !== -1; },
 	descriptionFull : "You can accurately recall anything you have seen or heard within the past month.\n \u2022 You have a deep hatred for a particular kind of creature. Choose your foes, a type of creature to bear the burden of your wrath: aberrations, beasts, celestials, constructs, dragons, elementals, fey, fiends, giants, monstrosities, oozes, plants, or undead. Alternatively, you can choose two races of humanoid (such as gnolls and orcs). You gain the following benefits:\n \u2022 Increase your Constitution, Intelligence or Wisdom score by 1, to a maximum of 20.\n \u2022 During the first round of any combat against your chosen foes, your attack rolls against any of them have advantage.\n \u2022 When any of your chosen foes makes an opportunity attack against you, it makes the attack roll with disadvantage.\n \u2022 Whenever you make an Arcana, History, Nature, or Religion check to recall information about your chosen foes, you add double your proficiency bonus to the check, even if you're not normally proficient.",
@@ -2056,7 +2213,7 @@ You can accurately recall anything you have seen or heard within the past month.
 • Whenever you make an Intelligence (Arcana, History, Nature, or Religion) check to recall information about your chosen foes, you add double your proficiency bonus to the check, even if you're not normally proficient. */
 FeatsList["blessing of ivory"] = {
 	name : "Blessing of Ivory",
-	source : [["RAC"]],
+	source : [["RCF"]],
 	prerequisite : "Being a Loxodon",
 	prereqeval : "CurrentRace.known.indexOf('loxodon') !== -1",
 	description : "I gain a tusk attack that uses Strength and deals 1d6 piercing damage. As a bonus action, when I use the Attack action, I can shove someone within 5 ft with my tusks. [+1 Strength or Constitution]",
@@ -2066,7 +2223,7 @@ FeatsList["blessing of ivory"] = {
 		baseWeapon : "unarmed strike",
 		regExpSearch : /tusk/i,
 		name : "Tusks",
-		source : ["RAC"],
+		source : ["RCF"],
 		damage : [1, 6, "piercing"],
 	},
 	weaponsAdd : ["Tusks"],
@@ -2080,7 +2237,7 @@ Your Proboscidean heritage shows true. You gain the following benefits:
 • If you take the Attack action on your turn, you can use a bonus action to try to shove a creature within 5 feet of you with your tusks. */
 FeatsList["loxodon gracefulness"] = {
 	name : "Loxodon Gracefulness",
-	source : [["RAC"]],
+	source : [["RCF"]],
 	prerequisite : "Being a Loxodon",
 	prereqeval : "CurrentRace.known.indexOf('loxodon') !== -1",
 	description : "My walking speed increases by 5 ft. I gain proficiency in either the Acrobatics or the Athletics skill. I have advantage on Dexterity (Acrobatics) and Strength (Athletics) checks I make to escape from being grappled. [+1 Strength or Dexterity]",
@@ -2097,14 +2254,14 @@ You are uncommonly graceful for your race. You gain the following benefits:
 • You have advantage on any Strength (Athletics) or Dexterity (Acrobatics) check you make to escape from being grappled. */
 FeatsList["memory of elephants"] = {
 	name : "Memory of Elephants",
-	source : [["RAC", 2]],
+	source : [["RCF"]],
 	prerequisite : "Being a Loxodon",
 	prereqeval : function(v) { return CurrentRace.known.indexOf('loxodon') !== -1; },
 	descriptionFull : "You gain the following benefits:\n \u2022 Increase one ability score of your choice by 1, to a maximum of 20.\n \u2022 You gain proficiency in the History skill. If you are already proficient in the skill, you add double your proficiency bonus to checks you make with it.\n \u2022 When you take the Help action to aid another creature's ability check, you can make a DC 15 Intelligence (History) check. On a success, that creature's check gains a bonus equal to your proficiency bonus, as you share pertinent advice and historical examples. To receive this bonus, the creature must be able to understand what you're saying.\n \u2022 You can accurately recall anything you have seen or heard within the past month. Whenever you finish a long rest, you gain proficiency in one skill of your choice and with one weapon or tool of your choice, selected from the Player's Handbook, as you draw upon the reservoir of experiences connected to your people. These proficiencies last until the end of your next long rest.",
 	description : "I gain proficiency/expertise with History. When I Help a creature with an ability check, DC 15 History check to add my Prof bonus if it understands me. I recall anything within the past month. At the end of a long rest, I gain proficiency with 1 tool or weapon & 1 skill until the end of my next long rest. [+1 to one ability score]",
 	scorestxt : "+1 to one ability score of my choice",
 	skills : [["History", "increment"]],
-	skillstxt : "Choose any one skill - lasts until the end of my next long rest",
+	skillstxt : "History, Choose any one skill - lasts until the end of my next long rest",
 	toolProfs : [["Memory of Elephants: tool/weapon", 1]],
 	action : ["action", "Help action (DC 15 History check)"]
 };
@@ -2115,11 +2272,29 @@ Loxodon physically mature at the same rate as humans, but they live about 450 ye
 • You gain proficiency in the History skill. If you are already proficient in the skill, you add double your proficiency bonus to checks you make with it.
 • When you take the Help action to aid another creature's ability check, you can make a DC 15 Intelligence (History) check. On a success, that creature's check gains a bonus equal to your proficiency bonus, as you share pertinent advice and historical examples. To receive this bonus, the creature must be able to understand what you're saying.
 • You can accurately recall anything you have seen or heard within the past month. Whenever you finish a long rest, you gain proficiency in one skill of your choice and with one weapon or tool of your choice, selected from the Player's Handbook, as you draw upon the reservoir of experiences connected to your people. These proficiencies last until the end of your next long rest. */
+FeatsList["woolly"] = {
+	name : "Woolly",
+	source : [["RCF"]],
+	prerequisite : "Being a Loxodon",
+	prereqeval : function(v) { return CurrentRace.known.indexOf('loxodon') !== -1; },
+	descriptionFull : "You hail from an icy, desolate land, prone to dramatic swings in temperature. Surviving the interminable harshness of your home gives you the following racial traits:\n \u2022 Increase one ability score of your choice by 1, to a maximum of 20.\n \u2022 You have resistance to cold damage.\n \u2022 You can tolerate temperatures as low as −100 degrees Fahrenheit and as high as 300 degrees Fahrenheit.\n \u2022 You have darkvision, the ability to see in dark and dim conditions. You can see in dim light within 60 feet of you as if it were bright light, and in darkness as if it were dim light. You can’t discern color in darkness, only shades of gray.",
+	description : "I have resistance to cold damage and can tolerate temperatures from -100 to 300 Fahrenheit. I have darkvision out to 60 feet. [+1 to any ability score.]",
+	scorestxt : "+1 to one ability score of my choice",
+	vision : ["Darkvision", 60],
+	dmgres : ["Cold"],
+};
+/* Woolly
+Prerequisite: Loxodon
+You hail from an icy, desolate land, prone to dramatic swings in temperature. Surviving the interminable harshness of your home gives you the following benefits:
+• Increase one ability score of your choice by 1, to a maximum of 20.
+• You have resistance to cold damage.
+• You can tolerate temperatures as low as −100 degrees Fahrenheit and as high as 300 degrees Fahrenheit.
+• You have darkvision, the ability to see in dark and dim conditions. You can see in dim light within 60 feet of you as if it were bright light, and in darkness as if it were dim light. You can't discern color in darkness, only shades of gray. */
 
 // Lupin
 FeatsList["blood of hounds"] = { 
 	name : "Blood of Hounds",
-	source : [["RAC"]],
+	source : [["RCF"]],
 	prerequisite : "Being a Lupin",
 	prereqeval : function(v) { return CurrentRace.known.indexOf('lupin') !== -1; },
 	description : "When moving on my turn in combat, I can move double my speed. Once I do this, I can't do it again until I don't move at all on one of my turns. I have advantage on Perception, Survival, and Investigation checks that involve smell. I count as one size larger for my carrying capacity and push/drag/lift. [+1 to one]",
@@ -2150,7 +2325,7 @@ Your . You gain the following benefits:
 // Minotaur
 FeatsList["built horn tough"] = {  
 	name : "Built Horn Tough",
-	source : [["RAC"]],
+	source : [["RCF"]],
 	prerequisite : "Being a Minotaur",
 	prereqeval : "CurrentRace.known.indexOf('minotaur') !== -1",
 	descriptionFull : "Your horns are hard enough to be considered nigh-unbreakable. You gain the following benefits:\n \u2022 Increase your Strength or Constitution score by 1, to a maximum of 20.\n \u2022 Your Horns damage die increases to a d8. \n \u2022 If you used your Horns as part of the Attack action on your turn, when you use your Hammering Horns during the same turn, you may choose to knock the target creature prone instead of push it up to 10 feet away from you.\n \u2022 When you use your Goring Rush feature, you gain a +5 bonus to the attack's damage roll and have advantage on ability checks and saving throws that you make against attacks, spells and effects that would move you away from your current space or knock you prone until the start of your next turn.",
@@ -2178,7 +2353,7 @@ Your horns are hard enough to be considered nigh-unbreakable. You gain the follo
 • Improved Goring Rush. When you use your Goring Rush feature, you gain a +5 bonus to the attack's damage roll and have advantage on ability checks and saving throws that you make against attacks, spells and effects that would move you away from your current space or knock you prone until the start of your next turn. */
 FeatsList["bullheadedness"] = { // Minotaur
 	name : "Bullheadedness",
-	source : [["RAC"]],
+	source : [["RCF"]],
 	prerequisite : "Being a Minotaur",
 	prereqeval : "CurrentRace.known.indexOf('minotaur') !== -1",
 	description : "Walking speed +5 ft. I count as one size larger for carrying capacity/push/drag/lift weight. I have advantage on checks and saves against spells/effects that push/pull/prone me. Expertise with Intimidation or Persuasion, or proficiency if not so already. I may prone with Hammering Horns. [+1 Str, Con, Wis or Cha]",
@@ -2201,7 +2376,7 @@ You have a steadfast adherence to an opinion, purpose, or course of action. You 
 // Owlin (Owlfolk)
 FeatsList["nimble sight"] = { 
 	name : "Nimble Sight",
-	source : [["RAC"]],
+	source : [["RCF"]],
 	prerequisite : "Being an Owlin",
 	prereqeval : "CurrentRace.known.indexOf('owlin') !== -1",
 	description : "I have advantage on Perception checks based on sight. I can cast Detect Magic at will, without expending a spell slot. Wisdom is my spellcasting ability for this spell. My darkvision extends to 120 feet. [+1 Wisdom]",
@@ -2230,7 +2405,7 @@ Prerequisite: Being an Owlfolk
 // Plasmoid
 FeatsList["gloop and gleep of things"] = {
 	name : "Gloop and Gleep of Things",
-	source : [["RAC"]],
+	source : [["RCF"]],
 	prerequisite : "Being a Plasmoid",
 	prereqeval : "CurrentRace.known.indexOf('plasmoid') !== -1",
 	descriptionFull : "Plasmoids are amorphous beings. There's little chance of mistaking a plasmoid for anything else. You gain the following benefits:\n \u2022 Increase one Ability Score score by 1, to a maximum of 20.\n \u2022 When you Shape Self, you can also adjust your height between Medium and Small.\n \u2022 Your pseudopod can be used to make unarmed strikes. When you hit with it, the strike deals 1d6 + your Strength modifier bludgeoning damage.\n \u2022 You can use your reaction to make yourself resistant to bludgeoning, piercing or slashing damage until the start of your next turn. You can use this feature a number of times equal to your proficiency bonus, and you regain all expended uses when you finish a long rest.",
@@ -2247,7 +2422,7 @@ FeatsList["gloop and gleep of things"] = {
 		baseWeapon : "unarmed strike",
 		regExpSearch : /pseudopod/i,
 		name : "Pseudopod",
-		source : [["RAC"]],
+		source : [["RCF"]],
 		damage : [1, 6, "bludgeoning"],
 	},
 	weaponsAdd : ["Pseudopod"],
@@ -2262,7 +2437,7 @@ Plasmoids are amorphous beings. There's little chance of mistaking a plasmoid fo
 */
 FeatsList["no typical shape"] = {
 	name : "No Typical Shape",
-	source : [["RAC"]],
+	source : [["RCF"]],
 	prerequisite : "Being a Plasmoid",
 	prereqeval : function(v) { return CurrentRace.known.indexOf('plasmoid') !== -1; },
 	descriptionFull : "Plasmoids don't have internal organs of the usual sort. Their bodies are composed of cells, fibers, plasma-like ooze, and clusters of nerves. You gain the following benefits:\n \u2022 Increase your Dexterity, Intelligence, Wisdom, or Charisma score by 1, to a maximum of 20.\n \u2022 Whenever you have advantage on an attack roll using Dexterity, Intelligence, Wisdom, or Charisma, you can reroll one of the dice once.",
@@ -2277,7 +2452,7 @@ Plasmoids don't have internal organs of the usual sort. Their bodies are compose
 */
 FeatsList["prepseudohensilepod"] = {
 	name : "Prepseudohensilepod",
-	source : [["RAC"]],
+	source : [["RCF"]],
 	prerequisite : "Being a Plasmoid",
 	prereqeval : "CurrentRace.known.indexOf('plasmoid') !== -1",
 	descriptionFull : "Plasmoids are amorphous beings. Their limbs are strong and flexible enough to grasp and manipulate weapons and tools. On occasion, due to some biological anomaly, a plasmoid's pseudopod becomes more pliable upon reaching adulthood (around the age of twenty years). You gain the following benefits:\n \u2022 Increase your Strength or Dexterity score by 1, to a maximum of 20.\n \u2022 You can use your pseudopod to lift, drop, hold, push, or pull an object or a creature; grapple someone; manipulate an object; open an unlocked door or container, stow or retrieve an item from an open container, or pour out the contents of a container. The pseudopod can't activate magic items, or carry more than 10 pounds. Your DM might allow other simple tasks to be added to that list of options.\n \u2022 Your pseudopod can also be used to make unarmed strikes with finesse and reach. When you hit with it, the strike deals 1d4 + your Strength or Dexterity modifier bludgeoning damage.",
@@ -2287,7 +2462,7 @@ FeatsList["prepseudohensilepod"] = {
 		baseWeapon : "unarmed strike",
 		regExpSearch : /prepseudohensilepod/i,
 		name : "Prepseudohensilepod",
-		source : [["RAC"]],
+		source : [["RCF"]],
 		damage : [1, 4, "bludgeoning"],
 		description : "Finesse, reach; ",
 	},
@@ -2302,7 +2477,7 @@ Plasmoids are amorphous beings. Their limbs are strong and flexible. On occasion
 */
 FeatsList["what have i got in my pocket?"] = {
 	name : "What Have I Got In My Pocket?",
-	source : [["RAC"]],
+	source : [["RCF"]],
 	prerequisite : "Being a Plasmoid",
 	prereqeval : function(v) { return CurrentRace.known.indexOf('plasmoid') !== -1; },
 	description : "I can finish a long rest in 6 hours and remain concious. I have AC 13+Dex when wearing no armor, and can stealth when travelling alone. I learn the Vanish and Wristpocket spells, neither requiring concentration, and cast Wristpocket 1/LR without expending a spell slot. [+1 Int, Wis, or Cha]",
@@ -2312,7 +2487,7 @@ FeatsList["what have i got in my pocket?"] = {
 	armorOptions : [{
 		regExpSearch : /^(?=.*light)(?=.*stepper).*$/i,
 		name : "Light Stepper",
-		source : [["RAC", 122]],
+		source : [["RCF"]],
 		ac : 13,
 		affectsWildShape : true
 	}],
@@ -2356,7 +2531,7 @@ Wanderlust compels some plasmoids to explore the Astral Plane and visit differen
 // Reborn
 FeatsList["memory of past lives"] = {
 	name : "Memory of Past Lives",
-	source : [["RAC", 2]],
+	source : [["RCF"]],
 	prerequisite : "Being a Reborn",
 	prereqeval : function(v) { return CurrentRace.known.indexOf('reborn') !== -1; },
 	descriptionFull : "You gain the following benefits:\n \u2022 Increase one ability score of your choice by 1, to a maximum of 20.\n \u2022 You gain proficiency in the History skill. If you are already proficient in the skill, you add double your proficiency bonus to checks you make with it.\n \u2022 When you take the Help action to aid another creature's ability check, you can make a DC 15 Intelligence (History) check. On a success, that creature's check gains a bonus equal to your proficiency bonus, as you share pertinent advice and historical examples. To receive this bonus, the creature must be able to understand what you're saying.\n \u2022 You can accurately recall anything you have seen or heard within the past month. Whenever you finish a long rest, you gain proficiency in one skill of your choice and with one weapon or tool of your choice, selected from the Player's Handbook, as you draw upon the reservoir of experiences connected to your past lives. These proficiencies last until the end of your next long rest.",
@@ -2378,7 +2553,7 @@ You gain the following benefits:
 // Sea Elf
 FeatsList["sharksbane weapons training"] = {  
 	name : "Sharksbane Weapons Training",
-	source : [["RAC"]],
+	source : [["RCF"]],
 	prerequisite : "Being a Sea Elf",
 	prereqeval : function(v) { return CurrentRace.known.indexOf('sea elf') !== -1; },
 	descriptionFull : "You have received extensive training in the weapons of your people. You gain the following benefits:\n \u2022 Increase your Dexterity or Strength score by 1, to a maximum of 20.\n \u2022 \n \u2022 When you use a net, it becomes a melee weapon with the thrown property instead of a ranged weapon and being within 5 feet of a hostile creature doesn't impose disadvantage on your ranged attack rolls with it.\n \u2022 When you use tridents and/or nets, they have the finesse property and you can use two-weapon fighting with them even though they do not have the light property.",
@@ -2413,7 +2588,7 @@ You have received extensive training in the favored weapons of your people. You 
 // Shifter
 FeatsList["keen animal instincts"] = { // Shifter
 	name : "Keen Animal Instincts",
-	source : [["RAC"]],
+	source : [["RCF"]],
 	prerequisite : "Being a Shifter",
 	prereqeval : "CurrentRace.known.indexOf('shifter') !== -1",
 	descriptionFull : "Your heritage has given you sharp senses and heightened reflexes. You gain the following benefits:\n \u2022 While you are conscious, you have advantage on initiative rolls and you can't be surprised.\n \u2022 Being in a lightly obscured area doesn't impose disadvantage on your Wisdom (Perception) checks if you can see, smell, or hear.\n \u2022 While you have temporary hit points granted by your Shifting feature remaining, you have resistance to bludgeoning, piercing, and slashing damage from a source that you can see, smell, or hear.",
@@ -2431,7 +2606,7 @@ Your heritage has given you sharp senses and heightened reflexes. You gain the f
 • While you have temporary hit points granted by your Shifting feature remaining, you have resistance to bludgeoning, piercing, and slashing damage from a source that you can see, smell, or hear. */
 FeatsList["beast blood"] = { // Shifter (not Beasthide)
 	name : "Beast Blood",
-	source : [["RAC"]],
+	source : [["RCF"]],
 	prerequisite : "Being a Shifter",
 	prereqeval : "CurrentRace.known.indexOf('shifter') !== -1",
 	descriptionFull : "An ancestor earned a Blessing connected to the 'Sacred Moon of the Beast Skin.' The great power of that Blessing passes through the generations of your line. You gain the following benefits:\n \u2022 Increase your Strength, Dexterity, Wisdom, or Charisma score by 1, to a maximum of 20.\n \u2022 Your body changes and grows Retractable Claws. You have a climbing speed equal to your walking speed and you can use your claws to make unarmed strikes. When you hit with them, the strike deals 1d6 + your Strength modifier slashing damage, instead of the bludgeoning damage normal for an unarmed strike.\n \u2022 When you use your Shifting trait, your transformation lasts longer. Add 1d4 minutes to the duration.\n \u2022 While you are Shifted, you gain the benefits of the Beasthide Shifting Feature trait (You gain 1d6 additional temporary hit points. While shifted, you have a +1 bonus to your Armor Class.) in addition to your own.",
@@ -2448,7 +2623,7 @@ FeatsList["beast blood"] = { // Shifter (not Beasthide)
 		baseWeapon : "unarmed strike",
 		regExpSearch : /^(?=.*claws?)(?=.*retractable).*$/i,
 		name : "Retractable Claws",
-		source : ["RAC", 33],
+		source : [["RCF"]],
 		damage : [1, 6, "slashing"]
 	},
 	weaponsAdd : [["Retractable Claws"]],
@@ -2462,7 +2637,7 @@ An ancestor earned a Blessing connected to the 'Sacred Moon of the Beast Skin.' 
 • While you are Shifted, you gain the benefits of the Swiftstride Shifting Feature trait in addition to your own: (You gain 1d6 additional temporary hit points. While Shifted, you have a +1 bonus to your Armor Class.) */
 FeatsList["long blood"] = { // Shifter (not Longtooth)
 	name : "Long Blood",
-	source : [["RAC"]],
+	source : [["RCF"]],
 	prerequisite : "Being a Shifter",
 	prereqeval : "CurrentRace.known.indexOf('shifter') !== -1",
 	descriptionFull : "An ancestor earned a Blessing connected to the 'Sacred Moon of the Long Bite.' The great power of that Blessing passes through the generations of your line. You gain the following benefits:\n \u2022 Increase your Strength, Dexterity, Wisdom, or Charisma score by 1, to a maximum of 20.\n \u2022 Your body changes and grows Retractable Claws. You have a climbing speed equal to your walking speed and you can use your claws to make unarmed strikes. When you hit with them, the strike deals 1d6 + your Strength modifier slashing damage, instead of the bludgeoning damage normal for an unarmed strike.\n \u2022 When you use your Shifting trait, your transformation lasts longer. Add 1d4 minutes to the duration.\n \u2022 While you are Shifted, you gain the benefits of the Longtooth Shifting Feature trait (When you Shift and as a Bonus action on your other turns while Shifted, you can use your elongated fangs to make an unarmed strike, dealing 1d6 piercing damage) in addition to your own.",
@@ -2480,7 +2655,7 @@ FeatsList["long blood"] = { // Shifter (not Longtooth)
 		baseWeapon : "unarmed strike",
 		regExpSearch : /^(?=.*claws?)(?=.*retractable).*$/i,
 		name : "Retractable Claws",
-		source : ["RAC", 33],
+		source : [["RCF"]],
 		damage : [1, 6, "slashing"]
 	},{
 		baseWeapon : "unarmed strike",
@@ -2501,7 +2676,7 @@ An ancestor earned a Blessing connected to the 'Sacred Moon of the Long Bite.' T
 • While you are Shifted, you gain the benefits of the Longstrider Shifting Feature trait in addition to your own: (When you Shift and as a Bonus action on your other turns while Shifted, you can use your elongated fangs to make an unarmed strike. If you hit with your fangs, you can deal piercing damage equal to 1d6 + your Strength modifier, instead of the bludgeoning damage normal for an unarmed strike.) */
 FeatsList["swift blood"] = { // Shifter (not Swiftstride)
 	name : "Swift Blood",
-	source : [["RAC"]],
+	source : [["RCF"]],
 	prerequisite : "Being a Shifter",
 	prereqeval : "CurrentRace.known.indexOf('shifter') !== -1",
 	descriptionFull : "An ancestor earned a Blessing connected to the 'Sacred Moon of the Swift Light.' The great power of that Blessing passes through the generations of your line. You gain the following benefits:\n \u2022 Increase your Strength, Dexterity, Wisdom, or Charisma score by 1, to a maximum of 20.\n \u2022 Your body changes and grows Retractable Claws. You have a climbing speed equal to your walking speed and you can use your claws to make unarmed strikes. When you hit with them, the strike deals 1d6 + your Strength modifier slashing damage, instead of the bludgeoning damage normal for an unarmed strike.\n \u2022 When you use your Shifting trait, your transformation lasts longer. Add 1d4 minutes to the duration.\n \u2022 While you are Shifted, you gain the benefits of the Swiftstride Shifting Feature trait (Your walking speed increases by 10 feet, and you can move up to 10 feet as a reaction when a creature ends its turn within 5 feet of you. This reactive movement doesn't provoke opportunity attacks) in addition to your own.",
@@ -2519,7 +2694,7 @@ FeatsList["swift blood"] = { // Shifter (not Swiftstride)
 		baseWeapon : "unarmed strike",
 		regExpSearch : /^(?=.*claws?)(?=.*retractable).*$/i,
 		name : "Retractable Claws",
-		source : [["RAC", 33]],
+		source : [["RCF"]],
 		damage : [1, 6, "slashing"]
 	},
 	weaponsAdd : ["Retractable Claws"],
@@ -2533,7 +2708,7 @@ An ancestor earned a Blessing connected to the 'Sacred Moon of the Swift Light.'
 • While you are Shifted, you gain the benefits of the Swiftstride Shifting Feature trait in addition to your own: (Your walking speed increases by 10 feet. Additionally, you can move up to 10 feet as a reaction when a creature ends its turn within 5 feet of you. This reactive movement doesn't provoke opportunity attacks.) */
 FeatsList["wild blood"] = { // Shifter (not Wildhunt)
 	name : "Wild Blood",
-	source : [["RAC"]],
+	source : [["RCF"]],
 	prerequisite : "Being a Shifter",
 	prereqeval : "CurrentRace.known.indexOf('shifter') !== -1",
 	descriptionFull : "An ancestor earned a Blessing connected to the 'Sacred Moon of the Wild Hunt.' The great power of that Blessing passes through the generations of your line. You gain the following benefits:\n \u2022 Increase your Strength, Dexterity, Wisdom, or Charisma score by 1, to a maximum of 20.\n \u2022 Your body changes and grows Retractable Claws. You have a climbing speed equal to your walking speed and you can use your claws to make unarmed strikes. When you hit with them, the strike deals 1d6 + your Strength modifier slashing damage, instead of the bludgeoning damage normal for an unarmed strike.\n \u2022 When you use your Shifting trait, your transformation lasts longer. Add 1d4 minutes to the duration.\n \u2022 While you are Shifted, you gain the benefits of the Wildhunt Shifting Feature trait (You have advantage on Wisdom checks, and no creature within 30 feet of you can make an attack roll with advantage against you unless you're incapacitated) in addition to your own.",
@@ -2552,7 +2727,7 @@ FeatsList["wild blood"] = { // Shifter (not Wildhunt)
 		baseWeapon : "unarmed strike",
 		regExpSearch : /^(?=.*claws?)(?=.*retractable).*$/i,
 		name : "Retractable Claws",
-		source : [["RAC", 33]],
+		source : [["RCF"]],
 		damage : [1, 6, "slashing"]
 	},
 	weaponsAdd : ["Retractable Claws"],
@@ -2568,7 +2743,7 @@ An ancestor earned a Blessing connected to the 'Sacred Moon of the Wild Hunt.' T
 // Small sized Races
 FeatsList["mighty small"] = { 
 	name : "Mighty Small",
-	source : [["RAC"]],
+	source : [["RCF"]],
 	prerequisite : "Being a small race",
 	prereqeval : function(v) { return tDoc.getField('Size Category').currentValueIndices === 4; },
 	descriptionFull : "You are uncommonly hardy for your race. You gain the following benefits:\n \u2022 Increase your Strength or Constitution score by 1, to a maximum of 20.\n \u2022 Increase your walking speed by 5 feet.\n \u2022 You do not have disadvantage on attack rolls with weapons with the heavy property.\n \u2022 Increase running long/high jump distance by 10 feet if wielding heavy property weapon with both hands.",
@@ -2588,7 +2763,7 @@ You are uncommonly hardy for your race. You gain the following benefits:
 // Tabaxi
 FeatsList["feline graceful accuracy"] = { 
 	name : "Feline Graceful Accuracy",
-	source : [["RAC"]],
+	source : [["RCF"]],
 	prerequisite : "Being a Tabaxi",
 	prereqeval : "CurrentRace.known.indexOf('tabaxi') !== -1",
 	description : "My walking speed increases by 5 ft. Whenever I have advantage on an attack roll that uses Dexterity, Intelligence, or Charisma, I can reroll one of the dice once. [+1 Dexterity, Intelligence, or Charisma]",
@@ -2599,7 +2774,7 @@ FeatsList["feline graceful accuracy"] = {
 // Thri-Kreen
 FeatsList["evolved thri-kreen physiology"] = {
 	name : "Evolved Thri-kreen Physiology",
-	source : [["RAC"]],
+	source : [["RCF"]],
 	prerequisite : "Being a Thri-kreen",
 	descriptionFull : "Some of your inherent Thri-kreen traits have become augmented. You gain the following benefits:\n \u2022 Increase your Strength, Dexterity, or Constitution score by 1, to a maximum of 20.\n \u2022 Kreen Claws. You grow retractable claws which you can use to make unarmed strikes. When you hit with them, the strike deals 1d6 + your Strength modifier slashing damage, instead of the bludgeoning damage normal for an unarmed strike.\n \u2022 Leap. As a bonus action, you can leap up to 20 feet in any direction. You can use this trait only if your speed is greater than 0. You can use it a number of times equal to your proficiency bonus, and you regain all expended uses when you finish a short rest.",
 	description : "I can use my retractable claws to make unarmed strikes dealing 1d6 slashing damage. As a bonus action if my speed isn't 0, I can leap up to 20 ft in any direction. I can do this my Prof Bonus times per short rest. [+1 Strength, Dexterity, or Constitution]",
@@ -2608,7 +2783,7 @@ FeatsList["evolved thri-kreen physiology"] = {
 	baseWeapon : "unarmed strike",
 	regExpSearch : /^(?=.*(kreen))(?=.*claws).*$/i,
 	name : "Kreen Claws",
-	source : [["RAC", 33]],
+	source : [["RCF"]],
 	damage : [1, 6, "slashing"]
 	},
 	weaponsAdd : ["Kreen Claws"],
@@ -2628,7 +2803,7 @@ Some of your inherent Kreen traits have become augmented. You gain the following
 • Leap. As a bonus action, you can leap up to 20 feet in any direction. You can use this trait only if your speed is greater than 0. You can use it a number of times equal to your proficiency bonus, and you regain all expended uses when you finish a short rest. */
 FeatsList["many arms, one shield"] = {
 	name : "Many Arms, One Shield",
-	source : [["RAC", 3]],
+	source : [["RCF"]],
 	prerequisite : "Being a Thri-kreen",
 	prereqeval : function(v) { return CurrentRace.known.indexOf('thri-kreen') !== -1; },
 	descriptionFull : "Thri-kreen have six limbs: two for walking and four for use as arms, ending in four-fingered claw-like hands capable of using tools and weapons. You've trained in the effective use of shields using your multiple arms. You gain the following benefits:\n \u2022 Increase your Strength, Dexterity, or Constitution score by 1, to a maximum of 20.\n \u2022 You gain proficiency with shields.\n \u2022 In combat, you can don or doff a shield as the free object interaction on your turn.\n \u2022 If you have the Spellcasting or Pact Magic feature, you can use a shield as a spellcasting focus.",
@@ -2645,7 +2820,7 @@ Thri-kreen have six limbs: two for walking and four for use as arms, ending in f
 • If you have the Spellcasting or Pact Magic feature, you can use a shield as a spellcasting focus. */
 FeatsList["thri-kreen psionics"] = {
 	name : "Thri-kreen Psionics",
-	source : [["RAC"]],
+	source : [["RCF"]],
 	prerequisite : "Being a Thri-kreen",
 	prereqeval : function(v) { return CurrentRace.known.indexOf('thri-kreen') !== -1; },
 	descriptionFull : "A few thri-kreen manifest greater psionic abilities. You gain the following benefits:\n \u2022 Increase your Intelligence, Wisdom, or Charisma score by 1, to a maximum of 20.\n \u2022 You know the Mage Hand cantrip, and the hand is invisible when you cast the cantrip with this feat. You also learn the Blur and Magic Weapon spells. You can cast each of these spells without expending a spell slot. None of these spells require spell components when you cast them in this manner. Once you cast Blur or Magic Weapon in this way, you can't cast that spell in this way again until you finish a long rest. You can also cast these spells using spell slots you have of the appropriate level. The spells' spellcasting ability is the ability increased by this feat.",
@@ -2717,7 +2892,7 @@ A few thri-kreen manifest greater psionic abilities. You gain the following bene
 // Tiefling
 FeatsList["feral barbed skin"] = { 
 	name : "Feral Barbed Skin",
-	source : [["RAC"]],
+	source : [["RCF"]],
 	prerequisite : "Being a Tiefling",
 	prereqeval : "CurrentRace.known.indexOf('tiefling') !== -1",
 	description : "I have scaly skin, giving me an AC of 13 + Dexterity modifier + shield when I'm not wearing armor. As a bonus action, I can protrude/retract small barbs from my skin. When protruding, at the start of each of my turns I deal 1d6 piercing damage to any I'm grappling/are grappling me. [+1 Dex, Con, or Cha]",
@@ -2727,7 +2902,7 @@ FeatsList["feral barbed skin"] = {
 	armorOptions : {
 		regExpSearch : /^(?=.*feral)(?=.*barbed).*$/i,
 		name : "Feral Barbed Skin",
-		source : [["RAC"]],
+		source : [["RCF"]],
 		ac : 13
 	},
 };
@@ -2739,7 +2914,7 @@ Your feral nature metamorphizes you. You manifest scales and barbs protrude from
 • As a bonus action, you can cause small barbs to protrude all over your body or cause them to retract. At the start of each of your turns while the barbs are out, you deal 1d6 piercing damage to any creature grappling you or any creature grappled by you. */
 FeatsList["fumes of minauros"] = {
 	name : "Fumes of Minauros",
-	source : [["RAC"]],
+	source : [["RCF"]],
 	prerequisite : "Being a Tiefling",
 	prereqeval : "CurrentRace.known.indexOf('tiefling') !== -1",
 	description : "When I cast an acid damage spell, I can reroll any 1 on acid damage dice once. I then sheathe myself in acidic fumes until my next turn ends. These shed bright light in 30 ft, dim light in 30 ft and cause any within 5 ft that hit me in melee to take 1d4 acid damage. [+1 Int or Cha]",
@@ -2755,7 +2930,7 @@ You learn to call on the polluted energies of the third layer of the Nine Hells 
 // Triton
 FeatsList["champion of the ocean"] = {
 	name : "Champion of the Ocean",
-	source : [["RAC"]],
+	source : [["RCF"]],
 	prerequisite : "Being a Triton",
 	prereqeval : "CurrentRace.known.indexOf('triton') !== -1",
 	description : "I count as one size larger when determining my carrying capacity and push/drag/lift weight. Once per long rest, as an a bonus action, I transform. For the next minute, I have resistance to acid/poison damage, and my weapon attacks deal my proficiency modifier additional damage. [+1 Str, Con or Cha]",
@@ -2775,7 +2950,7 @@ The ocean has imbued you with additional strength, granting you unparalleled mig
 */
 FeatsList["revenant trident"] = { 
 	name : "Revenant Trident",
-	source : [["RAC"]],
+	source : [["RCF"]],
 	prerequisite : "Being a Triton",
 	prereqeval : function(v) { return CurrentRace.known.indexOf('triton') !== -1; },
 	descriptionFull : "You are descended from a master of the double trident and their skills have passed on to you. You gain the following benefits:\n \u2022 Increase your Dexterity or Strength score by 1, to a maximum of 20.\n \u2022 While you are holding a double trident with two hands, you gain a + 1 bonus to Armor Class.\n \u2022 A double trident has the finesse property when you wield it.",
@@ -2802,7 +2977,7 @@ FeatsList["revenant trident"] = {
 // Warforged
 FeatsList["integration upgrade"] = {
 	name : "Integration Upgrade",
-	source : [["RAC", 74]],
+	source : [["RCF"]],
 	prerequisite : "Being a Warforged",
 	prereqeval : function(v) { return CurrentRace.known.indexOf('warforged') !== -1; },
 	descriptionFull : "A warforged's body has built-in defensive layers. Your integration has an upgraded form, giving you the following benefits:\n \u2022 Increase your Strength, Dexterity, or Constitution score by 1, to a maximum of 20.\n \u2022 Your upgrades improve your innate defensive properties. While you aren't wearing armor, you can calculate your AC as 13 + your Dexterity modifier (this already includes the Integrated Protection Warforged trait). You can use a shield and still gain this benefit.\n \u2022 Integrated Tool. Choose one tool you're proficient with. This tool is integrated into your body, and you double your proficiency bonus for any ability checks you make with it. You must have your hands free to use this integrated tool.",
@@ -2812,7 +2987,7 @@ FeatsList["integration upgrade"] = {
 	armorOptions : {
 		regExpSearch : /^(?=.*(integration))(?=.*(upgrade|improvement)).*$/i,
 		name : "Integration Upgrade",
-		source : [["RAC", 74]],
+		source : [["RCF"]],
 		ac : 12
 	},
 	armorAdd : "Integration Upgrade"
@@ -2825,7 +3000,7 @@ A warforged's body has built-in defensive layers. Your integration has an upgrad
 •  Integrated Tool. Choose one tool you're proficient with. This tool is integrated into your body, and you double your proficiency bonus for any ability checks you make with it. You must have your hands free to use this integrated tool. */
 FeatsList["living wood construction"] = {
 	name : "Living Wood Construction",
-	source : [["RAC"]],
+	source : [["RCF"]],
 	prerequisite : "Being a Warforged",
 	prereqeval : "CurrentRace.known.indexOf('warforged') !== -1",
 	descriptionFull : "Your creator used wood from a primeval forest as part of your construction. It still flows with nature's power, granting you the following benefits:\n \u2022 Increase one ability score of your choice by 1, to a maximum of 20.\n \u2022 Your body has a rough, bark-like composition. When you aren't using incorporated armor, you have a base AC of 17, including your Warforged Integrated Protection +1 AC bonus. Your Dexterity modifier doesn't affect this number, but if you are using a shield, you can apply the shield's bonus as normal.\n \u2022 Living Wood. You learn the Druidcraft cantrip. Intelligence, Wisdom, or Charisma is your spellcasting ability for it (choose when you select this feat). At the end of a long rest, 1d4 berries, as from the Goodberry spell, sprout from your skin.",
@@ -2846,7 +3021,7 @@ FeatsList["living wood construction"] = {
 	armorOptions : {
 		regExpSearch : /^(?=.*living)(?=.*wood).*$/i,
 		name : "Living Wood",
-		source : [["RAC", 34]],
+		source : [["RCF"]],
 		ac : 16,
 		dex : -10,
 	},
@@ -2860,7 +3035,7 @@ Your creator used wood from a primeval forest as part of your construction. It s
 • Living Wood. You learn the Druidcraft cantrip. Intelligence, Wisdom, or Charisma is your spellcasting ability for it (choose when you select this feat). At the end of a long rest, 1d4 berries, as from the Goodberry spell, sprout from your skin. */
 FeatsList["pactboon construction"] = {
 	name : "Pactboon Construction",
-	source : [["RAC", 79]],
+	source : [["RCF"]],
 	prerequisite : "Being a Warforged",
 	prereqeval : "CurrentRace.known.indexOf('warforged') !== -1",
 	descriptionFull : "Your creator made a bargain with an arcane entity to provide ensorcelled materials for use in your construction. It still flows with arcane power, granting you the following benefits:\n \u2022 Increase your Intelligence, Wisdom, or Charisma score by 1, to a maximum of 20.\n \u2022 You learn to speak, read, and write your choice of Abyssal, Celestial, Infernal, or Sylvan.\n \u2022 You learn the Misty Step spell and one 1st-level spell of your choice. The 1st-level spell must be from the enchantment or illusion school of magic. You can cast each of these spells without expending a spell slot. Once you cast either of these spells in this way, you can't cast that spell in this way again until you finish a long rest. You can also cast these spells using spell slots you have of the appropriate level. The spells' spellcasting ability is the ability increased by this feat.",
@@ -2904,10 +3079,10 @@ Your creator made a bargain with an arcane entity to provide ensorcelled materia
 • You learn to speak, read, and write your choice of Abyssal, Celestial, Infernal, or Sylvan.
 • You learn the Misty Step spell and one 1st-level spell of your choice. The 1st-level spell must be from the illusion or enchantment school of magic. You can cast each of these spells without expending a spell slot. Once you cast either of these spells in this way, you can't cast that spell in this way again until you finish a long rest. You can also cast these spells using spell slots you have of the appropriate level. The spells' spellcasting ability is the ability increased by this feat. */
 
-// Yaun-Ti Pureblood
+// Yaun-Ti
 FeatsList["forked tongue"] = { // Yuan-ti Pureblood
 	name : "Forked Tongue",
-	source : [["RAC"]],
+	source : [["RCF"]],
 	prerequisite : "Being a Yuan-ti Pureblood",
 	prereqeval : "CurrentRace.known.indexOf('yuan-ti pureblood') !== -1",
 	descriptionFull : "You have unlocked more of your serpentfolk heritage. You gain the following benefits:\n \u2022 Increase your Charisma score by 1, to a maximum of 20.\n \u2022 You have the ability to communicate in a limited manner with snakes and serpents. They can understand the meaning of your words, though you have no special ability to understand them in return.\n \u2022 You gain proficiency in the Deception skill, and you add double your proficiency bonus to checks you make with it.\n \u2022 As a Bonus action, you can attempt to deceive one creature you can see within 30 feet that can hear and understand you. Creatures that can't be charmed are immune to this effect. Make a Charisma (Deception) check contested by the target's Wisdom (Insight) check. If your check succeeds, your movement doesn't provoke opportunity attacks from the target and your attack rolls against it have advantage; both benefits last until the end of your next turn or until you use this ability on a different target. If your check fails, the target can't be deceived by you in this way for 24 hours.",
@@ -2924,3 +3099,337 @@ You have unlocked more of your serpentfolk heritage, allowing you to develop you
 • You have the ability to communicate in a limited manner with snakes and serpents. They can understand the meaning of your words, though you have no special ability to understand them in return.
 • You gain proficiency in the Deception skill, and you add double your proficiency bonus to checks you make with it.
 • As a Bonus action, you can attempt to deceive one creature you can see within 30 feet that can hear and understand you. Creatures that can't be charmed are immune to this effect. Make a Charisma (Deception) check contested by the target's Wisdom (Insight) check. If your check succeeds, your movement doesn't provoke opportunity attacks from the target and your attack rolls against it have advantage; both benefits last until the end of your next turn or until you use this ability on a different target. If your check fails, the target can't be deceived by you in this way for 24 hours. */
+
+/* -------------------------------------------------------------- */
+
+SourceList.ERF={
+	name : "Xanathar’s Guide to Everything: Expanded Racial Feats",
+	abbreviation : "ERF",
+	group : "Dungeon Masters Guild",
+	url : "https://www.dmsguild.com/product/226194/Expanded-Racial-Feats",
+	date : "2017/11/10"
+};
+
+FeatsList["sky warden-xgteerf"] = {
+	name : "Sky Warden",
+	source : ["ERF", 2],
+	prerequisite : "Being an Aarakocra",
+	prereqeval : "CurrentRace.known.indexOf('aarakocra') !== -1",
+	description : "I gain proficiency in Perception. I can double my proficiency bonus on Perception checks that rely on sight. Once per turn, if I dive 30 ft straight at a target and hit with a melee attack, the attack deals an additional 1d6 damage. [+1 Dexterity or Wisdom]",
+	descriptionFull : "You are trained for both scouting the skies and aerial combat. You gain the following benefits:" + "\n " + "\u2022 Increase your Dexterity or Wisdom score by 1, to a maximum of 20." + "\n " + "\u2022 You gain proficiency in the Perception skill if you don’t already have it. You add double your proficiency bonus to Perception checks that rely on sight." + "\n " + "\u2022 Once per turn, if you are flying and dive at least 30 feet straight toward a target and then hit it with a melee weapon attack, the attack deals an extra 1d6 damage to the target.",
+	improvements : "Sky Warden (feat): +1 Dexterity or Wisdom;",
+	skills : [["Perception"]],
+	calcChanges : {
+		atkAdd : [
+			function (fields, v) {
+				if (v.isMeleeWeapon) {
+					fields.Description += (fields.Description ? '; ' : '') + 'Extra 1d6 damage after straight 30 ft dive';
+				}
+			}, ""]
+	}
+};
+
+FeatsList["angelic protection-xgteerf"] = {
+	name : "Angelic Protection",
+	source : ["ERF", 1],
+	prerequisite : "Being an Aasimar",
+	prereqeval : "CurrentRace.known.indexOf('aasimar') !== -1",
+	description : "I have advantage on saving throws against spells and other magical effects.",
+	descriptionFull : "The innate resistance to magic that angels possess extends to you. You have advantage on saving throws against spells and other magical effects.",
+	savetxt : { text : ["Adv. on saves vs. magic"] }
+};
+
+FeatsList["well-rested-xgteerf"] = {
+	name : "Well-Rested",
+	source : ["ERF", 3],
+	prerequisite : "Being a Bugbear",
+	prereqeval : "CurrentRace.known.indexOf('bugbear') !== -1",
+	description : "When I spend 1 or more hit dice during a short rest, I can regain an extra 1d6 hit points. When I finish a long rest, I gain inspiration. [+1 Strength or Dexterity]",
+	descriptionFull : "Increase your Strength or Dexterity score by 1, to a maximum of 20." + "\n " + "\u2022 Whenever you spend one or more hit dice during a short rest, you can regain an extra 1d6 hit points." + "\n " + "\u2022 At the end of a long rest, you gain inspiration (described in chapter 4 of the Player’s Handbook).",
+	improvements : "Well-Rested (feat): +1 Strength or Dexterity;"
+};
+
+FeatsList["firbolg beast magic-xgteerf"] = {
+	name : "Firbolg Beast Magic",
+	source : ["ERF", 1],
+	prerequisite : "Being a Firbolg",
+	prereqeval : "CurrentRace.known.indexOf('firbolg') !== -1",
+	description : "I can cast Speak with Animals at will, without expending a spell slot. I can also cast Animal Friendship and Beast Sense without expending a spell slot, but each only once per long rest. Wisdom is my spellcasting ability for these three spells.",
+	descriptionFull : "Your connection to animals deepens. You learn the speak with animals spell and can cast it at will, without expending a spell slot. You also learn the animal friendship and beast sense spells, each of which you can cast once without expending a spell slot. You regain the ability to cast these two spells in this way when you finish a long rest. Wisdom is your spellcasting ability for all three spells.",
+	spellcastingBonus : [{
+		name : "At will",
+		spellcastingAbility : 4,
+		spells : ["speak with animals"],
+		selection : ["speak with animals"],
+		firstCol : 'atwill'
+	}, {
+		name : "Once per long rest",
+		spellcastingAbility : 4,
+		spells : ["animal friendship"],
+		selection : ["animal friendship"],
+		firstCol : 'oncelr'
+	}, {
+		name : "Once per long rest",
+		spellcastingAbility : 4,
+		spells : ["beast sense"],
+		selection : ["beast sense"],
+		firstCol : 'oncelr'
+	}]
+};
+
+FeatsList["djinn heritage-xgteerf"] = {
+	name : "Djiin Heritage",
+	source : ["ERF", 1],
+	prerequisite : "Being an Air Genasi",
+	prereqeval : "CurrentRace.known.indexOf('genasi') !== -1 && CurrentRace.known.indexOf('air') !== -1",
+	description : "I can cast Detect Magic at will, without expending a spell slot. Constitution is my spellcasting ability for this spell. I have resistance to lightning and thunder damage. [+1 Dexterity or Constitution]",
+	descriptionFull : "You manifest more of the magical power of your djinn heritage. You gain the following benefits:" + "\n " + "\u2022 Increase your Dexterity or Constitution score by 1, to a maximum of 20." + "\n " + "\u2022 You learn the detect magic spell and can cast it at will, without expending a spell slot." + "\n " + "\u2022 You have resistance to lightning and thunder damage.",
+	improvements : "Djiin Heritage (feat): +1 Dexterity or Constitution;",
+	dmgres : ["Lightning", "Thunder"],
+	spellcastingBonus : [{
+		name : "At will",
+		spellcastingAbility : 3,
+		spells : ["detect magic"],
+		selection : ["detect magic"],
+		firstCol : 'atwill'
+	}]
+};
+
+FeatsList["dao heritage-xgteerf"] = {
+	name : "Dao Heritage",
+	source : ["ERF", 1],
+	prerequisite : "Being an Earth Genasi",
+	prereqeval : "CurrentRace.known.indexOf('genasi') !== -1 && CurrentRace.known.indexOf('earth') !== -1",
+	description : "I can cast Detect Magic at will, without expending a spell slot. Constitution is my spellcasting ability for this spell. Without armor, my AC is 13 + Dexterity modifier + shield [+1 Strength or Constitution]",
+	descriptionFull : "You manifest more of the magical power of your dao heritage. You gain the following benefits:" + "\n " + "\u2022 Increase your Strength or Constitution score by 1, to a maximum of 20." + "\n " + "\u2022 You learn the detect magic spell and can cast it at will, without expending a spell slot." + "\n " + "\u2022 You gain natural armor. While you aren’t wearing armor, you can calculate your AC as 13 + your Dexterity modifier. You can use a shield and still gain this benefit.",
+	improvements : "Dao Heritage (feat): +1 Strength or Constitution;",
+	spellcastingBonus : [{
+		name : "At will",
+		spellcastingAbility : 3,
+		spells : ["detect magic"],
+		selection : ["detect magic"],
+		firstCol : 'atwill'
+	}],
+	armorOptions : {
+		regExpSearch : /natural armor/i,
+		name : "Natural Armor",
+		source : ["ERF", 1],
+		ac : 13
+	},
+	armorAdd : "Natural Armor"
+};
+
+FeatsList["efreet heritage-xgteerf"] = {
+	name : "Efreet Heritage",
+	source : ["ERF", 1],
+	prerequisite : "Being a Fire Genasi",
+	prereqeval : "CurrentRace.known.indexOf('genasi') !== -1 && CurrentRace.known.indexOf('fire') !== -1",
+	description : "I can cast Detect Magic at will, without expending a spell slot. Constitution is my spellcasting ability for this spell. My darkvision has a radius of 120 ft. [+1 Constitution or Intelligence]",
+	descriptionFull : "You manifest more of the magical power of your efreet heritage. You gain the following benefits:" + "\n " + "\u2022 Increase your Constitution or Intelligence score by 1, to a maximum of 20." + "\n " + "\u2022 You learn the detect magic spell and can cast it at will, without expending a spell slot." + "\n " + "\u2022 Your darkvision has a radius of 120 feet.",
+	improvements : "Efreet Heritage (feat): +1 Constitution or Intelligence;",
+	vision : [["Darkvision", 120]],
+	spellcastingBonus : [{
+		name : "At will",
+		spellcastingAbility : 3,
+		spells : ["detect magic"],
+		selection : ["detect magic"],
+		firstCol : 'atwill'
+	}]
+};
+
+FeatsList["marid heritage-xgteerf"] = {
+	name : "Marid Heritage",
+	source : ["ERF", 2],
+	prerequisite : "Being a Water Genasi",
+	prereqeval : "CurrentRace.known.indexOf('genasi') !== -1 && CurrentRace.known.indexOf('water') !== -1",
+	description : "I can cast Detect Magic at will, without expending a spell slot. Constitution is my spellcasting ability for this spell. I have resistance to cold damage. [+1 Constitution or Wisdom]",
+	descriptionFull : "You manifest more of the magical power of your marid heritage. You gain the following benefits:" + "\n " + "\u2022 Increase your Constitution or Wisdom score by 1, to a maximum of 20." + "\n " + "\u2022 You learn the detect magic spell and can cast it at will, without expending a spell slot." + "\n " + "\u2022 You have resistance to cold damage.",
+	improvements : "Marid Heritage (feat): +1 Constitution or Wisdom;",
+	dmgres : ["Cold"],
+	spellcastingBonus : [{
+		name : "At will",
+		spellcastingAbility : 3,
+		spells : ["detect magic"],
+		selection : ["detect magic"],
+		firstCol : 'atwill'
+	}]
+};
+
+FeatsList["like a boss-xgteerf"] = {
+	name : "Like a Boss",
+	source : ["ERF", 1],
+	prerequisite : "Being a Goblin",
+	prereqeval : "CurrentRace.known.indexOf('goblin') !== -1 && CurrentRace.known.indexOf('hobgoblin') == -1",
+	description : "Once per short rest, I can use my reaction to impose disadvantage on a creature's attack roll made against me. To do so, I must see the attack and another creature must be within 5 ft of me. [+1 Dexterity]",
+	descriptionFull : "You are accustomed to using others to avoid being attacked. You gain the following benefits:" + "\n " + "\u2022 Increase your Dexterity score by 1, to a maximum of 20." + "\n " + "\u2022 When a creature you can see targets you with an attack and another creature is within 5 feet of you, you can use your reaction to impose disadvantage on the attack roll. Once you use this ability, you can’t do so again until you finish a short or long rest.",
+	scores : [0, 1, 0, 0, 0, 0],
+	action : ["reaction", ""],
+	usages : 1,
+	recovery : "short rest"
+};
+
+FeatsList["mountain's endurance-xgteerf"] = {
+	name : "Mountain's Endurance",
+	source : ["ERF", 2],
+	prerequisite : "Being a Goliath",
+	prereqeval : "CurrentRace.known.indexOf('goliath') !== -1",
+	description : "When I use Stone's Endurance, I can instead gain resistance to one type of damage from the triggering attack, instead of rolling. This resistance lasts until the start of my next turn. [+1 Strength or Constitution]",
+	descriptionFull : "Your ability to shrug off some injuries is legendary, even for your race. You gain the following benefits:" + "\n " + "\u2022 Increase your Strength or Constitution score by 1, to a maximum of 20." + "\n " + "\u2022 When you use your Stone’s Endurance trait as a reaction to reduce damage, instead of rolling a d12 and adding your Constitution modifier, you can choose to gain resistance to the triggering attack’s damage type until the start of your next turn. If the triggering attack deals more than one type of damage, choose one. As normal, after you use this trait, you can’t use it again until you finish a short or long rest.",
+	improvements : "Mountain's Endurance (feat): +1 Strength or Constitution;",
+	action : ["reaction", " (with Stone's Endurance)"],
+	usages : 1,
+	recovery : "short rest"
+};
+
+FeatsList["uphold the legion-xgteerf"] = {
+	name : "Uphold the Legion",
+	source : ["ERF", 3],
+	prerequisite : "Being a Hobgoblin",
+	prereqeval : "CurrentRace.known.indexOf('hobgoblin') !== -1",
+	description : "Once per combat I can deal an additional 2d6 with a weapon attack, if an ally is within 5 ft of the target and isn't incapacitated. If an ally fails an attack/ability/save, I can use my reaction to extend the benefit of my Saving Face trait to that ally. [+1 Con or Int]",
+	descriptionFull : "You were born for life in the legion. You gain the following benefits:" + "\n " + "\u2022 Increase your Constitution or Intelligence score by 1, to a maximum of 20." + "\n " + "\u2022 You can deal an extra 2d6 damage to a creature you hit with a weapon attack if that creature is within 5 feet of an ally that isn’t incapacitated. You can use this trait only once per combat." + "\n " + "\u2022 You can extend the benefit of your Saving Face trait to an ally. As a reaction, if an ally misses with an attack roll or fails an ability check or a saving throw, you can grant a bonus to the roll equal to the number of allies your ally can see within 30 feet (including you, maximum bonus of +5). As normal, once you use this trait, you can’t use it again until you finish a short or long rest.",
+	improvements : "Uphold the Legion (feat): +1 Constitution or Intelligence;",
+	action : ["reaction", ""],
+	limfeaname : "Uphold the Legion (extra 2d6 damage)",
+	minlevel : 1,
+	usages : 1,
+	recovery : "Combat",
+};
+
+FeatsList["master of mimicry-xgteerf"] = {
+	name : "Master of Mimicry",
+	source : ["ERF", 2],
+	prerequisite : "Being a Kenku",
+	prereqeval : "CurrentRace.known.indexOf('kenku') !== -1",
+	description : "Once per short rest, I can use my reaction to gain proficiency in a skill/tool I see used by another creature. This proficiency lasts for 1 hr and I can only mimic one proficiency at a time. [+1 Dexterity or Wisdom]",
+	descriptionFull : "You have learned to temporarily mimic even the training of others. You gain the following benefits:" + "\n " + "\u2022 Increase your Dexterity or Wisdom score by 1, to a maximum of 20." + "\n " + "\u2022 Whenever another creature you can see uses a skill or tool, you can use your reaction to gain proficiency in that skill or tool. Proficiencies gained in this way last for 1 hour, and you can only mimic one proficiency at a time. Once you use this ability, you can’t do so again until you finish a short or long rest.",
+	improvements : "Master of Mimicry (feat): +1 Dexterity or Wisdom;",
+	action : ["reaction", ""],
+	usages : 1,
+	recovery : "short rest"
+};
+
+FeatsList["urd wings-xgteerf"] = {
+	name : "Urd Wings",
+	source : ["ERF", 3],
+	prerequisite : "Being a Kobold",
+	prereqeval : "CurrentRace.known.indexOf('kobold') !== -1",
+	description : "I grow leathery wings, granting a flying speed of 30 ft. I can only fly with these wings while unarmored or wearing light armor. [+1 Dexterity]",
+	descriptionFull : "You manifest leathery wings, transforming into an urd. You gain the following benefits:" + "\n " + "\u2022 Increase your Dexterity score by 1, to a max-imum of 20." + "\n " + "\u2022 You gain a flying speed of 30 feet. To use this speed, you can't be wearing medium or heavy armor.",
+	scores : [0, 1, 0, 0, 0, 0],
+	speed : { fly : { spd : 30, enc : 0 } }
+};
+
+FeatsList["touch of sess'inek-xgteerf"] = {
+	name : "Touch of Sess’inek",
+	source : ["ERF", 2],
+	prerequisite : "Being a Lizardfolk",
+	prereqeval : "CurrentRace.known.indexOf('lizardfolk') !== -1",
+	description : "I learn to speak, read, and write Abyssal. I am immune to being frightened. [+1 Constitution or Wisdom]",
+	descriptionFull : "You embody the demonic bearing of a lizard king or queen. You gain the following benefits:" + "\n " + "\u2022 Increase your Constitution or Wisdom score by 1, to a maximum of 20." + "\n " + "\u2022 You learn to speak, read, and write Abyssal." + "\n " + "\u2022 You are immune to being frightened.",
+	improvements : "Touch of Sess’inek (feat): +1 Constitution or Wisdom;",
+	languageProfs : ["Abyssal"],
+	savetxt : { immune : ["frightened"] }
+};
+
+FeatsList["tanarukk blood-xgteerf"] = {
+	name : "Tanarukk Blood",
+	source : ["ERF", 2],
+	prerequisite : "Being an Orc",
+	prereqeval : "CurrentRace.known.indexOf('half-orc') == -1 && CurrentRace.known.indexOf('orc') !== -1",
+	description : "I have resistance to fire and poison damage. I gain a bite attack that uses Strength and deals 1d6 piercing damage. [+1 Strength or Constitution]",
+	descriptionFull : "Through fell magic or an ancestor, you are touched by the corruptive power of Baphomet. You gain the following benefits:" + "\n " + "\u2022 Increase your Strength or Constitution score by 1, to a maximum of 20." + "\n " + "\u2022 You have resistance to fire and poison damage." + "\n " + "\u2022 You gain a bite attack as a natural weapon, which you can use to make unarmed strikes. If you hit with it, you deal piercing damage equal to 1d6 + your Strength modifier, instead of the bludgeoning damage normal for an unarmed strike.",
+	improvements : "Tanarukk Blood (feat): +1 Strength or Constitution;",
+	dmgres : ["Fire", "Poison"],
+	weaponOptions : {
+		baseWeapon : "unarmed strike",
+		regExpSearch : /^(?=.*(orc))(?=.*bite).*$/i,
+		name : "Orc Bite",
+		source : ["ERF", 2],
+		damage : [1, 6, "piercing"],
+	},
+	weaponsAdd : ["Orc Bite"],
+};
+
+FeatsList["feline grace-xgteerf"] = {
+	name : "Feline Grace",
+	source : ["ERF", 1],
+	prerequisite : "Being a Tabaxi",
+	description : "I can use my Feline Agility trait twice before I must move 0 feet on one of my turns to use the trait again. I can still only use this ability once per turn when I move. I take no damage from falling 20 ft or less, if I'm not incapacitated. [+1 Dexterity]",
+	descriptionFull : "Your incredible reflexes and agility further improve. You gain the following benefits:" + "\n " + "\u2022 Increase your Dexterity score by 1, to a maximum of 20." + "\n " + "\u2022 You can use your Feline Agility trait twice before you must move 0 feet on one of your turns to use the trait again. You can still only use this ability once per turn when you move." + "\n " + "\u2022 You don’t take damage from falling 20 feet or less if you aren’t incapacitated.",
+	prereqeval : "CurrentRace.known.indexOf('tabaxi') !== -1",
+	extraLimitedFeatures : {
+		name : "Feline Agility",
+		usages : 2,
+	},
+	scores : [0, 1, 0, 0, 0, 0]
+};
+
+FeatsList["tortle protector-xgteerf"] = {
+	name : "Tortle Protector",
+	source : ["ERF", 2],
+	prerequisite : "Being a Tortle",
+	prereqeval : "CurrentRace.known.indexOf('tortle') !== -1",
+	description : "My natural armor grants a base AC of 18. Once per short rest, when I make a Dex save, I can use my reaction to grant creatures I choose within 5 ft the benefits of half-cover. This lasts while they stay within 5 ft of me until the start of my next turn. [+1 Str or Wis]",
+	descriptionFull : "You have mastered using your shell to better protect yourself and others. You gain the following benefits:" + "\n " + "\u2022 Increase your Strength or Wisdom score by 1, to a maximum of 20." + "\n " + "\u2022 Your natural armor trait now provides a base AC of 18. As normal, your Dexterity modifier doesn’t affect this number." + "\n " + "\u2022 As a reaction when you are forced to make a Dexterity saving throw, choose any number of creatures within 5 feet of you. Each chosen creature is considered to have half-cover against any harmful attacks or effects while within 5 feet of you until the start of your next turn. Once you use this ability, you can’t do so again until you’ve finished a short or long rest.",
+	improvements : "Tortle Protector (feat): +1 Strength or Wisdom;",
+	extraAC : {
+		name : "Tortle Protector",
+		mod : 1,
+		text : "My Natural Armor's base AC is 18."
+	},
+	usages : 1,
+	recovery : "short rest",
+	action : ["reaction", ""]
+};
+
+FeatsList["triton deep magic-xgteerf"] = {
+	name : "Triton Deep Magic",
+	source : ["ERF", 3],
+	prerequisite : "Being a Triton",
+	prereqeval : "CurrentRace.known.indexOf('triton') !== -1",
+	description : "I can cast Create or Destroy Water at will, without expending a spell slot. I can also cast Warding Wind and Water Breathing without expending a spell slot, but each only once per long rest. Charisma is my spellcasting ability for these three spells.",
+	descriptionFull : "You master more of the magic of elemental air and water." + "\n" + "You learn the create or destroy water spell and can cast it as a 1st level spell at will, without expending a spell slot. You also learn warding wind and water breathing, each of which you can cast once without expending a spell slot. You regain the ability to cast those two spells in this way when you finish a long rest. Charisma is your spellcasting ability for all three spells.",
+	spellcastingBonus : [{
+		name : "At will",
+		spellcastingAbility : 6,
+		spells : ["create or destroy water"],
+		selection : ["create or destroy water"],
+		firstCol : 'atwill'
+	}, {
+		name : "Once per long rest",
+		spellcastingAbility : 6,
+		spells : ["warding wind"],
+		selection : ["warding wind"],
+		firstCol : 'oncelr'
+	}, {
+		name : "Once per long rest",
+		spellcastingAbility : 6,
+		spells : ["water breathing"],
+		selection : ["water breathing"],
+		firstCol : 'oncelr'
+	}]
+};
+
+FeatsList["serpent form-xgteerf"] = {
+	name : "Serpent Form",
+	source : ["ERF", 2],
+	prerequisite : "Being a Yuan-ti Pureblood",
+	prereqeval : "CurrentRace.known.indexOf('yuan-ti pureblood') !== -1",
+	description : "As an action, I can polymorph into a medium snake/revert; statistics are the same in both. My equipment isn't transformed. As a snake, I gain a bite attack that deals 1d4 piercing damage. Once per long rest, I can add 2d6 poison damage to a bite attack. [+1 Int or Cha]",
+	descriptionFull : "You have unlocked more of your serpentfolk heritage. You gain the following benefits:" + "\n " + "\u2022 Increase your Intelligence or Charisma score by 1, to a maximum of 20." + "\n " + "\u2022 You can use an action to polymorph into a Medium snake or back into your true form. Your statistics are the same in each form. Any equipment you are wearing or carrying isn’t transformed. If you die, you stay in your current form." + "\n " + "\u2022 While in snake form, you gain a bite attack as a natural weapon, which you can use to make unarmed strikes. If you hit with it, you deal piercing damage equal to 1d4 + your Strength modifier, instead of the bludgeoning damage normal for an unarmed strike. When you hit with a bite attack, you can choose to deal 2d6 additional poison damage to the target. Once you deal this poison damage, you can’t do so again until you finish a long rest.",
+	improvements : "Serpent Form (feat): +1 Intelligence or Charisma;",
+	weaponOptions : {
+		baseWeapon : "unarmed strike",
+		regExpSearch : /^(?=.*(serpent|snake))(?=.*bite).*$/i,
+		name : "Snake Bite",
+		source : ["ERF", 2],
+		damage : [1, 4, "piercing"],
+		description : "Only in snake form; Once per long rest, deal an additional 2d6 poison damage"
+	},
+	weaponsAdd : ['Snake Bite'],
+	limfeaname : "Serpent Form (2d6 Poison Damage)",
+	usages : 1,
+	recovery : "long rest",
+	action : ["action", " (transform/revert)"]
+};
