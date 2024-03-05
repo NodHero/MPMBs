@@ -20,36 +20,68 @@ AddSubClass("fighter", "phase knight", {
 			source : [["F:PK"]],
 			minlevel : 3,
 			description : desc([
-				"I project a phase of myself in an unoccupied space I can see within 15 feet of me. This", 
-				"phase is a magical, translucent, gray image the same size as me that occupies its space.",
-				"It lasts until destroyed, I dismiss it, I manifest another phase, or I'm incapacitated. My phase",
-				"has AC 14 + my proficiency bonus, 1 hit point, immunity to all conditions, and uses my",
-				"saving throw bonus. On my turn, I can mentally command the phase to move up to",
-				"30 feet in any direction (no action required). If my phase is ever more than 30 feet from",
-				"me at the end of my turn, it is destroyed.",
-				"> As a Bonus action, I can use 15 feet of my movement to magically swap places with it",
-				"> When I take the Attack action, my attacks can originate from my or the phase's space",
-				"> When a creature I can see within 5 feet of my phase moves at least 5 feet away from",
-				"    it, I can make a reaction opportunity attack against that creature from the phase's space"
+				"As a bonus action, I can magically manifest a translucent image of myself within 15 ft",
+				"My phase lasts until I dismiss it as a bonus action, I manifest another, or I'm incapacitated",
+				"It is also destroyed if it is more than 30 ft away from me at the end of my turn",
+				"It has 1 HP, immunity to all conditions, uses my save bonuses, and AC 14 + Prof Bonus",
+				"On my turn as a free action, I can command it to move up to 30 ft in any direction",
+				"As a bonus action, I can teleport to swap places with it, at a cost of 15 ft movement",
+				"When I use the Attack action on my turn, I can have any attack originate from my phase",
+				"I can also make opportunity attacks from the phase's location as if I were in its space"
 				]),
 			action: ["bonus action", "Phase (project/swap)"],
-			eval : function (lvl, chc) {
-				companionUtil.add("Phase");
-			},
-			removeeval : function (lvl, chc) {
-				companionUtil.remove("phase");
-				if (CreatureList.phase && CreatureList.phase.removeeval) CreatureList.phase.removeeval();
-			}
+			creaturesAdd : [["Projected Phase"]],
+			creatureOptions : [{
+				name : "Projected Phase",
+				source : [["F:PK"]],
+				size : 3,
+				type : "Object",
+				alignment : "",
+				ac : "14+oProf",
+				hp : 1,
+				hd : [],
+				speed : "fly 30 ft (hover)",
+				scores : ["", "", "", "", "", ""],
+				savesLinked : true,
+				condition_immunities : "all conditions",
+				senses : "",
+				passivePerception : 0,
+				languages : "",
+				challengeRating : "0",
+				proficiencyBonus : 0,
+				attacksAction : 0,
+				attacks : [],
+				features : [{
+					name : "Phase",
+					description : "The phase is a magical, translucent, gray image of its creator that that doesn't act and has no turn in combat. It lasts until it is destroyed, dismissed, another is manifested, or its creator is incapacitated. The phase is also destroyed if it is ever more than 30 ft away from its creator at the end of its creator's turn."
+				}],
+				traits : [{
+					name : "Swap Place",
+					description : "The phase's creator can, as a bonus action, teleport, magically swapping places with the phase at a cost of 15 feet of the creator's movement, regardless of the distance between the two."
+				}, {
+					name : "Attack Origin",
+					description : "When the phase's creator takes the Attack action on their turn, any attack they make with that action can originate from the phase's space. This choice is made for each attack separately.\n   In addition, when a creature that the phase's creator can see within 5 ft of the phase moves at least 5 ft away from it, its creator can use their reaction to make an opportunity attack against that creature as if its creator was in the phase's space."
+				}],
+				header : "Phase",
+				eval : function(prefix, lvl) {
+					// Same size as character
+					PickDropdown(prefix + "Comp.Desc.Size", tDoc.getField("Size Category").currentValueIndices);
+					Value(prefix + "Comp.Desc.Age", What("Age"));
+					Value(prefix + "Comp.Desc.Sex", What("Sex"));
+					Value(prefix + "Comp.Desc.Height", What("Height"));
+					Value(prefix + "Comp.Desc.Alignment", What("Alignment"));
+				}
+			}]
 		},
 		"subclassfeature3.1" : {
 			name : "Flash Density",
 			source : [["F:PK"]],
 			minlevel : 3,
 			description : desc([
-				"When I take the Attack action, I can make 1 additional melee attack from the phase's space",
+				"When I take the Attack action, I can make 1 additional melee attack from the phase's position",
 			]),
 			usages : "Constitution modifier per ",
-			usagescalc : usagescalcStr("Con"),
+			usagescalc : "event.value = Math.max(1, What('Con Mod'));",
 			recovery : "long rest"
 		},
 		"subclassfeature7" : {
@@ -57,7 +89,7 @@ AddSubClass("fighter", "phase knight", {
 			source : [["F:PK"]],
 			minlevel : 7,
 			description : desc([
-				"As an action I can transfer my senses into my phase for 10 minutes. During this time I am",
+				"As an action I can transfer my senses into my phase for up to 10 minutes. During this time I am",
 				"blinded and deafened. My phase can be up to 1000 feet from me when used in this way."]),
 			action : [["action", ""]]
 		},
@@ -83,7 +115,7 @@ AddSubClass("fighter", "phase knight", {
 				"Constitution modifier in temporary hit points"			
 			]),
 			usages : "Constitution modifier per ",
-			usagescalc : usagescalcStr("Con"),
+			usagescalc : "event.value = Math.max(1, What('Con Mod'));",
 			recovery : "long rest"
 		},
 		"subclassfeature18" : {
@@ -98,104 +130,3 @@ AddSubClass("fighter", "phase knight", {
 		}
 	}
 });
-
-CreatureList.phase = {
-	name : "Phase",
-	source : [["F:PK"]],
-	size : 3,
-	type : "",
-	subtype : "",
-	alignment : "Neutral",
-	ac : 14,
-	hp : 1,
-	hd : [],
-	speed : "0 ft",
-	scores : [10, 10, 10, 10, 10, 10],
-	saves : ["", "", "", "", "", ""],
-	condition_immunities : "all conditions",
-	passivePerception : 0,
-	senses : "",
-	languages : "",
-	challengeRating : "0",
-	proficiencyBonus : 0,
-	attacksAction : 0,
-	attacks : [],
-	eval : function(prefix) {
-
-		// HP is only ever 1
-		var HPmaxFld = tDoc.getField(prefix + "Comp.Use.HP.Max");
-		HPmaxFld.readonly = true;
-		Hide(prefix + "Buttons.Comp.Use.HP.Max");
-
-		// Phase type
-		var theType = tDoc.getField(prefix + 'Comp.Type');
-		theType.readonly = true;
-		theType.value = 'Phase';
-
-		// Armour class is 14 + character proficiency
-		var armourClass = tDoc.getField(prefix + 'Comp.Use.AC');
-		armourClass.readonly = true;
-		armourClass.setAction("Calculate", "event.value = 14 + Number(How('Proficiency Bonus'));");
-
-		// Same size as character
-		PickDropdown(prefix + "Comp.Desc.Size", CurrentRace.size);
-
-		// Saving throws are the same as the character's
-		for (var i = 0; i < AbilityScores.abbreviations.length; i++) {
-			var abi = AbilityScores.abbreviations[i];
-			var saveModBonus = tDoc.getField(prefix + 'BlueText.Comp.Use.Ability.' + abi + '.ST.Bonus');
-			saveModBonus.readonly = true;
-			saveModBonus.setAction("Calculate", "event.value = What('" + abi + " ST Mod');");
-		}
-		// TODO: This doesn't quite work, as this bonus is unfortunately calculated after the actual save.
-	}
-};
-
-function usagescalcStr(mod) {
-	return "event.value = Math.max(1, What('" + mod + " Mod'));";
-}
-
-var companionUtil = {
-	add : function (compName) {
-		var AScompA = isTemplVis('AScomp') ? What('Template.extras.AScomp').split(',') : false;
-		var prefix = false;
-		if (AScompA) {
-			for (var a = 1; a < AScompA.length; a++) {
-				if (!What(AScompA[a] + 'Comp.Race')) {
-					prefix = AScompA[a];
-					break;
-				}
-			}
-		}
-		if (!prefix) prefix = DoTemplate('AScomp', 'Add');
-		Value(prefix + 'Comp.Race', compName);
-		var changeMsg = "The " + compName + " has been added to the companion page at page number " + (tDoc.getField(prefix + 'Comp.Race').page + 1);
-		CurrentUpdates.types.push("notes");
-		if (!CurrentUpdates.notesChanges) {
-			CurrentUpdates.notesChanges = [changeMsg];
-		} else {
-			CurrentUpdates.notesChanges.push(changeMsg);
-		}
-		return prefix;
-	},
-	remove : function (compName) {
-		var AScompA = isTemplVis('AScomp') ? What('Template.extras.AScomp').split(',') : false;
-		if (!AScompA) return;
-		compName = compName.toLowerCase();
-		for (var a = 1; a < AScompA.length; a++) {
-			if (What(AScompA[a] + 'Comp.Race').toLowerCase().indexOf(compName) !== -1) {
-				DoTemplate("AScomp", "Remove", AScompA[a], true);
-			}
-		}
-	},
-	find : function (compName) {
-		var AScompA = isTemplVis('AScomp') ? What('Template.extras.AScomp').split(',') : false;
-		var prefixes = [];
-		if (!AScompA) return prefixes;
-		compName = compName.toLowerCase();
-		for (var a = 1; a < AScompA.length; a++) {
-			if (What(AScompA[a] + 'Comp.Race').toLowerCase().indexOf(compName) !== -1) prefixes.push(AScompA[a]);
-		}
-		return prefixes;
-	}
-};
