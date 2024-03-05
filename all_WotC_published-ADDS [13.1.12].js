@@ -87,6 +87,7 @@ FeatsList["blessing"] = {
 	}
 };
 
+// Add Add Blessings from Icewind Dale: Rime of the Frostmaiden  (coded as Feats) [contributed by Nod_Hero]
 AddFeatureChoice(FeatsList["blessing"], false, "of the Frostmaiden", {
 	name : "Blessing of the Frostmaiden",
     source : [["RotF", 213]],
@@ -111,6 +112,8 @@ AddFeatureChoice(FeatsList["blessing"], false, "of the Morninglord", {
     recovery : "dawn",
 	additional : "(10 THP)"
 });
+
+// Add Blessings from Phandelver and Below: The Shattered Obelisk  (coded as Feats) [contributed by Nod_Hero]
 AddFeatureChoice(FeatsList["blessing"], false, "of Dumathoin", {
 	name : "Blessing of Dumathoin",
     source : [["PaBTSO", 171]],
@@ -240,8 +243,333 @@ MagicItemsList["charm"] = {
 	}
 };
 
+// Add Charms from Book of Many Things (coded as Magic Items) [contributed by Nod_Hero]
+MagicItemsList["charm (book of many things)"] = {
+	name : "Charm (Book of Many Things)",
+	source : [["BoMT", 62]],
+	type : "charm",
+	rarity : "supernatural gift",
+	descriptionFull : "This section presents magical charms inspired by the Deck of Many Things. See the Dungeon Master's Guide for more information on charms.",
+	allowDuplicates : true,
+	choices : ["Balance", "Euryale", "Many Things", "Ruin", "Comet", "Donjon", "Fates", "Flames", "Fool", "Gem", "Jester", "Key", "Knight", "Moon", "Puzzle", "Rogue", "Sage", "Skull", "Star", "Sun", "Talons", "Throne", "Void"],
+	"balance" : {
+		name : "Charm of Balance",
+		description : "When a creature I can see within 60 feet of me damages me, I can use my reaction to deal an amount of force damage to that creature equal to half the damage I took. Charm vanishes once used 3 times.",
+		usages : 3,
+		recovery : "never",
+		action : [["reaction", ""]],
+	},
+	"euryale" : {
+		name : "Charm of Euryale",
+		description : "As an action, I can unleash a magical petrifying 30-ft cone from my eyes. Each creature must make a DC 15 Con save. Failed save, petrified for 1 hour. Successful save, restrained. Restrained creature can repeat the save at end of each of its turns, ending the effect on itself on a success. Charm vanishes once used.",
+		usages : 1,
+		recovery : "never",
+		action : [["action", ""]],
+	},
+	"many things" : {
+		name : "Charm of Many Things",
+		description : "I am infused with a burst of magic from a Deck of Many Things. As an action, I can touch a willing creature other than myself and bestow the effect of a single randomly determined card from the deck upon the target. Charm vanishes once used.",
+		usages : 1,
+		recovery : "never",
+		action : [["action", ""]],
+	},
+	"ruin" : {
+		name : "Charm of Ruin",
+		description : "As an action, I can touch a nonmagical object, or a section of a larger nonmagical object, that fits in a 5-foot cube. The target is reduced to dust. Charm vanishes once used 3 times.",
+		usages : 3,
+		recovery : "never",
+		action : [["action", ""]],
+	},
+	"comet" : {
+		name : "Charm of the Comet",
+		description : "As an action, I can force a creature I can see within 60 feet of me to focus on me. For 1 minute, creatures other than myself and the target are invisible to the target. The effect ends if any creature other than me damages the target or forces the target to make a saving throw. Charm vanishes once used 3 times.",
+		usages : 3,
+		recovery : "never",
+		action : [["action", ""]],
+	},
+	"donjon" : {
+		name : "Charm of The Donjon",
+		description : "I can cast Otiluke's Resilient Sphere, requiring no spell components and using my Intelligence, Wisdom, or Charisma as the spellcasting ability (my choice). Charm vanishes once used 3 times.",
+		usages : 3,
+		recovery : "never",
+		spellFirstColTitle : "Ch",
+		spellcastingAbility : [4, 5, 6],
+		spellcastingBonus : [{
+		name : "1 charge",
+		spells : ["otiluke's resilient sphere"],
+		selection : ["otiluke's resilient sphere"],
+		firstCol : "1",
+		}],
+		spellChanges : {
+		"otiluke's resilient sphere" : {
+			components : "",
+			changes : "My Charm of the Donjon allows me to cast Otiluke's Resilient Sphere three times without requiring components."
+			}
+		},
+	},
+	"fates" : {
+		name : "Charm of the Fates",
+		description : "I can tug on the threads of fate to tweak circumstance in my favor. After I make an ability check, an attack roll, or a saving throw, I can roll a d10 and add it to the total, potentially turning failure into success. Charm vanishes once used 3 times.",
+		usages : 3,
+		recovery : "never",
+	},
+	"flames" : {
+		name : "Charm of the Flames",
+		description : "As an action, I can summon two bearded devils in unoccupied spaces within 60 ft. They obey my commands, take their turns immediately after mine, and can't summon other devils, They remain for 10 min, until it or I die, or until I dismiss one or both as an action. Charm vanishes once used 3 times.",
+		usages : 3,
+		recovery : "never",
+		action : [["action", " (summon/dismiss)"]],
+	},
+	"fool" : {
+		name : "Charm of the Fool",
+		description : "I can cast Major Image, requiring no spell components and using my Intelligence, Wisdom, or Charisma as the spellcasting ability (my choice). When I cast the spell in this way, it lasts its full duration with no concentration required. Charm vanishes once used 3 times.",
+		usages : 3,
+		recovery : "never",
+		spellFirstColTitle : "Ch",
+		spellcastingAbility : [4, 5, 6],
+		spellcastingBonus : [{
+		name : "1 charge",
+		spells : ["major image"],
+		selection : ["major image"],
+		firstCol : "1",
+		}],
+		spellChanges : {
+		"major image" : {
+			components : "",
+			duration : "10 min",
+			changes : "My Charm of the Fool allows me to cast Major Image three times without requiring components and lasts its full duration with no concentration required."
+			}
+		},
+	},
+	"gem" : {
+		name : "Charm of the Gem",
+		description : "As an action, I create a 30-ft cone of 4d10 10 gp value gems originating from me. Each creature in that area must make a DC 15 Dex save. Failed save takes bludgeoning damage equal to the number of gems created. Successful save takes half. The gems remain after the effect ends. Charm vanishes once used 3 times.",
+		usages : 3,
+		recovery : "never",
+		action : [["action", ""]],
+	},
+	"jester" : {
+		name : "Charm of the Jester",
+		description : "I can cast Tasha's Hideous Laughter, requiring no spell components and using my Intelligence, Wisdom, or Charisma as the spellcasting ability (my choice). Charm vanishes once used 3 times.",
+		usages : 3,
+		recovery : "never",
+		spellFirstColTitle : "Ch",
+		spellcastingAbility : [4, 5, 6],
+		spellcastingBonus : [{
+		name : "1 charge",
+		spells : ["tasha's hideous laughter"],
+		selection : ["tasha's hideous laughter"],
+		firstCol : "1",
+		}],
+		spellChanges : {
+		"tasha's hideous laughter" : {
+			components : "",
+			changes : "My Charm of the Donjon allows me to cast Tasha's Hideous Laughter three times without requiring components."
+			}
+		},
+	},
+	"key" : {
+		name : "Charm of the Key",
+		description : "As a bonus action, I can touch a nonmagical melee weapon and imbue it with magic for 1 hour. For the duration, the weapon deals an extra 1d8 force damage on a hit and deals double damage to objects and structures. Charm vanishes once used 3 times.",
+		usages : 3,
+		recovery : "never",
+		action : [["bonus action", ""]],
+	},
+	"knight" : {
+		name : "Charm of the Knight",
+		description : "As an action, I can summon two neutral good Celestial knights in unoccupied spaces within 60 ft. They act as my allies and take their turns immediately after mine. The knights remain for 10 minutes, until they or I die, or until I dismiss one or both of them as an action. Charm vanishes once used 3 times.",
+		usages : 3,
+		recovery : "never",
+		action : [["action", " (summon/dismiss)"]],
+	},
+	"moon" : {
+		name : "Charm of the Moon",
+		description : "As an action, I make a minor wish. When I do, I create the effects of a spell of 5th level or lower. The spell takes effect as part of this action and requires no spell components. Your Intelligence, Wisdom, or Charisma is the spellcasting ability for this spell (your choice). Once you use this charm, it vanishes from you.",
+		usages : 1,
+		recovery : "never",
+		action : [["action", " (up to 5th lvl spell)"]],
+	},
+	"puzzle" : {
+		name : "Charm of the Puzzle",
+		description : "I can cast Hypnotic Pattern, requiring no spell components and using my Intelligence, Wisdom, or Charisma as the spellcasting ability (my choice). Charm vanishes once used 3 times.",
+		usages : 3,
+		recovery : "never",
+		spellFirstColTitle : "Ch",
+		spellcastingAbility : [4, 5, 6],
+		spellcastingBonus : [{
+		name : "1 charge",
+		spells : ["hypnotic pattern"],
+		selection : ["hypnotic pattern"],
+		firstCol : "1",
+		}],
+		spellChanges : {
+		"hypnotic pattern" : {
+			components : "",
+			changes : "My Charm of the Puzzle allows me to cast Hypnotic Pattern three times without requiring components."
+			}
+		},
+	},
+	"rogue" : {
+		name : "Charm of the Rogue",
+		description : "I can cast Mislead, requiring no spell components and using my Intelligence, Wisdom, or Charisma as the spellcasting ability (my choice). When I cast the spell in this way, it lasts its full duration with no concentration required. Charm vanishes once used 3 times.",
+		usages : 3,
+		recovery : "never",
+		spellFirstColTitle : "Ch",
+		spellcastingAbility : [4, 5, 6],
+		spellcastingBonus : [{
+		name : "1 charge",
+		spells : ["mislead"],
+		selection : ["mislead"],
+		firstCol : "1",
+		}],
+		spellChanges : {
+		"mislead" : {
+			components : "",
+			duration : "1 h",
+			changes : "My Charm of the Rogue allows me to cast Mislead three times without requiring components and lasts its full duration with no concentration required."
+			}
+		},
+	},
+	"sage" : {
+		name : "Charm of the Sage",
+		description : "I can cast Divination, requiring no spell components and using my Intelligence, Wisdom, or Charisma as the spellcasting ability (my choice). Charm vanishes once used 3 times.",
+		usages : 3,
+		recovery : "never",
+		spellFirstColTitle : "Ch",
+		spellcastingAbility : [4, 5, 6],
+		spellcastingBonus : [{
+		name : "1 charge",
+		spells : ["divination"],
+		selection : ["divination"],
+		firstCol : "1",
+		}],
+		spellChanges : {
+		"divination" : {
+			components : "",
+			changes : "My Charm of the Sage allows me to cast Divination three times without requiring components."
+			}
+		},
+	},
+	"skull" : {
+		name : "Charm of the Skull",
+		description : "As a bonus action, my equipment vanishes and I am a Wraith (not alignment, personality; Int, Wis, and Cha scores; passive Perception, and languages.) I can't Create Specter. This lasts for 1 minute, until Wraith reduced to 0 hp (extra dmg spills over), or use a bonus action to end it. Charm vanishes once used 3 times.",
+		descriptionFull : "As a bonus action, I can transform into a deathly apparition. My game statistics are replaced by those of a Wraith, except for my alignment and personality; my Intelligence, Wisdom, and Charisma scores; and my passive Wisdom (Perception) score and languages. I don't have the wraith's Create Specter ability. My equipment vanishes when I transform but returns when the transformation ends. The transformation lasts for 1 minute, until my wraith form is reduced to 0 hit points, or until I use a bonus action to end it. If the wraith form is reduced to 0 hit points and there is still damage left over, the remaining damage applies to my normal hit points. Charm vanishes once used 3 times.",
+		usages : 3,
+		recovery : "never",
+		action : [["bonus action", " {transform/end)"]],
+	},
+	"star" : {
+		name : "Charm of the Star",
+		description : "I can cast Enhance Ability, requiring no spell components and using my Intelligence, Wisdom, or Charisma as the spellcasting ability (my choice). When I cast the spell in this way, it lasts its full duration with no concentration required. Charm vanishes once used 3 times.",
+		usages : 3,
+		recovery : "never",
+		spellFirstColTitle : "Ch",
+		spellcastingAbility : [4, 5, 6],
+		spellcastingBonus : [{
+		name : "1 charge",
+		spells : ["enhance ability"],
+		selection : ["enhance ability"],
+		firstCol : "1",
+		}],
+		spellChanges : {
+		"enhance ability" : {
+			components : "",
+			duration : "1 h",
+			changes : "My Charm of the Star allows me to cast Enhance Ability three times without requiring components and lasts its full duration with no concentration required."
+			}
+		},
+	},
+	"sun" : {
+		name : "Charm of the Sun",
+		description : "I learn the Light cantrip if I don't already know it. I can cast Sunburst, requiring no spell components and using my Intelligence, Wisdom, or Charisma as the spellcasting ability (my choice). Once used, the charm vanishes from me, and I unlearn the Light cantrip gained from this charm.",
+		usages : 1,
+		recovery : "never",
+		spellFirstColTitle : "Ch",
+		spellcastingAbility : [4, 5, 6],
+		spellcastingBonus : [{
+		name : "Light",
+		spells : ["light"],
+		selection : ["light"],
+		firstCol : "atwill"
+		}, {
+		name : "1 charge",
+		spells : ["sunburst"],
+		selection : ["sunburst"],
+		firstCol : "1"
+		}],
+		spellChanges : {
+		"sunburst" : {
+			components : "",
+			changes : "My Charm of the Sun allows me to cast Sunburst one time without requiring components."
+			}
+		},
+	},
+	"talons" : {
+		name : "Charm of the Talons",
+		description : "I can cast Dispel Magic, requiring no spell components and using my Intelligence, Wisdom, or Charisma as the spellcasting ability (my choice). If I successfully end any spells with it, I gain 1d6 temporary hit points for each spell level of the highest-level spell ended. Charm vanishes once used 3 times.",
+		usages : 3,
+		recovery : "never",
+		spellFirstColTitle : "Ch",
+		spellcastingAbility : [4, 5, 6],
+		spellcastingBonus : [{
+		name : "1 charge",
+		spells : ["dispel magic"],
+		selection : ["dispel magic"],
+		firstCol : "1",
+		}],
+		spellChanges : {
+		"dispel magic" : {
+			components : "",
+			description : "Dispel spells on crea/object; if > SL, DC 10+SL spellcasting ability check; gain 1d6 thp per highest dispel",
+			changes : "My Charm of the Talons allows me to cast Dispel Magic three times without requiring components and if I successfully end any spells with it, I gain 1d6 temporary hit points for each spell level of the highest-level spell ended."
+			}
+		},
+	},
+	"throne" : {
+		name : "Charm of the Throne",
+		description : "I can cast Mordenkainen's Magnificent Mansion, requiring no spell components and using my Intelligence, Wisdom, or Charisma as the spellcasting ability (my choice). Charm vanishes once used 3 times.",
+		usages : 3,
+		recovery : "never",
+		spellFirstColTitle : "Ch",
+		spellcastingAbility : [4, 5, 6],
+		spellcastingBonus : [{
+		name : "1 charge",
+		spells : ["mordenkainen's magnificent mansion"],
+		selection : ["mordenkainen's magnificent mansion"],
+		firstCol : "1",
+		}],
+		spellChanges : {
+		"mordenkainen's magnificent mansion" : {
+			components : "",
+			changes : "My Charm of the Throne allows me to cast Mordenkainen's Magnificent Mansion three times without requiring components."
+			}
+		},
+	},
+	"void" : {
+		name : "Charm of the Void",
+		description : "I can cast Banishment, requiring no spell components and using my Intelligence, Wisdom, or Charisma as the spellcasting ability (my choice). Charm vanishes once used 3 times.",
+		usages : 3,
+		recovery : "never",
+		spellFirstColTitle : "Ch",
+		spellcastingAbility : [4, 5, 6],
+		spellcastingBonus : [{
+		name : "1 charge",
+		spells : ["Banishment"],
+		selection : ["Banishment"],
+		firstCol : "1",
+		}],
+		spellChanges : {
+		"banishment" : {
+			components : "",
+			changes : "My Charm of the Void allows me to cast Banishment three times without requiring components."
+			}
+		},
+	},
+};
+
+// Add Charm from Heroes’ Feast: Saving the Children’s Menu
 SourceList["HFStCM"] = {
-	name : "Heroes’ Feast: Saving the Children’s Menu ",
+	name : "Heroes’ Feast: Saving the Children’s Menu",
 	abbreviation : "HFStCM",
 	group : "Adventure Books",
 	campaignSetting : "Forgotten Realms",
@@ -1195,3 +1523,9 @@ AddFeatureChoice(ClassList.wizard.features["arcane recovery"], true, "Wizard Can
 	}
 }, "Optional 3rd-level wizard features");
 
+/* WIP/TO-DO LIST
+> Add Creatures from Charms (Book of Many Things)
+	Bearded Devil
+	Knight (neutral good, celestial instead of humanoid)
+> Add Wyrmlings
+*/
