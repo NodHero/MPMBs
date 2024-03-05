@@ -91,6 +91,52 @@ FeatsList["blessing"] = {
 	}
 };
 
+AddFeatureChoice(FeatsList["blessing"], false, "of the Frostmaiden", {
+	name : "Blessing of the Frostmaiden",
+    source : [["RotF", 213]],
+    description: "My eyes become as cold as ice. I gain immunity to cold damage. In addition, I can cast the cone of cold spell (save DC 15) once. I regain the ability to cast this spell when I finish a long rest.",
+	descriptionFull : "Your eyes become as cold as ice. You gain immunity to cold damage. In addition, you can cast the cone of cold spell (save DC 15) once. You regain the ability to cast this spell when you finish a long rest.",
+	savetxt : { immune : ["cold"] },
+    usages : 1,
+    recovery : "long rest",
+	spellcastingBonus : {
+		name : "Cone of Cold",
+		spells : ["cone of cold"],
+		selection : ["cone of cold"]
+	},
+	fixedDC : 15	
+});
+AddFeatureChoice(FeatsList["blessing"], false, "of the Morninglord", {
+	name : "Blessing of the Morninglord",
+    source : [["RotF", 119]],
+    description: "I gain 10 temporary hit points each day at dawn.",
+	descriptionFull : "You gain 10 temporary hit points each day at dawn.",
+    usages : "each day at",
+    recovery : "dawn",
+	additional : "(10 THP)"
+});
+AddFeatureChoice(FeatsList["blessing"], false, "of Dumathoin", {
+	name : "Blessing of Dumathoin",
+    source : [["PaBTSO", 171]],
+    description: "My eyes become keen enough to pick out hidden secrets. I gain darkvision. If I already had darkvision, I can see in color in the dark. In addition, I can use an action to gain truesight for 1 minute. Once I gain truesight in this way, I can't do so again until I finish a long rest.",
+	descriptionFull : "Your eyes become keen enough to pick out hidden secrets. You gain darkvision. If you already had darkvision, you can see in color in the dark. In addition, you can use an action to gain truesight for 1 minute. Once you gain truesight in this way, you can't do so again until you finish a long rest.",
+    usages : 1,
+    recovery : "long rest",
+	additional : "Truesight",
+	vision : [["Darkvision", "fixed 60"]],
+	action : ["action", ""]
+});
+AddFeatureChoice(FeatsList["blessing"], false, "of the Solipsistic Mind", {
+	name : "Blessing of the Solipsistic Mind",
+    source : [["PaBTSO", 177]],
+    description: "I can take an action to focus my inner mind for 1 hour. While focused, I can't take reactions. When I make an Intelligence or Wisdom ability check or Intelligence or Wisdom save, I can roll a d8 and add the number rolled to the check or save. I regain the ability to focus my inner mind when I finish a long rest.",
+	descriptionFull : "You access esoteric truths from an ancient tome by focusing deeply on your own thoughts. You can take an action to focus your inner mind. This focus lasts for 1 hour. While your inner mind is focused, you can't take reactions. For the duration, when you make an Intelligence check, Wisdom check, Intelligence saving throw, or Wisdom saving throw, you can roll a d8 and add the number rolled to the ability check or saving throw. You regain the ability to focus your inner mind when you finish a long rest.",
+    usages : 1,
+    recovery : "long rest",
+	action : ["action", "Focus Inner Mind"]
+});
+
+
 // Add Charms (coded as Magic Items) [contributed by Nod_Hero]
 MagicItemsList["charm"] = {
 	name : "Charm",
@@ -198,6 +244,27 @@ MagicItemsList["charm"] = {
 		action : [["action", ""]]
 	}
 };
+
+SourceList["HFStCM"] = {
+	name : "Heroes’ Feast: Saving the Children’s Menu ",
+	abbreviation : "HFStCM",
+	group : "Adventure Books",
+	campaignSetting : "Forgotten Realms",
+	url : "https://www.dndbeyond.com/marketplace/adventures/heroes-feast-saving-the-childrens-menu",
+	date : "2023/11/22"
+};
+AddFeatureChoice(MagicItemsList["charm"], false, "the Stumblenoodle", {
+	name : "Charm of the Stumblenoodle",
+    source : [["HFStCM"]],
+    rarity : "rare",
+    description: "When a creature I can see within 30 ft of me moves, I can use my reaction to give the creature the prone condition. Allies of the target within 30 ft of it must succeed on a DC 16 Wis save or be stunned until the end of their next turn as they laugh at their friend's misfortune. The charm vanishes from me after 3 uses.",
+    descriptionLong: "When a creature you can see within 30 feet of you moves, you can use your reaction to give the creature the prone condition. Allies of the target who are within 30 feet of the target must succeed on a DC 16 Wisdom saving throw or have the stunned condition until the end of their next turn as they laugh uncontrollably at their friend's misfortune. Once used three times, the charm vanishes from you.",
+    descriptionFull: "...",
+    usages : 3,
+    recovery : "Never",
+	action : ["reaction", ""],
+});
+
 
 // Add Epic Boons (coded as Feats) [contributed by AelarTheElfRogue, edits by Nod_Hero]
 FeatsList["epic boon"] = {
