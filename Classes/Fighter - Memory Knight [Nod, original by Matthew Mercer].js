@@ -26,13 +26,48 @@ AddSubClass("fighter", "memory knight", {
 				"> Any attack I make on my turn can originate from my space or the memory's space",
 				"> I can make an opportunity attack against creatures as if I were in the memory's space."]),
 			action: ["bonus action", "Memory (project/swap)"],
-			eval : function (lvl, chc) {
-				companionUtil.add("Memory");
-			},
-			removeeval : function (lvl, chc) {
-				companionUtil.remove("memory");
-				if (CreatureList.memory && CreatureList.memory.removeeval) CreatureList.memory.removeeval();
-			}
+			creaturesAdd : [["Projected Memory"]],
+			creatureOptions : [{
+				name : "Projected Memory",
+				source : [["F:MK"]],
+				size : 3,
+				type : "Object",
+				alignment : "",
+				ac : "14+oProf",
+				hp : 1,
+				hd : [],
+				speed : "fly 30 ft (hover)",
+				scores : ["", "", "", "", "", ""],
+				savesLinked : true,
+				condition_immunities : "all conditions",
+				senses : "",
+				passivePerception : 0,
+				languages : "",
+				challengeRating : "0",
+				proficiencyBonus : 0,
+				attacksAction : 0,
+				attacks : [],
+				features : [{
+					name : "Memory",
+					description : "The memory is a magical, translucent, gray image of its creator that that doesn't act and has no turn in combat. It lasts until it is destroyed, dismissed, another is manifested, or its creator is incapacitated. The memory is also destroyed if it is ever more than 30 ft away from its creator at the end of its creator's turn."
+				}],
+				traits : [{
+					name : "Swap Place",
+					description : "The memory's creator can, as a bonus action, teleport, magically swapping places with the memory at a cost of 15 feet of the creator's movement, regardless of the distance between the two."
+				}, {
+					name : "Attack Origin",
+					description : "When the memory's creator takes the Attack action on their turn, any attack they make with that action can originate from the memory's space. This choice is made for each attack separately.\n   In addition, when a creature that the memory's creator can see within 5 ft of the memory moves at least 5 ft away from it, its creator can use their reaction to make an opportunity attack against that creature as if its creator was in the memory's space."
+				}],
+				header : "Phase",
+				eval : function(prefix, lvl) {
+					// Same size as character
+					PickDropdown(prefix + "Comp.Desc.Size", tDoc.getField("Size Category").currentValueIndices);
+					Value(prefix + "Comp.Desc.Age", What("Age"));
+					Value(prefix + "Comp.Desc.Sex", What("Sex"));
+					Value(prefix + "Comp.Desc.Height", What("Height"));
+					Value(prefix + "Comp.Desc.Alignment", What("Alignment"));
+				}
+			}]
 		},
 		"subclassfeature3.1" : {
 			name : "Flashback",
@@ -99,104 +134,3 @@ AddSubClass("fighter", "memory knight", {
 		}
 	}
 });
-
-CreatureList.memory = {
-	name : "Memory",
-	source : [["F:MK"]],
-	size : 3,
-	type : "",
-	subtype : "",
-	alignment : "Neutral",
-	ac : 14,
-	hp : 1,
-	hd : [],
-	speed : "0 ft",
-	scores : [10, 10, 10, 10, 10, 10],
-	saves : ["", "", "", "", "", ""],
-	condition_immunities : "all conditions",
-	passivePerception : 0,
-	senses : "",
-	languages : "",
-	challengeRating : "0",
-	proficiencyBonus : 0,
-	attacksAction : 0,
-	attacks : [],
-	eval : function(prefix) {
-
-		// HP is only ever 1
-		var HPmaxFld = tDoc.getField(prefix + "Comp.Use.HP.Max");
-		HPmaxFld.readonly = true;
-		Hide(prefix + "Buttons.Comp.Use.HP.Max");
-
-		// Memory type
-		var theType = tDoc.getField(prefix + 'Comp.Type');
-		theType.readonly = true;
-		theType.value = 'Memory';
-
-		// Armour class is 14 + character proficiency
-		var armourClass = tDoc.getField(prefix + 'Comp.Use.AC');
-		armourClass.readonly = true;
-		armourClass.setAction("Calculate", "event.value = 14 + Number(How('Proficiency Bonus'));");
-
-		// Same size as character
-		PickDropdown(prefix + "Comp.Desc.Size", CurrentRace.size);
-
-		// Saving throws are the same as the character's
-		for (var i = 0; i < AbilityScores.abbreviations.length; i++) {
-			var abi = AbilityScores.abbreviations[i];
-			var saveModBonus = tDoc.getField(prefix + 'BlueText.Comp.Use.Ability.' + abi + '.ST.Bonus');
-			saveModBonus.readonly = true;
-			saveModBonus.setAction("Calculate", "event.value = What('" + abi + " ST Mod');");
-		}
-		// TODO: This doesn't quite work, as this bonus is unfortunately calculated after the actual save.
-	}
-};
-
-function usagescalcStr(mod) {
-	return "event.value = Math.max(1, What('" + mod + " Mod'));";
-}
-
-var companionUtil = {
-	add : function (compName) {
-		var AScompA = isTemplVis('AScomp') ? What('Template.extras.AScomp').split(',') : false;
-		var prefix = false;
-		if (AScompA) {
-			for (var a = 1; a < AScompA.length; a++) {
-				if (!What(AScompA[a] + 'Comp.Race')) {
-					prefix = AScompA[a];
-					break;
-				}
-			}
-		}
-		if (!prefix) prefix = DoTemplate('AScomp', 'Add');
-		Value(prefix + 'Comp.Race', compName);
-		var changeMsg = "The " + compName + " has been added to the companion page at page number " + (tDoc.getField(prefix + 'Comp.Race').page + 1);
-		CurrentUpdates.types.push("notes");
-		if (!CurrentUpdates.notesChanges) {
-			CurrentUpdates.notesChanges = [changeMsg];
-		} else {
-			CurrentUpdates.notesChanges.push(changeMsg);
-		}
-		return prefix;
-	},
-	remove : function (compName) {
-		var AScompA = isTemplVis('AScomp') ? What('Template.extras.AScomp').split(',') : false;
-		if (!AScompA) return;
-		compName = compName.toLowerCase();
-		for (var a = 1; a < AScompA.length; a++) {
-			if (What(AScompA[a] + 'Comp.Race').toLowerCase().indexOf(compName) !== -1) {
-				DoTemplate("AScomp", "Remove", AScompA[a], true);
-			}
-		}
-	},
-	find : function (compName) {
-		var AScompA = isTemplVis('AScomp') ? What('Template.extras.AScomp').split(',') : false;
-		var prefixes = [];
-		if (!AScompA) return prefixes;
-		compName = compName.toLowerCase();
-		for (var a = 1; a < AScompA.length; a++) {
-			if (What(AScompA[a] + 'Comp.Race').toLowerCase().indexOf(compName) !== -1) prefixes.push(AScompA[a]);
-		}
-		return prefixes;
-	}
-};
