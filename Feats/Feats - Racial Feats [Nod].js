@@ -6,7 +6,7 @@ SourceList["RCF"] = {
 	abbreviation : "RACEFT",
 	abbreviationSpellsheet: "RA",
 	group : "Nod's Homebrew",
-	date : "2023/06/08"
+	date : "2023/06/08" // updated 24/07/15
 };
 
 // Add Racial Feats
@@ -1534,7 +1534,7 @@ FeatsList["allez cuisine!"] = { // Mark of Hospitality
 	prerequisite : "Being a creature with the Dragonmark of Hospitality",
 	prereqeval : function (v) { return (/^(?=.*dragonmark)(?=.*hospitality).*$/i).test(CurrentRace.known); },
 	descriptionFull : "If memory serves me right... the Mark of Hospitality grants powers related to food and shelter. But it also helps the bearer connect with others. They may not always have gold, but a halfling with the Mark of Hospitality is sure to be rich in friends. You gain the following benefits:\n \u2022 Increase your Charisma score by 1, to a maximum of 20.\n \u2022 You gain proficiency with Cook's utensils. If you are already proficient with them, you gain expertise with them, which means your proficiency bonus is doubled for any ability check you make with them. Additionally, you can use Cook's utensils as a spellcasting focus for any spell you cast that uses Charisma as its spellcasting ability.\n \u2022 You learn the Create Food and Water spell. Your spellcasting ability for the spell is Charisma. You can cast it without a spell slot or needing a material component, and you must finish a long rest before you can cast it in this way again. If you have spell slots of 3rd level or higher, you can also cast this spell with them.\nYou can create the standard bland fare without requiring any sort of check, but you can attempt to create finer food by making a Charisma check, adding your Cook's utensils bonus to this check.\nFood Quality\tDifficulty\nPoor\t\tNo roll required\nModest\t\t10\nComfortable\t13\nWealthy\t\t15\n\Aristocratic\t18\n\nA failed check results in a sour and squalid meal.",
-	description : "I gain proficiency with Cook's utensils, or expertise if already proficient. I can use Cook's utensils as a spellcasting focus for any spell I cast that uses Charisma as its spellcasting ability. I can cast Create Food and Water once per long rest, with the posibility of enhanced meals. [+1 Cha]",
+	description : "I gain proficiency with Cook's utensils, or expertise if already proficient. I can use Cook's utensils as a spellcasting focus for any spell I cast that uses Charisma as its spellcasting ability. I can cast Create Food and Water once per long rest, with the possibility of enhanced meals. [+1 Cha]",
 	scores : [0, 0, 0, 0, 0, 1],
 	toolProfs : [["Cook's utensils", "Int"]],
 	eval : function () {
@@ -2208,6 +2208,33 @@ Prerequisite: Kobold (Multiverse)
 Kobolds know they sometimes have to use superior numbers and cunning to take down powerful foes. Kobolds work together with other members of their tribe, allies, pets and mounts, and use any other advantage they can squeeze out of their environment to accomplish difficult tasks they couldn't manage alone. You gain the following benefits:
 • Increase your Dexterity or Wisdom by 1, to a maximum of 20.
 • Pack Tactics. You have advantage on an attack roll against a creature if at least one of your allies is within 5 feet of the creature and the ally isn't incapacitated.  */
+FeatsList["icewind kobold"] = {
+	name : "Icewind Kobold",
+	source : [["RCF"]],
+	prerequisite : "Being a Kobold",
+	prereqeval : function(v) { return CurrentRace.known.indexOf('kobold') !== -1; },
+	description : "I have resistance to cold damage and can tolerate temperatures from -100 to 300 Fahrenheit. I regain expended 'Draconic Cry' at the end of a short rest. [+1 to one ability score]",
+	descriptionFull : "You hail from an icy, desolate land, prone to dramatic swings in temperature. Surviving the interminable harshness of your home gives you the following racial traits:\n \u2022 Increase one ability score of your choice by 1, to a maximum of 20.\n \u2022 You have resistance to cold damage.\n \u2022 You can tolerate temperatures as low as −100 degrees Fahrenheit and as high as 300 degrees Fahrenheit.\n \u2022 You regain all expended uses of your 'Draconic Cry' feature when you finish a short rest.",
+	scorestxt : "+1 to one ability score of my choice",
+	dmgres : ["Cold"],
+	changeeval : function(prefix, lvl) {
+        if (CurrentRace.name == RaceList["multiverse kobold"].name && CurrentRace.features["draconic cry"] && CurrentRace.level != 0) {
+        CurrentRace.features["draconic cry"].recovery = "short rest";
+        ApplyFeatureAttributes("race", [CurrentRace.known, "draconic cry"], [CurrentRace.level, CurrentRace.level, true], false, false);
+	}}, 
+	removeeval : function(prefix, lvl) {
+		if (CurrentRace.name == RaceList["multiverse kobold"].name && CurrentRace.features["draconic cry"]) {
+		CurrentRace.features["draconic cry"].recovery = "long rest";
+		ApplyFeatureAttributes("race", [CurrentRace.known, "draconic cry"], [CurrentRace.level, CurrentRace.level, true], false, false);
+	}},
+};
+/* Icewind Kobold
+Prerequisite: Kobold
+You hail from an icy, desolate land, prone to dramatic swings in temperature. Surviving the interminable harshness of your home gives you the following benefits:
+• Increase one ability score of your choice by 1, to a maximum of 20.
+• You regain all expended uses of your 'Draconic Cry' feature when you finish a short rest.
+• You have resistance to cold damage, and can tolerate temperatures as low as −100 degrees Fahrenheit and as high as 300 degrees Fahrenheit.
+ */
 
 // Leonin
 FeatsList["fierce pride"] = { 
@@ -3414,6 +3441,50 @@ Your creator made a bargain with an arcane entity to provide ensorcelled materia
 • Increase your Intelligence, Wisdom, or Charisma by 1, to a maximum of 20.
 • You learn to speak, read, and write your choice of Abyssal, Celestial, Infernal, or Sylvan.
 • You learn the Misty Step spell and one 1st-level spell of your choice. The 1st-level spell must be from the illusion or enchantment school of magic. You can cast each of these spells without expending a spell slot. Once you cast either of these spells in this way, you can't cast that spell in this way again until you finish a long rest. You can also cast these spells using spell slots you have of the appropriate level. The spells' spellcasting ability is the ability increased by this feat. */
+
+// Wood Elf (Kagonesti)
+FeatsList["among the most skilled"] = { 
+	name : "Among the Most Skilled",
+	source : [["RCF"]],
+	prerequisite : "Being a Wood Elf",
+	prereqeval : function(v) { return CurrentRace.known.indexOf('wood elf') !== -1; },
+	description : "As a bonus action with the Attack action, I can make an extra with a double-tipped weapon for 2d4 piercing damage. I treat double-tipped weapons as having the finesse trait. +1 AC while wielding a double-tipped weapon with two hands. [+1 Strength or Dexterity]",
+	descriptionFull : "Kagonesti, also known as wild elves, are peerless hunters and silent in the woods, as well as amongst the most skilled fighters of elvenkind. You have received extensive training in the favored weapons of your people. You gain the following benefits:\n \u2022 Increase your Strength or Dexterity score by 1, to a maximum of 20.\n \u2022 While wielding a double-tipped weapon with two hands, the weapon has the finesse trait for your attacks with it, and you gain +1 AC.\n \u2022 On your turn, when you use a bonus action to make a melee attack with the tip at the opposite end of the weapon, the weapon’s damage die for this attack increases to 2d4, instead of 1d4.",
+	scorestxt : "+1 Strength or Dexterity",
+	action : ["bonus action", " (with Attack action)"],
+	calcChanges : {
+		atkAdd : ["if ((/double-tipped spear/i).test(WeaponName) && fields.Proficiency) {fields.Description = fields.Description.replace('Two-handed; With Attack action, one attack as bonus action for 1d4', 'Finesse, two-handed; With Attack action, one attack as bonus action'); fields.Mod = StrDex; };", "I can make an extra attack with Double-tipped weapons as a bonus action when taking the Attack action."]
+	},
+	eval : "AddACMisc(1, 'Among the Most Skilled', 'When wielding a double-tipped weapon in two hands, the Among the Most Skilled feat gives a +1 bonus to AC', 'ACshield');",
+	removeeval : "AddACMisc(0, 'Colony Defender', 'When wielding a double-tipped weapon in two hands, the Among the Most Skilled feat gives a +1 bonus to AC');"
+};
+/* Among the Most Skilled
+Prerequisite: Kagonesti (Wood elf)
+Kagonesti, also known as wild elves, are peerless hunters and silent in the woods, as well as amongst the most skilled fighters of elvenkind. You have received extensive training in the favored weapons of your people. You gain the following benefits:
+• Increase your Strength or Dexterity score by 1, to a maximum of 20.
+• While wielding a double-tipped weapon with two hands, the weapon has the finesse trait for your attacks with it, and you gain +1 AC.
+• On your turn, when you use a bonus action to make a melee attack with the tip at the opposite end of the weapon, the weapon’s damage die for this attack increases to 2d4, instead of 1d4. */
+FeatsList["stories of their people"] = {
+	name : "Stories of Their People",
+	source : [["RCF"]],
+	prerequisite : "Being a Wood Elf",
+	prereqeval : function(v) { return CurrentRace.known.indexOf('wood elf') !== -1; },
+	descriptionFull : "The Kagonesti have a strong sense of history and the past, and relate all their tales verbally. The creation tales of the elves has altered over time due to the verbal retelling from generation to generation, however it is the role of the Pathfinder and the shamans of the Kagonesti to remember all the stories of their people. You gain the following benefits:\n \u2022 Increase one ability score of your choice by 1, to a maximum of 20.\n \u2022 You gain proficiency in the History skill. If you are already proficient in the skill, you add double your proficiency bonus to checks you make with it.\n \u2022 When you take the Help action to aid another creature's ability check, you can make a DC 15 Intelligence (History) check. On a success, that creature's check gains a bonus equal to your proficiency bonus, as you share pertinent advice and historical examples. To receive this bonus, the creature must be able to understand what you're saying.\n \u2022 You can accurately recall anything you have seen or heard within the past month. Whenever you finish a long rest, you gain proficiency in one skill of your choice and with one weapon or tool of your choice, selected from the Player's Handbook, as you draw upon the reservoir of experiences connected to your people. These proficiencies last until the end of your next long rest.",
+	description : "I gain proficiency/expertise with History. When I Help a creature with an ability check, DC 15 History check to add my Prof bonus if it understands me. I recall anything within the past month. At the end of a long rest, I gain proficiency with 1 tool or weapon & 1 skill until the end of my next long rest. [+1 to one ability score]",
+	scorestxt : "+1 to one ability score of my choice",
+	skills : [["History", "increment"]],
+	skillstxt : "History, Choose any one skill - lasts until the end of my next long rest",
+	toolProfs : [["Stories: tool/weapon", 1]],
+	action : ["action", "Help action (DC 15 History check)"]
+};
+/* Stories of Their People
+Prerequisites: Kagonesti (Wood elf)
+The Kagonesti have a strong sense of history and the past, and relate all their tales verbally. The creation tales of the elves has altered over time due to the verbal retelling from generation to generation, however it is the role of the Pathfinder and the shamans of the Kagonesti to remember all the stories of their people. You gain the following benefits:
+• Increase one ability score of your choice by 1, to a maximum of 20.
+• You gain proficiency in the History skill. If you are already proficient in the skill, you add double your proficiency bonus to checks you make with it.
+• When you take the Help action to aid another creature's ability check, you can make a DC 15 Intelligence (History) check. On a success, that creature's check gains a bonus equal to your proficiency bonus, as you share pertinent advice and historical examples. To receive this bonus, the creature must be able to understand what you're saying.
+• You can accurately recall anything you have seen or heard within the past month. Whenever you finish a long rest, you gain proficiency in one skill of your choice and with one weapon or tool of your choice, selected from the Player's Handbook, as you draw upon the reservoir of experiences connected to your people. These proficiencies last until the end of your next long rest. */
+
 
 // Yaun-Ti
 FeatsList["forked tongue"] = { // Yuan-ti Pureblood
