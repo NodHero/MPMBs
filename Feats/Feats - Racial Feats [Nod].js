@@ -1645,6 +1645,44 @@ Martial weapon, melee weapon
 100 gp, 6 lb. 	2d4 piercing - special, two-handed
 Special.
 If you attack with a double-tipped spear as part of the Attack action on your turn, you can use a bonus action immediately after to make a melee attack with it. This attack deals 1d4 piercing damage on a hit, instead of 2d4. */
+FeatsList["hare trigger"] = {
+	name : "Hare Trigger",
+	source : [["RCF"]],
+	prerequisite : "Being a Harengon",
+	prereqeval : function(v) { return CurrentRace.known.indexOf('harengon') !== -1; },
+	description : "I ignore the loading property of firearms. I don't suffer disadv on ranged attack rolls within 5 ft of a hostile creature. When I attack with a 1-h weapon in my Attack action, I can use a bonus action to attack with a 1-h firearm I'm holding. I regain all expended uses of Rabbit Hop when I finish a short rest. [+1 Dex]",
+	descriptionFull : "Thanks to extensive practice with firearms, you gain the following benefits:\n \u2022 Increase your Dexterity score by 1, to a maximum of 20.\n \u2022 You ignore the loading property of firearms.\n \u2022 Being within 5 feet of a hostile creature doesn't impose disadvantage on your ranged attack rolls.\n \u2022 When you use the Attack action and attack with a one-handed weapon, you can use a bonus action to attack with a one-handed firearm you are holding.\n \u2022 You regain all expended uses of the ‘Rabbit Hop’ feature when you finish a short rest.",
+	scores : [0, 1, 0, 0, 0, 0],
+	weaponProfs : [false, false, ["Firearms"]],
+	calcChanges : {
+		atkAdd : [
+			function (fields, v) {
+				if ((/firearm/i).test(v.theWea.type) || (/firearm/i).test(v.theWea.list)) {
+					fields.Description = fields.Description.replace(/([;,]? ?loading|loading[;,]? ?)/i, '');
+				};
+			},
+			"I ignore the loading quality of firearms."
+		]
+	},
+	changeeval : function(prefix, lvl) {
+        if (CurrentRace.name == RaceList["harengon"].name && CurrentRace.features["rabbit hop"] && CurrentRace.level != 0) {
+        CurrentRace.features["rabbit hop"].recovery = "short rest";
+        ApplyFeatureAttributes("race", [CurrentRace.known, "rabbit hop"], [CurrentRace.level, CurrentRace.level, true], false, false);
+	}}, 
+	removeeval : function(prefix, lvl) {
+		if (CurrentRace.name == RaceList["harengon"].name && CurrentRace.features["rabbit hop"]) {
+		CurrentRace.features["rabbit hop"].recovery = "long rest";
+		ApplyFeatureAttributes("race", [CurrentRace.known, "rabbit hop"], [CurrentRace.level, CurrentRace.level, true], false, false);
+	}}
+};
+/* Hare Trigger
+Prerequisite: Harengon, proficiency with firearms
+Thanks to extensive practice with firearms, you gain the following benefits:
+ • Increase your Dexterity score by 1, to a maximum of 20.
+ • You ignore the loading property of firearms.
+ • Being within 5 feet of a hostile creature doesn't impose disadvantage on your ranged attack rolls.
+ • When you use the Attack action and attack with a one-handed weapon, you can use a bonus action to attack with a one-handed firearm you are holding.
+ • You regain all expended uses of the ‘Rabbit Hop’ feature when you finish a short rest. */
 FeatsList["jumping flash"] = { 
 	name : "Jumping Flash",
 	source : [["RCF"]],
@@ -3484,7 +3522,6 @@ The Kagonesti have a strong sense of history and the past, and relate all their 
 • You gain proficiency in the History skill. If you are already proficient in the skill, you add double your proficiency bonus to checks you make with it.
 • When you take the Help action to aid another creature's ability check, you can make a DC 15 Intelligence (History) check. On a success, that creature's check gains a bonus equal to your proficiency bonus, as you share pertinent advice and historical examples. To receive this bonus, the creature must be able to understand what you're saying.
 • You can accurately recall anything you have seen or heard within the past month. Whenever you finish a long rest, you gain proficiency in one skill of your choice and with one weapon or tool of your choice, selected from the Player's Handbook, as you draw upon the reservoir of experiences connected to your people. These proficiencies last until the end of your next long rest. */
-
 
 // Yaun-Ti
 FeatsList["forked tongue"] = { // Yuan-ti Pureblood
